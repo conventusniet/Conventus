@@ -1,27 +1,20 @@
-import Head from 'next/head';
+import React from 'react';
 import Header from '../components/Header';
 import MainContent from '../components/MainContent';
 import Leadership from '../components/Leadership';
 import AboutConventus from '../components/AboutConventus';
 import Contact from '../components/Contact';
-import Registration from '../components/Registration';
-import Footer from '../components/Footer';
 
-export default function Home() {
+const Index = () => {
     return (
-        <>
-            <Head>
-                <title>Conventus Club</title>
-                <meta name="description" content="Official website of the Conventus Club" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+        <div className="font-sans">
             <Header />
             <MainContent />
             <Leadership />
-            <AboutConventus />
-            <Contact />
-            <Registration />
-            <Footer />
-        </>
+            <AboutConventus/>
+            <Contact/>
+        </div>
     );
-}
+};
+
+export default Index;
