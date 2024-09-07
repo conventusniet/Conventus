@@ -1,11 +1,8 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-
-// Lazy load the RegistrationForm component
-const RegistrationForm = lazy(() => import('./RegistrationForm'));
 
 // Header Component
 const Header = () => {
@@ -144,34 +141,61 @@ const Footer = () => {
     );
 };
 
-// Duck walking animation component
-const DuckLoader = () => (
-    <div className="flex flex-col items-center justify-center h-64">
-        <svg className="w-24 h-24" viewBox="0 0 100 100">
-            <motion.path
-                d="M10,50 Q25,30 40,50 T70,50"
-                fill="none"
-                stroke="#FF0000"
-                strokeWidth="4"
-                animate={{
-                    d: [
-                        "M10,50 Q25,30 40,50 T70,50",
-                        "M10,50 Q25,70 40,50 T70,50",
-                        "M10,50 Q25,30 40,50 T70,50"
-                    ]
-                }}
-                transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                    times: [0, 0.5, 1],
-                    repeat: Infinity,
-                }}
-            />
-            <circle cx="70" cy="50" r="5" fill="#FF0000" />
-        </svg>
-        <p className="mt-4 text-lg font-semibold text-red-600">Loading...</p>
-    </div>
-);
+// Registration Form Component
+const RegistrationForm = () => {
+    return (
+        <motion.form
+            className="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl mx-auto"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+        >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                    { id: 'name', label: 'Name', icon: User, type: 'text' },
+                    { id: 'mobile', label: 'Mobile No.', icon: Phone, type: 'tel' },
+                    { id: 'email', label: 'Email', icon: Mail, type: 'email' },
+                    { id: 'organization', label: 'Organization/Institute/University', icon: Building, type: 'text' },
+                ].map((field) => (
+                    <div key={field.id}>
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={field.id}>
+                            <field.icon className="inline-block mr-2 text-red-600" size={18} />
+                            {field.label}
+                        </label>
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-500 transition duration-300"
+                            id={field.id}
+                            type={field.type}
+                            placeholder={`Your ${field.label}`}
+                        />
+                    </div>
+                ))}
+            </div>
+            <div className="mt-6">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
+                    <MapPin className="inline-block mr-2 text-red-600" size={18} />
+                    Address
+                </label>
+                <textarea
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-500 transition duration-300"
+                    id="address"
+                    placeholder="Your Address"
+                    rows="3"
+                ></textarea>
+            </div>
+            <div className="mt-8 text-center">
+                <motion.button
+                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    type="submit"
+                >
+                    Register Now
+                </motion.button>
+            </div>
+        </motion.form>
+    );
+};
 
 // Main Registration Component
 const Registration = () => {
@@ -203,7 +227,7 @@ const Registration = () => {
             <Header />
             <section className="py-32 bg-gradient-to-br from-red-600 to-red-800 text-white min-h-screen flex items-center justify-center">
                 <motion.div
-                    className="container mx-auto px-4"
+                    className="container mx-auto px-4 w-full"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
@@ -220,9 +244,7 @@ const Registration = () => {
                     >
                         Embark on a journey of leadership, innovation, and community engagement. Register now to be part of something extraordinary!
                     </motion.p>
-                    <Suspense fallback={<DuckLoader />}>
-                        <RegistrationForm />
-                    </Suspense>
+                    <RegistrationForm />
                     <motion.div
                         className="mt-16 text-center"
                         variants={itemVariants}

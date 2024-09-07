@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Header Component
@@ -80,42 +81,58 @@ const Header = () => {
 
 // Footer Component
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
-        <footer className="bg-gray-800 text-white py-8">
-            <div className="container mx-auto px-4">
-                <div className="flex flex-wrap justify-between">
-                    <div className="w-full md:w-1/4 mb-6 md:mb-0">
+        <footer className="bg-gray-900 text-white">
+            <div className="container mx-auto px-4 py-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
                         <h3 className="text-xl font-bold mb-4">Conventus</h3>
-                        <p>Empowering students to lead, innovate, and make a difference.</p>
+                        <p className="text-gray-400 text-sm">Empowering students to lead, innovate, and make a difference.</p>
                     </div>
-                    <div className="w-full md:w-1/4 mb-6 md:mb-0">
+                    <div>
                         <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                        <ul>
-                            <li><Link href="/" className="hover:text-gray-300">Home</Link></li>
-                            <li><Link href="#about" className="hover:text-gray-300">About</Link></li>
-                            <li><Link href="#contact" className="hover:text-gray-300">Contact</Link></li>
-                            <li><Link href="/registration" className="hover:text-gray-300">Register</Link></li>
+                        <ul className="space-y-2">
+                            {['Home', 'About', 'Contact', 'Register'].map((item) => (
+                                <li key={item}>
+                                    <Link href={item === 'Home' ? '/' : `#${item.toLowerCase()}`}>
+                                        <span className="text-gray-400 hover:text-red-400 transition duration-300 text-sm">{item}</span>
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
-                    <div className="w-full md:w-1/4 mb-6 md:mb-0">
+                    <div>
                         <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
-                        <ul>
-                            <li><a href="#" className="hover:text-gray-300">Facebook</a></li>
-                            <li><a href="#" className="hover:text-gray-300">Twitter</a></li>
-                            <li><a href="#" className="hover:text-gray-300">Instagram</a></li>
-                            <li><a href="#" className="hover:text-gray-300">LinkedIn</a></li>
+                        <ul className="space-y-2">
+                            {[
+                                { name: 'Facebook', icon: Facebook },
+                                { name: 'Twitter', icon: Twitter },
+                                { name: 'Instagram', icon: Instagram },
+                                { name: 'LinkedIn', icon: Linkedin }
+                            ].map((item) => (
+                                <li key={item.name}>
+                                    <a href="#" className="flex items-center text-gray-400 hover:text-red-400 transition duration-300 text-sm">
+                                        <item.icon className="w-4 h-4 mr-2" />
+                                        {item.name}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
-                    <div className="w-full md:w-1/4">
+                    <div>
                         <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-                        <p>123 Campus Drive</p>
-                        <p>College Town, ST 12345</p>
-                        <p>Email: info@conventus.edu</p>
-                        <p>Phone: (123) 456-7890</p>
+                        <address className="text-gray-400 not-italic text-sm">
+                            123 Campus Drive<br />
+                            College Town, ST 12345<br />
+                            Email: info@conventus.edu<br />
+                            Phone: (123) 456-7890
+                        </address>
                     </div>
                 </div>
-                <div className="mt-8 text-center">
-                    <p>&copy; {new Date().getFullYear()} Conventus. All rights reserved.</p>
+                <div className="border-t border-gray-800 mt-6 pt-6 text-center text-gray-400 text-sm">
+                    © {currentYear} Conventus. All rights reserved.
                 </div>
             </div>
         </footer>
@@ -145,52 +162,52 @@ const ContactForm = () => {
     return (
         <motion.form
             onSubmit={handleSubmit}
-            className="bg-white shadow-xl rounded-lg p-8 max-w-2xl mx-auto"
+            className="bg-white shadow-2xl rounded-lg p-8 w-full max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <h2 className="text-3xl font-bold mb-6 text-red-600">Contact Us</h2>
-            <div className="mb-6">
-                <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Name</label>
+            <h2 className="text-4xl font-bold mb-8 text-red-600 text-center">Contact Us</h2>
+            <div className="mb-8">
+                <label htmlFor="name" className="block text-gray-700 text-xl font-bold mb-3">Name</label>
                 <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-red-500"
+                    className="w-full px-4 py-3 text-xl text-gray-700 border rounded-lg focus:outline-none focus:border-red-500"
                     required
                 />
             </div>
-            <div className="mb-6">
-                <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+            <div className="mb-8">
+                <label htmlFor="email" className="block text-gray-700 text-xl font-bold mb-3">Email</label>
                 <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-red-500"
+                    className="w-full px-4 py-3 text-xl text-gray-700 border rounded-lg focus:outline-none focus:border-red-500"
                     required
                 />
             </div>
-            <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">Message</label>
+            <div className="mb-8">
+                <label htmlFor="message" className="block text-gray-700 text-xl font-bold mb-3">Message</label>
                 <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows="4"
-                    className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-red-500"
+                    rows="6"
+                    className="w-full px-4 py-3 text-xl text-gray-700 border rounded-lg focus:outline-none focus:border-red-500"
                     required
                 ></textarea>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center">
                 <motion.button
                     type="submit"
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg text-xl focus:outline-none focus:shadow-outline"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
@@ -206,14 +223,12 @@ const ContactPage = () => {
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="flex-grow bg-gray-100">
-                <section className="py-20 px-4">
-                    <div className="container mx-auto">
-                        <h1 className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-12">Welcome to Conventus</h1>
-                        <p className="text-xl text-center text-gray-700 mb-12">Empowering students to lead, innovate, and make a difference.</p>
-                        <ContactForm />
-                    </div>
-                </section>
+            <main className="flex-grow bg-gray-100 flex items-center justify-center px-4">
+                <div className="container mx-auto py-12 md:py-20">
+                    <h1 className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-8">Welcome to Conventus</h1>
+                    <p className="text-xl text-center text-gray-700 mb-12">Empowering students to lead, innovate, and make a difference.</p>
+                    <ContactForm />
+                </div>
             </main>
             <Footer />
         </div>
