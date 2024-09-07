@@ -40,6 +40,12 @@ const Leadership = () => {
             role: "Vice President",
             image: "/images/Vice President.jpg",
             description: "Pragya brings years of experience in event management and student engagement. Her creativity and dedication ensure that every Conventus event is a memorable success."
+        },
+        {
+            name: "Yashraj Ranjan",
+            role: "Vice President",
+            image: "/images/Vice President2.jpg",
+            description: "Yashraj excels in operations and logistics. His attention to detail and problem-solving skills help streamline Conventus's processes and enhance member experiences."
         }
     ];
 
@@ -54,7 +60,7 @@ const Leadership = () => {
                 >
                     Our Leadership
                 </motion.h2>
-                <div className="grid md:grid-cols-2 gap-12">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {leaders.map((leader, index) => (
                         <LeadershipCard key={index} {...leader} />
                     ))}

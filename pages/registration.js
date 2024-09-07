@@ -1,7 +1,11 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+// Lazy load the RegistrationForm component
+const RegistrationForm = lazy(() => import('./RegistrationForm'));
 
 // Header Component
 const Header = () => {
@@ -19,7 +23,7 @@ const Header = () => {
     const navItems = [
         { href: "/", label: "Home" },
         { href: "#about", label: "About" },
-        { href: "#contact", label: "Contact" },
+        { href: "/ContactForm", label: "Contact" },
         { href: "/registration", label: "Register" },
     ];
 
@@ -28,12 +32,17 @@ const Header = () => {
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center py-4">
                     <Link href="/">
-                        <span className={`text-2xl font-bold ${scrolled ? 'text-blue-600' : 'text-white'}`}>Conventus</span>
+                        <div className="flex items-center">
+                            <div className="rounded-full overflow-hidden bg-white p-1 shadow-md">
+                                <Image src="/images/logo.png" alt="Conventus Logo" width={40} height={40} className="rounded-full" />
+                            </div>
+                            <span className={`ml-2 text-2xl font-bold ${scrolled ? 'text-red-600' : 'text-white'}`}>Conventus</span>
+                        </div>
                     </Link>
                     <nav className="hidden md:flex space-x-4">
                         {navItems.map((item, index) => (
                             <Link key={index} href={item.href}>
-                                <span className={`text-sm font-medium ${scrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-blue-200'} transition duration-300`}>
+                                <span className={`text-sm font-medium ${scrolled ? 'text-gray-800 hover:text-red-600' : 'text-white hover:text-red-200'} transition duration-300`}>
                                     {item.label}
                                 </span>
                             </Link>
@@ -62,7 +71,7 @@ const Header = () => {
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md">
                             {navItems.map((item) => (
                                 <Link key={item.href} href={item.href}>
-                                    <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-blue-600 hover:bg-gray-100 transition duration-300">
+                                    <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-red-600 hover:bg-gray-100 transition duration-300">
                                         {item.label}
                                     </span>
                                 </Link>
@@ -93,7 +102,7 @@ const Footer = () => {
                             {['Home', 'About', 'Contact', 'Register'].map((item) => (
                                 <li key={item}>
                                     <Link href={item === 'Home' ? '/' : `#${item.toLowerCase()}`}>
-                                        <span className="text-gray-400 hover:text-white transition duration-300">{item}</span>
+                                        <span className="text-gray-400 hover:text-red-400 transition duration-300">{item}</span>
                                     </Link>
                                 </li>
                             ))}
@@ -109,7 +118,7 @@ const Footer = () => {
                                 { name: 'LinkedIn', icon: Linkedin }
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <a href="#" className="flex items-center text-gray-400 hover:text-white transition duration-300">
+                                    <a href="#" className="flex items-center text-gray-400 hover:text-red-400 transition duration-300">
                                         <item.icon className="w-5 h-5 mr-2" />
                                         {item.name}
                                     </a>
@@ -142,7 +151,7 @@ const DuckLoader = () => (
             <motion.path
                 d="M10,50 Q25,30 40,50 T70,50"
                 fill="none"
-                stroke="#FFA500"
+                stroke="#FF0000"
                 strokeWidth="4"
                 animate={{
                     d: [
@@ -158,55 +167,11 @@ const DuckLoader = () => (
                     repeat: Infinity,
                 }}
             />
-            <circle cx="70" cy="50" r="5" fill="#FFA500" />
+            <circle cx="70" cy="50" r="5" fill="#FF0000" />
         </svg>
-        <p className="mt-4 text-lg font-semibold text-blue-600">Loading...</p>
+        <p className="mt-4 text-lg font-semibold text-red-600">Loading...</p>
     </div>
 );
-
-// Registration Form Component
-const RegistrationForm = () => {
-    return (
-        <motion.form
-            className="bg-white p-8 rounded-lg shadow-xl max-w-md mx-auto"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-        >
-            {[
-                { id: 'name', label: 'Name', icon: User, type: 'text' },
-                { id: 'mobile', label: 'Mobile No.', icon: Phone, type: 'tel' },
-                { id: 'email', label: 'Email', icon: Mail, type: 'email' },
-                { id: 'organization', label: 'Organization/Institute/University', icon: Building, type: 'text' },
-            ].map((field) => (
-                <div key={field.id} className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={field.id}>
-                        <field.icon className="inline-block mr-2 text-blue-600" size={18} />
-                        {field.label}
-                    </label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 transition duration-300"
-                        id={field.id}
-                        type={field.type}
-                        placeholder={`Your ${field.label}`}
-                    />
-                </div>
-            ))}
-            <div className="mb-6">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
-                    <MapPin className="inline-block mr-2 text-blue-600" size={18} />
-                    Address
-                </label>
-                <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 transition duration-300"
-                    id="address"
-                    placeholder="Your Address"
-                    rows="3"
-                ></textarea>
-            </div>
-        </motion.form>
-    );
-};
 
 // Main Registration Component
 const Registration = () => {
@@ -236,7 +201,7 @@ const Registration = () => {
     return (
         <>
             <Header />
-            <section className="py-32 bg-gradient-to-br from-blue-600 to-purple-600 text-white min-h-screen flex items-center justify-center">
+            <section className="py-32 bg-gradient-to-br from-red-600 to-red-800 text-white min-h-screen flex items-center justify-center">
                 <motion.div
                     className="container mx-auto px-4"
                     variants={containerVariants}
@@ -263,7 +228,7 @@ const Registration = () => {
                         variants={itemVariants}
                     >
                         <motion.button
-                            className="inline-block px-8 py-4 bg-white text-blue-600 font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+                            className="inline-block px-8 py-4 bg-white text-red-600 font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onHoverStart={() => setIsHovered(true)}
