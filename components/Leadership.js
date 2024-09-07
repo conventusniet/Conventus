@@ -9,21 +9,19 @@ const LeadershipCard = ({ name, role, image, description }) => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
     >
-        <div className="relative h-80 w-full">
+        <div className="relative h-80 w-80 mx-auto mt-8 rounded-full overflow-hidden">
             <Image
                 src={image}
                 alt={name}
                 layout="fill"
                 objectFit="cover"
+                objectPosition="center 30%"
                 className="transition-transform duration-300 hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
-            <div className="absolute bottom-0 left-0 p-6 text-white">
-                <h3 className="text-3xl font-bold mb-1">{name}</h3>
-                <p className="text-xl font-semibold text-red-400">{role}</p>
-            </div>
         </div>
-        <div className="p-6">
+        <div className="p-6 text-center">
+            <h3 className="text-3xl font-bold mb-1">{name}</h3>
+            <p className="text-xl font-semibold text-red-400 mb-4">{role}</p>
             <p className="text-gray-700 text-lg leading-relaxed">{description}</p>
         </div>
     </motion.div>
@@ -32,16 +30,16 @@ const LeadershipCard = ({ name, role, image, description }) => (
 const Leadership = () => {
     const leaders = [
         {
-            name: "John Doe",
+            name: "Manas Gupta",
             role: "President",
             image: "/images/President.jpg",
-            description: "John is a visionary leader with a passion for innovation and community building. With his strategic mindset and inclusive approach, he's driving Conventus to new heights."
+            description: "Manas is a visionary leader with a passion for innovation and community building. With his strategic mindset and inclusive approach, he's driving Conventus to new heights."
         },
         {
-            name: "Jane Smith",
+            name: "Pragya Singh",
             role: "Vice President",
             image: "/images/Vice President.jpg",
-            description: "Jane brings years of experience in event management and student engagement. Her creativity and dedication ensure that every Conventus event is a memorable success."
+            description: "Pragya brings years of experience in event management and student engagement. Her creativity and dedication ensure that every Conventus event is a memorable success."
         }
     ];
 

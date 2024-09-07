@@ -49,9 +49,9 @@ const Welcome = () => {
                 <h1 className="text-6xl font-bold mb-6 text-shadow-lg">Welcome to Conventus</h1>
                 <p className="text-4xl mb-8">Where we <span className="font-bold text-yellow-300">{text}</span></p>
                 <p className="text-2xl mb-12 max-w-2xl mx-auto">Join us in shaping the future of our community</p>
-                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
+                {/* <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-xl transition duration-300 transform hover:scale-105">
                     Get Started
-                </button>
+                </button> */}
             </div>
             <svg className="absolute left-0 bottom-0 w-64 h-64 text-red-600 opacity-20 z-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <path fill="currentColor" d="M47.5,-57.5C59.3,-45.7,65.6,-28.9,67.4,-11.9C69.2,5.1,66.5,22.3,57.9,36.3C49.3,50.3,34.7,61.1,17.7,67.3C0.7,73.5,-18.7,75,-34.8,68.1C-50.9,61.2,-63.7,45.8,-70.6,28.3C-77.5,10.8,-78.5,-8.8,-71.8,-24.9C-65.1,-40.9,-50.8,-53.3,-36,-61.4C-21.1,-69.5,-5.7,-73.3,8.8,-71.9C23.3,-70.5,35.7,-69.3,47.5,-57.5Z" transform="translate(100 100)" />
