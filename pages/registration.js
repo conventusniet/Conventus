@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { X } from 'lucide-react';
 // Lazy load the RegistrationForm component
 const RegistrationForm = lazy(() => import('./RegistrationForm'));
 
@@ -26,6 +26,11 @@ const Header = () => {
         { href: "/ContactForm", label: "Contact" },
         { href: "/registration", label: "Register" },
     ];
+
+    const sidebarVariants = {
+        open: { x: 0, transition: { type: 'tween' } },
+        closed: { x: '100%', transition: { type: 'tween' } },
+    };
 
     return (
         <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
@@ -59,18 +64,31 @@ const Header = () => {
                     </motion.button>
                 </div>
             </div>
+
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="md:hidden"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
+                        className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-50 md:hidden"
+                        variants={sidebarVariants}
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
                     >
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-md">
+                        <div className="flex flex-col h-full justify-center items-center relative">
+                            <motion.button
+                                className="absolute top-4 right-4 text-gray-600 hover:text-red-600"
+                                onClick={() => setIsOpen(false)}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <X size={24} />
+                            </motion.button>
                             {navItems.map((item) => (
-                                <Link key={item.href} href={item.href}>
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    onClick={() => setIsOpen(false)}
+                                >
                                     <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-red-600 hover:bg-gray-100 transition duration-300">
                                         {item.label}
                                     </span>
@@ -80,6 +98,16 @@ const Header = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {isOpen && (
+                <motion.div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setIsOpen(false)}
+                />
+            )}
         </header>
     );
 };
