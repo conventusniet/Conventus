@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, Building, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { User, Phone, Mail, Building, MapPin, Facebook, Twitter, Instagram, Linkedin, Menu } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { X } from 'lucide-react';
@@ -21,94 +21,135 @@ const Header = () => {
     }, []);
 
     const navItems = [
-        { href: "/", label: "Home" },
-        { href: "#about", label: "About" },
-        { href: "/ContactForm", label: "Contact" },
-        { href: "/registration", label: "Register" },
+        { href: "/", label: "Home", icon: "🏠" },
+        { href: "#about", label: "About", icon: "ℹ️" },
+        { href: "/ContactForm", label: "Contact", icon: "📞" },
+        { href: "/registration", label: "Register", icon: "📝" },
     ];
 
     const sidebarVariants = {
-        open: { x: 0, transition: { type: 'tween' } },
-        closed: { x: '100%', transition: { type: 'tween' } },
+        open: {
+            x: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 300,
+                damping: 30
+            }
+        },
+        closed: {
+            x: '100%',
+            transition: {
+                type: 'spring',
+                stiffness: 300,
+                damping: 30
+            }
+        },
+    };
+
+    const itemVariants = {
+        open: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                y: { stiffness: 1000, velocity: -100 }
+            }
+        },
+        closed: {
+            y: 50,
+            opacity: 0,
+            transition: {
+                y: { stiffness: 1000 }
+            }
+        }
     };
 
     return (
-        <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
-            <div className="container mx-auto px-4">
-                <div className="flex justify-between items-center py-4">
-                    <Link href="/">
-                        <div className="flex items-center">
-                            <div className="rounded-full overflow-hidden bg-white p-1 shadow-md">
-                                <Image src="/images/logo.png" alt="Conventus Logo" width={40} height={40} className="rounded-full" />
-                            </div>
-                            <span className={`ml-2 text-2xl font-bold ${scrolled ? 'text-red-600' : 'text-white'}`}>Conventus</span>
+        <>
+            <motion.header
+                className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900 shadow-lg' : 'bg-transparent'}`}
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+                    <Link href="/" className="flex items-center space-x-3">
+                        <div className="rounded-full overflow-hidden bg-white p-1 shadow-md">
+                            <Image src="/images/logo.png" alt="Conventus Logo" width={40} height={40} className="rounded-full" />
                         </div>
+                        <span className={`text-2xl font-bold ${scrolled ? "text-red-500" : "text-white"}`}>Conventus</span>
                     </Link>
-                    <nav className="hidden md:flex space-x-4">
-                        {navItems.map((item, index) => (
-                            <Link key={index} href={item.href}>
-                                <span className={`text-sm font-medium ${scrolled ? 'text-gray-800 hover:text-red-600' : 'text-white hover:text-red-200'} transition duration-300`}>
+                    <nav className="hidden md:flex space-x-6">
+                        {navItems.map((item) => (
+                            <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                                <Link href={item.href} className={`text-lg font-semibold ${scrolled ? 'text-gray-300 hover:text-red-500' : 'text-white hover:text-red-400'}`}>
                                     {item.label}
-                                </span>
-                            </Link>
+                                </Link>
+                            </motion.div>
                         ))}
                     </nav>
                     <motion.button
-                        className="md:hidden text-white focus:outline-none"
+                        className={`md:hidden ${scrolled ? 'text-red-500 z-50' : 'text-red-200'}`}
                         onClick={() => setIsOpen(!isOpen)}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
-                        </svg>
+                        <Menu size={24} />
                     </motion.button>
                 </div>
-            </div>
+            </motion.header>
 
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-50 md:hidden"
+                        className="fixed inset-y-0 right-0 w-full max-w-sm bg-gray-900 shadow-xl z-50 md:hidden"
                         variants={sidebarVariants}
                         initial="closed"
                         animate="open"
                         exit="closed"
                     >
-                        <div className="flex flex-col h-full justify-center items-center relative">
+                        <div className="flex flex-col h-full justify-center items-center relative p-8">
                             <motion.button
-                                className="absolute top-4 right-4 text-gray-600 hover:text-red-600"
+                                className="absolute top-4 right-4 text-red-500 hover:text-red-400"
                                 onClick={() => setIsOpen(false)}
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                             >
                                 <X size={24} />
                             </motion.button>
-                            {navItems.map((item) => (
-                                <Link
+                            {navItems.map((item, index) => (
+                                <motion.div
                                     key={item.href}
-                                    href={item.href}
-                                    onClick={() => setIsOpen(false)}
+                                    variants={itemVariants}
+                                    custom={index}
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
                                 >
-                                    <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-red-600 hover:bg-gray-100 transition duration-300">
+                                    <Link
+                                        href={item.href}
+                                        className="block py-4 px-8 text-xl font-semibold text-white hover:text-red-500 transition duration-300 w-full text-center"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        <span className="mr-2">{item.icon}</span>
                                         {item.label}
-                                    </span>
-                                </Link>
+                                    </Link>
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {isOpen && (
-                <motion.div
-                    className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={() => setIsOpen(false)}
-                />
-            )}
-        </header>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 md:hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setIsOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
+        </>
     );
 };
 
