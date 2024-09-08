@@ -23,7 +23,7 @@ export default function Home() {
         <Leadership />
         <AboutConventus />
         <Contact />
-        <RegistrationButton />
+        <RegistrationButton /> 
       </main>
 
       <Footer />

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const LeadershipCard = ({ name, role, image, description }) => (
     <motion.div
-        className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105"
+        className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 w-full"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -50,8 +50,8 @@ const Leadership = () => {
     ];
 
     return (
-        <section className="py-24 bg-gradient-to-br from-gray-100 to-gray-200">
-            <div className="container mx-auto px-4">
+        <section className="py-24 bg-gradient-to-br from-gray-100 to-gray-200 w-full">
+            <div className="container mx-auto px-4 w-full">
                 <motion.h2
                     className="text-5xl font-bold text-center mb-16 text-gray-800"
                     initial={{ opacity: 0, y: -50 }}
@@ -60,20 +60,12 @@ const Leadership = () => {
                 >
                     Our Leadership
                 </motion.h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {leaders.map((leader, index) => (
                         <LeadershipCard key={index} {...leader} />
                     ))}
                 </div>
             </div>
-            <svg className="absolute left-0 bottom-0 text-red-500 opacity-10" width="404" height="784" fill="none" viewBox="0 0 404 784">
-                <defs>
-                    <pattern id="5d0dd344-b041-4d26-bec4-8d33ea57ec9b" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <rect x="0" y="0" width="4" height="4" fill="currentColor"></rect>
-                    </pattern>
-                </defs>
-                <rect width="404" height="784" fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"></rect>
-            </svg>
         </section>
     );
 };
