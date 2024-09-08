@@ -3,20 +3,8 @@ import { motion } from 'framer-motion';
 import { User, Phone, Mail, Building, MapPin } from 'lucide-react';
 import axios from 'axios';
 
-// API Configuration
-const API_BASE_URL = 'https://your-django-api-url.com/api'; // Replace with your actual API URL
+const API_BASE_URL = 'http://127.0.0.1:8000/api'; // Adjust this to match your Django server URL
 
-const registerUser = async (userData) => {
-    try {
-        const response = await axios.post(`${API_BASE_URL}/register`, userData);
-        return response.data;
-    } catch (error) {
-        console.error('API error:', error.response ? error.response.data : error.message);
-        throw error;
-    }
-};
-
-// RegistrationForm Component
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -40,7 +28,7 @@ const RegistrationForm = () => {
         setSuccess(false);
 
         try {
-            await registerUser(formData);
+            const response = await axios.post(`${API_BASE_URL}/register/`, formData);
             setSuccess(true);
             setFormData({
                 name: '',
@@ -49,9 +37,10 @@ const RegistrationForm = () => {
                 organization: '',
                 address: ''
             });
+            console.log('Registration successful:', response.data);
         } catch (err) {
-            setError('An error occurred while submitting the form. Please try again.');
-            console.error('Registration error:', err);
+            setError(err.response?.data?.message || 'An error occurred while submitting the form. Please try again.');
+            console.error('Registration error:', err.response?.data);
         } finally {
             setLoading(false);
         }
@@ -123,6 +112,7 @@ const RegistrationForm = () => {
                     {loading ? 'Submitting...' : 'Register Now'}
                 </motion.button>
             </div>
+            
         </motion.form>
     );
 };

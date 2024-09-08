@@ -14,8 +14,8 @@ class RegistrationView(APIView):
             return Response({"message":"Your Response Have Been Saved Successfully."})
         return Response({"message":"Your Response Have Been Failed Successfully."})
 
-class ContactResponseView(APIView):
-    def post(self, request):
-        serializer = ContactResponseSerializer(data = request.data)
-        if serializer.is_valid():
+# class ContactResponseView(APIView):
+#     def post(self, request):
+#         serializer = ContactResponseSerializer(data = request.data)
+#         if serializer.is_valid():
             

@@ -5,11 +5,9 @@ from django.db import models
 class Registration(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    phone = models.CharField(max_length=10)
-    year = models.CharField(max_length=10)
-    branch = models.CharField(max_length=100)
-    events = models.CharField(max_length=100)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    mobile = models.CharField(max_length=10)
+    organization = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
