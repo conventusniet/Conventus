@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { User, Phone, Mail, Building, MapPin } from 'lucide-react';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://conventus.onrender.com/api/'; // Adjust this to match your Django server URL
+const API_BASE_URL = 'https://conventus.onrender.com/api'; // Adjust this to match your Django server URL
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
