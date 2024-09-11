@@ -5,23 +5,23 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const sliderImages = [
-    'https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1498079022511-d15614cb1c02?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    '/images/slider1.png',
+    '/images/slider2.png',
+    '/images/slider3.png',
+    '/images/slider4.png',
+    '/images/slider5.png',
+    '/images/slider6.png',
 ];
 
 const collageImages = [
-    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1498079022511-d15614cb1c02?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    '/images/coll1.png',
+    '/images/coll2.png',
+    '/images/coll3.png',
+    '/images/coll4.png',
+    '/images/coll5.png',
+    '/images/coll6.png',
+    '/images/coll7.png',
+    '/images/coll8.png',
 ];
 
 const ImageModal = ({ src, alt, isOpen, onClose }) => {
