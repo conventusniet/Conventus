@@ -21,7 +21,7 @@ const Header = () => {
         { href: "#about", label: "About Us" },
         { href: "/registration", label: "Register" },
         { href: "/committees", label: "Committees" },
-        { href: "/media", label: "Media" },
+        { href: "/convMedia", label: "Media" },
         { href: "/ContactForm", label: "Contact" },
     ];
 
