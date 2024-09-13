@@ -12,164 +12,164 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navItems = [
+        { href: "/", label: "Home" },
+        { href: "/aboutus", label: "About Us" },
+        { href: "/registration", label: "Register" },
+        { href: "/committee", label: "Committees" },
+        { href: "/media", label: "Media" },
+        { href: "/ContactForm", label: "Contact" },
+    ];
+
+    const leftNavItems = navItems.slice(0, Math.ceil(navItems.length / 2));
+    const rightNavItems = navItems.slice(Math.ceil(navItems.length / 2));
+
+    const sidebarVariants = {
+        open: {
+            x: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 300,
+                damping: 30
+            }
+        },
+        closed: {
+            x: '100%',
+            transition: {
+                type: 'spring',
+                stiffness: 300,
+                damping: 30
+            }
+        },
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/aboutus", label: "About Us" },
-    { href: "/registration", label: "Register" },
-    { href: "/committee", label: "Committees" },
-    { href: "/media", label: "Media" },
-    { href: "/ContactForm", label: "Contact" },
-  ];
+    const itemVariants = {
+        open: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                y: { stiffness: 1000, velocity: -100 }
+            }
+        },
+        closed: {
+            y: 50,
+            opacity: 0,
+            transition: {
+                y: { stiffness: 1000 }
+            }
+        }
+    };
 
-  const leftNavItems = navItems.slice(0, Math.ceil(navItems.length / 2));
-  const rightNavItems = navItems.slice(Math.ceil(navItems.length / 2));
+    return (
+        <>
+            <motion.header
+                className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+                    <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
+                        {leftNavItems.map((item) => (
+                            <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
+                                    {item.label}
+                                </Link>
+                            </motion.div>
+                        ))}
+                    </nav>
 
-  const sidebarVariants = {
-    open: {
-      x: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 30
-      }
-    },
-    closed: {
-      x: '100%',
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 30
-      }
-    },
-  };
+                    <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
+                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-red-600"}`}>CONVENTUS</span>
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-white flex items-center justify-center p-1">
+                            <Image src="/images/logo.png" alt="CONVENTUS Logo" width={56} height={56} className="object-contain" />
+                        </div>
+                    </Link>
 
-  const itemVariants = {
-    open: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 }
-      }
-    },
-    closed: {
-      y: 50,
-      opacity: 0,
-      transition: {
-        y: { stiffness: 1000 }
-      }
-    }
-  };
+                    <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
+                        {rightNavItems.map((item) => (
+                            <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
+                                    {item.label}
+                                </Link>
+                            </motion.div>
+                        ))}
+                    </nav>
 
-  return (
-    <>
-      <motion.header
-        className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <nav className="hidden md:flex space-x-8 flex-1 justify-end"> {/* Changed to justify-end */}
-            {leftNavItems.map((item) => (
-              <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link href={item.href} className={`text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
-                  {item.label}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
+                    <motion.button
+                        className={`lg:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-200'}`}
+                        onClick={() => setIsOpen(!isOpen)}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <Menu size={24} />
+                    </motion.button>
+                </div>
+            </motion.header>
 
-          <Link href="/" className="flex items-center space-x-4 mx-8"> {/* Added mx-8 for more space */}
-            <span className={`text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-red-600"}`}>CONVENTUS</span>
-            <div className="w-16 h-16 rounded-full overflow-hidden bg-white flex items-center justify-center p-1">
-              <Image src="/images/logo.png" alt="CONVENTUS Logo" width={56} height={56} className="object-contain" />
-            </div>
-          </Link>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-50 lg:hidden"
+                        variants={sidebarVariants}
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                    >
+                        <div className="flex flex-col h-full justify-center items-center relative p-8">
+                            <motion.button
+                                className="absolute top-4 right-4 text-red-600 hover:text-red-400"
+                                onClick={() => setIsOpen(false)}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <X size={24} />
+                            </motion.button>
+                            {navItems.map((item, index) => (
+                                <motion.div
+                                    key={item.href}
+                                    variants={itemVariants}
+                                    custom={index}
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <Link
+                                        href={item.href}
+                                        className="block py-4 px-8 text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
-          <nav className="hidden md:flex space-x-8 flex-1"> {/* Changed to flex-1 */}
-            {rightNavItems.map((item) => (
-              <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link href={item.href} className={`text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
-                  {item.label}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
-
-          <motion.button
-            className={`md:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-200'}`}
-            onClick={() => setIsOpen(!isOpen)}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Menu size={24} />
-          </motion.button>
-        </div>
-      </motion.header>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-50 md:hidden"
-            variants={sidebarVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-          >
-            <div className="flex flex-col h-full justify-center items-center relative p-8">
-              <motion.button
-                className="absolute top-4 right-4 text-red-600 hover:text-red-400"
-                onClick={() => setIsOpen(false)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <X size={24} />
-              </motion.button>
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  variants={itemVariants}
-                  custom={index}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block py-4 px-8 text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-          />
-        )}
-      </AnimatePresence>
-    </>
-  );
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 lg:hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setIsOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
+        </>
+    );
 };
 const locations = [
     {
@@ -244,7 +244,7 @@ export default function AboutPageOne() {
                     ))}
                 </div>
                 <hr className="mt-20" />
-                <TestimonialOne/>
+                <TestimonialOne />
                 {/* greetings */}
                 <div className="mt-16 flex items-center">
                     <div className="space-y-6 md:w-3/4">
@@ -258,7 +258,7 @@ export default function AboutPageOne() {
                         <div></div>
                     </div>
                 </div>
-                
+
                 {/* TEAM */}
                 <div className="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-12 pb-20 md:grid-cols-2 lg:grid-cols-4">
                     {users.map((user) => (
@@ -285,12 +285,13 @@ export default function AboutPageOne() {
                         <p className="text-base text-gray-600 md:text-lg">
                             Conventus is a dynamic student organization dedicated to fostering leadership, innovation, and community engagement among college students.
                         </p>
-                        <button
+                        {/* <button
                             type="button"
                             className="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                         >
                             Join Now
-                        </button>
+                        </button> */}
+                        <RegistrationButton />
                     </div>
                     <div className="md:mt-o mt-10 w-full">
                         <img
@@ -302,10 +303,9 @@ export default function AboutPageOne() {
                 </div>
             </div>
             <hr className="mt-6" />
-            {/* footer */}
-            <RegistrationButton/>
+            {/* <RegistrationButton /> */}
             <Footer />
-            
+
         </div>
     )
 }
