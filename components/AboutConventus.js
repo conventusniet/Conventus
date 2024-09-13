@@ -5,69 +5,80 @@ import { useRouter } from 'next/router';
 const AboutConventus = () => {
     const router = useRouter();
 
-    const fadeInUp = {
-        initial: { opacity: 0, y: 60 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.6 }
+    const fadeIn = {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        transition: { duration: 0.8 }
     };
 
-    const staggerChildren = {
-        animate: {
-            transition: {
-                staggerChildren: 0.2
-            }
-        }
+    const slideIn = {
+        initial: { x: -100, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
+        transition: { type: "spring", stiffness: 100, damping: 15 }
     };
 
     return (
-        <section className="py-24 bg-gradient-to-br from-red-50 via-white to-red-100 overflow-hidden font-sans w-full">
-            <div className="container mx-auto px-4 w-full">
+        <section className="py-16 bg-gray-300 overflow-hidden w-full" style={{ fontFamily: 'Times New Roman, serif' }}>
+            <div className="container mx-auto px-4 max-w-5xl">
                 <motion.h2
-                    className="text-5xl md:text-7xl font-extrabold text-center mb-16 text-red-800 tracking-tight leading-tight"
+                    className="text-5xl md:text-6xl font-bold text-center mb-12 text-red-800 tracking-tight leading-tight"
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
                 >
-                    About <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Conventus</span>
+                    Discover <span className="text-red-600">Conventus</span>
                 </motion.h2>
-                <motion.div
-                    className="flex flex-col items-center justify-center max-w-4xl mx-auto"
-                    variants={staggerChildren}
-                    initial="initial"
-                    animate="animate"
-                >
-                    <motion.p
-                        className="text-xl md:text-2xl mb-8 text-red-700 leading-relaxed text-center font-light"
-                        variants={fadeInUp}
-                    >
-                        Conventus is a <span className="font-semibold">dynamic student organization</span> dedicated to fostering leadership, innovation, and community engagement among college students.
-                    </motion.p>
-                    <motion.p
-                        className="text-xl md:text-2xl mb-8 text-red-700 leading-relaxed text-center font-light"
-                        variants={fadeInUp}
-                    >
-                        Our mission is to provide a <span className="font-semibold">platform for students</span> to develop their skills, network with peers and professionals, and make a positive impact on campus and beyond.
-                    </motion.p>
-                    <motion.p
-                        className="text-xl md:text-2xl mb-12 text-red-700 leading-relaxed text-center font-light"
-                        variants={fadeInUp}
-                    >
-                        Through <span className="font-semibold">workshops, seminars, and collaborative projects</span>, Conventus empowers the next generation of leaders to tackle real-world challenges and drive meaningful change.
-                    </motion.p>
+
+                <div className="grid md:grid-cols-2 gap-12 items-center">
                     <motion.div
-                        className="mt-12 text-center"
-                        variants={fadeInUp}
+                        className="space-y-6"
+                        variants={fadeIn}
+                        initial="initial"
+                        animate="animate"
                     >
+                        <motion.p
+                            className="text-xl text-red-700 leading-relaxed"
+                            variants={slideIn}
+                        >
+                            Conventus is a dynamic student organization fostering leadership, innovation, and community engagement among college students.
+                        </motion.p>
+                        <motion.p
+                            className="text-xl text-red-700 leading-relaxed"
+                            variants={slideIn}
+                        >
+                            Our mission is to provide a platform for students to develop their skills, network with peers and professionals, and make a positive impact.
+                        </motion.p>
                         <motion.button
-                            className="px-8 md:px-12 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-full text-lg md:text-xl font-bold hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                            className="mt-8 px-8 py-3 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-full text-xl font-bold hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            onClick={() => router.push('/registration')}
+                            onClick={() => router.push('/aboutus')}
                         >
-                            Join Conventus
+                            Read More
                         </motion.button>
                     </motion.div>
-                </motion.div>
+
+                    <motion.div
+                        className="relative h-80 overflow-hidden rounded-lg shadow-2xl"
+                        initial={{ opacity: 0, rotateY: -90 }}
+                        animate={{ opacity: 1, rotateY: 0 }}
+                        transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+                    >
+                        <motion.img
+                            src="/images/background.jpg"
+                            alt="Conventus Activities"
+                            className="object-cover w-full h-full"
+                            initial={{ scale: 1.2 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-red-800 via-transparent to-transparent opacity-60"></div>
+                        <div className="absolute bottom-0 left-0 p-6">
+                            <h3 className="text-2xl font-bold text-white mb-2">Empowering Future Leaders</h3>
+                            <p className="text-red-100">Join us in shaping tomorrow's world</p>
+                        </div>
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

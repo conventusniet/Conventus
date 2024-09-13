@@ -73,27 +73,27 @@ const Header = () => {
                 transition={{ duration: 0.5 }}
             >
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-                    <nav className="hidden md:flex space-x-8 flex-1 justify-end"> {/* Changed to justify-end */}
+                    <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
                         {leftNavItems.map((item) => (
                             <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
+                                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
                                     {item.label}
                                 </Link>
                             </motion.div>
                         ))}
                     </nav>
 
-                    <Link href="/" className="flex items-center space-x-4 mx-8"> {/* Added mx-8 for more space */}
-                        <span className={`text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-white"}`}>CONVENTUS</span>
-                        <div className="w-16 h-16 rounded-full overflow-hidden bg-white flex items-center justify-center p-1">
+                    <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
+                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-white"}`}>CONVENTUS</span>
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-white flex items-center justify-center p-1">
                             <Image src="/images/logo.png" alt="CONVENTUS Logo" width={56} height={56} className="object-contain" />
                         </div>
                     </Link>
 
-                    <nav className="hidden md:flex space-x-8 flex-1"> {/* Changed to flex-1 */}
+                    <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
                         {rightNavItems.map((item) => (
                             <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
+                                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
                                     {item.label}
                                 </Link>
                             </motion.div>
@@ -101,7 +101,7 @@ const Header = () => {
                     </nav>
 
                     <motion.button
-                        className={`md:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-200'}`}
+                        className={`lg:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-200'}`}
                         onClick={() => setIsOpen(!isOpen)}
                         whileTap={{ scale: 0.95 }}
                     >
@@ -113,7 +113,7 @@ const Header = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-50 md:hidden"
+                        className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-50 lg:hidden"
                         variants={sidebarVariants}
                         initial="closed"
                         animate="open"
@@ -153,7 +153,7 @@ const Header = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 md:hidden"
+                        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 lg:hidden"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}

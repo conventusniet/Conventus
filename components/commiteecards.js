@@ -98,7 +98,7 @@ const CommitteePage = () => {
 
   return (
     <div className="container mx-auto p-8 min-h-screen">
-      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">Conventus Club Committees</h1>
+      <h1 className="text-3xl font-bold mt-20 mb-8 text-center text-gray-800">Conventus Club Committees</h1>
       {committeeSections.map((section, index) => (
         <div key={index} className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 text-gray-700 border-b border-gray-200 pb-2">{section.name}</h2>
