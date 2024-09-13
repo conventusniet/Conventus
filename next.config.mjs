@@ -4,7 +4,7 @@ import next from 'next'
 const nextConfig = {
     reactStrictMode: true,
     images: {
-      domains: ['images.unsplash.com'],
+      domains: ['randomuser.me', 'unsplash.com', 'images.unsplash.com', 'uifaces.co'],
     },
   }
   
