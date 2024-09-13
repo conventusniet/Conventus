@@ -16,11 +16,11 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navItems = [
+   const navItems = [
         { href: "/", label: "Home" },
-        { href: "#about", label: "About Us" },
+        { href: "/aboutus", label: "About Us" },
         { href: "/registration", label: "Register" },
-        { href: "/committees", label: "Committees" },
+        { href: "/committee", label: "Committees" },
         { href: "/media", label: "Media" },
         { href: "/ContactForm", label: "Contact" },
     ];
