@@ -78,24 +78,30 @@ const Header = () => {
           <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
             {leftNavItems.map((item) => (
               <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link href={item.href} className={`text-lg xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
+                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
                   {item.label}
                 </Link>
               </motion.div>
             ))}
           </nav>
 
-          <Link href="/" className="flex items-center space-x-2 sm:space-x-4 mx-2 sm:mx-4 lg:mx-8">
-            <span className={`text-xl sm:text-2xl lg:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-red-600"}`}>CONVENTUS</span>
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-white flex items-center justify-center p-1">
-              <Image src="/images/logo.png" alt="CONVENTUS Logo" width={56} height={56} className="object-contain" />
+          <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
+            <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-800" : "text-red-600"}`}>CONVENTUS</span>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
+              <Image
+                src="/images/conv-logo.png"
+                alt="CONVENTUS Logo"
+                width={96}
+                height={96}
+                className="object-contain hover:scale-110 transition-transform duration-300"
+              />
             </div>
           </Link>
 
           <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
             {rightNavItems.map((item) => (
               <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link href={item.href} className={`text-lg xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
+                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
                   {item.label}
                 </Link>
               </motion.div>
@@ -103,7 +109,7 @@ const Header = () => {
           </nav>
 
           <motion.button
-            className={`lg:hidden ${scrolled ? 'text-red-800 z-50' : 'text-red-800'}`}
+            className={`lg:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-600'}`}
             onClick={() => setIsOpen(!isOpen)}
             whileTap={{ scale: 0.95 }}
           >
@@ -123,7 +129,7 @@ const Header = () => {
           >
             <div className="flex flex-col h-full justify-center items-center relative p-8">
               <motion.button
-                className="absolute top-4 right-4 text-red-800 hover:text-red-600"
+                className="absolute top-4 right-4 text-red-600 hover:text-red-400"
                 onClick={() => setIsOpen(false)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -140,7 +146,7 @@ const Header = () => {
                 >
                   <Link
                     href={item.href}
-                    className="block py-4 px-8 text-xl sm:text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
+                    className="block py-4 px-8 text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}
@@ -168,7 +174,7 @@ const Header = () => {
 };
 
 
-const committee=() =>{
+const committee = () => {
   return (
     <div>
       <Header />

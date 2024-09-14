@@ -98,7 +98,7 @@ const MediaPage = () => {
             <main className="flex-grow">
                 <section className="bg-gradient-to-r from-red-600 to-red-800 text-white py-20">
                     <div className="container mx-auto px-4">
-                        <h1 className="text-4xl md:text-6xl font-bold text-center mb-8">Welcome to Our Media Gallery</h1>
+                        <h2 className="text-2xl mt-20 md:text-6xl font-bold text-center mb-8">Welcome to Our Media Gallery</h2>
                     </div>
                 </section>
 

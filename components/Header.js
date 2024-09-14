@@ -16,7 +16,7 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-   const navItems = [
+    const navItems = [
         { href: "/", label: "Home" },
         { href: "/aboutus", label: "About Us" },
         { href: "/registration", label: "Register" },
@@ -85,8 +85,14 @@ const Header = () => {
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
                         <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-white"}`}>CONVENTUS</span>
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-white flex items-center justify-center p-1">
-                            <Image src="/images/logo.png" alt="CONVENTUS Logo" width={56} height={56} className="object-contain" />
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
+                            <Image
+                                src="/images/conv-logo.png"
+                                alt="CONVENTUS Logo"
+                                width={96}
+                                height={96}
+                                className="object-contain hover:scale-110 transition-transform duration-300"
+                            />
                         </div>
                     </Link>
 

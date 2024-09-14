@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu } from 'lucide-react';
-
+import Footer from '../components/Footer';
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -77,24 +77,30 @@ const Header = () => {
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
                         {leftNavItems.map((item) => (
                             <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-lg xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
+                                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
                                     {item.label}
                                 </Link>
                             </motion.div>
                         ))}
                     </nav>
 
-                    <Link href="/" className="flex items-center space-x-2 sm:space-x-4 mx-2 sm:mx-4 lg:mx-8">
-                        <span className={`text-xl sm:text-2xl lg:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-red-600"}`}>CONVENTUS</span>
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-white flex items-center justify-center p-1">
-                            <Image src="/images/logo.png" alt="CONVENTUS Logo" width={56} height={56} className="object-contain" />
+                    <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
+                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-800" : "text-red-600"}`}>CONVENTUS</span>
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
+                            <Image
+                                src="/images/conv-logo.png"
+                                alt="CONVENTUS Logo"
+                                width={96}
+                                height={96}
+                                className="object-contain hover:scale-110 transition-transform duration-300"
+                            />
                         </div>
                     </Link>
 
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
                         {rightNavItems.map((item) => (
                             <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-lg xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
+                                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
                                     {item.label}
                                 </Link>
                             </motion.div>
@@ -102,7 +108,7 @@ const Header = () => {
                     </nav>
 
                     <motion.button
-                        className={`lg:hidden ${scrolled ? 'text-red-800 z-50' : 'text-red-800'}`}
+                        className={`lg:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-600'}`}
                         onClick={() => setIsOpen(!isOpen)}
                         whileTap={{ scale: 0.95 }}
                     >
@@ -122,7 +128,7 @@ const Header = () => {
                     >
                         <div className="flex flex-col h-full justify-center items-center relative p-8">
                             <motion.button
-                                className="absolute top-4 right-4 text-red-800 hover:text-red-600"
+                                className="absolute top-4 right-4 text-red-600 hover:text-red-400"
                                 onClick={() => setIsOpen(false)}
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
@@ -139,7 +145,7 @@ const Header = () => {
                                 >
                                     <Link
                                         href={item.href}
-                                        className="block py-4 px-8 text-xl sm:text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
+                                        className="block py-4 px-8 text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
                                         onClick={() => setIsOpen(false)}
                                     >
                                         {item.label}
@@ -163,65 +169,6 @@ const Header = () => {
                 )}
             </AnimatePresence>
         </>
-    );
-};
-// Footer Component
-const Footer = () => {
-    const currentYear = new Date().getFullYear();
-
-    return (
-        <footer className="bg-gray-900 text-white">
-            <div className="container mx-auto px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div>
-                        <h3 className="text-xl font-bold mb-4">Conventus</h3>
-                        <p className="text-gray-400 text-sm">Empowering students to lead, innovate, and make a difference.</p>
-                    </div>
-                    <div>
-                        <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                        <ul className="space-y-2">
-                            {['Home', 'About', 'Contact', 'Register'].map((item) => (
-                                <li key={item}>
-                                    <Link href={item === 'Home' ? '/' : `#${item.toLowerCase()}`}>
-                                        <span className="text-gray-400 hover:text-red-400 transition duration-300 text-sm">{item}</span>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
-                        <ul className="space-y-2">
-                            {[
-                                { name: 'Facebook', icon: Facebook },
-                                { name: 'Twitter', icon: Twitter },
-                                { name: 'Instagram', icon: Instagram },
-                                { name: 'LinkedIn', icon: Linkedin }
-                            ].map((item) => (
-                                <li key={item.name}>
-                                    <a href="#" className="flex items-center text-gray-400 hover:text-red-400 transition duration-300 text-sm">
-                                        <item.icon className="w-4 h-4 mr-2" />
-                                        {item.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-                        <address className="text-gray-400 not-italic text-sm">
-                            123 Campus Drive<br />
-                            College Town, ST 12345<br />
-                            Email: info@conventus.edu<br />
-                            Phone: (123) 456-7890
-                        </address>
-                    </div>
-                </div>
-                <div className="border-t border-gray-800 mt-6 pt-6 text-center text-gray-400 text-sm">
-                    © {currentYear} Conventus. All rights reserved.
-                </div>
-            </div>
-        </footer>
     );
 };
 
