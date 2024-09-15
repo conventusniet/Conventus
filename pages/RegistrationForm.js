@@ -8,10 +8,10 @@ const API_BASE_URL = 'https://conventus.pythonanywhere.com/api';
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         name: '',
-        mobile: '',
+        phone: '',
         email: '',
         organization: '',
-        address: ''
+        address: '',
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -60,18 +60,13 @@ const RegistrationForm = () => {
                 setResponseMessage(response.data.message);
                 if (response.data.message.toLowerCase().includes('failed')) {
                     console.log('Registration failed according to server message.');
-                    if (response.data.message === 'Your Response Have Been Failed Successfully.') {
-                        console.log('Server returned an ambiguous response.');
-                        setError('The server returned an ambiguous response. Please contact support for clarification.');
-                    } else {
-                        setError('Registration was not successful. Please try again or contact support.');
-                    }
+                    setError('Registration was not successful. Please try again or contact support.');
                 } else {
                     console.log('Registration appears to be successful.');
-                    // Reset form on apparent success
+                    // Reset form on success
                     setFormData({
                         name: '',
-                        mobile: '',
+                        phone: '',
                         email: '',
                         organization: '',
                         address: ''
@@ -93,7 +88,7 @@ const RegistrationForm = () => {
 
     const fields = [
         { id: 'name', label: 'Name', icon: User, type: 'text' },
-        { id: 'mobile', label: 'Mobile No.', icon: Phone, type: 'tel' },
+        { id: 'phone', label: 'Phone', icon: Phone, type: 'tel' },
         { id: 'email', label: 'Email', icon: Mail, type: 'email' },
         { id: 'organization', label: 'Organization/Institute/University', icon: Building, type: 'text' },
     ];
