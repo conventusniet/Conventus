@@ -38,7 +38,7 @@ const Aboutpara = () => {
 
     return (
         <div className="max-w mx-auto p-8">
-            <h1 className="text-4xl font-light mb-12 text-center text-gray-800">Conventus</h1>
+            <h1 className="text-4xl font-light mb-12 text-center text-gray-800">Learn More</h1>
 
             <div className="space-y-8">
                 {sections.map((section, index) => (

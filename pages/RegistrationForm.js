@@ -21,13 +21,13 @@ const RegistrationForm = () => {
         const { id, value } = e.target;
         setFormData(prevData => ({
             ...prevData,
-            [id]: value.trim()
+            [id]: value
         }));
     };
 
     const validateForm = () => {
         for (const key in formData) {
-            if (!formData[key]) {
+            if (!formData[key].trim()) {
                 setError(`Please fill in the ${key} field.`);
                 return false;
             }
