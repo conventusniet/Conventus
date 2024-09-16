@@ -3,7 +3,7 @@ import { MapPin, Mail, Phone } from 'lucide-react';
 
 const Contact = () => {
     return (
-        <section className="py-12 bg-gradient-to-br from-red-50 to-white overflow-hidden">
+        <section className="py-12 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl font-bold text-center mb-12 text-red-800">
                     Contact Us

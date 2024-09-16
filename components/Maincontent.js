@@ -6,7 +6,7 @@ const MainContent = () => {
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
           <div className="lg:w-3/5 space-y-6">
-            <h1 className="text-5xl font-bold text-red-600">CONVENTUS</h1>
+            <h1 className="text-5xl font-bold text-red-600">Welcome to CONVENTUS</h1>
             <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.

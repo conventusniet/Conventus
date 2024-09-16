@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const LearnMoreSection = () => {
     const router = useRouter();
@@ -34,29 +35,36 @@ const LearnMoreSection = () => {
                     {sections.map((section, index) => (
                         <motion.div
                             key={index}
-                            className="bg-white rounded-lg shadow-md overflow-hidden border border-red-800"
+                            className="bg-white rounded-lg shadow-md overflow-hidden border border-red-800 flex flex-col h-[500px]"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
                         >
-                            <motion.img
-                                src={section.image}
-                                alt={section.title}
-                                className="w-full h-48 object-cover"
+                            <motion.div
+                                className="relative h-64 w-full overflow-hidden"
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
-                            />
-                            <div className="p-6">
-                                <h3 className="text-xl font-semibold mb-2 text-red-800">{section.title}</h3>
-                                <p className="text-gray-800 mb-4">{section.description}</p>
-                                <motion.button
-                                    className="bg-red-800 text-white px-4 py-2 rounded hover:bg-red-900 transition duration-300"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => router.push(section.route)}
-                                >
-                                    LEARN MORE
-                                </motion.button>
+                            >
+                                <Image
+                                    src={section.image}
+                                    alt={section.title}
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
+                            </motion.div>
+                            <div className="p-6 flex flex-col flex-grow">
+                                <h3 className="text-2xl font-semibold mb-4 text-red-800">{section.title}</h3>
+                                <p className="text-gray-800 mb-6 flex-grow">{section.description}</p>
+                                <div className="flex justify-center">
+                                    <motion.button
+                                        className="bg-red-800 text-white px-6 py-3 rounded-full hover:bg-red-900 transition duration-300 text-lg font-semibold"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        onClick={() => router.push(section.route)}
+                                    >
+                                        LEARN MORE
+                                    </motion.button>
+                                </div>
                             </div>
                         </motion.div>
                     ))}
