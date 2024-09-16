@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios'; // Import axios for API calls
 
 const ContactForm = () => {
@@ -101,3 +102,4 @@ const ContactForm = () => {
         </motion.form>
     );
 };
+export default ContactForm;
