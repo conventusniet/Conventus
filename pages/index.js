@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import Header from '../components/Header';
 import Welcome from '../components/Welcome';
-import Leadership from '../components/Leadership';
-import AboutConventus from '../components/AboutConventus';
+import Maincontent from '../components/mainContent';
 import Contact from '../components/Contact';
-import RegistrationButton from '../components/RegistrationButton';
+import LearnMoreSection from '../components/LearnMore';
 import Footer from '../components/Footer';
 
 export default function Home() {
@@ -20,10 +19,9 @@ export default function Home() {
       
       <main>
         <Welcome />
-        <Leadership />
-        <AboutConventus />
+        <Maincontent/>
+        <LearnMoreSection/>
         <Contact />
-        <RegistrationButton /> 
       </main>
 
       <Footer />

@@ -76,7 +76,7 @@ const Header = () => {
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
                         {leftNavItems.map((item) => (
                             <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
+                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
                                     {item.label}
                                 </Link>
                             </motion.div>
@@ -85,21 +85,22 @@ const Header = () => {
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
                         <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-white"}`}>CONVENTUS</span>
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
                                 src="/images/conv-logo.png"
                                 alt="CONVENTUS Logo"
-                                width={96}
-                                height={96}
+                                width={80}
+                                height={80}
                                 className="object-contain hover:scale-110 transition-transform duration-300"
                             />
                         </div>
                     </Link>
 
+
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
                         {rightNavItems.map((item) => (
                             <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-xl xl:text-2xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
+                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
                                     {item.label}
                                 </Link>
                             </motion.div>
