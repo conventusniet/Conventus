@@ -113,7 +113,7 @@ const Header = () => {
                     </nav>
 
                     <motion.button
-                        className={`lg:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-200'}`}
+                        className={`lg:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-600'}`}
                         onClick={() => setIsOpen(!isOpen)}
                         whileTap={{ scale: 0.95 }}
                     >

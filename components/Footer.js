@@ -53,7 +53,7 @@ const Footer = () => {
                         </address>
                     </div>
                 </div>
-                <div className="border-t border-gray-800 pt-8">
+                {/* <div className="border-t border-gray-800 pt-8">
                     <ul className="flex justify-center space-x-6 mb-6">
                         <li>
                             <Link href="/">
@@ -101,7 +101,7 @@ const Footer = () => {
                             </span>
                         </li>
                     </ul>
-                </div>
+                </div> */}
                 <div className="border-t border-gray-800 mt-4 pt-4 text-center text-gray-400">
                     © {currentYear} Conventus. All rights reserved.
                 </div>
