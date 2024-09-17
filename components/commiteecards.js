@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Users, Calendar, PiggyBank, BookOpen, Globe, Heart, Camera, Coffee } from 'lucide-react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const committeeSections = [
   {
@@ -76,32 +78,41 @@ const committeeSections = [
 ];
 
 const CommitteeCard = ({ committee }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
-      className="perspective-1000 w-full h-64 cursor-pointer"
-      onClick={() => setIsFlipped(!isFlipped)}
-    >
-      <div
-        className={`relative w-full h-full transition-all duration-500 transform-style-preserve-3d ${isFlipped ? 'rotate-y-180' : ''
-          }`}
+    <Link href={`/committee/${committee.id}`} target="_blank">
+      <motion.div
+        className="w-full h-64 cursor-pointer relative overflow-hidden rounded-xl shadow-lg"
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <div className="absolute w-full h-full backface-hidden bg-white rounded-xl p-6 flex flex-col justify-between shadow-lg border-2 border-red-600">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800 p-6 flex flex-col justify-between"
+          initial={false}
+          animate={{ rotateY: isHovered ? 180 : 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-red-600">{committee.name}</h3>
-            <committee.icon className="w-8 h-8 text-red-600" />
+            <h3 className="text-xl font-semibold text-white">{committee.name}</h3>
+            <committee.icon className="w-8 h-8 text-white" />
           </div>
-          <p className="text-sm text-gray-700">{committee.description}</p>
+          <p className="text-sm text-gray-200">{committee.description}</p>
+        </motion.div>
+        <motion.div
+          className="absolute inset-0 bg-white p-6 flex flex-col justify-between"
+          initial={{ rotateY: 180 }}
+          animate={{ rotateY: isHovered ? 0 : 180 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h3 className="text-lg font-semibold text-red-600 mb-2">{committee.name}</h3>
+          <p className="text-sm text-gray-700 flex-grow overflow-y-auto">{committee.details}</p>
           <div className="text-xs text-gray-500">Click to learn more</div>
-        </div>
-        <div className="absolute w-full h-full backface-hidden bg-red-600 rounded-xl p-6 flex flex-col justify-between shadow-lg rotate-y-180">
-          <h3 className="text-lg font-semibold text-white mb-2">{committee.name}</h3>
-          <p className="text-sm text-white flex-grow overflow-y-auto">{committee.details}</p>
-          <div className="text-xs text-gray-200">Click to flip back</div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </Link>
   );
 };
 

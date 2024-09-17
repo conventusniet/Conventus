@@ -33,38 +33,40 @@ const Contact = () => {
 
                     {/* Right Column - Contact Information */}
                     <div className="w-full lg:w-1/2 px-4">
-                        <div className="bg-white rounded-lg shadow-md p-6 h-full">
-                            <h3 className="text-2xl font-semibold mb-6 text-red-700">For More Information Contact Us -</h3>
-                            <ContactPerson
-                                name="Gauri Sareen"
-                                title="Secretary General"
-                                phone="+919810430090"
-                                email="sgamimun@gmail.com"
-                            />
-                            <ContactPerson
-                                name="Sagar CV"
-                                title="Director General"
-                                phone="+918373936260"
-                                email="dgamimun@gmail.com"
-                            />
-                            <ContactPerson
-                                name="Adisree Telem"
-                                title="Charge' D' Affaires"
-                                phone="+919863020623"
-                                email="chargedaffairsamimun@gmail.com"
-                            />
-                            <ContactPerson
-                                name="Khyati Saxena"
-                                title="Chef D' Cabinet"
-                                phone="+917428121611"
-                                email="cdcamimun@gmail.com"
-                            />
-                            <ContactPerson
-                                name="Amishi Arora"
-                                title="USG Delegate Affairs"
-                                phone="+918750800663"
-                                email="delegateaffairsamimun24@gmail.com"
-                            />
+                        <div className="bg-white rounded-lg shadow-md p-6 h-full flex flex-col items-center">
+                            <h3 className="text-2xl font-semibold mb-8 text-red-700 text-center">For More Information Contact Us</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                                <ContactPerson
+                                    name="Gauri Sareen"
+                                    title="Secretary General"
+                                    phone="+919810430090"
+                                    email="sgamimun@gmail.com"
+                                />
+                                <ContactPerson
+                                    name="Sagar CV"
+                                    title="Director General"
+                                    phone="+918373936260"
+                                    email="dgamimun@gmail.com"
+                                />
+                                <ContactPerson
+                                    name="Adisree Telem"
+                                    title="Charge' D' Affaires"
+                                    phone="+919863020623"
+                                    email="chargedaffairsamimun@gmail.com"
+                                />
+                                <ContactPerson
+                                    name="Khyati Saxena"
+                                    title="Chef D' Cabinet"
+                                    phone="+917428121611"
+                                    email="cdcamimun@gmail.com"
+                                />
+                                <ContactPerson
+                                    name="Amishi Arora"
+                                    title="USG Delegate Affairs"
+                                    phone="+918750800663"
+                                    email="delegateaffairsamimun24@gmail.com"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,14 +76,14 @@ const Contact = () => {
 };
 
 const ContactPerson = ({ name, title, phone, email }) => (
-    <div className="mb-4 last:mb-0">
-        <h4 className="font-semibold text-lg text-gray-800">{name}</h4>
-        <p className="text-sm text-gray-600 mb-1">{title}</p>
-        <div className="flex items-center mb-1">
+    <div className="bg-gray-50 rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
+        <h4 className="font-semibold text-lg text-gray-800 mb-2">{name}</h4>
+        <p className="text-sm text-red-600 font-medium mb-3">{title}</p>
+        <div className="flex items-center justify-center mb-2">
             <Phone className="w-4 h-4 text-red-600 mr-2" />
             <p className="text-sm text-gray-700">{phone}</p>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
             <Mail className="w-4 h-4 text-red-600 mr-2" />
             <p className="text-sm text-gray-700">{email}</p>
         </div>

@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import {React,useState,useEffect} from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import Image from 'next/image';
+import Footer from '../../components/Footer';
+import { Users, Calendar, PiggyBank, BookOpen, Globe, Heart, Camera, Coffee } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu } from 'lucide-react';
-import Footer from '../components/Footer';
-import axios from 'axios';
-
-const API_BASE_URL = 'https://conventus.pythonanywhere.com/api';
-
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -176,167 +173,92 @@ const Header = () => {
         </>
     );
 };
+const committeeData = [
+    {
+        id: 1,
+        name: 'Finance Committee',
+        description: 'Manages financial planning and budgeting for the club.',
+        details: 'The Finance Committee is responsible for overseeing the club\'s financial health, preparing annual budgets, and ensuring proper allocation of resources.',
+        icon: PiggyBank,
+    },
+    {
+        id: 2,
+        name: 'Events Committee',
+        description: 'Plans and organizes club events and activities.',
+        details: 'The Events Committee coordinates all club events, from small meetups to large annual gatherings. They handle logistics, scheduling, and event promotion.',
+        icon: Calendar,
+    },
+    {
+        id: 3,
+        name: 'Membership Committee',
+        description: 'Handles member recruitment and retention.',
+        details: 'The Membership Committee focuses on growing and maintaining the club\'s membership base. They develop strategies for attracting new members and ensuring current members remain engaged.',
+        icon: Users,
+    },
+    {
+        id: 4,
+        name: 'Workshop Committee',
+        description: 'Organizes educational workshops and seminars.',
+        details: 'The Workshop Committee is dedicated to providing valuable learning experiences through workshops, seminars, and guest speaker sessions on various topics of interest to club members.',
+        icon: BookOpen,
+    },
+    {
+        id: 5,
+        name: 'Research Committee',
+        description: 'Conducts and promotes research activities.',
+        details: 'The Research Committee facilitates and encourages research initiatives among club members, organizing symposiums and collaborating with academic institutions.',
+        icon: Globe,
+    },
+    {
+        id: 6,
+        name: 'Community Outreach Committee',
+        description: 'Manages the club\'s community service initiatives.',
+        details: 'The Community Outreach Committee organizes volunteer opportunities and charity events, fostering strong relationships between the club and the local community.',
+        icon: Heart,
+    },
+    {
+        id: 7,
+        name: 'Arts and Culture Committee',
+        description: 'Promotes artistic and cultural activities within the club.',
+        details: 'The Arts and Culture Committee arranges exhibitions, performances, and cultural exchanges to celebrate diversity and creativity among club members.',
+        icon: Camera,
+    },
+    {
+        id: 8,
+        name: 'Social Events Committee',
+        description: 'Plans casual social gatherings for members.',
+        details: 'The Social Events Committee organizes informal meetups, game nights, and other social activities to foster friendships and networking among club members.',
+        icon: Coffee,
+    }
+];
 
-// Contact Form Component
-const ContactForm = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-    const [responseMessage, setResponseMessage] = useState('');
+const CommitteePage = () => {
+    const router = useRouter();
+    const { id } = router.query;
+    const committee = committeeData.find(c => c.id === parseInt(id));
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    if (!committee) {
+        return <div>Committee not found</div>;
+    }
 
-    const validateForm = () => {
-        if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-            setError('Please fill in all fields.');
-            return false;
-        }
-        return true;
-    };
+    const Icon = committee.icon;
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!validateForm()) return;
-
-        setLoading(true);
-        setError('');
-        setResponseMessage('');
-
-        console.log('Attempting to send the following data to the backend:');
-        console.log(JSON.stringify(formData, null, 2));
-
-        try {
-            const response = await axios.post(`${API_BASE_URL}/contact/`, formData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
-            console.log('Data successfully sent to the backend.');
-            console.log('Server response:', response.data);
-
-            if (response.data && response.data.message) {
-                setResponseMessage(response.data.message);
-                if (response.data.message.toLowerCase().includes('failed')) {
-                    console.log('Contact submission failed according to server message.');
-                    setError('Submission was not successful. Please try again or contact support.');
-                } else {
-                    console.log('Contact submission appears to be successful.');
-                    // Reset form on success
-                    setFormData({ name: '', email: '', message: '' });
-                }
-            } else {
-                console.log('Server response does not contain a message field.');
-                setResponseMessage('Submission completed, but the server response was unclear.');
-            }
-        } catch (err) {
-            console.error('Failed to send data to the backend.');
-            console.error('Error details:', err);
-            console.error('Error response:', err.response?.data);
-            setError(err.response?.data?.message || 'An error occurred while submitting the form. Please try again.');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    return (
-        <motion.form
-            onSubmit={handleSubmit}
-            className="bg-white shadow-2xl rounded-lg p-8 w-full max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-        >
-            <h2 className="text-4xl font-bold mb-8 text-red-600 text-center">Contact Us</h2>
-            <div className="mb-8">
-                <motion.input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 text-xl text-gray-700 border-b-2 border-red-600 focus:outline-none focus:border-red-800 transition-all duration-300"
-                    required
-                    whileFocus={{ scale: 1.05 }}
-                />
-            </div>
-            <div className="mb-8">
-                <motion.input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Your Email"
-                    className="w-full px-4 py-3 text-xl text-gray-700 border-b-2 border-red-600 focus:outline-none focus:border-red-800 transition-all duration-300"
-                    required
-                    whileFocus={{ scale: 1.05 }}
-                />
-            </div>
-            <div className="mb-8">
-                <motion.textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Your Message"
-                    rows="6"
-                    className="w-full px-4 py-3 text-xl text-gray-700 border-2 border-red-600 rounded-lg focus:outline-none focus:border-red-800 transition-all duration-300 resize-none"
-                    required
-                    whileFocus={{ scale: 1.02 }}
-                ></motion.textarea>
-            </div>
-            {error && (
-                <div className="mt-4 text-red-600 text-center">{error}</div>
-            )}
-            {responseMessage && (
-                <div className="mt-4 text-blue-600 text-center">{responseMessage}</div>
-            )}
-            <div className="flex items-center justify-center">
-                <motion.button
-                    type="submit"
-                    className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-xl focus:outline-none focus:shadow-outline transition-all duration-300 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    disabled={loading}
-                >
-                    {loading ? 'Sending...' : 'Send Message'}
-                </motion.button>
-            </div>
-        </motion.form>
-    );
-};
-
-const ContactPage = () => {
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="flex-grow bg-gradient-to-b from-gray-100 to-red-100 flex items-center justify-center px-4">
-                <div className="container mx-auto py-12 md:py-20 mt-10">
-                    <motion.h1
-                        className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-8"
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                        Welcome to Conventus
-                    </motion.h1>
-                    <motion.p
-                        className="text-xl text-center text-gray-700 mb-12"
-                        initial={{ opacity: 0, y: -30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                    >
-                        Empowering students to lead, innovate, and make a difference.
-                    </motion.p>
-                    <ContactForm />
+            <main className="flex-grow mt-40 sm:mt-40 bg-gray-100 p-8">
+                <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div className="md:flex">
+                        <div className="md:flex-shrink-0 bg-red-600 flex items-center justify-center p-8">
+                            <Icon className="w-24 h-24 text-white" />
+                        </div>
+                        <div className="p-8">
+                            <h1 className="text-3xl font-bold text-red-600 mb-4">{committee.name}</h1>
+                            <p className="text-gray-700 mb-4">{committee.description}</p>
+                            <h2 className="text-xl font-semibold text-gray-800 mb-2">Details:</h2>
+                            <p className="text-gray-700">{committee.details}</p>
+                        </div>
+                    </div>
                 </div>
             </main>
             <Footer />
@@ -344,4 +266,4 @@ const ContactPage = () => {
     );
 };
 
-export default ContactPage;
+export default CommitteePage;
