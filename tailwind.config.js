@@ -31,6 +31,7 @@ module.exports = {
           400: '#f87171',
           600: '#dc2626',
         },
+        'custom-red': '#AA172C',
       },
       fontSize: {
         '5xl': '3rem',
