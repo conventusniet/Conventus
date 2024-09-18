@@ -10,6 +10,49 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Add the LazyLoading component
+// const LazyLoading = ({ onLoadingComplete }) => {
+//     const [progress, setProgress] = useState(0);
+
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             setProgress((prevProgress) => {
+//                 if (prevProgress >= 100) {
+//                     clearInterval(interval);
+//                     onLoadingComplete();
+//                     return 100;
+//                 }
+//                 return prevProgress + 1;
+//             });
+//         }, 20);
+
+//         return () => clearInterval(interval);
+//     }, [onLoadingComplete]);
+
+//     return (
+//         <div className="fixed inset-0 bg-[#AA172C] flex flex-col items-center justify-center">
+//             <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-8 overflow-hidden">
+//                 <div className="w-24 h-24 relative">
+//                     <Image
+//                         src="/images/conv-logo.png"
+//                         alt="CONVENTUS Logo"
+//                         layout="fill"
+//                         objectFit="contain"
+//                         priority
+//                     />
+//                 </div>
+//             </div>
+//             <div className="text-white text-4xl font-bold mb-4">{progress}%</div>
+//             <div className="w-64 h-2 bg-[#8A1323] rounded-full overflow-hidden">
+//                 <div
+//                     className="h-full bg-white rounded-full transition-all duration-300 ease-out"
+//                     style={{ width: `${progress}%` }}
+//                 ></div>
+//             </div>
+//             <div className="mt-4 text-white text-xl font-light">NAGATIO | SOLUTIO | ACTIO</div>
+//         </div>
+//     );
+// };
 
 
 const Header = () => {
@@ -241,6 +284,17 @@ const TeamSection = ({ title, members }) => (
 );
 
 export default function AboutPageOne() {
+    // const [isLoading, setIsLoading] = useState(true);
+
+    // useEffect(() => {
+    //     // Simulate content loading
+    //     const timer = setTimeout(() => {
+    //         setIsLoading(false);
+    //     }, 3000); // Adjust this time as needed
+
+    //     return () => clearTimeout(timer);
+    // }, []);
+
     const management = [
         {
             name: "John Doe",
@@ -303,6 +357,9 @@ export default function AboutPageOne() {
             info: "Yashraj Ranjan is the operational backbone of Conventus, excelling in logistics and process optimization. His meticulous attention to detail and exceptional problem-solving skills have transformed Conventus's internal operations, making them more efficient and effective. Yashraj has implemented several technological solutions that have streamlined membership management, event planning, and communication processes. His forward-thinking approach has not only improved the day-to-day running of Conventus but has also enhanced the overall member experience. Yashraj is known for his ability to handle complex challenges with ease and for his commitment to continuous improvement. His efforts have significantly contributed to Conventus's growth and its ability to serve an ever-expanding membership base."
         },
     ];
+    // if (isLoading) {
+    //     return <LazyLoading onLoadingComplete={() => setIsLoading(false)} />;
+    // }
 
     return (
         <div className="bg-[#EEEFF2]">

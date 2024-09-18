@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import Footer from '../components/Footer'
 import CommitteePage from '../components/commiteecards'
@@ -5,6 +7,50 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu } from 'lucide-react';
+
+// Add the LazyLoading component
+// const LazyLoading = ({ onLoadingComplete }) => {
+//   const [progress, setProgress] = useState(0);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setProgress((prevProgress) => {
+//         if (prevProgress >= 100) {
+//           clearInterval(interval);
+//           onLoadingComplete();
+//           return 100;
+//         }
+//         return prevProgress + 1;
+//       });
+//     }, 20);
+
+//     return () => clearInterval(interval);
+//   }, [onLoadingComplete]);
+
+//   return (
+//     <div className="fixed inset-0 bg-[#AA172C] flex flex-col items-center justify-center">
+//       <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-8 overflow-hidden">
+//         <div className="w-24 h-24 relative">
+//           <Image
+//             src="/images/conv-logo.png"
+//             alt="CONVENTUS Logo"
+//             layout="fill"
+//             objectFit="contain"
+//             priority
+//           />
+//         </div>
+//       </div>
+//       <div className="text-white text-4xl font-bold mb-4">{progress}%</div>
+//       <div className="w-64 h-2 bg-[#8A1323] rounded-full overflow-hidden">
+//         <div
+//           className="h-full bg-white rounded-full transition-all duration-300 ease-out"
+//           style={{ width: `${progress}%` }}
+//         ></div>
+//       </div>
+//       <div className="mt-4 text-white text-xl font-light">NAGATIO | SOLUTIO | ACTIO</div>
+//     </div>
+//   );
+// };
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,7 +144,6 @@ const Header = () => {
             </div>
           </Link>
 
-
           <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
             {rightNavItems.map((item) => (
               <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
@@ -174,8 +219,22 @@ const Header = () => {
   );
 };
 
+const Committee = () => {
+  // const [isLoading, setIsLoading] = useState(true);
 
-const committee = () => {
+  // useEffect(() => {
+  //   // Simulate content loading
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 3000); // Adjust this time as needed
+
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  // if (isLoading) {
+  //   return <LazyLoading onLoadingComplete={() => setIsLoading(false)} />;
+  // }
+
   return (
     <div>
       <Header />
@@ -185,4 +244,4 @@ const committee = () => {
   )
 }
 
-export default committee
+export default Committee;

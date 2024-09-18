@@ -4,6 +4,50 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+// Add the LazyLoading component
+const LazyLoading = ({ onLoadingComplete }) => {
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setProgress((prevProgress) => {
+                if (prevProgress >= 100) {
+                    clearInterval(interval);
+                    onLoadingComplete();
+                    return 100;
+                }
+                return prevProgress + 1;
+            });
+        }, 20);
+
+        return () => clearInterval(interval);
+    }, [onLoadingComplete]);
+
+    return (
+        <div className="fixed inset-0 bg-[#AA172C] flex flex-col items-center justify-center">
+            <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-8 overflow-hidden">
+                <div className="w-24 h-24 relative">
+                    <Image
+                        src="/images/conv-logo.png"
+                        alt="CONVENTUS Logo"
+                        layout="fill"
+                        objectFit="contain"
+                        priority
+                    />
+                </div>
+            </div>
+            <div className="text-white text-4xl font-bold mb-4">{progress}%</div>
+            <div className="w-64 h-2 bg-[#8A1323] rounded-full overflow-hidden">
+                <div
+                    className="h-full bg-white rounded-full transition-all duration-300 ease-out"
+                    style={{ width: `${progress}%` }}
+                ></div>
+            </div>
+            <div className="mt-4 text-white text-xl font-light">NAGATIO | SOLUTIO | ACTIO</div>
+        </div>
+    );
+};
+
 const sliderImages = [
     '/images/slider1.png',
     '/images/slider2.png',
@@ -65,22 +109,45 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
 const MediaPage = () => {
     const sliderRef = useRef(null);
     const [modalImage, setModalImage] = useState(null);
+    // const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const slider = sliderRef.current;
         let scrollPosition = 0;
+        let intervalId;
 
         const scroll = () => {
-            scrollPosition += 1;
-            if (scrollPosition >= slider.scrollWidth / 2) {
-                scrollPosition = 0;
+            if (slider) {
+                scrollPosition += 1;
+                if (scrollPosition >= slider.scrollWidth / 2) {
+                    scrollPosition = 0;
+                }
+                slider.scrollLeft = scrollPosition;
             }
-            slider.scrollLeft = scrollPosition;
         };
 
-        const intervalId = setInterval(scroll, 20);
+        const startScrolling = () => {
+            if (slider && slider.scrollWidth > 0) {
+                intervalId = setInterval(scroll, 20);
+            } else {
+                // If the slider is not ready, try again after a short delay
+                setTimeout(startScrolling, 100);
+            }
+        };
 
-        return () => clearInterval(intervalId);
+        // Start scrolling after a short delay to ensure the component is mounted
+        const scrollTimer = setTimeout(startScrolling, 100);
+
+        // // Simulate content loading
+        // const loadingTimer = setTimeout(() => {
+        //     setIsLoading(false);
+        // }, 3000); // Adjust this time as needed
+
+        return () => {
+            clearInterval(intervalId);
+            clearTimeout(scrollTimer);
+            // clearTimeout(loadingTimer);
+        };
     }, []);
 
     const openModal = (src) => {
@@ -90,6 +157,10 @@ const MediaPage = () => {
     const closeModal = () => {
         setModalImage(null);
     };
+
+    // if (isLoading) {
+    //     return <LazyLoading onLoadingComplete={() => setIsLoading(false)} />;
+    // }
 
     return (
         <div className="min-h-screen flex flex-col">
