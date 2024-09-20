@@ -1,12 +1,15 @@
+"use client"
+
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Menu } from 'lucide-react';
+import { X, Menu, ChevronDown } from 'lucide-react';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,7 +23,15 @@ const Header = () => {
         { href: "/", label: "Home" },
         { href: "/aboutus", label: "About Us" },
         { href: "/registration", label: "Register" },
-        { href: "/committee", label: "Committees" },
+        {
+            href: "#",
+            label: "Committee",
+            dropdown: [
+                { href: "/events", label: "Events" },
+                { href: "/committee", label: "Committees" },
+                { href: "/more", label: "More" },
+            ],
+        },
         { href: "/media", label: "Media" },
         { href: "/ContactForm", label: "Contact" },
     ];
@@ -64,6 +75,90 @@ const Header = () => {
         }
     };
 
+    const dropdownVariants = {
+        open: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.2
+            }
+        },
+        closed: {
+            opacity: 0,
+            y: -10,
+            transition: {
+                duration: 0.2
+            }
+        }
+    };
+
+    const NavItem = ({ item, isMobile = false }) => {
+        if (item.dropdown) {
+            return (
+                <div className="relative group">
+                    <button
+                        className={`flex items-center space-x-1 text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${
+                            scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'
+                        }`}
+                        onClick={() => setDropdownOpen(!dropdownOpen)}
+                        aria-haspopup="true"
+                        aria-expanded={dropdownOpen}
+                    >
+                        <span>{item.label}</span>
+                        <ChevronDown size={20} />
+                    </button>
+                    <AnimatePresence>
+                        {dropdownOpen && (
+                            <motion.div
+                                className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg ${
+                                    scrolled ? 'bg-white' : 'bg-red-800'
+                                } ring-1 ring-black ring-opacity-5 z-50`}
+                                initial="closed"
+                                animate="open"
+                                exit="closed"
+                                variants={dropdownVariants}
+                            >
+                                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                    {item.dropdown.map((subItem) => (
+                                        <Link
+                                            key={subItem.href}
+                                            href={subItem.href}
+                                            className={`block px-4 py-2 text-sm ${
+                                                scrolled ? 'text-red-800 hover:bg-red-100' : 'text-white hover:bg-red-700'
+                                            }`}
+                                            role="menuitem"
+                                            onClick={() => {
+                                                setDropdownOpen(false);
+                                                if (isMobile) setIsOpen(false);
+                                            }}
+                                        >
+                                            {subItem.label}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            );
+        }
+        return (
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                    href={item.href}
+                    className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${
+                        scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'
+                    }`}
+                    onClick={() => {
+                        if (isMobile) setIsOpen(false);
+                    }}
+                >
+                    {item.label}
+                </Link>
+            </motion.div>
+        );
+    };
+
     return (
         <>
             <motion.header
@@ -75,11 +170,7 @@ const Header = () => {
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
                         {leftNavItems.map((item) => (
-                            <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
-                                    {item.label}
-                                </Link>
-                            </motion.div>
+                            <NavItem key={item.href} item={item} />
                         ))}
                     </nav>
 
@@ -96,14 +187,9 @@ const Header = () => {
                         </div>
                     </Link>
 
-
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
                         {rightNavItems.map((item) => (
-                            <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200'}`}>
-                                    {item.label}
-                                </Link>
-                            </motion.div>
+                            <NavItem key={item.href} item={item} />
                         ))}
                     </nav>
 
@@ -111,6 +197,7 @@ const Header = () => {
                         className={`lg:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-200'}`}
                         onClick={() => setIsOpen(!isOpen)}
                         whileTap={{ scale: 0.95 }}
+                        aria-label="Toggle menu"
                     >
                         <Menu size={24} />
                     </motion.button>
@@ -132,6 +219,7 @@ const Header = () => {
                                 onClick={() => setIsOpen(false)}
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
+                                aria-label="Close menu"
                             >
                                 <X size={24} />
                             </motion.button>
@@ -143,13 +231,7 @@ const Header = () => {
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <Link
-                                        href={item.href}
-                                        className="block py-4 px-8 text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        {item.label}
-                                    </Link>
+                                    <NavItem item={item} isMobile={true} />
                                 </motion.div>
                             ))}
                         </div>
