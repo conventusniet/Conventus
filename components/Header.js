@@ -10,6 +10,7 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [committeeLabel, setCommitteeLabel] = useState("Committee");
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,7 +26,7 @@ const Header = () => {
         { href: "/registration", label: "Register" },
         {
             href: "#",
-            label: "Committee",
+            label: committeeLabel,
             dropdown: [
                 { href: "/events", label: "Events" },
                 { href: "/committee", label: "Committees" },
@@ -92,6 +93,11 @@ const Header = () => {
         }
     };
 
+    const handleDropdownClick = (label) => {
+        setCommitteeLabel(label); // Set the clicked dropdown item's label
+        setDropdownOpen(false);   // Close the dropdown after selection
+    };
+
     const NavItem = ({ item, isMobile = false }) => {
         if (item.dropdown) {
             return (
@@ -128,8 +134,8 @@ const Header = () => {
                                             }`}
                                             role="menuitem"
                                             onClick={() => {
-                                                setDropdownOpen(false);
-                                                if (isMobile) setIsOpen(false);
+                                                handleDropdownClick(subItem.label);
+                                                if (isMobile) setIsOpen(false); // Close sidebar if mobile
                                             }}
                                         >
                                             {subItem.label}
