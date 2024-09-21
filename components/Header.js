@@ -116,7 +116,7 @@ const Header = () => {
                     onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
                 >
                     <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile
+                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile
                                 ? 'text-red-800 py-4'
                                 : scrolled
                                     ? 'text-red-800 hover:text-red-600'
@@ -169,7 +169,7 @@ const Header = () => {
                 <Link
                     href={item.href}
                     className={`
-                        block text-xl xl:text-1xl font-semibold font-['Times_New_Roman']
+                        block text-xl xl:text-1xl font-semibold
                         ${isMobile
                             ? 'text-red-800 py-4'
                             : scrolled

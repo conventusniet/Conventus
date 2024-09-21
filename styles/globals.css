@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add any global styles here */
+@font-face {
+  font-family: 'Berlingske-Serif';
+  src: url('/fonts/BerlingskeSerif-SemiBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: 'Times New Roman', Times, serif
+  font-family: 'Berlingske-Serif', serif;
 }
 
 .perspective-1000 {

@@ -79,7 +79,7 @@ const Header = () => {
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
                         {leftNavItems.map((item) => (
                             <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
+                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
                                     {item.label}
                                 </Link>
                             </motion.div>
@@ -87,7 +87,7 @@ const Header = () => {
                     </nav>
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-800" : "text-red-600"}`}>CONVENTUS</span>
+                        <span className={`text-2xl sm:text-3xl font-bold ${scrolled ? "text-red-800" : "text-red-600"}`}>CONVENTUS</span>
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
                                 src="/images/conv-logo.png"
@@ -102,7 +102,7 @@ const Header = () => {
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
                         {rightNavItems.map((item) => (
                             <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
+                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
                                     {item.label}
                                 </Link>
                             </motion.div>
@@ -147,7 +147,7 @@ const Header = () => {
                                 >
                                     <Link
                                         href={item.href}
-                                        className="block py-4 px-8 text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
+                                        className="block py-4 px-8 text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center"
                                         onClick={() => setIsOpen(false)}
                                     >
                                         {item.label}

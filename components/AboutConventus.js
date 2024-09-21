@@ -18,7 +18,7 @@ const AboutConventus = () => {
     };
 
     return (
-        <section className="py-16 bg-gray-300 overflow-hidden w-full" style={{ fontFamily: 'Times New Roman, serif' }}>
+        <section className="py-16 bg-gray-300 overflow-hidden w-full" >
             <div className="container mx-auto px-4 max-w-5xl">
                 <motion.h2
                     className="text-5xl md:text-6xl font-bold text-center mb-12 text-red-800 tracking-tight leading-tight"

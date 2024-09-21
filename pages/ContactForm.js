@@ -151,7 +151,7 @@ const Header = () => {
                     onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
                 >
                     <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200')
+                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200')
                             }`}
                         onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
                     >
@@ -197,7 +197,7 @@ const Header = () => {
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
                 <Link
                     href={item.href}
-                    className={`block text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200')
+                    className={`block text-xl xl:text-1xl font-semibold ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200')
                         }`}
                     onClick={() => isMobile && setIsOpen(false)}
                 >
@@ -224,7 +224,7 @@ const Header = () => {
                     </nav>
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled
+                        <span className={`text-2xl sm:text-3xl font-bold ${scrolled
                             ? "text-red-600"
                             : "text-white lg:text-white"
                             }`}>CONVENTUS</span>

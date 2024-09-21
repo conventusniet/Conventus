@@ -111,7 +111,7 @@ const Oheader = () => {
                     onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
                 >
                     <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile
+                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile
                             ? 'text-red-800 py-4'
                             : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
                             } ${active ? 'underline underline-offset-4' : ''}`}
@@ -159,7 +159,7 @@ const Oheader = () => {
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
                 <Link
                     href={item.href}
-                    className={`block text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile
+                    className={`block text-xl xl:text-1xl font-semibol ${isMobile
                         ? 'text-red-800 py-4'
                         : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
                         } ${active ? 'underline underline-offset-4' : ''}`}
@@ -185,7 +185,7 @@ const Oheader = () => {
                     </nav>
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        {/* <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-red-600 lg:text-red-600"}`}>CONVENTUS</span> */}
+                        {/* <span className={`text-2xl sm:text-3xl font-bold  ${scrolled ? "text-red-600" : "text-red-600 lg:text-red-600"}`}>CONVENTUS</span> */}
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
                                 src="/images/conv-logo.png"

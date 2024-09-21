@@ -14,8 +14,8 @@ const LearnMoreSection = () => {
             route: "/aboutus"
         },
         {
-            title: "COMMITTEES",
-            description: "Learn about the committees being offered at CONVENTUS and explore Procedure.",
+            title: "Events",
+            description: "Learn about the events being organised at CONVENTUS and explore more.",
             image: "/images/coll2.png",
             route: "/committee"
         },
@@ -30,7 +30,7 @@ const LearnMoreSection = () => {
     return (
         <section className="py-16 bg-gradient-to-br from-red-50 to-white">
             <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold text-center mb-12 text-red-800">Learn More</h2>
+                <h2 className="text-4xl font-bold text-center mb-12 text-red-800">L E A R NㅤM O R E</h2>
                 <div className="grid md:grid-cols-3 gap-8">
                     {sections.map((section, index) => (
                         <motion.div

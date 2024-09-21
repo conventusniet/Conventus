@@ -6,7 +6,7 @@ const Contact = () => {
         <section className="py-12 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl font-bold text-center mb-12 text-red-800">
-                    Contact Us
+                    C O N T A C TㅤU S
                 </h2>
                 <div className="flex flex-wrap -mx-4 justify-between">
                     {/* Left Column - Map and Address */}
