@@ -44,7 +44,6 @@ const Header = () => {
     const leftNavItems = navItems.slice(0, Math.ceil(navItems.length / 2));
     const rightNavItems = navItems.slice(Math.ceil(navItems.length / 2));
 
-
     const sidebarVariants = {
         open: {
             x: 0,
@@ -118,11 +117,11 @@ const Header = () => {
                 >
                     <button
                         className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile
-                            ? 'text-red-800 py-4'
-                            : scrolled
-                                ? 'text-red-800 hover:text-red-600'
-                                : 'text-white hover:text-red-200'
-                            } ${active ? 'bg-red-200 rounded-md px-2' : ''}`}
+                                ? 'text-red-800 py-4'
+                                : scrolled
+                                    ? 'text-red-800 hover:text-red-600'
+                                    : 'text-white hover:text-red-200'
+                            } ${active ? 'underline underline-offset-4' : ''}`}
                         onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
                     >
                         <span>{item.label}</span>
@@ -144,7 +143,7 @@ const Header = () => {
                                                 key={subItem.href}
                                                 href={subItem.href}
                                                 className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white'
-                                                    } hover:bg-red-800 hover:text-white transition duration-150 ease-in-out ${isActive(subItem.href) ? 'bg-red-700 text-white font-bold' : ''
+                                                    } hover:bg-red-800 hover:text-white transition duration-150 ease-in-out ${isActive(subItem.href) ? 'underline underline-offset-4 font-bold' : ''
                                                     }`}
                                                 role="menuitem"
                                                 onClick={() => {
@@ -177,12 +176,7 @@ const Header = () => {
                                 ? 'text-red-800 hover:text-red-600'
                                 : 'text-white hover:text-red-200'
                         }
-                        ${active
-                            ? scrolled
-                                ? 'bg-red-200 text-red-900 rounded-md px-2'
-                                : 'bg-red-700 text-white rounded-md px-2'
-                            : ''
-                        }
+                        ${active ? 'underline underline-offset-4' : ''}
                     `}
                     onClick={() => isMobile && setIsOpen(false)}
                 >
@@ -195,20 +189,17 @@ const Header = () => {
     return (
         <>
             <motion.header
-                className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'
-                    }`}
+                className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
             >
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-                    <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
+                    <nav className="hidden lg:flex space-x-12 xl:space-x-16 flex-1 justify-end">
                         {leftNavItems.map((item) => renderNavItem(item))}
                     </nav>
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-white lg:text-white"
-                            }`}>CONVENTUS</span>
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
                                 src="/images/conv-logo.png"
@@ -220,7 +211,7 @@ const Header = () => {
                         </div>
                     </Link>
 
-                    <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
+                    <nav className="hidden lg:flex space-x-8 xl:space-x-12 flex-1">
                         {rightNavItems.map((item) => renderNavItem(item))}
                     </nav>
 
