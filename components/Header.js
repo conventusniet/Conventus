@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,6 +35,7 @@ const Header = () => {
             dropdown: [
                 { href: "/committee", label: "MUN" },
                 { href: "/events", label: "Ink & Insights" },
+                { href: "/page3", label: "Diplomatic Resources" },
                 { href: "/more", label: "More" },
             ],
         },
