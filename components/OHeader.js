@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react';
-
-
 
 const Oheader = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [showEventsDropdown, setShowEventsDropdown] = useState(false);
     const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -93,7 +93,16 @@ const Oheader = () => {
         }
     };
 
+    const isActive = (href) => {
+        if (href === '/') {
+            return router.pathname === href;
+        }
+        return router.pathname.startsWith(href);
+    };
+
     const renderNavItem = (item, isMobile = false) => {
+        const active = isActive(item.href);
+
         if (item.dropdown) {
             return (
                 <div
@@ -102,8 +111,10 @@ const Oheader = () => {
                     onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
                 >
                     <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
-                            }`}
+                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile
+                                ? 'text-red-800 py-4'
+                                : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
+                            } ${active ? 'bg-red-200 rounded-md px-2' : ''}`}
                         onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
                     >
                         <span>{item.label}</span>
@@ -124,7 +135,7 @@ const Oheader = () => {
                                             <Link
                                                 key={subItem.href}
                                                 href={subItem.href}
-                                                className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white'} hover:bg-red-800 hover:text-white transition duration-150 ease-in-out`}
+                                                className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white'} hover:bg-red-800 hover:text-white transition duration-150 ease-in-out ${isActive(subItem.href) ? 'bg-red-700 text-white font-bold' : ''}`}
                                                 role="menuitem"
                                                 onClick={() => {
                                                     setShowEventsDropdown(false);
@@ -148,8 +159,10 @@ const Oheader = () => {
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
                 <Link
                     href={item.href}
-                    className={`block text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
-                        }`}
+                    className={`block text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile
+                            ? 'text-red-800 py-4'
+                            : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
+                        } ${active ? 'bg-red-200 text-red-900 rounded-md px-2' : ''}`}
                     onClick={() => isMobile && setIsOpen(false)}
                 >
                     {item.label}
@@ -161,9 +174,7 @@ const Oheader = () => {
     return (
         <>
             <motion.header
-                className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-                    ? 'bg-white shadow-lg'
-                    : 'bg-transparent'
+                className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'
                     }`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
@@ -175,9 +186,7 @@ const Oheader = () => {
                     </nav>
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled
-                            ? "text-red-600"
-                            : "text-red-600 lg:text-red-600"
+                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-600" : "text-red-600 lg:text-red-600"
                             }`}>CONVENTUS</span>
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
