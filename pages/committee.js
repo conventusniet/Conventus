@@ -1,24 +1,26 @@
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { X, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+'use client'
+
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const HeroCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0)
   const slides = [
     { image: '/images/coll1.png', title: 'Welcome to CONVENTUS', subtitle: 'Shaping the Future of Global Diplomacy' },
     { image: '/images/coll2.png', title: 'Join Our Committees', subtitle: 'Engage in Meaningful Discussions' },
     { image: '/images/coll3.png', title: 'Make a Difference', subtitle: 'Address Global Challenges Together' },
-  ];
+  ]
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [slides.length])
 
   return (
     <div className="relative h-[60vh] overflow-hidden">
@@ -36,27 +38,27 @@ const HeroCarousel = () => {
             layout="fill" 
             style={{ objectFit: 'cover' }} 
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
+          <div className="absolute inset-0 bg-red-900 bg-opacity-50 flex flex-col justify-center items-center text-white">
             <h1 className="text-4xl font-bold mb-2">{slide.title}</h1>
             <p className="text-xl">{slide.subtitle}</p>
           </div>
         </motion.div>
       ))}
       <button
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-3 rounded-full"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-red-700 bg-opacity-50 p-3 rounded-full"
         onClick={() => setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length)}
       >
         <ChevronLeft size={28} />
       </button>
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-3 rounded-full"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-red-700 bg-opacity-50 p-3 rounded-full"
         onClick={() => setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length)}
       >
         <ChevronRight size={28} />
       </button>
     </div>
-  );
-};
+  )
+}
 
 const CommitteeCard = ({ logo, title, description, onClick }) => (
   <motion.div 
@@ -72,11 +74,11 @@ const CommitteeCard = ({ logo, title, description, onClick }) => (
       />
     </div>
     <div className="p-6 text-center">
-      <h3 className="text-gray-800 text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-600 text-md">{description.slice(0, 100)}...</p>
+      <h3 className="text-red-800 text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-red-600 text-md">{description.slice(0, 100)}...</p>
     </div>
   </motion.div>
-);
+)
 
 const CommitteeDetails = ({ committee, onClose }) => (
   <motion.div 
@@ -85,9 +87,9 @@ const CommitteeDetails = ({ committee, onClose }) => (
     exit={{ opacity: 0, scale: 0.9 }}
     className="fixed inset-0 bg-white z-50 overflow-y-auto p-4"
   >
-    <div className="max-w-2xl mx-auto relative bg-gray-100 p-6 rounded-lg shadow-lg">
+    <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg shadow-lg">
       <button
-        className="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+        className="absolute top-4 right-4 text-red-600 hover:text-red-800"
         onClick={onClose}
       >
         <X size={24} />
@@ -100,24 +102,24 @@ const CommitteeDetails = ({ committee, onClose }) => (
           height={100} 
           className="mx-auto mb-4 rounded-full" 
         />
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">{committee.title}</h2>
-        <p className="text-md text-gray-700 mb-4">{committee.description}</p>
+        <h2 className="text-2xl font-bold text-red-800 mb-4">{committee.title}</h2>
+        <p className="text-md text-red-700 mb-4">{committee.description}</p>
       </div>
       <div className="mb-4">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">Committee Objectives</h3>
-        <ul className="list-disc list-inside text-gray-700">
+        <h3 className="text-xl font-semibold text-red-800 mb-2">Committee Objectives</h3>
+        <ul className="list-disc list-inside text-red-700">
           {committee.objectives.map((objective, index) => (
             <li key={index}>{objective}</li>
           ))}
         </ul>
       </div>
       <div className="mb-4">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">Expected Outcomes</h3>
-        <p className="text-md text-gray-700">{committee.expectedOutcomes}</p>
+        <h3 className="text-xl font-semibold text-red-800 mb-2">Expected Outcomes</h3>
+        <p className="text-md text-red-700">{committee.expectedOutcomes}</p>
       </div>
       <div className="text-center">
         <button
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+          className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
           onClick={() => alert(`You have joined the ${committee.title} committee!`)}
         >
           Join
@@ -125,11 +127,36 @@ const CommitteeDetails = ({ committee, onClose }) => (
       </div>
     </div>
   </motion.div>
-);
+)
 
-const CommitteesPage = () => {
-  const [selectedCommittee, setSelectedCommittee] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+const WinnersSection = () => (
+  <div className="bg-red-100 py-12">
+    <div className="container mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center mb-8 text-red-800">MUN Winners</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {['/images/coll4.png', '/images/coll5.png', '/images/coll6.png'].map((image, index) => (
+          <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="relative h-64 w-full">
+              <Image 
+                src={image} 
+                alt={`MUN Winner ${index + 1}`} 
+                layout="fill" 
+                objectFit="cover" 
+              />
+            </div>
+            <div className="p-4 text-center">
+              <h3 className="text-xl font-semibold text-red-800">Winner {index + 1}</h3>
+              <p className="text-red-600">Committee Name</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)
+
+export default function CommitteesPage() {
+  const [selectedCommittee, setSelectedCommittee] = useState(null)
 
   const onlineCommittees = [
     { 
@@ -165,7 +192,7 @@ const CommitteesPage = () => {
       ],
       expectedOutcomes: "The committee will produce a comprehensive report on the current state of climate change and propose innovative solutions for mitigation and adaptation."
     },
-  ];
+  ]
 
   const offlineCommittees = [
     { 
@@ -201,42 +228,25 @@ const CommitteesPage = () => {
       ],
       expectedOutcomes: "The committee will work on strategies to address global health issues, improve health systems, and respond to emerging health crises."
     },
-  ];
-
-  const filteredCommittees = [...onlineCommittees, ...offlineCommittees].filter(committee =>
-    committee.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  ]
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-red-50">
       <Header />
       <HeroCarousel />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+        <h1 className="text-4xl font-bold text-center mb-8 text-red-800">
           Committees
         </h1>
-        <p className="text-lg text-center mb-8 text-gray-600">
+        <p className="text-lg text-center mb-8 text-red-600">
           Explore our diverse range of committees addressing crucial global issues
         </p>
 
-        <div className="flex justify-center mb-8">
-          <div className="relative w-full max-w-md">
-            <input
-              type="text"
-              className="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Search committees..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <Search className="absolute top-4 right-4 text-gray-400" size={24} />
-          </div>
-        </div>
-
-        <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
+        <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
           Online Committees
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {filteredCommittees.filter(committee => onlineCommittees.includes(committee)).map((committee, index) => (
+          {onlineCommittees.map((committee, index) => (
             <CommitteeCard 
               key={index}
               logo={committee.logo}
@@ -247,11 +257,11 @@ const CommitteesPage = () => {
           ))}
         </div>
 
-        <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
+        <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
           Offline Committees
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCommittees.filter(committee => offlineCommittees.includes(committee)).map((committee, index) => (
+          {offlineCommittees.map((committee, index) => (
             <CommitteeCard 
               key={index}
               logo={committee.logo}
@@ -262,6 +272,9 @@ const CommitteesPage = () => {
           ))}
         </div>
       </main>
+
+      <WinnersSection />
+
       <Footer />
 
       <AnimatePresence>
@@ -273,7 +286,5 @@ const CommitteesPage = () => {
         )}
       </AnimatePresence>
     </div>
-  );
-};
-
-export default CommitteesPage;
+  )
+}
