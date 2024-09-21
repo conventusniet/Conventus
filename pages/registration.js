@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Footer from '../components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
+import Oheader from '../components/OHeader';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu } from 'lucide-react';
 // Lazy load the RegistrationForm component
@@ -286,7 +287,7 @@ const Registration = () => {
 
     return (
         <>
-            <Header />
+            <Oheader />
             <section className="py-32 bg-gradient-to-b from-gray-100 to-red-100 min-h-screen flex items-center justify-center">
                 <motion.div
                     className="container mx-auto px-4 w-full"

@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react';
 
-const Header = () => {
+
+
+const Oheader = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [showEventsDropdown, setShowEventsDropdown] = useState(false);
@@ -100,7 +102,7 @@ const Header = () => {
                     onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
                 >
                     <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200')
+                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
                             }`}
                         onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
                     >
@@ -146,7 +148,7 @@ const Header = () => {
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
                 <Link
                     href={item.href}
-                    className={`block text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-800 hover:text-red-600' : 'text-white hover:text-red-200')
+                    className={`block text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
                         }`}
                     onClick={() => isMobile && setIsOpen(false)}
                 >
@@ -160,8 +162,8 @@ const Header = () => {
         <>
             <motion.header
                 className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-                        ? 'bg-white shadow-lg'
-                        : 'bg-transparent'
+                    ? 'bg-white shadow-lg'
+                    : 'bg-transparent'
                     }`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
@@ -174,8 +176,8 @@ const Header = () => {
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
                         <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled
-                                ? "text-red-600"
-                                : "text-white lg:text-white"
+                            ? "text-red-600"
+                            : "text-red-600 lg:text-red-600"
                             }`}>CONVENTUS</span>
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
@@ -193,7 +195,7 @@ const Header = () => {
                     </nav>
 
                     <motion.button
-                        className={`lg:hidden ${scrolled ? 'text-red-600' : 'text-white'} z-50`}
+                        className={`lg:hidden ${scrolled ? 'text-red-600' : 'text-red-600'} z-50`}
                         onClick={() => setIsOpen(!isOpen)}
                         whileTap={{ scale: 0.95 }}
                     >
@@ -252,4 +254,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Oheader;

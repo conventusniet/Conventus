@@ -1,9 +1,10 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MapPin } from 'lucide-react'
+import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react';
 import Aboutpara from '@/components/aboutpara'
 import { TestimonialOne } from '@/components/testmono'
+import Oheader from '../components/OHeader';
 import Footer from '../components/Footer';
 import RegistrationButton from '../components/RegistrationButton'
 import Image from 'next/image';
@@ -58,6 +59,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [showEventsDropdown, setShowEventsDropdown] = useState(false);
+    const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -71,7 +74,15 @@ const Header = () => {
         { href: "/", label: "Home" },
         { href: "/aboutus", label: "About Us" },
         { href: "/registration", label: "Register" },
-        { href: "/committee", label: "Committees" },
+        {
+            href: "#",
+            label: "Events",
+            dropdown: [
+                { href: "/committee", label: "MUN" },
+                { href: "/events", label: "Ink & Insights" },
+                { href: "/more", label: "More" },
+            ],
+        },
         { href: "/media", label: "Media" },
         { href: "/ContactForm", label: "Contact" },
     ];
@@ -115,27 +126,109 @@ const Header = () => {
         }
     };
 
+    const dropdownVariants = {
+        hidden: {
+            opacity: 0,
+            height: 0,
+            transition: {
+                duration: 0.2
+            }
+        },
+        visible: {
+            opacity: 1,
+            height: 'auto',
+            transition: {
+                duration: 0.2
+            }
+        }
+    };
+
+    const renderNavItem = (item, isMobile = false) => {
+        if (item.dropdown) {
+            return (
+                <div
+                    className={`relative group ${isMobile ? 'w-full' : ''}`}
+                    onMouseEnter={() => !isMobile && setShowEventsDropdown(true)}
+                    onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
+                >
+                    <button
+                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
+                            }`}
+                        onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
+                    >
+                        <span>{item.label}</span>
+                        {isMobile ? <ChevronRight size={20} className={`transform transition-transform ${mobileEventsOpen ? 'rotate-90' : ''}`} /> : <ChevronDown size={16} />}
+                    </button>
+                    <AnimatePresence>
+                        {((isMobile && mobileEventsOpen) || (!isMobile && showEventsDropdown)) && (
+                            <motion.div
+                                className={`${isMobile ? 'w-full' : 'absolute left-0 mt-2 w-48'} rounded-md shadow-lg`}
+                                variants={dropdownVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="hidden"
+                            >
+                                <div className={`rounded-md ${isMobile ? 'bg-red-100' : 'bg-red-900'} shadow-xs`}>
+                                    <div className="py-1" role="menu" aria-orientation="vertical">
+                                        {item.dropdown.map((subItem) => (
+                                            <Link
+                                                key={subItem.href}
+                                                href={subItem.href}
+                                                className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white'} hover:bg-red-800 hover:text-white transition duration-150 ease-in-out`}
+                                                role="menuitem"
+                                                onClick={() => {
+                                                    setShowEventsDropdown(false);
+                                                    setMobileEventsOpen(false);
+                                                    if (isMobile) setIsOpen(false);
+                                                }}
+                                            >
+                                                {subItem.label}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            );
+        }
+
+        return (
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
+                <Link
+                    href={item.href}
+                    className={`block text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
+                        }`}
+                    onClick={() => isMobile && setIsOpen(false)}
+                >
+                    {item.label}
+                </Link>
+            </motion.div>
+        );
+    };
+
     return (
         <>
             <motion.header
-                className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}
+                className={`fixed w-full z-50 transition-all duration-300 ${scrolled
+                    ? 'bg-white shadow-lg'
+                    : 'bg-transparent'
+                    }`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
             >
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
-                        {leftNavItems.map((item) => (
-                            <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
-                                    {item.label}
-                                </Link>
-                            </motion.div>
-                        ))}
+                        {leftNavItems.map((item) => renderNavItem(item))}
                     </nav>
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled ? "text-red-800" : "text-red-600"}`}>CONVENTUS</span>
+                        <span className={`text-2xl sm:text-3xl font-bold font-['Times_New_Roman'] ${scrolled
+                            ? "text-red-600"
+                            : "text-red-600 lg:text-red-600"
+                            }`}>CONVENTUS</span>
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
                                 src="/images/conv-logo.png"
@@ -147,19 +240,12 @@ const Header = () => {
                         </div>
                     </Link>
 
-
                     <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
-                        {rightNavItems.map((item) => (
-                            <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                                <Link href={item.href} className={`text-xl xl:text-1xl font-semibold font-['Times_New_Roman'] ${scrolled ? 'text-red-800 hover:text-red-600' : 'text-red-600 hover:text-red-400'}`}>
-                                    {item.label}
-                                </Link>
-                            </motion.div>
-                        ))}
+                        {rightNavItems.map((item) => renderNavItem(item))}
                     </nav>
 
                     <motion.button
-                        className={`lg:hidden ${scrolled ? 'text-red-600 z-50' : 'text-red-600'}`}
+                        className={`lg:hidden ${scrolled ? 'text-red-600' : 'text-red-600'} z-50`}
                         onClick={() => setIsOpen(!isOpen)}
                         whileTap={{ scale: 0.95 }}
                     >
@@ -186,23 +272,18 @@ const Header = () => {
                             >
                                 <X size={24} />
                             </motion.button>
-                            {navItems.map((item, index) => (
-                                <motion.div
-                                    key={item.href}
-                                    variants={itemVariants}
-                                    custom={index}
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <Link
-                                        href={item.href}
-                                        className="block py-4 px-8 text-2xl font-semibold text-red-800 hover:text-red-600 transition duration-300 w-full text-center font-['Times_New_Roman']"
-                                        onClick={() => setIsOpen(false)}
+                            <div className="w-full space-y-6">
+                                {navItems.map((item, index) => (
+                                    <motion.div
+                                        key={item.href}
+                                        variants={itemVariants}
+                                        custom={index}
+                                        className="w-full"
                                     >
-                                        {item.label}
-                                    </Link>
-                                </motion.div>
-                            ))}
+                                        {renderNavItem(item, true)}
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
                     </motion.div>
                 )}
@@ -222,7 +303,6 @@ const Header = () => {
         </>
     );
 };
-
 
 
 const PersonCard = ({ name, position, image, info }) => {
@@ -363,7 +443,7 @@ export default function AboutPageOne() {
 
     return (
         <div className="bg-[#EEEFF2]">
-            <Header />
+            <Oheader />
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Hero Map */}
