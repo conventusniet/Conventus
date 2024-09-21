@@ -3,8 +3,8 @@
 import React, { useState } from 'react'
 import { ChevronRight, ChevronDown } from 'lucide-react'
 
-export default function Aboutpara() {
-  const [openSections, setOpenSections] = useState([])
+export default function AboutPara() {
+  const [openSections, setOpenSections] = useState([0])
 
   const sections = [
     {
@@ -49,17 +49,18 @@ export default function Aboutpara() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-8">
-      <h1 className="text-4xl font-light mb-12 text-center text-gray-800">Learn More</h1>
+    <div className="max-w-4xl mx-auto p-4 md:p-8">
+      <h1 className="text-3xl md:text-4xl font-light mb-8 md:mb-12 text-center text-gray-800">Learn More</h1>
 
       <div className="space-y-4">
         {sections.map((section, index) => (
           <div key={index} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
             <button
               onClick={() => toggleSection(index)}
-              className="w-full p-6 text-left focus:outline-none"
+              className="w-full p-4 md:p-6 text-left focus:outline-none"
+              aria-expanded={openSections.includes(index)}
             >
-              <h2 className="text-xl font-semibold text-gray-700 flex items-center">
+              <h2 className="text-lg md:text-xl font-semibold text-gray-700 flex items-center">
                 {openSections.includes(index) ? (
                   <ChevronDown className="w-5 h-5 mr-2 text-red-500" />
                 ) : (
@@ -69,7 +70,7 @@ export default function Aboutpara() {
               </h2>
             </button>
             {openSections.includes(index) && (
-              <div className="px-6 pb-6">
+              <div className="px-4 md:px-6 pb-4 md:pb-6">
                 <p className="text-gray-600">{section.content}</p>
               </div>
             )}
@@ -77,12 +78,12 @@ export default function Aboutpara() {
         ))}
       </div>
 
-      <div className="mt-12 bg-white p-6 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-light mb-6 text-center text-gray-700">Our Values</h2>
+      <div className="mt-8 md:mt-12 bg-white p-4 md:p-6 rounded-lg shadow-sm">
+        <h2 className="text-xl md:text-2xl font-light mb-4 md:mb-6 text-center text-gray-700">Our Values</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {values.map((value, index) => (
             <div key={index} className="flex items-start">
-              <div className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+              <div className="w-2 h-2 bg-red-500 rounded-full mr-3 mt-2 flex-shrink-0" aria-hidden="true"></div>
               <span className="text-gray-600">{value}</span>
             </div>
           ))}
