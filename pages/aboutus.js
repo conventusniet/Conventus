@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect } from 'react';
 import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react';
 import Aboutpara from '@/components/aboutpara'
@@ -306,7 +304,6 @@ const Header = () => {
 
 
 const PersonCard = ({ name, position, image, info }) => {
-    // Function to truncate text to a certain number of words
     const truncateText = (text, limit) => {
         const words = text.split(' ');
         if (words.length > limit) {
@@ -339,10 +336,10 @@ const PersonCard = ({ name, position, image, info }) => {
                 </div>
 
                 {/* Back of the card */}
-                <div className="absolute inset-0 h-full w-full rounded-xl bg-red-100 px-6 py-8 text-center text-gray-800 [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-y-auto">
+                <div className="absolute inset-0 h-full w-full rounded-xl bg-red-50 px-6 py-8 text-center text-gray-800 [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-y-auto">
                     <div className="flex min-h-full flex-col items-center justify-start">
-                        <h3 className="text-xl font-bold mb-4">{name}</h3>
-                        <p className="text-base leading-relaxed">
+                        <h3 className="text-2xl font-bold mb-4 text-red-800 font-sans">{name}</h3>
+                        <p className="text-base leading-relaxed font-sans text-gray-700 tracking-wide">
                             {truncateText(info, 150)}
                         </p>
                     </div>
@@ -464,12 +461,14 @@ export default function AboutPageOne() {
                         />
                     </motion.div>
 
-                    <p className="text-3xl sm:text-5xl font-bold text-gray-900 md:text-5xl md:leading-10 sm:leading-tight">
+                    <p className="text-3xl sm:text-5xl font-bold text-gray-900 text-center md:text-5xl md:leading-10 sm:leading-tight">
                         NIET Model United Nations 2024 by Conventus Club
                     </p>
-                    <p className="max-w-4xl text-base sm:text-2xl text-gray-600 md:text-xl">
-                        Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
-                    </p>
+                    <div className="flex items-center justify-center min-h-[200px]">
+                        <p className="max-w-4xl text-base sm:text-2xl text-center text-gray-600 md:text-xl">
+                            Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
+                        </p>
+                    </div>
                 </div>
                 <hr className="mt-8 sm:mt-8" />
 
