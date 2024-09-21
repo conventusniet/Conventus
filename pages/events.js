@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { X, ChevronLeft, ChevronRight, Search, Calendar } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -36,20 +36,20 @@ const HeroCarousel = () => {
             layout="fill" 
             style={{ objectFit: 'cover' }} 
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
+          <div className="absolute inset-0 bg-red-900 bg-opacity-70 flex flex-col justify-center items-center text-white">
             <h1 className="text-4xl font-bold mb-2">{slide.title}</h1>
             <p className="text-xl">{slide.subtitle}</p>
           </div>
         </motion.div>
       ))}
       <button
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-3 rounded-full"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-red-700 bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition"
         onClick={() => setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length)}
       >
         <ChevronLeft size={28} />
       </button>
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-3 rounded-full"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-red-700 bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 transition"
         onClick={() => setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length)}
       >
         <ChevronRight size={28} />
@@ -60,21 +60,26 @@ const HeroCarousel = () => {
 
 const EventCard = ({ image, title, date, description, onClick }) => (
   <motion.div 
-    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition transform hover:scale-105"
+    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition transform hover:scale-105 flex h-80 border-2 border-red-200"
     onClick={onClick}
   >
-    <div className="relative h-48 w-full">
+    <div className="flex-1 p-8 flex flex-col justify-between">
+      <div>
+        <h3 className="text-red-800 text-3xl font-semibold mb-3">{title}</h3>
+        <p className="text-red-600 text-lg mb-3"><Calendar className="inline mr-2" size={20} />{date}</p>
+        <p className="text-gray-700 text-xl">{description}</p>
+      </div>
+      <button className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition text-lg self-start">
+        Learn More
+      </button>
+    </div>
+    <div className="relative h-auto w-2/5">
       <Image 
         src={image} 
         alt={title} 
         layout="fill" 
         objectFit="cover" 
       />
-    </div>
-    <div className="p-6">
-      <h3 className="text-gray-800 text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-600 text-sm mb-2"><Calendar className="inline mr-2" size={16} />{date}</p>
-      <p className="text-gray-600 text-md">{description.slice(0, 100)}...</p>
     </div>
   </motion.div>
 );
@@ -86,9 +91,9 @@ const EventDetails = ({ event, onClose }) => (
     exit={{ opacity: 0, scale: 0.9 }}
     className="fixed inset-0 bg-white z-50 overflow-y-auto p-4"
   >
-    <div className="max-w-2xl mx-auto relative bg-gray-100 p-6 rounded-lg shadow-lg">
+    <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg shadow-lg border-2 border-red-200">
       <button
-        className="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+        className="absolute top-4 right-4 text-red-600 hover:text-red-800"
         onClick={onClose}
       >
         <X size={24} />
@@ -101,12 +106,12 @@ const EventDetails = ({ event, onClose }) => (
           height={200} 
           className="mx-auto mb-4 rounded-lg" 
         />
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">{event.title}</h2>
-        <p className="text-md text-gray-600 mb-4"><Calendar className="inline mr-2" size={18} />{event.date}</p>
+        <h2 className="text-2xl font-bold text-red-800 mb-2">{event.title}</h2>
+        <p className="text-md text-red-600 mb-4"><Calendar className="inline mr-2" size={18} />{event.date}</p>
         <p className="text-md text-gray-700 mb-4">{event.description}</p>
       </div>
       <div className="mb-4">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">Event Details</h3>
+        <h3 className="text-xl font-semibold text-red-800 mb-2">Event Details</h3>
         <ul className="list-disc list-inside text-gray-700">
           <li>Location: {event.location}</li>
           <li>Duration: {event.duration}</li>
@@ -115,7 +120,7 @@ const EventDetails = ({ event, onClose }) => (
       </div>
       <div className="text-center">
         <button
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+          className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
           onClick={() => alert(`You have registered for ${event.title}!`)}
         >
           Register Now
@@ -127,7 +132,6 @@ const EventDetails = ({ event, onClose }) => (
 
 const EventsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
 
   const events = [
     { 
@@ -186,38 +190,20 @@ const EventsPage = () => {
     },
   ];
 
-  const filteredEvents = events.filter(event =>
-    event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    event.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-red-50">
       <Header />
       <HeroCarousel />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+      <main className="flex-grow container mx-auto px-4 py-12">
+        <h1 className="text-5xl font-bold text-center mb-8 text-red-800">
           Upcoming Events
         </h1>
-        <p className="text-lg text-center mb-8 text-gray-600">
+        <p className="text-xl text-center mb-12 text-red-600">
           Discover and participate in our global events addressing crucial international issues
         </p>
 
-        <div className="flex justify-center mb-8">
-          <div className="relative w-full max-w-md">
-            <input
-              type="text"
-              className="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Search events..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <Search className="absolute top-4 right-4 text-gray-400" size={24} />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredEvents.map((event, index) => (
+        <div className="space-y-12">
+          {events.map((event, index) => (
             <EventCard 
               key={index}
               image={event.image}
