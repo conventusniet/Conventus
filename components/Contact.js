@@ -60,12 +60,6 @@ const Contact = () => {
                                     phone="+917428121611"
                                     email="cdcamimun@gmail.com"
                                 />
-                                <ContactPerson
-                                    name="Amishi Arora"
-                                    title="USG Delegate Affairs"
-                                    phone="+918750800663"
-                                    email="delegateaffairsamimun24@gmail.com"
-                                />
                             </div>
                         </div>
                     </div>

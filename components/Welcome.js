@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 const Welcome = () => {
     const [text, setText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
@@ -46,8 +45,8 @@ const Welcome = () => {
             ></div>
             <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
             <div className="relative z-20 text-center px-4">
-                <h1 className="text-6xl font-bold mb-6 text-shadow-lg">Welcome to Conventus</h1>
-                <p className="text-4xl mb-8"> Where we <span className="font-bold text-yellow-300">{text}</span></p>
+                <h1 className="text-6xl font-bold mb-6 text-shadow-lg">Conventus</h1>
+                <p className="text-4xl mb-8">|ㅤ<span className="font-bold text-yellow-300">{text}</span>ㅤ|</p>
                 {/* <p className="text-2xl mb-12 max-w-2xl mx-auto">Join us in shaping the future of our community</p> */}
             </div>
         </section>
