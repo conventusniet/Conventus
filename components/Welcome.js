@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
 const Welcome = () => {
     const [text, setText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
-    const [typingSpeed, setTypingSpeed] = useState(150); // Increased initial typing speed
+    const [typingSpeed, setTypingSpeed] = useState(150);
 
     const toRotate = ['Nagatio', 'Solutio', 'Actio'];
     const period = 1000;
@@ -24,7 +25,7 @@ const Welcome = () => {
         setText(updatedText);
 
         if (isDeleting) {
-            setTypingSpeed(prevSpeed => prevSpeed / 1.5); // Faster deletion
+            setTypingSpeed(prevSpeed => prevSpeed / 1.5);
         }
 
         if (!isDeleting && updatedText === fullText) {
@@ -33,7 +34,7 @@ const Welcome = () => {
         } else if (isDeleting && updatedText === '') {
             setIsDeleting(false);
             setLoopNum(loopNum + 1);
-            setTypingSpeed(150); // Reset to initial typing speed
+            setTypingSpeed(150);
         }
     };
 
@@ -51,10 +52,15 @@ const Welcome = () => {
             <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
             <div className="relative z-20 text-center px-4">
                 <h1 className="text-6xl font-bold mb-6 text-shadow-lg">Conventus</h1>
-                <p className="text-4xl mb-8">|ㅤ<span className="font-bold text-yellow-300">{text}</span>ㅤ|</p>
+                <div className="flex justify-center items-center">
+                    <span className="text-4xl">|</span>
+                    <p className="text-4xl w-48 inline-block text-left">
+                        <span className="font-bold text-yellow-300">ㅤ{text}</span>
+                    </p>
+                    <span className="text-4xl">|</span>
+                </div>
             </div>
         </section>
-
     );
 };
 
