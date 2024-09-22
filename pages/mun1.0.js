@@ -62,11 +62,11 @@ const HeroCarousel = () => {
 const MediaGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const images = [
-    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png', '/images/coll4.png',
+    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
     '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
-    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png', '/images/coll4.png',
+    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
     '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
-    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png', '/images/coll4.png',
+    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png', '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
   ];
 
   return (
@@ -312,7 +312,7 @@ export default function CommitteesPage() {
       </main>
 
       <WinnersSection />
-      <section>
+      <section className='mb-20'>
         <h2 className="text-3xl mt-20 text-center font-bold mb-8 text-red-800">Media Gallery</h2>
         <MediaGallery />
       </section>

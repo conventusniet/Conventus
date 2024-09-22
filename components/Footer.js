@@ -35,7 +35,7 @@ const Footer = () => {
                                         className="flex items-center text-gray-400 hover:text-red-400 transition duration-300"
                                     >
                                         <item.icon className="w-5 h-5 mr-2" />
-                                        {item.name}
+                                        <span className="font-['Berlingske-Serif']">{item.name}</span>
                                     </a>
                                 </li>
                             ))}
@@ -53,55 +53,6 @@ const Footer = () => {
                         </address>
                     </div>
                 </div>
-                {/* <div className="border-t border-gray-800 pt-8">
-                    <ul className="flex justify-center space-x-6 mb-6">
-                        <li>
-                            <Link href="/">
-                                <span className="text-gray-400 hover:text-red-400 transition duration-300">Home</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <span
-                                onClick={() => handleNavigation("/aboutus")}
-                                className="text-gray-400 hover:text-red-400 transition duration-300 cursor-pointer"
-                            >
-                                About
-                            </span>
-                        </li>
-                        <li>
-                            <span
-                                onClick={() => handleNavigation("/committee")}
-                                className="text-gray-400 hover:text-red-400 transition duration-300 cursor-pointer"
-                            >
-                                Committees
-                            </span>
-                        </li>
-                        <li>
-                            <span
-                                onClick={() => handleNavigation("/media")}
-                                className="text-gray-400 hover:text-red-400 transition duration-300 cursor-pointer"
-                            >
-                                Media
-                            </span>
-                        </li>
-                        <li>
-                            <span
-                                onClick={() => handleNavigation("/ContactForm")}
-                                className="text-gray-400 hover:text-red-400 transition duration-300 cursor-pointer"
-                            >
-                                Contact
-                            </span>
-                        </li>
-                        <li>
-                            <span
-                                onClick={() => handleNavigation("/registration")}
-                                className="text-gray-400 hover:text-red-400 transition duration-300 cursor-pointer"
-                            >
-                                Register
-                            </span>
-                        </li>
-                    </ul>
-                </div> */}
                 <div className="border-t border-gray-800 mt-4 pt-4 text-center text-gray-400">
                     © {currentYear} Conventus. All rights reserved.
                 </div>

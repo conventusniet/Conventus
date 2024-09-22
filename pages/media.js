@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-// Add the LazyLoading component
 const LazyLoading = ({ onLoadingComplete }) => {
     const [progress, setProgress] = useState(0);
 
@@ -61,11 +60,23 @@ const collageImages = [
     '/images/coll1.png',
     '/images/coll2.png',
     '/images/coll3.png',
-    '/images/coll4.png',
     '/images/coll5.png',
     '/images/coll6.png',
     '/images/coll7.png',
     '/images/coll8.png',
+    '/images/coll1.png',
+    '/images/coll2.png',
+    '/images/coll3.png',
+    '/images/coll5.png',
+    '/images/coll6.png',
+    '/images/coll7.png',
+    '/images/coll8.png',
+    '/images/coll1.png',
+    '/images/coll2.png',
+    '/images/coll3.png',
+    '/images/coll5.png',
+    '/images/coll6.png',
+    '/images/coll7.png',
 ];
 
 const ImageModal = ({ src, alt, isOpen, onClose }) => {
@@ -109,7 +120,6 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
 const MediaPage = () => {
     const sliderRef = useRef(null);
     const [modalImage, setModalImage] = useState(null);
-    // const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const slider = sliderRef.current;
@@ -130,23 +140,15 @@ const MediaPage = () => {
             if (slider && slider.scrollWidth > 0) {
                 intervalId = setInterval(scroll, 20);
             } else {
-                // If the slider is not ready, try again after a short delay
                 setTimeout(startScrolling, 100);
             }
         };
 
-        // Start scrolling after a short delay to ensure the component is mounted
         const scrollTimer = setTimeout(startScrolling, 100);
-
-        // // Simulate content loading
-        // const loadingTimer = setTimeout(() => {
-        //     setIsLoading(false);
-        // }, 3000); // Adjust this time as needed
 
         return () => {
             clearInterval(intervalId);
             clearTimeout(scrollTimer);
-            // clearTimeout(loadingTimer);
         };
     }, []);
 
@@ -157,10 +159,6 @@ const MediaPage = () => {
     const closeModal = () => {
         setModalImage(null);
     };
-
-    // if (isLoading) {
-    //     return <LazyLoading onLoadingComplete={() => setIsLoading(false)} />;
-    // }
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -191,22 +189,24 @@ const MediaPage = () => {
                 <section className="py-16">
                     <div className="container mx-auto px-4">
                         <h2 className="text-3xl font-bold text-center mb-12">Our Moments in Collage</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                             {collageImages.map((src, index) => (
                                 <motion.div
                                     key={index}
-                                    className={`rounded-lg overflow-hidden shadow-lg cursor-pointer ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
-                                    whileHover={{ scale: 1.05 }}
+                                    className={`rounded-lg overflow-hidden shadow-lg cursor-pointer ${index % 7 === 0 ? 'col-span-2 row-span-2' : ''
+                                        }`}
+                                    whileHover={{ scale: 1.05, rotate: Math.random() * 10 - 5 }}
                                     transition={{ duration: 0.3 }}
                                     onClick={() => openModal(src)}
                                 >
                                     <Image
                                         src={src}
                                         alt={`Collage ${index + 1}`}
-                                        width={index === 0 ? 800 : 400}
-                                        height={index === 0 ? 800 : 400}
+                                        width={400}
+                                        height={400}
                                         layout="responsive"
                                         objectFit="cover"
+                                        className="transform transition-transform duration-500 hover:scale-110"
                                     />
                                 </motion.div>
                             ))}
