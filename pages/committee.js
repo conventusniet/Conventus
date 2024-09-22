@@ -36,7 +36,7 @@ const HeroCarousel = () => {
             src={slide.image} 
             alt={slide.title} 
             layout="fill" 
-            style={{ objectFit: 'cover' }} 
+            objectFit="cover" 
           />
           <div className="absolute inset-0 bg-red-900 bg-opacity-50 flex flex-col justify-center items-center text-white">
             <h1 className="text-4xl font-bold mb-2">{slide.title}</h1>
@@ -129,28 +129,78 @@ const CommitteeDetails = ({ committee, onClose }) => (
   </motion.div>
 )
 
+const WinnerCard = ({ images, names, branch, committee }) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length)
+  }
+
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+  }
+
+  return (
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="relative h-64 w-full">
+        <Image 
+          src={images[currentIndex]} 
+          alt={`Winner ${names[currentIndex]}`} 
+          layout="fill" 
+          objectFit="cover" 
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
+          <h3 className="text-xl font-semibold mb-2">{names[currentIndex]}</h3>
+          <p className="text-sm mb-1">{branch}</p>
+          <p className="text-sm">{committee}</p>
+        </div>
+        <button 
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-1 transition-opacity opacity-50 hover:opacity-100"
+          onClick={prevImage}
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button 
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-1 transition-opacity opacity-50 hover:opacity-100"
+          onClick={nextImage}
+        >
+          <ChevronRight size={24} />
+        </button>
+      </div>
+    </div>
+  )
+}
+
 const WinnersSection = () => (
   <div className="bg-red-100 py-12">
     <div className="container mx-auto px-4">
       <h2 className="text-3xl font-bold text-center mb-8 text-red-800">MUN Winners</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {['/images/coll4.png', '/images/coll5.png', '/images/coll6.png'].map((image, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="relative h-64 w-full">
-              <Image 
-                src={image} 
-                alt={`MUN Winner ${index + 1}`} 
-                layout="fill" 
-                objectFit="cover" 
-              />
-            </div>
-            <div className="p-4 text-center">
-              <h3 className="text-xl font-semibold text-red-800">Winner {index + 1}</h3>
-              <p className="text-red-600">Committee Name</p>
-            </div>
-          </div>
-        ))}
+        <WinnerCard 
+          images={['/images/coll4.png', '/images/coll5.png', '/images/coll6.png', '/images/coll7.png']}
+          names={["John Doe", "Emma Wilson", "Michael Brown", "Sophia Lee"]}
+          branch="Computer Science"
+          committee="UNICEF"
+        />
+        <WinnerCard 
+          images={['/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png']}
+          names={["Jane Smith", "Oliver Taylor", "Emily Davis", "Daniel Clark"]}
+          branch="Political Science"
+          committee="UNHRC"
+        />
+        <WinnerCard 
+          images={['/images/coll6.png', '/images/coll7.png', '/images/coll8.png', '/images/coll1.png']}
+          names={["Alex Johnson", "Ava Martinez", "Ethan White", "Olivia Anderson"]}
+          branch="International Relations"
+          committee="WHO"
+        />
       </div>
+    </div>
+    <div className="mt-12 text-center">
+      <h3 className="text-2xl font-bold text-red-800 mb-4">United Nations Commission on the Status of Women (UNCSW)</h3>
+      <p className="text-lg text-red-600 max-w-2xl mx-auto">
+        The UNCSW is dedicated to promoting gender equality and the empowerment of women worldwide. Join us in advancing women's rights and addressing global gender issues.
+      </p>
     </div>
   </div>
 )
