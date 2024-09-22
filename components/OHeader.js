@@ -41,7 +41,7 @@ const Oheader = () => {
                 { href: "/ink&insights", label: "Ink & Insights" },
                 { href: "/pastevents", label: "Past Events" },
                 { href: "/upcomingevents", label: "Upcoming Events" },
-                { href: "/more", label: "More" },
+                // { href: "/more", label: "More" },
             ],
         },
         { href: "/media", label: "Media" },
