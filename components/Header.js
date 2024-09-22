@@ -28,20 +28,21 @@ const Header = () => {
 
     const navItems = [
         { href: "/", label: "Home" },
-        { href: "/aboutus", label: "About Us" },
+        { href: "/aboutus", label: "AboutUs" },
         {
             href: "#",
             label: "MUN",
             dropdown: [
                 { href: "/committee", label: "MUN 1.0" },
-                { href: "/commnew", label: "Committees" },
+               
                 { href: "/page3", label: "Diplomatic Resources" },
             ]
         },
         { href: "/registration", label: "Register" },
+        { href: "/commnew", label: "Committees" },
         {
             href: "#",
-            label: "Events",
+            label: "Club",
             dropdown: [
                 { href: "/ink&insights", label: "Ink & Insights" },
                 { href: "/events", label: "Upcoming Events" },
@@ -50,7 +51,7 @@ const Header = () => {
         },
         { href: "/media", label: "Media" },
         { href: "/ContactForm", label: "Contact" },
-        { href: "/more", label: "More" },
+        // { href: "/more", label: "More" },
     ];
 
 
