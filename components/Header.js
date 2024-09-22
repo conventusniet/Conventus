@@ -25,24 +25,34 @@ const Header = () => {
         console.log('Current path:', router.pathname);
     }, [router.pathname]);
 
+
     const navItems = [
         { href: "/", label: "Home" },
         { href: "/aboutus", label: "About Us" },
+        {
+            href: "#",
+            label: "MUN",
+            dropdown: [
+                { href: "/committee", label: "MUN 1.0" },
+                { href: "/committee", label: "Committees" },
+                { href: "/page3", label: "Diplomatic Resources" },
+            ]
+        },
         { href: "/registration", label: "Register" },
         {
             href: "#",
             label: "Events",
             dropdown: [
-                { href: "/committee", label: "MUN 1.0" },
                 { href: "/ink&insights", label: "Ink & Insights" },
                 { href: "/events", label: "Upcoming Events" },
-                { href: "/page3", label: "Diplomatic Resources" },
                 { href: "/more", label: "More" },
             ],
         },
         { href: "/media", label: "Media" },
         { href: "/ContactForm", label: "Contact" },
+        { href: "/more", label: "More" },
     ];
+
 
     const leftNavItems = navItems.slice(0, Math.ceil(navItems.length / 2));
     const rightNavItems = navItems.slice(Math.ceil(navItems.length / 2));
@@ -120,10 +130,10 @@ const Header = () => {
                 >
                     <button
                         className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile
-                                ? 'text-red-800 py-4'
-                                : scrolled
-                                    ? 'text-red-800 hover:text-red-600'
-                                    : 'text-white hover:text-red-200'
+                            ? 'text-red-800 py-4'
+                            : scrolled
+                                ? 'text-red-800 hover:text-red-600'
+                                : 'text-white hover:text-red-200'
                             } ${active ? 'underline underline-offset-4' : ''}`}
                         onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
                     >
