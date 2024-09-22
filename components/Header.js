@@ -45,7 +45,8 @@ const Header = () => {
             label: "Club",
             dropdown: [
                 { href: "/ink&insights", label: "Ink & Insights" },
-                { href: "/events", label: "Upcoming Events" },
+                { href: "/pastevents", label: "Past Events" },
+                { href: "/upcomingevents", label: "Upcoming Events" },
                 { href: "/more", label: "More" },
             ],
         },
