@@ -478,7 +478,7 @@ export default function AboutPageOne() {
                         {/* <div className="max-w-max rounded-full border bg-gray-50 p-1 px-3">
                             <p className="text-xs font-semibold leading-normal md:text-sm sm:text-base">Join Us &rarr;</p>
                         </div> */}
-                        <h3 className="text-4xl sm:text-6xl mt-20 font-bold text-gray-800 mb-10 sm:mb-20 text-center">Meet our team</h3>
+                        <h3 className="text-4xl sm:text-6xl mt-20 font-bold text-gray-800 mb-10 sm:mb-20 text-center">Meet Our Team</h3>
                         <p className="max-w-4xl text-base sm:text-2xl text-gray-700 md:text-xl">
                             Our approach is straightforward — bring together a diverse, driven group of individuals and cultivate a culture that inspires everyone to achieve their best.
                         </p>

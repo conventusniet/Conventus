@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, MapPin } from 'lucide-react';
 import axios from 'axios';
 
@@ -74,6 +74,8 @@ const RegistrationForm = () => {
         }
     };
 
+    const [isHovered, setIsHovered] = useState(false);
+
     const fields = [
         { id: 'name', label: 'Name', icon: User, type: 'text' },
         { id: 'phone', label: 'Phone', icon: Phone, type: 'tel' },
@@ -139,6 +141,18 @@ const RegistrationForm = () => {
                 >
                     {loading ? 'Submitting...' : 'Register Now'}
                 </motion.button>
+                <AnimatePresence>
+                    {isHovered && (
+                        <motion.p
+                            className="mt-4 text-sm text-gray-600"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                        >
+                            Click to finalize your registration!
+                        </motion.p>
+                    )}
+                </AnimatePresence>
             </div>
         </motion.form>
     );

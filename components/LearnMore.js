@@ -57,12 +57,12 @@ const LearnMoreSection = () => {
                                 <p className="text-gray-800 mb-6 text-center flex-grow">{section.description}</p>
                                 <div className="flex justify-center">
                                     <motion.button
-                                        className="bg-red-800 text-white px-3 py-3 rounded-full hover:bg-red-900 transition duration-300 text-sm font-semibold"
+                                        className="bg-red-800 text-white px-3 py-3 rounded-full hover:bg-red-900 transition duration-300 text-sm font-semibold flex items-center justify-center"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => router.push(section.route)}
                                     >
-                                        LEARN MORE
+                                        <span className="text-yellow-300 text-lg">ㅤ➜ㅤ</span>
                                     </motion.button>
                                 </div>
                             </div>
