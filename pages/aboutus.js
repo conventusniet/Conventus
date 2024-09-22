@@ -123,11 +123,11 @@ const Carousel = () => {
                                 objectFit="cover"
                                 priority={index === 0}
                             />
-                            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            {/* <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
                                 <h2 className="text-white text-4xl md:text-6xl font-bold text-center px-4">
                                     NIET Model United Nations 2024
                                 </h2>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 ))}

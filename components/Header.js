@@ -34,7 +34,8 @@ const Header = () => {
             label: "Events",
             dropdown: [
                 { href: "/committee", label: "MUN 1.0" },
-                { href: "/events", label: "Ink & Insights" },
+                { href: "/ink&insights", label: "Ink & Insights" },
+                { href: "/events", label: "Upcoming Events" },
                 { href: "/page3", label: "Diplomatic Resources" },
                 { href: "/more", label: "More" },
             ],
