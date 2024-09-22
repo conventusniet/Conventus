@@ -76,7 +76,7 @@ const Carousel = () => {
         "/images/coll1.png",
         "/images/coll2.png",
         "/images/coll3.png",
-        "/images/coll4.png",
+        // "/images/coll4.png",
         "/images/coll5.png",
     ];
 
