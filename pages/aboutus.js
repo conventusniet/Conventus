@@ -14,8 +14,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
-
 const PersonCard = ({ name, position, image, info }) => {
     const truncateText = (text, limit) => {
         const words = text.split(' ');
@@ -27,7 +25,7 @@ const PersonCard = ({ name, position, image, info }) => {
 
     return (
         <motion.div
-            className="w-64 h-96 [perspective:1000px] group sm:w-full sm:max-w-sm md:w-80 lg:w-64"
+            className="w-72 h-96 [perspective:1000px] group sm:w-full sm:max-w-sm md:w-96 lg:w-80"
             whileHover={{ scale: 1.05 }}
         >
             <motion.div
@@ -39,7 +37,7 @@ const PersonCard = ({ name, position, image, info }) => {
                         className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
                         src={image}
                         alt={name}
-                        width={256}
+                        width={288}
                         height={384}
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-70 text-black p-4 rounded-b-xl">
@@ -64,16 +62,14 @@ const PersonCard = ({ name, position, image, info }) => {
 
 const TeamSection = ({ title, members }) => (
     <div className="my-16 sm:my-32">
-        <h3 className="text-3xl sm:text-5xl mt-20  text-gray-800 mb-10 sm:mb-20 text-center">{title}</h3>
-        <div className="flex flex-wrap justify-center gap-12 sm:gap-24">
+        <h3 className="text-3xl sm:text-5xl text-gray-800 mb-10 sm:mb-10 text-center">{title}</h3>
+        <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
             {members.map((member, index) => (
                 <PersonCard key={index} {...member} />
             ))}
         </div>
     </div>
 );
-
-
 
 const Carousel = () => {
     const images = [
@@ -123,11 +119,6 @@ const Carousel = () => {
                                 objectFit="cover"
                                 priority={index === 0}
                             />
-                            {/* <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                                <h2 className="text-white text-4xl md:text-6xl font-bold text-center px-4">
-                                    NIET Model United Nations 2024
-                                </h2>
-                            </div> */}
                         </div>
                     </div>
                 ))}
@@ -136,11 +127,7 @@ const Carousel = () => {
     );
 };
 
-
-
 export default function AboutPageOne() {
-
-
     const management = [
         {
             name: "John Doe",
@@ -203,47 +190,32 @@ export default function AboutPageOne() {
             info: "Yashraj Ranjan is the operational backbone of Conventus, excelling in logistics and process optimization. His meticulous attention to detail and exceptional problem-solving skills have transformed Conventus's internal operations, making them more efficient and effective. Yashraj has implemented several technological solutions that have streamlined membership management, event planning, and communication processes. His forward-thinking approach has not only improved the day-to-day running of Conventus but has also enhanced the overall member experience. Yashraj is known for his ability to handle complex challenges with ease and for his commitment to continuous improvement. His efforts have significantly contributed to Conventus's growth and its ability to serve an ever-expanding membership base."
         },
     ];
-    // if (isLoading) {
-    //     return <LazyLoading onLoadingComplete={() => setIsLoading(false)} />;
-    // }
 
     return (
         <div className="bg-[#EEEFF2]">
-            {/* <Oheader /> */}
             <Header/>
-
             <Carousel />
-
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24 sm:space-y-16">
                     <p className="text-3xl sm:text-5xl font-bold text-gray-900 text-center md:text-5xl md:leading-10 sm:leading-tight">
                         NIET Model United Nations 2024 by Conventus Club
                     </p>
-                    <div className="flex items-center justify-center min-h-[200px]">
+                    <div className="flex justify-center min-h-[200px]">
                         <p className="max-w-4xl text-base sm:text-2xl text-center text-gray-600 md:text-xl">
                             Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
                         </p>
                     </div>
                 </div>
-                <hr className="mt-8 sm:mt-8" />
-
-                {/* greetings */}
                 <div className="flex items-center justify-center">
                     <div className="space-y-6 sm:space-y-12 md:w-3/4">
-                        {/* <div className="max-w-max rounded-full border bg-gray-50 p-1 px-3">
-                            <p className="text-xs font-semibold leading-normal md:text-sm sm:text-base">Join Us &rarr;</p>
-                        </div> */}
-                        <h3 className="text-4xl sm:text-6xl mt-20 font-bold text-gray-800 mb-10 sm:mb-20 text-center">Meet Our Team</h3>
+                        <h3 className="text-4xl sm:text-6xl font-bold text-gray-800 text-center">Meet Our Team</h3>
                         <p className="max-w-4xl text-base sm:text-2xl text-gray-700 md:text-xl">
                             Our approach is straightforward — bring together a diverse, driven group of individuals and cultivate a culture that inspires everyone to achieve their best.
                         </p>
                     </div>
                 </div>
-
-                {/* TEAM */}
                 <TeamSection title="Management" members={management} />
                 <TeamSection title="Mentors" members={mentors} />
-
                 <div className="my-16 sm:my-32">
                     <h3 className="text-4xl sm:text-6xl mt-20 text-gray-800 mb-10 sm:mb-20 text-center">Leaders</h3>
                     <div className="flex flex-col items-center gap-12 sm:gap-24">
@@ -254,28 +226,7 @@ export default function AboutPageOne() {
                         </div>
                     </div>
                 </div>
-
-                {/*About Para*/}
                 <Aboutpara />
-
-                {/* Hiring Banner */}
-                {/* <div className="flex flex-col items-center gap-x-4 gap-y-8 sm:gap-y-16 py-16 sm:py-32 md:flex-row">
-                    <div className="space-y-6 sm:space-y-12">
-                        <p className="text-sm sm:text-base font-semibold md:text-base text-red-500">Join Conventus &rarr;</p>
-                        <p className="text-3xl sm:text-5xl font-bold md:text-4xl">We&apos;re just getting started</p>
-                        <p className="text-base sm:text-2xl text-gray-600 md:text-lg">
-                            Conventus is a dynamic student organization dedicated to fostering leadership, innovation, and community engagement among college students.
-                        </p>
-                        <RegistrationButton />
-                    </div>
-                    <div className="md:mt-0 mt-10 w-full">
-                        <img
-                            src="https://images.unsplash.com/photo-1605165566807-508fb529cf3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
-                            alt="Getting Started"
-                            className="rounded-lg"
-                        />
-                    </div>
-                </div> */}
                 <JoinSection/>
             </div>
             <hr className="mt-6 sm:mt-12" />
