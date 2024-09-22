@@ -129,7 +129,7 @@ const CommitteeDetails = ({ committee, onClose }) => (
   </motion.div>
 )
 
-const WinnerCard = ({ images, names, branch, committee }) => {
+const WinnerCard = ({ images, names, branches, committee }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextImage = () => {
@@ -151,7 +151,7 @@ const WinnerCard = ({ images, names, branch, committee }) => {
         />
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
           <h3 className="text-xl font-semibold mb-2">{names[currentIndex]}</h3>
-          <p className="text-sm mb-1">{branch}</p>
+          <p className="text-sm mb-1">{branches[currentIndex]}</p>
           <p className="text-sm">{committee}</p>
         </div>
         <button 
@@ -179,19 +179,19 @@ const WinnersSection = () => (
         <WinnerCard 
           images={['/images/coll4.png', '/images/coll5.png', '/images/coll6.png', '/images/coll7.png']}
           names={["John Doe", "Emma Wilson", "Michael Brown", "Sophia Lee"]}
-          branch="Computer Science"
+          branches={["Computer Science", "International Relations", "Political Science", "Environmental Studies"]}
           committee="UNICEF"
         />
         <WinnerCard 
           images={['/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png']}
           names={["Jane Smith", "Oliver Taylor", "Emily Davis", "Daniel Clark"]}
-          branch="Political Science"
+          branches={["Political Science", "Economics", "Sociology", "Law"]}
           committee="UNHRC"
         />
         <WinnerCard 
           images={['/images/coll6.png', '/images/coll7.png', '/images/coll8.png', '/images/coll1.png']}
           names={["Alex Johnson", "Ava Martinez", "Ethan White", "Olivia Anderson"]}
-          branch="International Relations"
+          branches={["International Relations", "Public Health", "Environmental Science", "Global Affairs"]}
           committee="WHO"
         />
       </div>
