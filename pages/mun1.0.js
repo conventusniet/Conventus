@@ -268,8 +268,12 @@ export default function CommitteesPage() {
         <div className="my-12 space-y-6">
           <p className="text-lg text-gray-700">
             CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
+            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
+            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
           </p>
           <p className="text-lg text-gray-700">
+            From addressing climate change to tackling global health crises, our diverse range of committees covers a wide spectrum of topics relevant to today's world. Join us in shaping the future of global diplomacy and make your voice heard on the international stage.
+            From addressing climate change to tackling global health crises, our diverse range of committees covers a wide spectrum of topics relevant to today's world. Join us in shaping the future of global diplomacy and make your voice heard on the international stage.
             From addressing climate change to tackling global health crises, our diverse range of committees covers a wide spectrum of topics relevant to today's world. Join us in shaping the future of global diplomacy and make your voice heard on the international stage.
           </p>
         </div>

@@ -14,10 +14,10 @@ const LearnMoreSection = () => {
             route: "/aboutus"
         },
         {
-            title: "Events",
-            description: "Learn about the events being organised at CONVENTUS and explore more.",
+            title: "MUN 1.0",
+            description: "Learn about the CONVENTUS and explore more.",
             image: "/images/coll2.png",
-            route: "/committee"
+            route: "/mun1.0"
         },
         {
             title: "REGISTRATION",
