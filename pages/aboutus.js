@@ -197,11 +197,15 @@ export default function AboutPageOne() {
             <Carousel />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24 sm:space-y-16">
-                    <p className="text-3xl sm:text-5xl font-bold text-gray-900 text-center md:text-5xl md:leading-10 sm:leading-tight">
+                    <p className="text-3xl sm:text-4xl font-bold text-gray-900 text-center md:text-4xl md:leading-10 sm:leading-tight">
                         NIET Model United Nations 2024 by Conventus Club
                     </p>
                     <div className="flex justify-center min-h-[200px]">
                         <p className="max-w-4xl text-base sm:text-2xl text-center text-gray-600 md:text-xl">
+                            Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
+                            Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
+                            Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
+                            Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
                             Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
                         </p>
                     </div>
