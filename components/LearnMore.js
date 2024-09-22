@@ -62,7 +62,7 @@ const LearnMoreSection = () => {
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => router.push(section.route)}
                                     >
-                                        <span className="text-yellow-300 text-lg">ㅤ➜ㅤ</span>
+                                        <span className="text-white text-lg">ㅤ➜ㅤ</span>
                                     </motion.button>
                                 </div>
                             </div>
