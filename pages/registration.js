@@ -315,7 +315,7 @@ const Registration = () => {
                             <RegistrationForm />
                         </motion.div>
                     </Suspense>
-                    <motion.div
+                    {/* <motion.div
                         className="mt-16 text-center"
                         variants={itemVariants}
                     >
@@ -341,7 +341,7 @@ const Registration = () => {
                                 </motion.p>
                             )}
                         </AnimatePresence>
-                    </motion.div>
+                    </motion.div> */}
                 </motion.div>
             </section>
             <Footer />

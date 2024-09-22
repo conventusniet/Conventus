@@ -1,306 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react';
+import { X, Menu, ChevronDown, ChevronRight, ChevronLeft } from 'lucide-react';
 import Aboutpara from '@/components/aboutpara'
 import { TestimonialOne } from '@/components/testmono'
+import Header from '@/components/Header';
 import Oheader from '../components/OHeader';
 import Footer from '../components/Footer';
 import RegistrationButton from '../components/RegistrationButton'
 import Image from 'next/image';
 import Link from 'next/link';
+import JoinSection from '@/components/JoinSection';
 import { motion, AnimatePresence } from 'framer-motion';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-// Add the LazyLoading component
-// const LazyLoading = ({ onLoadingComplete }) => {
-//     const [progress, setProgress] = useState(0);
-
-//     useEffect(() => {
-//         const interval = setInterval(() => {
-//             setProgress((prevProgress) => {
-//                 if (prevProgress >= 100) {
-//                     clearInterval(interval);
-//                     onLoadingComplete();
-//                     return 100;
-//                 }
-//                 return prevProgress + 1;
-//             });
-//         }, 20);
-
-//         return () => clearInterval(interval);
-//     }, [onLoadingComplete]);
-
-//     return (
-//         <div className="fixed inset-0 bg-[#AA172C] flex flex-col items-center justify-center">
-//             <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-8 overflow-hidden">
-//                 <div className="w-24 h-24 relative">
-//                     <Image
-//                         src="/images/conv-logo.png"
-//                         alt="CONVENTUS Logo"
-//                         layout="fill"
-//                         objectFit="contain"
-//                         priority
-//                     />
-//                 </div>
-//             </div>
-//             <div className="text-white text-4xl font-bold mb-4">{progress}%</div>
-//             <div className="w-64 h-2 bg-[#8A1323] rounded-full overflow-hidden">
-//                 <div
-//                     className="h-full bg-white rounded-full transition-all duration-300 ease-out"
-//                     style={{ width: `${progress}%` }}
-//                 ></div>
-//             </div>
-//             <div className="mt-4 text-white text-xl font-light">NAGATIO | SOLUTIO | ACTIO</div>
-//         </div>
-//     );
-// };
-
-
-const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [showEventsDropdown, setShowEventsDropdown] = useState(false);
-    const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const navItems = [
-        { href: "/", label: "Home" },
-        { href: "/aboutus", label: "About Us" },
-        { href: "/registration", label: "Register" },
-        {
-            href: "#",
-            label: "Events",
-            dropdown: [
-                { href: "/committee", label: "MUN" },
-                { href: "/events", label: "Ink & Insights" },
-                { href: "/more", label: "More" },
-            ],
-        },
-        { href: "/media", label: "Media" },
-        { href: "/ContactForm", label: "Contact" },
-    ];
-
-    const leftNavItems = navItems.slice(0, Math.ceil(navItems.length / 2));
-    const rightNavItems = navItems.slice(Math.ceil(navItems.length / 2));
-
-    const sidebarVariants = {
-        open: {
-            x: 0,
-            transition: {
-                type: 'spring',
-                stiffness: 300,
-                damping: 30
-            }
-        },
-        closed: {
-            x: '100%',
-            transition: {
-                type: 'spring',
-                stiffness: 300,
-                damping: 30
-            }
-        },
-    };
-
-    const itemVariants = {
-        open: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                y: { stiffness: 1000, velocity: -100 }
-            }
-        },
-        closed: {
-            y: 50,
-            opacity: 0,
-            transition: {
-                y: { stiffness: 1000 }
-            }
-        }
-    };
-
-    const dropdownVariants = {
-        hidden: {
-            opacity: 0,
-            height: 0,
-            transition: {
-                duration: 0.2
-            }
-        },
-        visible: {
-            opacity: 1,
-            height: 'auto',
-            transition: {
-                duration: 0.2
-            }
-        }
-    };
-
-    const renderNavItem = (item, isMobile = false) => {
-        if (item.dropdown) {
-            return (
-                <div
-                    className={`relative group ${isMobile ? 'w-full' : ''}`}
-                    onMouseEnter={() => !isMobile && setShowEventsDropdown(true)}
-                    onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
-                >
-                    <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
-                            }`}
-                        onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
-                    >
-                        <span>{item.label}</span>
-                        {isMobile ? <ChevronRight size={20} className={`transform transition-transform ${mobileEventsOpen ? 'rotate-90' : ''}`} /> : <ChevronDown size={16} />}
-                    </button>
-                    <AnimatePresence>
-                        {((isMobile && mobileEventsOpen) || (!isMobile && showEventsDropdown)) && (
-                            <motion.div
-                                className={`${isMobile ? 'w-full' : 'absolute left-0 mt-2 w-48'} rounded-md shadow-lg`}
-                                variants={dropdownVariants}
-                                initial="hidden"
-                                animate="visible"
-                                exit="hidden"
-                            >
-                                <div className={`rounded-md ${isMobile ? 'bg-red-100' : 'bg-red-900'} shadow-xs`}>
-                                    <div className="py-1" role="menu" aria-orientation="vertical">
-                                        {item.dropdown.map((subItem) => (
-                                            <Link
-                                                key={subItem.href}
-                                                href={subItem.href}
-                                                className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white'} hover:bg-red-800 hover:text-white transition duration-150 ease-in-out`}
-                                                role="menuitem"
-                                                onClick={() => {
-                                                    setShowEventsDropdown(false);
-                                                    setMobileEventsOpen(false);
-                                                    if (isMobile) setIsOpen(false);
-                                                }}
-                                            >
-                                                {subItem.label}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-            );
-        }
-
-        return (
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
-                <Link
-                    href={item.href}
-                    className={`block text-xl xl:text-1xl font-semibold ${isMobile ? 'text-red-800 py-4' : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
-                        }`}
-                    onClick={() => isMobile && setIsOpen(false)}
-                >
-                    {item.label}
-                </Link>
-            </motion.div>
-        );
-    };
-
-    return (
-        <>
-            <motion.header
-                className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-                    ? 'bg-white shadow-lg'
-                    : 'bg-transparent'
-                    }`}
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
-                <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-                    <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1 justify-end">
-                        {leftNavItems.map((item) => renderNavItem(item))}
-                    </nav>
-
-                    <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        <span className={`text-2xl sm:text-3xl font-bold ${scrolled
-                            ? "text-red-600"
-                            : "text-red-600 lg:text-red-600"
-                            }`}>CONVENTUS</span>
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
-                            <Image
-                                src="/images/conv-logo.png"
-                                alt="CONVENTUS Logo"
-                                width={80}
-                                height={80}
-                                className="object-contain hover:scale-110 transition-transform duration-300"
-                            />
-                        </div>
-                    </Link>
-
-                    <nav className="hidden lg:flex space-x-4 xl:space-x-8 flex-1">
-                        {rightNavItems.map((item) => renderNavItem(item))}
-                    </nav>
-
-                    <motion.button
-                        className={`lg:hidden ${scrolled ? 'text-red-600' : 'text-red-600'} z-50`}
-                        onClick={() => setIsOpen(!isOpen)}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <Menu size={24} />
-                    </motion.button>
-                </div>
-            </motion.header>
-
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl z-50 lg:hidden"
-                        variants={sidebarVariants}
-                        initial="closed"
-                        animate="open"
-                        exit="closed"
-                    >
-                        <div className="flex flex-col h-full justify-center items-center relative p-8">
-                            <motion.button
-                                className="absolute top-4 right-4 text-red-600 hover:text-red-400"
-                                onClick={() => setIsOpen(false)}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                            >
-                                <X size={24} />
-                            </motion.button>
-                            <div className="w-full space-y-6">
-                                {navItems.map((item, index) => (
-                                    <motion.div
-                                        key={item.href}
-                                        variants={itemVariants}
-                                        custom={index}
-                                        className="w-full"
-                                    >
-                                        {renderNavItem(item, true)}
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 lg:hidden"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setIsOpen(false)}
-                    />
-                )}
-            </AnimatePresence>
-        </>
-    );
-};
 
 
 const PersonCard = ({ name, position, image, info }) => {
@@ -360,17 +73,73 @@ const TeamSection = ({ title, members }) => (
     </div>
 );
 
+
+
+const Carousel = () => {
+    const images = [
+        "/images/coll1.png",
+        "/images/coll2.png",
+        "/images/coll3.png",
+        "/images/coll4.png",
+        "/images/coll5.png",
+    ];
+
+    const CustomArrow = ({ direction, onClick }) => (
+        <button
+            onClick={onClick}
+            className={`absolute z-10 top-1/2 transform -translate-y-1/2 ${direction === 'left' ? 'left-4' : 'right-4'
+                } bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 transition-all duration-300`}
+        >
+            {direction === 'left' ? (
+                <ChevronLeft size={24} className="text-gray-800" />
+            ) : (
+                <ChevronRight size={24} className="text-gray-800" />
+            )}
+        </button>
+    );
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        prevArrow: <CustomArrow direction="left" />,
+        nextArrow: <CustomArrow direction="right" />,
+    };
+
+    return (
+        <div className="w-full h-[calc(100vh-80px)] relative overflow-hidden">
+            <Slider {...settings}>
+                {images.map((img, index) => (
+                    <div key={index} className="focus:outline-none">
+                        <div className="w-full h-[calc(100vh-80px)] relative">
+                            <Image
+                                src={img}
+                                alt={`Carousel image ${index + 1}`}
+                                layout="fill"
+                                objectFit="cover"
+                                priority={index === 0}
+                            />
+                            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                                <h2 className="text-white text-4xl md:text-6xl font-bold text-center px-4">
+                                    NIET Model United Nations 2024
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </Slider>
+        </div>
+    );
+};
+
+
+
 export default function AboutPageOne() {
-    // const [isLoading, setIsLoading] = useState(true);
 
-    // useEffect(() => {
-    //     // Simulate content loading
-    //     const timer = setTimeout(() => {
-    //         setIsLoading(false);
-    //     }, 3000); // Adjust this time as needed
-
-    //     return () => clearTimeout(timer);
-    // }, []);
 
     const management = [
         {
@@ -440,27 +209,13 @@ export default function AboutPageOne() {
 
     return (
         <div className="bg-[#EEEFF2]">
-            <Oheader />
+            {/* <Oheader /> */}
+            <Header/>
+
+            <Carousel />
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Hero Map */}
                 <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24 sm:space-y-16">
-
-                    <motion.div
-                        className="w-full mt-10 sm:mt-10 space-y-4 sm:space-y-8"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <Image
-                            className="w-full object-cover md:h-[400px] sm:h-[600px]"
-                            src="/images/background.jpg"
-                            alt=""
-                            width={1200}
-                            height={600}
-                        />
-                    </motion.div>
-
                     <p className="text-3xl sm:text-5xl font-bold text-gray-900 text-center md:text-5xl md:leading-10 sm:leading-tight">
                         NIET Model United Nations 2024 by Conventus Club
                     </p>
@@ -504,7 +259,7 @@ export default function AboutPageOne() {
                 <Aboutpara />
 
                 {/* Hiring Banner */}
-                <div className="flex flex-col items-center gap-x-4 gap-y-8 sm:gap-y-16 py-16 sm:py-32 md:flex-row">
+                {/* <div className="flex flex-col items-center gap-x-4 gap-y-8 sm:gap-y-16 py-16 sm:py-32 md:flex-row">
                     <div className="space-y-6 sm:space-y-12">
                         <p className="text-sm sm:text-base font-semibold md:text-base text-red-500">Join Conventus &rarr;</p>
                         <p className="text-3xl sm:text-5xl font-bold md:text-4xl">We&apos;re just getting started</p>
@@ -520,7 +275,8 @@ export default function AboutPageOne() {
                             className="rounded-lg"
                         />
                     </div>
-                </div>
+                </div> */}
+                <JoinSection/>
             </div>
             <hr className="mt-6 sm:mt-12" />
             <Footer />
