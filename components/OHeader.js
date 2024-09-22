@@ -8,8 +8,8 @@ import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react';
 const Oheader = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [showEventsDropdown, setShowEventsDropdown] = useState(false);
-    const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
+    const [mobileEventsOpen, setMobileEventsOpen] = useState(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -28,7 +28,6 @@ const Oheader = () => {
             label: "MUN",
             dropdown: [
                 { href: "/mun1.0", label: "MUN 1.0" },
-               
                 { href: "/page3", label: "Diplomatic Resources" },
             ]
         },
@@ -41,12 +40,10 @@ const Oheader = () => {
                 { href: "/ink&insights", label: "Ink & Insights" },
                 { href: "/pastevents", label: "Past Events" },
                 { href: "/upcomingevents", label: "Upcoming Events" },
-                // { href: "/more", label: "More" },
             ],
         },
         { href: "/media", label: "Media" },
         { href: "/ContactForm", label: "Contact" },
-        // { href: "/more", label: "More" },
     ];
 
     const leftNavItems = navItems.slice(0, Math.ceil(navItems.length / 2));
@@ -119,21 +116,28 @@ const Oheader = () => {
             return (
                 <div
                     className={`relative group ${isMobile ? 'w-full' : ''}`}
-                    onMouseEnter={() => !isMobile && setShowEventsDropdown(true)}
-                    onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
+                    onMouseEnter={() => !isMobile && setActiveDropdown(item.label)}
+                    onMouseLeave={() => !isMobile && setActiveDropdown(null)}
                 >
                     <button
                         className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile
-                            ? 'text-red-800 py-4'
-                            : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
+                                ? 'text-red-800 py-4'
+                                : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
                             } ${active ? 'underline underline-offset-4' : ''}`}
-                        onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
+                        onClick={() => isMobile && setMobileEventsOpen(prev => prev === item.label ? null : item.label)}
                     >
                         <span>{item.label}</span>
-                        {isMobile ? <ChevronRight size={20} className={`transform transition-transform ${mobileEventsOpen ? 'rotate-90' : ''}`} /> : <ChevronDown size={16} />}
+                        {isMobile ? (
+                            <ChevronRight
+                                size={20}
+                                className={`transform transition-transform ${mobileEventsOpen === item.label ? 'rotate-90' : ''}`}
+                            />
+                        ) : (
+                            <ChevronDown size={16} />
+                        )}
                     </button>
                     <AnimatePresence>
-                        {((isMobile && mobileEventsOpen) || (!isMobile && showEventsDropdown)) && (
+                        {((isMobile && mobileEventsOpen === item.label) || (!isMobile && activeDropdown === item.label)) && (
                             <motion.div
                                 className={`${isMobile ? 'w-full' : 'absolute left-0 mt-2 w-48'} rounded-md shadow-lg`}
                                 variants={dropdownVariants}
@@ -150,8 +154,8 @@ const Oheader = () => {
                                                 className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white'} hover:bg-red-800 hover:text-white transition duration-150 ease-in-out ${isActive(subItem.href) ? 'underline underline-offset-4 font-bold' : ''}`}
                                                 role="menuitem"
                                                 onClick={() => {
-                                                    setShowEventsDropdown(false);
-                                                    setMobileEventsOpen(false);
+                                                    setActiveDropdown(null);
+                                                    setMobileEventsOpen(null);
                                                     if (isMobile) setIsOpen(false);
                                                 }}
                                             >
@@ -171,9 +175,9 @@ const Oheader = () => {
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
                 <Link
                     href={item.href}
-                    className={`block text-xl xl:text-1xl font-semibol ${isMobile
-                        ? 'text-red-800 py-4'
-                        : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
+                    className={`block text-xl xl:text-1xl font-semibold ${isMobile
+                            ? 'text-red-800 py-4'
+                            : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
                         } ${active ? 'underline underline-offset-4' : ''}`}
                     onClick={() => isMobile && setIsOpen(false)}
                 >
@@ -197,7 +201,6 @@ const Oheader = () => {
                     </nav>
 
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        {/* <span className={`text-2xl sm:text-3xl font-bold  ${scrolled ? "text-red-600" : "text-red-600 lg:text-red-600"}`}>CONVENTUS</span> */}
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
                                 src="/images/conv-logo.png"

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,7 +8,7 @@ import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react';
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [showEventsDropdown, setShowEventsDropdown] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
     const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
     const router = useRouter();
 
@@ -25,7 +24,6 @@ const Header = () => {
         console.log('Current path:', router.pathname);
     }, [router.pathname]);
 
-
     const navItems = [
         { href: "/", label: "Home" },
         { href: "/aboutus", label: "AboutUs" },
@@ -34,7 +32,6 @@ const Header = () => {
             label: "MUN",
             dropdown: [
                 { href: "/mun1.0", label: "MUN 1.0" },
-               
                 { href: "/page3", label: "Diplomatic Resources" },
             ]
         },
@@ -47,14 +44,11 @@ const Header = () => {
                 { href: "/ink&insights", label: "Ink & Insights" },
                 { href: "/pastevents", label: "Past Events" },
                 { href: "/upcomingevents", label: "Upcoming Events" },
-                // { href: "/more", label: "More" },
             ],
         },
         { href: "/media", label: "Media" },
         { href: "/ContactForm", label: "Contact" },
-        // { href: "/more", label: "More" },
     ];
-
 
     const leftNavItems = navItems.slice(0, Math.ceil(navItems.length / 2));
     const rightNavItems = navItems.slice(Math.ceil(navItems.length / 2));
@@ -121,29 +115,28 @@ const Header = () => {
 
     const renderNavItem = (item, isMobile = false) => {
         const active = isActive(item.href);
-        console.log(`Rendering ${item.label}, active: ${active}`);
 
         if (item.dropdown) {
             return (
                 <div
                     className={`relative group ${isMobile ? 'w-full' : ''}`}
-                    onMouseEnter={() => !isMobile && setShowEventsDropdown(true)}
-                    onMouseLeave={() => !isMobile && setShowEventsDropdown(false)}
+                    onMouseEnter={() => !isMobile && setActiveDropdown(item.label)}
+                    onMouseLeave={() => !isMobile && setActiveDropdown(null)}
                 >
                     <button
                         className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile
-                            ? 'text-red-800 py-4'
-                            : scrolled
-                                ? 'text-red-800 hover:text-red-600'
-                                : 'text-white hover:text-red-200'
+                                ? 'text-red-800 py-4'
+                                : scrolled
+                                    ? 'text-red-800 hover:text-red-600'
+                                    : 'text-white hover:text-red-200'
                             } ${active ? 'underline underline-offset-4' : ''}`}
-                        onClick={() => isMobile && setMobileEventsOpen(!mobileEventsOpen)}
+                        onClick={() => isMobile && setMobileEventsOpen(prev => prev === item.label ? null : item.label)}
                     >
                         <span>{item.label}</span>
-                        {isMobile ? <ChevronRight size={20} className={`transform transition-transform ${mobileEventsOpen ? 'rotate-90' : ''}`} /> : <ChevronDown size={16} />}
+                        {isMobile ? <ChevronRight size={20} className={`transform transition-transform ${mobileEventsOpen === item.label ? 'rotate-90' : ''}`} /> : <ChevronDown size={16} />}
                     </button>
                     <AnimatePresence>
-                        {((isMobile && mobileEventsOpen) || (!isMobile && showEventsDropdown)) && (
+                        {((isMobile && mobileEventsOpen === item.label) || (!isMobile && activeDropdown === item.label)) && (
                             <motion.div
                                 className={`${isMobile ? 'w-full' : 'absolute left-0 mt-2 w-48'} rounded-md shadow-lg`}
                                 variants={dropdownVariants}
@@ -162,8 +155,8 @@ const Header = () => {
                                                     }`}
                                                 role="menuitem"
                                                 onClick={() => {
-                                                    setShowEventsDropdown(false);
-                                                    setMobileEventsOpen(false);
+                                                    setActiveDropdown(null);
+                                                    setMobileEventsOpen(null);
                                                     if (isMobile) setIsOpen(false);
                                                 }}
                                             >
