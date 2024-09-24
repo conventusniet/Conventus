@@ -59,6 +59,7 @@ const HeroCarousel = () => {
     </div>
   )
 }
+
 const MediaGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const images = [
@@ -130,8 +131,7 @@ const MediaGallery = () => {
   );
 };
 
-
-const WinnerCard = ({ images, names, branches, committee }) => {
+const WinnerCard = ({ images, committee }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextImage = () => {
@@ -147,15 +147,10 @@ const WinnerCard = ({ images, names, branches, committee }) => {
       <div className="relative h-64 w-full">
         <Image
           src={images[currentIndex]}
-          alt={`Winner ${names[currentIndex]}`}
+          alt={`Winner from ${committee}`}
           layout="fill"
           objectFit="cover"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white">
-          <h3 className="text-xl font-semibold mb-2">{names[currentIndex]}</h3>
-          <p className="text-sm mb-1">{branches[currentIndex]}</p>
-          <p className="text-sm">{committee}</p>
-        </div>
         <button
           className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-1 transition-opacity opacity-50 hover:opacity-100"
           onClick={prevImage}
@@ -169,6 +164,9 @@ const WinnerCard = ({ images, names, branches, committee }) => {
           <ChevronRight size={24} />
         </button>
       </div>
+      <div className="bg-white p-4">
+        <p className="text-center text-lg font-semibold text-red-800">{committee}</p>
+      </div>
     </div>
   )
 }
@@ -180,20 +178,14 @@ const WinnersSection = () => (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <WinnerCard
           images={['/images/coll4.png', '/images/coll5.png', '/images/coll6.png', '/images/coll7.png']}
-          names={["John Doe", "Emma Wilson", "Michael Brown", "Sophia Lee"]}
-          branches={["Computer Science", "International Relations", "Political Science", "Environmental Studies"]}
           committee="UNICEF"
         />
         <WinnerCard
           images={['/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png']}
-          names={["Jane Smith", "Oliver Taylor", "Emily Davis", "Daniel Clark"]}
-          branches={["Political Science", "Economics", "Sociology", "Law"]}
           committee="UNHRC"
         />
         <WinnerCard
           images={['/images/coll6.png', '/images/coll7.png', '/images/coll8.png', '/images/coll1.png']}
-          names={["Alex Johnson", "Ava Martinez", "Ethan White", "Olivia Anderson"]}
-          branches={["International Relations", "Public Health", "Environmental Science", "Global Affairs"]}
           committee="WHO"
         />
       </div>
