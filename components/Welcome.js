@@ -6,7 +6,7 @@ const Welcome = () => {
     const [loopNum, setLoopNum] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(150);
 
-    const toRotate = ['Nagatio', 'Solutio', 'Actio'];
+    const toRotate = ['Negatio', 'Solutio', 'Actio'];
     const period = 1000;
 
     useEffect(() => {
