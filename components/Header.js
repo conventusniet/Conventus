@@ -33,6 +33,7 @@ const Header = () => {
             dropdown: [
                 { href: "/mun1.0", label: "MUN 1.0" },
                 { href: "/page3", label: "Diplomatic Resources" },
+                { href: "/news", label: "NewsLetter" },
             ]
         },
         { href: "/registration", label: "Register" },
