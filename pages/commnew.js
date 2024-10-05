@@ -8,7 +8,6 @@ import Header from '../components/Header'
 import Oheader from '@/components/OHeader'
 import Footer from '../components/Footer'
 
-
 const CommitteeCard = ({ logo, title, description, onClick }) => (
     <motion.div
         className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition transform hover:scale-105"
@@ -77,8 +76,6 @@ const CommitteeDetails = ({ committee, onClose }) => (
         </div>
     </motion.div>
 )
-
-
 
 export default function CommitteesPage() {
     const [selectedCommittee, setSelectedCommittee] = useState(null)
@@ -154,11 +151,35 @@ export default function CommitteesPage() {
         expectedOutcomes: "The committee will work on strategies to address global health issues, improve health systems, and respond to emerging health crises."
       },
     ]
+
+    const additionalCommittees = [
+      { 
+        logo: "/images/coll2.png", 
+        title: "International Court of Justice",
+        description: "The ICJ is the principal judicial organ of the United Nations, settling legal disputes between states and providing advisory opinions.",
+        objectives: [
+          "Resolve international legal disputes",
+          "Provide advisory opinions on legal questions",
+          "Promote the rule of international law"
+        ],
+        expectedOutcomes: "Delegates will engage in mock trials and legal proceedings, developing understanding of international law and dispute resolution."
+      },
+      { 
+        logo: "/images/coll3.png", 
+        title: "United Nations Security Council",
+        description: "The Security Council has primary responsibility for maintaining international peace and security.",
+        objectives: [
+          "Address threats to international peace",
+          "Authorize peacekeeping operations",
+          "Recommend solutions to international conflicts"
+        ],
+        expectedOutcomes: "The council will simulate crisis scenarios and work on resolutions to maintain global peace and security."
+      },
+    ]
   
     return (
       <div className="min-h-screen flex flex-col bg-red-50">
         <Oheader />
-        {/* <HeroCarousel /> */}
         <main className="flex-grow mt-20 container mx-auto px-4 py-8">
           <h1 className="text-4xl font-bold text-center mb-8 text-red-800">
             Committees
@@ -185,7 +206,7 @@ export default function CommitteesPage() {
           <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
             Offline Committees
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {offlineCommittees.map((committee, index) => (
               <CommitteeCard 
                 key={index}
@@ -196,9 +217,22 @@ export default function CommitteesPage() {
               />
             ))}
           </div>
+
+          <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
+            Additional Committees
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {additionalCommittees.map((committee, index) => (
+              <CommitteeCard 
+                key={index}
+                logo={committee.logo}
+                title={committee.title}
+                description={committee.description}
+                onClick={() => setSelectedCommittee(committee)}
+              />
+            ))}
+          </div>
         </main>
-  
-        {/* <WinnersSection /> */}
   
         <Footer />
   
@@ -212,4 +246,4 @@ export default function CommitteesPage() {
         </AnimatePresence>
       </div>
     )
-  }
+}
