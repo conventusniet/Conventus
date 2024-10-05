@@ -82,7 +82,7 @@ export default function NewsletterPage() {
   const newsletters = [
     {
       semester: "First",
-      imageUrl: "/images/coll1.png"
+      imageUrl: "/images/n1.jpg"
     },
     {
       semester: "Second",
