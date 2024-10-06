@@ -1,76 +1,84 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Share2, FileText } from 'lucide-react'
 import Image from 'next/image'
 import Oheader from '@/components/OHeader'
 import Footer from '@/components/Footer'
 
-const NewsletterCard = ({ semester, imageUrl }) => {
-  const cardRef = useRef(null)
-  const isInView = useInView(cardRef, { once: true, margin: "-100px" })
+const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
   const [showReadNow, setShowReadNow] = useState(false)
 
   useEffect(() => {
-    if (isInView) {
-      setTimeout(() => setShowReadNow(true), 500)
-    }
-  }, [isInView])
+    const timer = setTimeout(() => setShowReadNow(true), 500)
+    return () => clearTimeout(timer)
+  }, [])
 
   const handleShare = async () => {
     try {
-      await navigator.share({
-        title: `${semester} Newsletter 2023-24`,
-        url: `/pdfs/${semester.toLowerCase()}-2023-24.pdf`
-      })
+      const response = await fetch(pdfUrl)
+      const blob = await response.blob()
+      const file = new File([blob], `${semester}_Newsletter_2023-24.pdf`, { type: 'application/pdf' })
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: `${semester} Newsletter 2023-24`,
+        })
+      } else {
+        // Fallback for browsers that don't support file sharing
+        const link = document.createElement('a')
+        link.href = pdfUrl
+        link.download = `${semester}_Newsletter_2023-24.pdf`
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      }
     } catch (error) {
-      navigator.clipboard.writeText(window.location.href)
-      alert('Link copied to clipboard!')
+      console.error('Error sharing file:', error)
+      alert('Unable to share the file. You can download it directly from the "Read Now" link.')
     }
   }
 
   return (
     <motion.div
-      ref={cardRef}
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white rounded-lg shadow-lg overflow-hidden h-[600px] flex flex-col"
+      className="relative w-full aspect-[3/4] mx-auto overflow-hidden rounded-xl shadow-2xl"
     >
-      <div className="relative h-3/4">
-        <Image
-          src={imageUrl}
-          alt={`${semester} Semester Newsletter`}
-          layout="fill"
-          objectFit="cover"
-          className="transition-transform duration-300 hover:scale-105"
-        />
-      </div>
-      <div className="flex-grow p-6 flex flex-col justify-between bg-white">
-        <h3 className="text-2xl font-semibold text-red-800">
+      <Image
+        src={imageUrl}
+        alt={`${semester} Semester Newsletter`}
+        layout="fill"
+        objectFit="cover"
+        className="transition-transform duration-300 hover:scale-105"
+      />
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+        <h3 className="text-2xl font-semibold text-white mb-4">
           {semester} Semester
         </h3>
-        
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={showReadNow ? { opacity: 1 } : { opacity: 0 }}
-          className="flex justify-between items-center mt-4"
+          className="flex justify-between items-center"
         >
           <a
-            href={`/pdfs/${semester.toLowerCase()}-2023-24.pdf`}
+            href={pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center bg-red-600 text-white px-6 py-3 rounded hover:bg-red-700 transition text-lg"
+            className="inline-flex items-center bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition text-sm"
           >
-            <FileText className="mr-2" size={20} />
+            <FileText className="mr-2" size={16} />
             Read Now
           </a>
           <button
             onClick={handleShare}
-            className="p-3 text-red-600 hover:text-red-800 transition"
+            className="p-2 text-white hover:text-red-200 transition"
           >
-            <Share2 size={24} />
+            <Share2 size={20} />
           </button>
         </motion.div>
       </div>
@@ -82,38 +90,54 @@ export default function NewsletterPage() {
   const newsletters = [
     {
       semester: "First",
-      imageUrl: "/images/n1.jpg"
+      imageUrl: "/images/n1.jpg",
+      pdfUrl: "/pdfs/3 (1).pdf"
     },
     {
       semester: "Second",
-      imageUrl: "/images/coll2.png"
+      imageUrl: "/images/coll2.png",
+      pdfUrl: "/pdfs/second-semester-2023-24.pdf"
     }
   ]
 
+  const pageRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: pageRef,
+    offset: ["start start", "end start"]
+  })
+
+  const headerY = useTransform(scrollYProgress, [0, 0.2], ["0%", "-100%"])
+
   return (
-    <div className="min-h-screen flex flex-col bg-red-50">
+    <div ref={pageRef} className="min-h-screen flex flex-col bg-red-50">
       <Oheader />
-      
-      <main className="flex-grow container mx-auto px-4 py-8 mt-20">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="text-4xl font-bold text-red-800 mb-4">
+
+      <motion.div
+        style={{ y: headerY }}
+        className="fixed top-20 left-0 right-0 z-10 bg-red-50 py-12"
+      >
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-6xl font-bold text-red-800 mb-4">
             NEWSLETTER
           </h1>
-          <h2 className="text-3xl font-semibold text-red-700 mb-6">
+          <h2 className="text-4xl font-semibold text-red-700 mb-6">
             2023-24
           </h2>
-          <p className="text-lg text-red-600 mb-12">
-            Stay updated with our bi-annual newsletters covering all the important events 
+          <p className="text-xl text-red-600">
+            Stay updated with our bi-annual newsletters covering all the important events
             and achievements throughout the academic year.
           </p>
         </div>
+      </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <main className="flex-grow container mx-auto px-4 py-8 mt-[calc(100vh-25vh)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {newsletters.map((newsletter, index) => (
-            <NewsletterCard 
+            <NewsletterCard
               key={index}
               semester={newsletter.semester}
               imageUrl={newsletter.imageUrl}
+              pdfUrl={newsletter.pdfUrl}
             />
           ))}
         </div>

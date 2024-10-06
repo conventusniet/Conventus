@@ -133,6 +133,17 @@ const MediaGallery = () => {
 
 const WinnerCard = ({ images, committee }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isHovering, setIsHovering] = useState(false)
+
+  useEffect(() => {
+    let interval
+    if (isHovering) {
+      interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % images.length)
+      }, 1500) // Change image every 1.5 seconds while hovering
+    }
+    return () => clearInterval(interval)
+  }, [isHovering, images.length])
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length)
@@ -143,7 +154,11 @@ const WinnerCard = ({ images, committee }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div
+      className="bg-white rounded-lg shadow-lg overflow-hidden"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
       <div className="relative h-64 w-full">
         <Image
           src={images[currentIndex]}
