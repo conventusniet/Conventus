@@ -272,7 +272,13 @@ export default function CommitteesPage() {
           />
         </div>
 
-        <div className="my-12 space-y-6">
+        <div className="my-8 space-y-1">
+
+          {/* Heading */}
+          <h1 className="text-4xl font-bold text-center" style={{ color: '#800000' }}>Model United Nations</h1>
+          {/* Subheadings */}
+          <h2 className="text-3xl font-semibold text-center text-red-500">1st Edition</h2>
+          <h3 className="text-2xl font-semibold text-center text-red-500">2023-24</h3>
           <p className="text-lg text-gray-700">
             CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
             CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
@@ -286,6 +292,7 @@ export default function CommitteesPage() {
         </div>
 
         <div className="my-16">
+
           <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Our Team</h2>
           <div className="flex flex-wrap justify-center gap-8">
             <TeamMember

@@ -44,3 +44,7 @@ h6 {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+.nav-font {
+  font-family: 'Berlingske-Serif', serif;
+}

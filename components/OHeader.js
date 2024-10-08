@@ -121,9 +121,9 @@ const Oheader = () => {
                     onMouseLeave={() => !isMobile && setActiveDropdown(null)}
                 >
                     <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile
-                                ? 'text-red-800 py-4'
-                                : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
+                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold nav-font ${isMobile
+                            ? 'text-red-800 py-4'
+                            : (scrolled ? 'text-red-600 hover:text-red-400' : 'text-red-600 hover:text-red-400')
                             } ${active ? 'underline underline-offset-4' : ''}`}
                         onClick={() => isMobile && setMobileEventsOpen(prev => prev === item.label ? null : item.label)}
                     >
@@ -152,7 +152,7 @@ const Oheader = () => {
                                             <Link
                                                 key={subItem.href}
                                                 href={subItem.href}
-                                                className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white'} hover:bg-red-800 hover:text-white transition duration-150 ease-in-out ${isActive(subItem.href) ? 'underline underline-offset-4 font-bold' : ''}`}
+                                                className={`block px-4 py-2 text-sm nav-font ${isMobile ? 'text-red-800' : 'text-white'} hover:bg-red-800 hover:text-white transition duration-150 ease-in-out ${isActive(subItem.href) ? 'underline underline-offset-4 font-bold' : ''}`}
                                                 role="menuitem"
                                                 onClick={() => {
                                                     setActiveDropdown(null);
@@ -176,9 +176,9 @@ const Oheader = () => {
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
                 <Link
                     href={item.href}
-                    className={`block text-xl xl:text-1xl font-semibold ${isMobile
-                            ? 'text-red-800 py-4'
-                            : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
+                    className={`block text-xl xl:text-1xl font-semibold nav-font ${isMobile
+                        ? 'text-red-800 py-4'
+                        : (scrolled ? 'text-red-600 hover:text-red-600' : 'text-red-600 hover:text-red-400')
                         } ${active ? 'underline underline-offset-4' : ''}`}
                     onClick={() => isMobile && setIsOpen(false)}
                 >

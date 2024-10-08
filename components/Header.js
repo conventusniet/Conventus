@@ -125,11 +125,11 @@ const Header = () => {
                     onMouseLeave={() => !isMobile && setActiveDropdown(null)}
                 >
                     <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold ${isMobile
-                                ? 'text-red-800 py-4'
-                                : scrolled
-                                    ? 'text-red-800 hover:text-red-600'
-                                    : 'text-white hover:text-red-200'
+                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold nav-font ${isMobile
+                            ? 'text-red-800 py-4'
+                            : scrolled
+                                ? 'text-red-800 hover:text-red-600'
+                                : 'text-white hover:text-red-200'
                             } ${active ? 'underline underline-offset-4' : ''}`}
                         onClick={() => isMobile && setMobileEventsOpen(prev => prev === item.label ? null : item.label)}
                     >
@@ -178,7 +178,7 @@ const Header = () => {
                 <Link
                     href={item.href}
                     className={`
-                        block text-xl xl:text-1xl font-semibold
+                        block text-xl xl:text-1xl font-semibold nav-font
                         ${isMobile
                             ? 'text-red-800 py-4'
                             : scrolled

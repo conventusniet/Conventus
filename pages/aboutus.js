@@ -193,11 +193,13 @@ export default function AboutPageOne() {
 
     return (
         <div className="bg-[#EEEFF2]">
-            <Header/>
+            <Header />
             <Carousel />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24 sm:space-y-16">
+                <div className="flex flex-col space-y-1 pb-10 pt-12 md:pt-24 sm:space-y-1">
+                    <h1 className="text-5xl font-bold text-center">About</h1>
                     <div className="flex justify-center min-h-[200px]">
+
                         <p className="max-w-4xl text-base sm:text-2xl text-center text-gray-600 md:text-xl">
                             Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
                             Hosted by the Conventus Club, NIET MUN 2024 offers delegates a platform to explore the workings of the United Nations, sharpen diplomatic skills, and engage in global discussions. With dynamic committees, expert speakers, and interactive workshops, this year's conference promises a more immersive and enriching experience than ever before.
@@ -228,9 +230,9 @@ export default function AboutPageOne() {
                     </div>
                 </div>
                 <Aboutpara />
-                <JoinSection/>
+                <JoinSection />
             </div>
-            
+
             <hr className="mt-6 sm:mt-12" />
             <Footer />
         </div>
