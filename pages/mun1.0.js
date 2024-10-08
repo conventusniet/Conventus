@@ -261,12 +261,12 @@ export default function CommitteesPage() {
       <Header />
       <HeroCarousel />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="my-12">
+        <div className="my-8">
           <Image
             src="/images/coll1.png"
             alt="Large horizontal image"
             width={1200}
-            height={400}
+            height={300} // Reduced height from 400 to 300
             layout="responsive"
             className="rounded-lg"
           />

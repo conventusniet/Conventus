@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { ChevronLeft, ChevronRight, Volume2, VolumeX, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Volume2, VolumeX, X, Play, Pause } from 'lucide-react';
 
 
 const HeroCarousel = () => {
@@ -59,29 +59,46 @@ const HeroCarousel = () => {
     );
 };
 
-const YouTubeShort = ({ videoId }) => {
-    const [isMuted, setIsMuted] = useState(true);
-
+const YouTubeShort = ({ videoId, isPlaying, isMuted, onTogglePlay, onToggleMute }) => {
     return (
-        <div className="relative w-full pt-[177.78%]"> {/* 16:9 Aspect Ratio */}
+        <div className="relative w-full pt-[177.78%]">
             <iframe
                 className="absolute top-0 left-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${videoId}?loop=1&playlist=${videoId}&autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&rel=0&modestbranding=1&playsinline=1`}
+                src={`https://www.youtube.com/embed/${videoId}?loop=1&playlist=${videoId}&autoplay=${isPlaying ? 1 : 0}&mute=${isMuted ? 1 : 0}&controls=0&rel=0&modestbranding=1&playsinline=1&showinfo=0&iv_load_policy=3`}
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
             ></iframe>
-            <button
-                className="absolute bottom-4 right-4 bg-white p-2 rounded-full z-10"
-                onClick={() => setIsMuted(!isMuted)}
-            >
-                {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-            </button>
+            {/* Custom play button overlay */}
+            {!isPlaying && (
+                <div
+                    className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                    onClick={onTogglePlay}
+                >
+                    <div className="bg-red-600 rounded-full p-4">
+                        <Play size={48} color="white" />
+                    </div>
+                </div>
+            )}
+            {/* Control buttons */}
+            <div className="absolute bottom-4 right-4 flex space-x-2">
+                <button
+                    className="bg-white p-2 rounded-full z-10"
+                    onClick={onToggleMute}
+                >
+                    {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+                </button>
+                <button
+                    className="bg-white p-2 rounded-full z-10"
+                    onClick={onTogglePlay}
+                >
+                    {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+                </button>
+            </div>
         </div>
     );
 };
-
 
 const AuthorSection = ({ image, name, bio, reversed }) => (
     <div className={`flex flex-col md:flex-row items-center my-12 ${reversed ? 'md:flex-row-reverse' : ''}`}>
@@ -108,7 +125,7 @@ const MediaGallery = () => {
         '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
         '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
         '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
-        '/images/coll1.png', '/images/coll2.png', '/images/coll3.png','/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
+        '/images/coll1.png', '/images/coll2.png', '/images/coll3.png', '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
     ];
 
     return (
@@ -178,6 +195,21 @@ const InkAndInsightsPage = () => {
         'EGVbRNW4SJE',
         'EGVbRNW4SJE'
     ];
+    const [playingVideo, setPlayingVideo] = useState(1); // Default to middle video (index 1)
+    const [mutedVideos, setMutedVideos] = useState([true, false, true]); // Middle video unmuted by default
+
+    const handleTogglePlay = (index) => {
+        if (playingVideo !== index) {
+            // Pause and mute the previously playing video
+            setMutedVideos(prev => prev.map((_, i) => i !== index));
+        }
+        setPlayingVideo(prevIndex => prevIndex === index ? null : index);
+    };
+
+    const handleToggleMute = (index) => {
+        setMutedVideos(prev => prev.map((muted, i) => i === index ? !muted : muted));
+    };
+
     const authors = [
         { image: '/images/coll4.png', name: 'Author 1', bio: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' },
         { image: '/images/coll4.png', name: 'Author 2', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur..' },
@@ -201,7 +233,14 @@ const InkAndInsightsPage = () => {
                     <h2 className="text-3xl text-center font-bold mb-8 text-red-800">Our Students on Media</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {youtubeShorts.map((videoId, index) => (
-                            <YouTubeShort key={index} videoId={videoId} />
+                            <YouTubeShort
+                                key={index}
+                                videoId={videoId}
+                                isPlaying={playingVideo === index}
+                                isMuted={mutedVideos[index]}
+                                onTogglePlay={() => handleTogglePlay(index)}
+                                onToggleMute={() => handleToggleMute(index)}
+                            />
                         ))}
                     </div>
                 </section>

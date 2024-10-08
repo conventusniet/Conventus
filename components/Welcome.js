@@ -64,14 +64,14 @@ const Welcome = () => {
                 <div className="relative">
                     <Link href="/registration" passHref>
                         <motion.button
-                            className="inline-block mt-10 px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:bg-red-700"
+                            className="inline-block mt-20 px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:bg-red-700"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             // onHoverStart={() => setIsHovered(true)}
                             // onHoverEnd={() => setIsHovered(false)}
                         >
                             {/* <span className="mr-2">🚀</span> */}
-                            R E G I S T E R
+                            Register Now
                         </motion.button>
                     </Link>
                     {/* <AnimatePresence>
