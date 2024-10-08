@@ -28,8 +28,11 @@ const Oheader = () => {
             label: "MUN",
             dropdown: [
                 { href: "/mun1.0", label: "MUN 1.0" },
-                { href: "/page3", label: "Diplomatic Resources" },
+
+                { href: "/secrettariat", label: "Secrettariat" },
+
                 { href: "/news", label: "NewsLetter" },
+                { href: "/page3", label: "Diplomatic Resources" },
             ]
         },
         { href: "/registration", label: "Register" },

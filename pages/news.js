@@ -127,6 +127,11 @@ export default function NewsletterPage() {
             Stay updated with our bi-annual newsletters covering all the important events
             and achievements throughout the academic year.
           </p>
+
+          <p className="text-lg mt-10 text-gray-700">
+            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
+            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. 
+          </p>
         </div>
       </motion.div>
 

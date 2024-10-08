@@ -161,33 +161,6 @@ const EventsPage = () => {
       duration: "1 day",
       participants: "Limited to 100 participants"
     },
-    { 
-      image: "/images/coll7.png", 
-      title: "International Peace Symposium",
-      date: "November 11-12, 2023",
-      description: "Explore strategies for conflict resolution and peacebuilding in this two-day symposium.",
-      location: "Geneva, Switzerland",
-      duration: "2 days",
-      participants: "300+ diplomats and peace advocates"
-    },
-    { 
-      image: "/images/coll8.png", 
-      title: "Sustainable Development Goals Forum",
-      date: "January 20-22, 2024",
-      description: "Discuss progress and challenges in achieving the UN Sustainable Development Goals.",
-      location: "Tokyo, Japan",
-      duration: "3 days",
-      participants: "800+ global leaders and experts"
-    },
-    { 
-      image: "/images/coll1.png", 
-      title: "Model United Nations Conference",
-      date: "March 15-18, 2024",
-      description: "Simulate UN committees and debate global issues in this four-day conference for students.",
-      location: "London, UK",
-      duration: "4 days",
-      participants: "1500+ student delegates"
-    },
   ];
 
   return (
