@@ -178,22 +178,26 @@ const LinkTreeButton = () => (
     href="https://linktr.ee/conventusclub"
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center justify-center space-x-2 bg-[#39E09B] hover:bg-[#32C589] text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg hover:shadow-xl transition-all duration-300 max-w-md mx-auto group"
+    className="flex items-center justify-center space-x-3 bg-[#39E09B] hover:bg-[#32C589] text-white font-bold py-4 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 mx-auto group w-64"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: 0.6 }}
   >
-    <svg 
-      className="w-4 h-8 fill-current" 
-      viewBox="0 0 24 24" 
+    <svg
       xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="white"
+      className="flex-shrink-0"
     >
-      <path d="M7.953 15.066c-.08.163-.08.324-.08.486.08.517.528.897 1.052.897.446 0 .849-.243 1.015-.608l3.497-7.382c.081-.162.081-.324.081-.486-.08-.517-.529-.897-1.052-.897-.446 0-.85.243-1.015.608l-3.498 7.382zm-5.894-4.84c0 .968.783 1.751 1.75 1.751s1.75-.783 1.75-1.75-.783-1.751-1.75-1.751-1.75.783-1.75 1.75zm15.882 0c0 .968.783 1.751 1.75 1.751s1.75-.783 1.75-1.75-.783-1.751-1.75-1.751-1.75.783-1.75 1.75zm-7.941 0c0 .968.783 1.751 1.75 1.751s1.75-.783 1.75-1.75-.783-1.751-1.75-1.751-1.75.783-1.75 1.75z"/>
+      <path d="M7.5 9h9v6h-9V9zM6 7.5v9a1.5 1.5 0 001.5 1.5h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0016.5 6h-9A1.5 1.5 0 006 7.5z"/>
+      <path d="M4.5 4.5v15A1.5 1.5 0 006 21h15a1.5 1.5 0 001.5-1.5v-15A1.5 1.5 0 0021 3H6a1.5 1.5 0 00-1.5 1.5z"/>
     </svg>
-    <span className="group-hover:mr-2 transition-all duration-300">Explore Our Linktree</span>
-    <ExternalLink className="w-0 group-hover:w-6 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+    <span className="whitespace-nowrap">Our Linktree</span>
+    <ExternalLink className="w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all duration-300 flex-shrink-0" />
   </motion.a>
 );
 
