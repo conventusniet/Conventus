@@ -48,7 +48,7 @@ const Welcome = () => {
                 muted
                 className="absolute inset-0 object-cover w-full h-full z-0 brightness-50"
             >
-                <source src="/videos/67358-521707474_medium.mp4" type="video/mp4" />
+                <source src="/videos/67358-521707474_medium (1).mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
