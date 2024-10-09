@@ -196,7 +196,7 @@ const LinkTreeButton = () => (
       <path d="M7.5 9h9v6h-9V9zM6 7.5v9a1.5 1.5 0 001.5 1.5h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0016.5 6h-9A1.5 1.5 0 006 7.5z"/>
       <path d="M4.5 4.5v15A1.5 1.5 0 006 21h15a1.5 1.5 0 001.5-1.5v-15A1.5 1.5 0 0021 3H6a1.5 1.5 0 00-1.5 1.5z"/>
     </svg>
-    <span className="whitespace-nowrap">Our Linktree</span>
+    <span className="whitespace-nowrap">Explore Our Linktree</span>
     <ExternalLink className="w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all duration-300 flex-shrink-0" />
   </motion.a>
 );
