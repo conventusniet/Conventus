@@ -182,7 +182,7 @@ const LinkTreeButton = () => (
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
   >
-    <img src="/public/linktree-logo-icon.svg" alt="Linktree Icon" className="w-5 h-5" />
+    // <img src="/public/linktree-logo-icon.svg" alt="Linktree Icon" className="w-5 h-5" />
     <span className="whitespace-nowrap">Explore Our Linktree</span>
     <ExternalLink className="w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all duration-300" />
   </motion.a>
