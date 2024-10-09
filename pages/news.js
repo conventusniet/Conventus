@@ -56,9 +56,11 @@ const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
         className="transition-transform duration-300 hover:scale-105"
       />
       <div className="absolute bottom-0 left-0 right-0 p-6">
-        <h3 className="text-2xl font-semibold text-white mb-4">
-          {semester} Semester
-        </h3>
+        <div className="bg-gradient-to-r from-black/50 via-black/30 to-transparent p-2 rounded-lg inline-block mb-4">
+          <h3 className="text-2xl font-semibold text-white">
+            {semester} Semester
+          </h3>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -76,9 +78,9 @@ const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
           </a>
           <button
             onClick={handleShare}
-            className="p-2 text-white hover:text-red-200 transition"
+            className="p-2 bg-white rounded-full hover:bg-gray-100 transition"
           >
-            <Share2 size={20} />
+            <Share2 size={20} className="text-gray-800" />
           </button>
         </motion.div>
       </div>
