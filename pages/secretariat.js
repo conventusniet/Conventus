@@ -88,7 +88,7 @@ export default function SecretariatPage() {
       </motion.div>
       
       <main className="flex-grow container mx-auto px-4 py-8 mt-[40vh] md:mt-[50vh]">
-        <div className="relative w-full aspect-video mb-8">
+        <div className="relative w-full aspect-video mb-12 md:mb-16">
           <Image
             src="/images/coll1.png"
             alt="Secretariat Group Photo"
@@ -98,18 +98,18 @@ export default function SecretariatPage() {
           />
         </div>
         
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto mb-16 md:mb-24">
           <div className="relative">
             <div className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-0.5 bg-red-300"></div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-2 md:pr-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 pr-2 md:pr-4">
                 {leftMembers.map((member, index) => (
                   <SecretariatMember key={index} {...member} />
                 ))}
               </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pl-2 md:pl-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 pl-2 md:pl-4">
                 {rightMembers.map((member, index) => (
                   <SecretariatMember key={index} {...member} />
                 ))}
