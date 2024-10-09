@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, X } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, X, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Oheader from '../components/OHeader';
 import Footer from '../components/Footer';
@@ -173,34 +173,63 @@ const ContactForm = () => {
     );
 };
 
+const LinkTreeButton = () => (
+  <motion.a
+    href="https://linktr.ee/conventusclub"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center justify-center space-x-2 bg-[#39E09B] hover:bg-[#32C589] text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg hover:shadow-xl transition-all duration-300 max-w-md mx-auto group"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: 0.6 }}
+  >
+    <svg 
+      className="w-8 h-8 fill-current" 
+      viewBox="0 0 24 24" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M7.953 15.066c-.08.163-.08.324-.08.486.08.517.528.897 1.052.897.446 0 .849-.243 1.015-.608l3.497-7.382c.081-.162.081-.324.081-.486-.08-.517-.529-.897-1.052-.897-.446 0-.85.243-1.015.608l-3.498 7.382zm-5.894-4.84c0 .968.783 1.751 1.75 1.751s1.75-.783 1.75-1.75-.783-1.751-1.75-1.751-1.75.783-1.75 1.75zm15.882 0c0 .968.783 1.751 1.75 1.751s1.75-.783 1.75-1.75-.783-1.751-1.75-1.751-1.75.783-1.75 1.75zm-7.941 0c0 .968.783 1.751 1.75 1.751s1.75-.783 1.75-1.75-.783-1.751-1.75-1.751-1.75.783-1.75 1.75z"/>
+    </svg>
+    <span className="group-hover:mr-2 transition-all duration-300">Visit our Linktree</span>
+    <ExternalLink className="w-0 group-hover:w-6 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+  </motion.a>
+);
+
 const ContactPage = () => {
-    return (
-        <div className="min-h-screen flex flex-col">
-            <Oheader />
-            <main className="flex-grow bg-gradient-to-b from-gray-100 to-red-100 flex items-center justify-center px-4">
-                <div className="container mx-auto py-12 md:py-20 mt-10">
-                    <motion.h1
-                        className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-8"
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                        Welcome to Conventus
-                    </motion.h1>
-                    <motion.p
-                        className="text-xl text-center text-gray-700 mb-12"
-                        initial={{ opacity: 0, y: -30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                    >
-                        Empowering students to lead, innovate, and make a difference.
-                    </motion.p>
-                    <ContactForm />
-                </div>
-            </main>
-            <Footer />
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Oheader />
+      <main className="flex-grow bg-gradient-to-b from-gray-100 to-red-100 flex items-center justify-center px-4">
+        <div className="container mx-auto py-12 md:py-20 mt-10">
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-8"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Welcome to Conventus
+          </motion.h1>
+          <motion.p
+            className="text-xl text-center text-gray-700 mb-12"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            Empowering students to lead, innovate, and make a difference.
+          </motion.p>
+          <ContactForm />
+          
+          {/* Spacer between form and Linktree button */}
+          <div className="h-16"></div>
+          
+          <LinkTreeButton />
         </div>
-    );
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default ContactPage;
