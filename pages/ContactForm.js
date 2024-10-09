@@ -181,24 +181,10 @@ const LinkTreeButton = () => (
     className="flex items-center justify-center space-x-3 bg-[#39E09B] hover:bg-[#32C589] text-white font-bold py-4 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 mx-auto group w-64"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: 0.6 }}
   >
-    <svg 
-      className="w-5 h-5 flex-shrink-0" 
-      fill="currentColor"
-      viewBox="0 0 24 24" 
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M9.42857 8.14286C9.42857 9.70013 8.17013 10.9586 6.61286 10.9586C5.05559 10.9586 3.79714 9.70013 3.79714 8.14286C3.79714 6.58559 5.05559 5.32714 6.61286 5.32714C8.17013 5.32714 9.42857 6.58559 9.42857 8.14286Z"/>
-      <path d="M20.2029 8.14286C20.2029 9.70013 18.9444 10.9586 17.3871 10.9586C15.8299 10.9586 14.5714 9.70013 14.5714 8.14286C14.5714 6.58559 15.8299 5.32714 17.3871 5.32714C18.9444 5.32714 20.2029 6.58559 20.2029 8.14286Z"/>
-      <path d="M14.5714 17.3871C14.5714 15.8299 15.8299 14.5714 17.3871 14.5714C18.9444 14.5714 20.2029 15.8299 20.2029 17.3871C20.2029 18.9444 18.9444 20.2029 17.3871 20.2029C15.8299 20.2029 14.5714 18.9444 14.5714 17.3871Z"/>
-      <path d="M9.42857 17.3871C9.42857 18.9444 8.17013 20.2029 6.61286 20.2029C5.05559 20.2029 3.79714 18.9444 3.79714 17.3871C3.79714 15.8299 5.05559 14.5714 6.61286 14.5714C8.17013 14.5714 9.42857 15.8299 9.42857 17.3871Z"/>
-      <path d="M14.5714 12.7643C14.5714 14.3215 13.3129 15.58 11.7557 15.58C10.1984 15.58 8.94 14.3215 8.94 12.7643C8.94 11.207 10.1984 9.94857 11.7557 9.94857C13.3129 9.94857 14.5714 11.207 14.5714 12.7643Z"/>
-    </svg>
+    <img src="/public/linktree-logo-icon.svg" alt="Linktree Icon" className="w-5 h-5" />
     <span className="whitespace-nowrap">Explore Our Linktree</span>
-    <ExternalLink className="w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all duration-300 flex-shrink-0" />
+    <ExternalLink className="w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all duration-300" />
   </motion.a>
 );
 
