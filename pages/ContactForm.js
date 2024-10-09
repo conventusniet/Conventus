@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, X, ExternalLink } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Oheader from '../components/OHeader';
 import Footer from '../components/Footer';
 import axios from 'axios';
+
+
 
 const API_BASE_URL = 'https://conventus.pythonanywhere.com/api';
 
@@ -174,53 +176,75 @@ const ContactForm = () => {
 };
 
 const LinkTreeButton = () => (
-  <motion.a
-    href="https://linktr.ee/conventusclub"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center justify-center space-x-3 bg-[#39E09B] hover:bg-[#32C589] text-white font-bold py-4 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 mx-auto group w-64"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <img src="/public/linktree-logo-icon.svg" alt="Linktree Icon" className="w-5 h-5" />
-    <span className="whitespace-nowrap">Explore Our Linktree</span>
-    <ExternalLink className="w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-  </motion.a>
+    <motion.a
+        href="https://linktr.ee/conventusclub"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group inline-block bg-[#39E09B] text-white font-bold py-4 px-6 rounded-full text-lg shadow-lg transition-all duration-300 mx-auto relative overflow-hidden"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+    >
+        <span className="relative z-10">Explore Our Linktree</span>
+        <motion.div
+            className="absolute inset-0 bg-[#32C589] opacity-0 group-hover:opacity-100"
+            initial={{ scaleX: 0 }}
+            whileHover={{
+                scaleX: 1,
+                transition: { duration: 0.3 }
+            }}
+            style={{ transformOrigin: 'left' }}
+        />
+        <motion.div
+            className="absolute top-0 bottom-0 w-4 bg-white opacity-50"
+            initial={{ left: '-10%' }}
+            whileHover={{
+                left: '110%',
+                transition: {
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    duration: 1,
+                    ease: 'linear'
+                }
+            }}
+        />
+    </motion.a>
 );
 
 const ContactPage = () => {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Oheader />
-      <main className="flex-grow bg-gradient-to-b from-gray-100 to-red-100 flex items-center justify-center px-4">
-        <div className="container mx-auto py-12 md:py-20 mt-10">
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-8"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Welcome to Conventus
-          </motion.h1>
-          <motion.p
-            className="text-xl text-center text-gray-700 mb-12"
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            Empowering students to lead, innovate, and make a difference.
-          </motion.p>
-          <ContactForm />
-          
-          {/* Spacer between form and Linktree button */}
-          <div className="h-16"></div>
-          
-          <LinkTreeButton />
+    return (
+        <div className="min-h-screen flex flex-col">
+            <Oheader />
+            <main className="flex-grow bg-gradient-to-b from-gray-100 to-red-100 flex items-center justify-center px-4">
+                <div className="container mx-auto py-12 md:py-20 mt-10">
+                    <motion.h1
+                        className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-8"
+                        initial={{ opacity: 0, y: -50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        Welcome to Conventus
+                    </motion.h1>
+                    <motion.p
+                        className="text-xl text-center text-gray-700 mb-12"
+                        initial={{ opacity: 0, y: -30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                        Empowering students to lead, innovate, and make a difference.
+                    </motion.p>
+                    <ContactForm />
+
+                    {/* Spacer between form and Linktree button */}
+                    <div className="h-16"></div>
+
+                    <div className="flex justify-center">
+                        <LinkTreeButton />
+                    </div>
+                </div>
+            </main>
+            <Footer />
         </div>
-      </main>
-      <Footer />
-    </div>
-  );
+    );
 };
 
 export default ContactPage;

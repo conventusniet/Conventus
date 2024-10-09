@@ -214,7 +214,7 @@ const Header = () => {
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
-                                src="/images/conv-logo.png"
+                                src="/images/Conventus-png.png"
                                 alt="CONVENTUS Logo"
                                 width={80}
                                 height={80}
