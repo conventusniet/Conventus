@@ -193,22 +193,36 @@ const WinnersSection = () => (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <WinnerCard
           images={['/images/coll4.png', '/images/coll5.png', '/images/coll6.png', '/images/coll7.png']}
-          committee="UNICEF"
+          committee="UNSC"
         />
         <WinnerCard
           images={['/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png']}
-          committee="UNHRC"
+          committee="UNCSW"
         />
         <WinnerCard
           images={['/images/coll6.png', '/images/coll7.png', '/images/coll8.png', '/images/coll1.png']}
-          committee="WHO"
+          committee="AIPPM"
         />
       </div>
     </div>
     <div className="mt-12 text-center">
-      <h3 className="text-2xl font-bold text-red-800 mb-4">United Nations Commission on the Status of Women (UNCSW)</h3>
+      <h3 className="text-2xl font-bold text-red-800 mb-4">Winners</h3>
       <p className="text-lg text-red-600 max-w-2xl mx-auto">
-        The UNCSW is dedicated to promoting gender equality and the empowerment of women worldwide. Join us in advancing women's rights and addressing global gender issues.
+       UNSC:
+Best Delegate: Hariom Tiwari
+High Commendation: Daksh Sharma
+Special Mention: Sahil Saw
+
+AIPPM:
+Best Delegate: Sujal Arora
+High Commendation: Suraj Kumar
+Special Mention: Apurv Krishna
+
+UNCSW:
+Best Delegate: Pragya Singh
+High Commendation: Shrasti Bhatnagar
+Special Mention: Shagun Mishra
+
       </p>
     </div>
   </div>
@@ -280,15 +294,13 @@ export default function CommitteesPage() {
           <h2 className="text-3xl font-semibold text-center text-red-500">1st Edition</h2>
           <h3 className="text-2xl font-semibold text-center text-red-500">2023-24</h3>
           <p className="text-lg text-gray-700">
-            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
-            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
-            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
+            The first edition of the NIET MUN, organised by The Conventus society, took place on April 22-23, 2024, at the Plot 19 campus of NIET. The event featured four committees ,namely, United Nations Security Council, United Nations Commission on Status of Women, Al India Political Party Meet and International Press, with over 200 participants. The primary goal was to simulate United Nations proceedings, allowing participants to engage in diplomatic debates, negotiate solutions to global issues, and enhance their public speaking, research, and international relations skills.The event fostered valuable lessons in diplomacy, responsibility, and community impact. Participants showcased enthusiasm, compassion, and a commitment to making a difference. The event's success was largely due to efficient management by Secretary General Manas Gupta and club coordinators Aditree Singh, Tejasv Gupta, and Ananya Rajeev.The initiative received praise from both faculty members and local residents, who appreciated the efforts of the participants and organisers. This first edition of NIET MUN set a strong foundation for future editions.
+
+
           </p>
           <p className="text-lg text-gray-700">
-            From addressing climate change to tackling global health crises, our diverse range of committees covers a wide spectrum of topics relevant to today's world. Join us in shaping the future of global diplomacy and make your voice heard on the international stage.
-            From addressing climate change to tackling global health crises, our diverse range of committees covers a wide spectrum of topics relevant to today's world. Join us in shaping the future of global diplomacy and make your voice heard on the international stage.
-            From addressing climate change to tackling global health crises, our diverse range of committees covers a wide spectrum of topics relevant to today's world. Join us in shaping the future of global diplomacy and make your voice heard on the international stage.
-          </p>
+            Conventus aims to bring together passionate individuals from around the world to engage in discussions on pressing international issues. Its committees provide a platform for delegates to develop diplomacy skills, broaden their understanding of global affairs, and collaborate on innovative solutions. Covering topics from climate change to global health crises, Conventus encourages participants to shape the future of global diplomacy and make their voices heard.
+  </p>
         </div>
 
         <div className="my-16">
@@ -296,32 +308,27 @@ export default function CommitteesPage() {
           <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Our Team</h2>
           <div className="flex flex-wrap justify-center gap-8">
             <TeamMember
-              name="John Smith"
-              role="Secretary General"
+              name="Mr. Manish Kaushik"
               image="/images/coll1.png"
-              bio="John is a seasoned diplomat with over 10 years of experience in international relations. He leads our team with vision and dedication."
+              bio="Dean DSW "
+            />
+             <TeamMember
+              name="Ms. Kanika Jindal "
+              image="/images/coll1.png"
+              bio="Dean DSW"
             />
             <TeamMember
-              name="Emma Johnson"
-              role="Director of Operations"
+              name="Manas Gupta"
               image="/images/coll2.png"
-              bio="Emma ensures smooth running of all CONVENTUS events. Her attention to detail and organizational skills are unparalleled."
+              bio="Secretary General & Chairperson UNSC"
             />
             <TeamMember
-              name="Michael Chen"
-              role="Head of Committees"
-              image="/images/coll3.png"
-              bio="Michael oversees the development and execution of our diverse committee offerings. His creativity brings unique perspectives to global issues."
-            />
-            <TeamMember
-              name="Sophia Patel"
-              role="Outreach Coordinator"
+              name="Tejasv Gupta"
               image="/images/coll4.png"
-              bio="Sophia manages our global network of partners and delegates. Her passion for diplomacy inspires participants worldwide."
+              bio="Vice Chairperson UNSC "
             />
             <TeamMember
               name="Alex Rodriguez"
-              role="Technology Director"
               image="/images/coll5.png"
               bio="Alex leads our digital initiatives, ensuring CONVENTUS stays at the forefront of virtual diplomacy and online engagement."
             />
