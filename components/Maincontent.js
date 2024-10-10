@@ -28,7 +28,7 @@ const MainContent = () => {
               />
             </div>
             <p className="text-center text-xl font-semibold text-gray-800 italic">
-              "Empowering minds, shaping futures"
+              "Negatio | Solutio | Actio"
             </p>
           </div>
         </div>
