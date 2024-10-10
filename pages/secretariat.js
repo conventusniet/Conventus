@@ -23,41 +23,20 @@ export default function SecretariatPage() {
   const headerY = useTransform(scrollYProgress, [0, 0.2], ["0%", "-100%"])
   
   const leftMembers = [
-    { name: "John Doe", branch: "Computer Science" },
-    { name: "Jane Smith", branch: "Electrical Engineering" },
-    { name: "Alex Johnson", branch: "Mechanical Engineering" },
-    { name: "Sarah Williams", branch: "Chemical Engineering" },
-    { name: "Mike Brown", branch: "Civil Engineering" },
-    { name: "Emily Davis", branch: "Aerospace Engineering" },
-    { name: "Chris Wilson", branch: "Biotechnology" },
-    { name: "Emma Thompson", branch: "Industrial Engineering" },
-    { name: "David Lee", branch: "Materials Science" },
-    { name: "Lisa Chen", branch: "Environmental Engineering" },
-    { name: "Tom Anderson", branch: "Nuclear Engineering" },
-    { name: "Maria Garcia", branch: "Systems Engineering" },
-    { name: "Kevin Patel", branch: "Automotive Engineering" },
-    { name: "Anna Kim", branch: "Biomedical Engineering" },
-    { name: "Ryan Murphy", branch: "Structural Engineering" },
-    { name: "Sophie Martin", branch: "Petroleum Engineering" }
+    { name: "Manas Gupta", branch: "Secretary General" },
+    { name: "Tejasv Gupta", branch: "Vice Chairperson UNSC" },
+    { name: "Aditri Singh", branch: "Vice Chairperson UNCSW" },
+    { name: "Ananya Rajeev", branch: "Co-Chairperson UNCSW" },
+    { name: "Yutika Rajnak", branch: "Chairperson UNCSW" },
+    
   ]
   
   const rightMembers = [
-    { name: "Rachel Green", branch: "Electronics" },
-    { name: "Ross Geller", branch: "Information Technology" },
-    { name: "Chandler Bing", branch: "Data Science" },
-    { name: "Monica Geller", branch: "Robotics" },
-    { name: "Joey Tribbiani", branch: "Artificial Intelligence" },
-    { name: "Phoebe Buffay", branch: "Software Engineering" },
-    { name: "Ted Mosby", branch: "Architecture" },
-    { name: "Robin Scherbatsky", branch: "Telecommunications" },
-    { name: "Barney Stinson", branch: "Quantum Computing" },
-    { name: "Lily Aldrin", branch: "Network Engineering" },
-    { name: "Marshall Eriksen", branch: "Cloud Computing" },
-    { name: "Tracy McConnell", branch: "Web Development" },
-    { name: "Stuart Bloom", branch: "Cybersecurity" },
-    { name: "Penny Hofstadter", branch: "UX Design" },
-    { name: "Howard Wolowitz", branch: "Aerospace Engineering" },
-    { name: "Raj Koothrappali", branch: "Astrophysics" }
+   { name: "Akhil Pandey", branch: "Moderator AIPPM" },
+    { name: "Yashraj Ranjan", branch: "Substantive Director UNSC" },
+    { name: "Ashish Sawarn", branch: "Vice-Moderator AIPPM" },
+    { name: "Prashant Pandey", branch: "OC Head" },
+    { name: "Ashna", branch: "Rappourter AIPPM" },
   ]
   
   return (
