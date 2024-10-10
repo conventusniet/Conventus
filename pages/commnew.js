@@ -151,9 +151,7 @@ export default function CommitteesPage() {
     {
       logo: "/images/coll3.png",
       title: "Photography",
-      description: "The Photographers Committee in Model United Nations (MUN) captures the energy and spontaneity of the conference, immortalizing key moments through powerful visuals.
-
-",
+      description: "The Photographers Committee in Model United Nations (MUN) captures the energy and spontaneity of the conference, immortalizing key moments through powerful visuals.",
       objectives: [
         "- Capture the emotions, intensity, and key moments of the conference  ",
 "- Portray the atmosphere and dynamics of committee sessions",  
