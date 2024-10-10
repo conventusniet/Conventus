@@ -15,7 +15,7 @@ const Contact = () => {
                             <div className="flex items-start mb-4">
                                 <MapPin className="w-5 h-5 text-red-600 mr-2 mt-1 flex-shrink-0" />
                                 <p className="text-lg text-gray-800">
-                                    19, Institutional Area, Knowledge Park II, Greater Noida, Uttar Pradesh 201306
+                                    NIET Plot-19, Institutional Area, Knowledge Park II, Greater Noida, Uttar Pradesh 201306
                                 </p>
                             </div>
                         </div>
@@ -37,28 +37,28 @@ const Contact = () => {
                             <h3 className="text-2xl font-semibold mb-8 text-red-700 text-center">For More Information Contact Us</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                                 <ContactPerson
-                                    name="Gauri Sareen"
-                                    title="Secretary General"
-                                    phone="+919810430090"
-                                    email="sgamimun@gmail.com"
+                                    name="Manas Gupta"
+                                    title="President"
+                                    phone="+91 9289452713"
+                                    email="AIML - 4th Year"
                                 />
                                 <ContactPerson
-                                    name="Sagar CV"
-                                    title="Director General"
-                                    phone="+918373936260"
-                                    email="dgamimun@gmail.com"
+                                    name="Yashraj Ranjan"
+                                    title="Vice - President"
+                                    phone="+91 7309328195"
+                                    email="IOT - 3rd Year"
                                 />
                                 <ContactPerson
-                                    name="Adisree Telem"
-                                    title="Charge' D' Affaires"
-                                    phone="+919863020623"
-                                    email="chargedaffairsamimun@gmail.com"
+                                    name="Pragya Singh"
+                                    title="Vice - President"
+                                    phone="+91 9953552547
+                                    email="BioTech - 3rd Year"
                                 />
                                 <ContactPerson
-                                    name="Khyati Saxena"
-                                    title="Chef D' Cabinet"
-                                    phone="+917428121611"
-                                    email="cdcamimun@gmail.com"
+                                    name="Shagun Mishra"
+                                    title="Head Co-Ordinator"
+                                    phone="+91 9773649728"
+                                    email="CSE - 3rd Year"
                                 />
                             </div>
                         </div>
