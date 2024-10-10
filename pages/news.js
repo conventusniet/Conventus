@@ -131,8 +131,7 @@ export default function NewsletterPage() {
           </p>
 
           <p className="text-lg mt-10 text-gray-700">
-            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. Our committees provide a platform for delegates to hone their diplomacy skills, broaden their understanding of global affairs, and work collaboratively towards innovative solutions.
-            CONVENTUS brings together passionate individuals from around the globe to engage in meaningful discussions on pressing international issues. 
+            At Conventus, Our newsletter is designed to keep you informed and engaged with the latest updates from the Club. Each edition will feature highlights from our recent events, upcoming workshops, and opportunities to get involved. We aim to foster a sense of community and support among our members, providing valuable resources for personal and professional growth. Join us as we explore the dynamic world of Model United Nations, share insights, and celebrate the achievements of our members. Stay connected and be part of our journey toward becoming impactful global citizens! 
           </p>
         </div>
       </motion.div>
