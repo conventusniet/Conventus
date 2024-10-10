@@ -8,20 +8,20 @@ const LearnMoreSection = () => {
 
     const sections = [
         {
-            title: "ABOUT US",
-            description: "Find out about the organization and mission of CONVENTUS.",
+            title: "About Us",
+            description: "Know more about our vision and mission",
             image: "/images/coll1.png",
             route: "/aboutus"
         },
         {
-            title: "MUN 1.0",
-            description: "Learn about the CONVENTUS and explore more.",
+            title: "Model United Nations 2023",
+            description: "Explore the First Edition of Conventus MUN",
             image: "/images/coll2.png",
             route: "/mun1.0"
         },
         {
-            title: "REGISTRATION",
-            description: "Registration for CONVENTUS is now open! Register yourself and Secure your spot!",
+            title: "Registration",
+            description: "Registration are now open, Secure your front-row seat to diplomacy now!",
             image: "/images/coll3.png",
             route: "/registration"
         }
