@@ -12,15 +12,16 @@ const MainContent = () => {
                 Dear Delegates, We extend a warm welcome to you as you embark on your journey with Conventus Model United Nations Society at NIET. This is forum for aspiring leaders & diplomats, our society offers a unique opportunity to engage in meaningful discourse on pressing international issues.
               </p>
               <p>
-                At Conventus, you will hone your skills in diplomacy, negotiation, and public speaking. The society also organize engaging debates and public speaking competitions, designed to sharpen your rhetorical skills and enhance your critical thinking.
+                At Conventus, you will hone your skills in diplomacy, negotiation, and public speaking. The society also organizes engaging debates and public speaking competitions, designed to sharpen your rhetorical skills and enhance your critical thinking.
               </p>
+              <p>
                 We warmly invite you to become a part of our dynamic community of intellectuals and changemakers. Together, we will explore international relations, develop essential skills, and forge lasting friendships.
               </p>
             </div>
           </div>
           
           <div className="lg:w-2/5 flex flex-col items-center">
-            <div className="bg-gray-200 w-full max-w-sm aspect-[3/4] mb-6"> {/* Changed aspect ratio */}
+            <div className="bg-gray-200 w-full max-w-sm aspect-[3/4] mb-6">
               <img 
                 src="/images/Welcome.JPG" 
                 alt="Conventus" 
@@ -28,7 +29,7 @@ const MainContent = () => {
               />
             </div>
             <p className="text-center text-xl font-semibold text-gray-800 italic">
-              "Negatio | Solutio | Actio "
+              "Negatio | Solutio | Actio"
             </p>
           </div>
         </div>
