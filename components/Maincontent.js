@@ -9,13 +9,12 @@ const MainContent = () => {
             <h1 className="text-5xl font-bold text-red-600">Welcome to CONVENTUS</h1>
             <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Dear Delegates, We extend a warm welcome to you as you embark on your journey with Conventus Model United Nations Society at NIET. This is forum for aspiring leaders & diplomats, our society offers a unique opportunity to engage in meaningful discourse on pressing international issues.
               </p>
               <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              </p>
+                At Conventus, you will hone your skills in diplomacy, negotiation, and public speaking. The society also organize engaging debates and public speaking competitions, designed to sharpen your rhetorical skills and enhance your critical thinking.
               <p>
-                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                We warmly invite you to become a part of our dynamic community of intellectuals and changemakers. Together, we will explore international relations, develop essential skills, and forge lasting friendships.
               </p>
             </div>
           </div>
