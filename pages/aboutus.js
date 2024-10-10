@@ -181,7 +181,8 @@ export default function AboutPageOne() {
             name: "Pragya Singh",
             position: "Vice President",
             image: "/images/Vice President.jpg",
-            info: "Pragya Singh brings a wealth of experience in event management and student engagement to her role as Vice President of Conventus. Her creative approach to programming has resulted in a series of highly successful and innovative events that have become hallmarks of the Conventus experience. Pragya's dedication to understanding and meeting student needs has led to record-breaking attendance and satisfaction rates at Conventus events. She has a talent for identifying emerging trends and incorporating them into Conventus's offerings, keeping the organization at the cutting edge of student engagement. Pragya's leadership has also strengthened Conventus's relationships with sponsors and partners, securing valuable resources and opportunities for members."
+            info: "As Vice President of Conventus MUN Club, I am committed to fostering an environment where students can explore global issues, enhance their diplomatic skills, and develop into confident leaders. My role involves ensuring that every event and initiative aligns with our mission to inspire meaningful dialogue and promote global understanding. I am passionate about providing opportunities for members to grow, both personally and intellectually, as they engage in the world of international relations and diplomacy. Together, we strive to create lasting impact through thoughtful debate and collaborative solutions.
+Passionate about creating platforms where dialogue inspires change and diplomacy meets action. Dedicated to empowering students to think globally and lead with purpose"
         },
         {
             name: "Yashraj Ranjan",
