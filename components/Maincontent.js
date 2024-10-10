@@ -22,7 +22,7 @@ const MainContent = () => {
           <div className="lg:w-2/5 flex flex-col items-center">
             <div className="bg-gray-200 w-full max-w-sm aspect-[3/4] mb-6"> {/* Changed aspect ratio */}
               <img 
-                src="/images/coll4.png" 
+                src="/images/Welcome.JPG" 
                 alt="Conventus" 
                 className="w-full h-full object-cover"
               />
