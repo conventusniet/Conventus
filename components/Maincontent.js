@@ -13,7 +13,7 @@ const MainContent = () => {
               </p>
               <p>
                 At Conventus, you will hone your skills in diplomacy, negotiation, and public speaking. The society also organize engaging debates and public speaking competitions, designed to sharpen your rhetorical skills and enhance your critical thinking.
-              <p>
+              </p>
                 We warmly invite you to become a part of our dynamic community of intellectuals and changemakers. Together, we will explore international relations, develop essential skills, and forge lasting friendships.
               </p>
             </div>
