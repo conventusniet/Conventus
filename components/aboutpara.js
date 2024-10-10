@@ -8,36 +8,36 @@ export default function AboutPara() {
 
   const sections = [
     {
-      title: "Absolute Commitment",
-      content: "The Secretariat of the Conventus International Model United Nations Conference is a dedicated team exhibiting diligence and knowledge, ensuring Conventus MUN principles are upheld with utmost dedication. With a meticulous approach to every detail, the Secretariat strives to make the event a global success, bringing together participants from diverse backgrounds to foster understanding and cooperation on an international scale."
+      title: "Diplomatic Commitment",
+      content: "At Conventus NIET, we believe in the power of dialogue to resolve conflicts and foster understanding. Our club promotes diplomacy as the cornerstone of international relations, encouraging members to approach every debate with empathy, respect, and a solution-oriented mindset."
     },
     {
-      title: "International Platform",
-      content: "Conventus NIET provides a diverse platform for incorporating ideas, opinions, and perspectives, collaborating with international organizations to impart knowledge of global affairs. The platform encourages the exchange of ideas, fostering an environment where innovative solutions to global challenges can be discussed and debated, preparing students to be the global leaders of tomorrow."
+      title: "Leadership",
+      content: "At Conventus, we nurture leaders who think critically, act decisively, and inspire others. By participating in MUN conferences and club initiatives, members develop the confidence and skills needed to lead with integrity on global platforms."
     },
     {
       title: "Creativity & Innovation",
       content: "We boost creativity among students, advocating for overall growth through participation in various disciplines and activities. Conventus MUN creates an environment that nurtures out-of-the-box thinking, encouraging delegates to approach problems with creativity and collaborate in innovative ways to solve complex global issues."
     },
     {
-      title: "Brush Up Ingenuity",
-      content: "Conventus MUN provides a platform for delegates to hone strategic abilities and create solutions for grave world issues. The conference allows participants to enhance their analytical skills, develop a deeper understanding of international diplomacy, and work together to craft resolutions that can make a tangible difference in the world."
+      title: "Collaboration",
+      content: "Teamwork is at the heart of everything we do. Whether it’s drafting resolutions or organizing events, we emphasize collaboration, helping our members understand the importance of diverse perspectives in crafting sustainable solutions."
     },
     {
-      title: "Engaging Motions",
-      content: "The Conventus MUN fraternity offers intriguing motions to encourage high-quality debate on challenging global issues. Each motion is crafted to ignite thought-provoking discussions, enabling delegates to explore various perspectives, challenge the status quo, and develop meaningful conclusions that could influence global policy decisions."
+      title: "Global Awareness",
+      content: "We encourage our members to be informed about pressing global issues. Through research, discussions, and debates, we promote a deeper understanding of international affairs, helping students appreciate the complexities of our interconnected world"
     }
   ]
 
   const values = [
-    "Academic Excellence: Striving to achieve the highest standards in all our academic endeavors, fostering intellectual curiosity and critical thinking.",
-    "Integrity & Ethics: Promoting honesty, transparency, and ethical decision-making both in personal actions and within the larger global community.",
-    "Diversity & Mutual Respect: Embracing and celebrating differences, fostering an inclusive environment where every voice is heard and respected.",
-    "Expanding Horizons of Knowledge: Encouraging continuous learning and exploration of new ideas, breaking down barriers to understanding in a rapidly changing world.",
-    "Shared Governance: Advocating for collaborative decision-making and shared responsibility in leadership, empowering individuals to contribute meaningfully to governance.",
-    "Social Responsibility: Instilling a sense of responsibility towards society, encouraging actions that positively impact communities both locally and globally.",
-    "Environmental Responsibility: Emphasizing the need to protect and sustain our planet, promoting practices that contribute to environmental preservation and sustainability.",
-    "Service: Fostering a spirit of service to others, encouraging individuals to give back to their communities and to the global society through meaningful, impactful actions."
+    "We believe that education can empower individuals to think critically, challenge norms, and drive social change, equipping them with the skills necessary for effective global citizenship.",
+    "We are committed to creating an inclusive environment where diverse perspectives are valued and every member feels respected, encouraging a rich exchange of ideas and experiences.",
+    "We prioritize open and transparent communication, fostering trust and collaboration within our community. This allows members to express their views freely, leading to more meaningful discussions.",
+    "We encourage a mindset of resilience, teaching members to embrace challenges, learn from failures, and develop the perseverance necessary to succeed in both MUN and life.",
+    "We value mentorship as a vital aspect of growth. Experienced members provide guidance to newcomers, fostering a supportive community that promotes skill development and personal growth.",
+    "We are dedicated to making a positive impact beyond our campus. Our club actively seeks opportunities to engage with local and global communities, contributing to meaningful solutions for real-world issues.",
+    "We believe in the importance of ethical decision-making and accountability. Our members are encouraged to approach debates and discussions with integrity, ensuring that their actions align with our values.",
+    "We embrace the concept of lifelong learning, recognizing that growth does not end after formal education. Our club fosters a culture of continuous improvement, encouraging members to seek knowledge and experiences beyond their comfort zones."
   ]
 
   const toggleSection = (index) => {
