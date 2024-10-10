@@ -28,7 +28,7 @@ const MainContent = () => {
               />
             </div>
             <p className="text-center text-xl font-semibold text-gray-800 italic">
-              "Negatio | Solutio | Actio"
+              "Negatio | Solutio | Actio "
             </p>
           </div>
         </div>
