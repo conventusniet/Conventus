@@ -210,7 +210,7 @@ Step into the world of diplomacy, engage with global issues, and be part of a co
                     <div className="space-y-6 md:w-3/4">
                         <h3 className="text-4xl sm:text-6xl font-bold text-gray-800 text-center">Meet Our Team</h3>
                         <p className="max-w-4xl text-base sm:text-2xl text-gray-700 md:text-xl">
-                            Our approach is straightforward — bring together a diverse, driven group of individuals and cultivate a culture that inspires everyone to achieve their best.
+                            At the heart of Conventus MUN Club is a dedicated team of passionate and driven individuals who work tirelessly to bring the club’s vision to life. Together, we ensure that Conventus remains a space where students can grow, connect, and make a differen
                         </p>
                     </div>
                 </div>
