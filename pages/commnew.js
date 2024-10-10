@@ -84,23 +84,25 @@ export default function CommitteesPage() {
   const onlineCommittees = [
     {
       logo: "/images/coll4.png",
-      title: "United Nations Office On Drugs and Crimes",
-      description: "The United Nations Office on Drugs and Crime (UNODC) is a global leader in the fight against illicit drugs and international crime.",
+      title: "United Nations Security Counci;",
+      description: "The United Nations Security Council (UNSC) in Model United Nations (MUN) holds primary responsibility for maintaining international peace and security, reflecting the global commitment to address threats to peace.",
       objectives: [
-        "Develop strategies to combat transnational organized crime",
-        "Improve drug abuse prevention and treatment",
-        "Strengthen international cooperation in criminal matters"
+        "- Address threats to international peace", 
+"- Authorize peacekeeping operations",
+"- Recommend solutions to international conflicts "
+
       ],
-      expectedOutcomes: "The committee aims to produce comprehensive policy recommendations to enhance global efforts in combating drug trafficking and international crime."
+      expectedOutcomes: "Delegates will simulate crisis scenarios and collaboratively draft resolutions aimed at preserving global peace and security, developing actionable strategies to confront contemporary security threats and promoting diplomatic dialogue in an increasingly complex international landscape."
     },
     {
       logo: "/images/coll5.png",
-      title: "United Nations International Children's Emergency Fund",
-      description: "UNICEF works in over 190 countries and territories to save children's lives, to defend their rights, and to help them fulfill their potential, from early childhood through adolescence.",
+      title: "United Nations Commission On Status Of Women",
+      description: "The United Nations Commission on the Status of Women (UNCSW) in Model United Nations (MUN) focuses on   Preventing the Violation of Women’s Human Rights in Conflict and Post-Conflict Reconstruction  , addressing the unique challenges women face in conflict zones and their critical role in peacebuilding.",
       objectives: [
-        "Address child poverty and inequality",
-        "Improve access to education for all children",
-        "Enhance child protection systems globally"
+        "- Advocate for policies that protect women's rights in conflict situations", 
+"- Ensure women's active engagement in post-conflict reconstruction efforts",  
+"- Explore strategies to prevent rights violations and enhance women's participation"  
+
       ],
       expectedOutcomes: "Delegates will work towards creating actionable plans to improve the lives of children worldwide, focusing on education, health, and protection."
     },
@@ -113,68 +115,53 @@ export default function CommitteesPage() {
         "Develop strategies for climate change mitigation",
         "Propose adaptation measures for vulnerable regions"
       ],
-      expectedOutcomes: "The committee will produce a comprehensive report on the current state of climate change and propose innovative solutions for mitigation and adaptation."
+      expectedOutcomes: "Delegates will propose legal reforms, capacity-building initiatives, and safe spaces for women, empowering them as key agents of peace and societal progress while emphasizing the importance of gender equality and women's empowerment in achieving sustainable global peace and development."
     },
   ]
 
   const offlineCommittees = [
     {
       logo: "/images/coll7.png",
-      title: "Economic and Social Council",
-      description: "ECOSOC is at the heart of the United Nations system to advance the three dimensions of sustainable development – economic, social and environmental.",
+      title: "AIPPM",
+      description: "The All India Political Parties Meet (AIPPM) in Model United Nations (MUN) simulates India's dynamic political landscape, where representatives from various political parties debate and negotiate on key national issues, including economic policies, social justice, and governance.",
       objectives: [
-        "Promote sustainable economic growth",
-        "Address social inequalities",
-        "Enhance international cooperation for development"
+        "- Simulate India's domestic political environment",
+"- Debate critical national issues like poverty, healthcare, and education",  
+"- Encourage collaboration among diverse political ideologies"  
+
       ],
       expectedOutcomes: "Delegates will draft resolutions aimed at fostering sustainable development and addressing global economic and social challenges."
     },
-    {
-      logo: "/images/coll8.png",
-      title: "United Nations On Human Rights Council (Double Delegation)",
-      description: "The Human Rights Council is an inter-governmental body within the United Nations system responsible for strengthening the promotion and protection of human rights around the globe.",
-      objectives: [
-        "Address urgent human rights violations",
-        "Promote universal respect for human rights",
-        "Enhance international cooperation in human rights"
-      ],
-      expectedOutcomes: "The council aims to produce resolutions and action plans to address human rights abuses and promote global human rights standards."
-    },
-    {
-      logo: "/images/coll1.png",
-      title: "World Health Organization",
-      description: "WHO is the United Nations agency responsible for international public health.",
-      objectives: [
-        "Improve global health systems",
-        "Respond to emerging health crises",
-        "Promote health and wellness worldwide"
-      ],
-      expectedOutcomes: "The committee will work on strategies to address global health issues, improve health systems, and respond to emerging health crises."
-    },
   ]
 
-  const additionalCommittees = [
+  const  additionalCommittees = [
     {
       logo: "/images/coll2.png",
-      title: "International Court of Justice",
-      description: "The ICJ is the principal judicial organ of the United Nations, settling legal disputes between states and providing advisory opinions.",
+      title: "Journalism",
+      description: "The Journalists Committee in Model United Nations (MUN) serves as the storytellers of the International Press, observing debates across various committees and capturing the essence of discussions and delegate interactions.",
       objectives: [
-        "Resolve international legal disputes",
-        "Provide advisory opinions on legal questions",
-        "Promote the rule of international law"
+        "- Observe and report on committee debates and negotiations ",
+"- Craft insightful articles reflecting key issues and dynamics  ",
+"- Analyze the global and local impacts of MUN discussions  "
+
+
       ],
-      expectedOutcomes: "Delegates will engage in mock trials and legal proceedings, developing understanding of international law and dispute resolution."
+      expectedOutcomes: "Journalists will deliver well-crafted articles, showcasing their analytical skills and ability to communicate the significance of committee proceedings, offering a deeper understanding of the issues at hand."
     },
     {
       logo: "/images/coll3.png",
-      title: "United Nations Security Council",
-      description: "The Security Council has primary responsibility for maintaining international peace and security.",
+      title: "Photography",
+      description: "The Photographers Committee in Model United Nations (MUN) captures the energy and spontaneity of the conference, immortalizing key moments through powerful visuals.
+
+",
       objectives: [
-        "Address threats to international peace",
-        "Authorize peacekeeping operations",
-        "Recommend solutions to international conflicts"
+        "- Capture the emotions, intensity, and key moments of the conference  ",
+"- Portray the atmosphere and dynamics of committee sessions",  
+"- Create a visual narrative that brings the event to life  "
+
+
       ],
-      expectedOutcomes: "The council will simulate crisis scenarios and work on resolutions to maintain global peace and security."
+      expectedOutcomes: "Photographers will produce a visual collection that conveys the essence of the MUN, showcasing the passion and deliberation of the participants through impactful images."
     },
   ]
 
