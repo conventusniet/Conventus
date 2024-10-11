@@ -15,14 +15,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const PersonCard = ({ name, position, image, info }) => {
-    const truncateText = (text, limit) => {
-        const words = text.split(' ');
-        if (words.length > limit) {
-            return words.slice(0, limit).join(' ') + '...';
-        }
-        return text;
-    };
-
     return (
         <motion.div
             className="w-72 h-96 [perspective:1000px] group sm:w-full sm:max-w-sm md:w-96 lg:w-80"
@@ -51,7 +43,7 @@ const PersonCard = ({ name, position, image, info }) => {
                     <div className="flex min-h-full flex-col items-center justify-start">
                         <h3 className="text-2xl font-bold mb-4 text-red-800 font-sans">{name}</h3>
                         <p className="text-base leading-relaxed font-sans text-gray-700 tracking-wide">
-                            {truncateText(info, 150)}
+                            {info}
                         </p>
                     </div>
                 </div>
@@ -130,22 +122,29 @@ const Carousel = () => {
 export default function AboutPageOne() {
     const management = [
         {
-            name: "John Doe",
-            position: "CEO",
-            image: "/images/coll1.png",
-            info: "John Doe is visionary leader with over 10 years of experience in tech management. His innovative approach has guided numerous startups to success, making him a respected figure in the industry. John's expertise spans strategic planning, team building, and fostering a culture of innovation. He is passionate about leveraging technology to solve real-world problems and is known for his ability to inspire and motivate teams to achieve exceptional results. Under his leadership, the company has seen remarkable growth and has established itself as a pioneer in cutting-edge technologies."
+            name: "Dr. Om Prakash Agarwal",
+            position: "Managing Director",
+            image: "/images/mb-mfmdbanner.jpg",
+            info: "'Work is Worship'  Success is not a one-shot process. It is the result of a continuous improvement after each failure. The fear of failure needs to be captured in order for a person to learn from his failure too. It is an invaluable opportunity to rectify errors and move forward. Failure in working for a good cause is better than success in working for a wrong cause. Over the years now, NIET has built quite a special position in the private higher education sector. With its distinctive culture, it provides a clear student-centered environment in which to explore existing technical knowledge, and gain new learning at the leading edges of technology development. Our unique educational system ensures that you gain not just depth and breadth in your chosen area of specialization, but also a holistic set of skills that will equip you to face the real world. At every stage, there will be opportunities to expand your boundaries, platforms for collaboration and learning, and recognitions for those who strive to excel. Thus, I would like each one of you to join NIET and aspire as global leaders and a successful human being."
         },
         {
-            name: "Jane Smith",
-            position: "COO",
-            image: "/images/coll2.png",
-            info: "Jane Smith is an accomplished executive with a proven track record in operations and strategy. With her keen analytical skills and deep understanding of business processes, she has successfully streamlined operations across various departments. Jane's expertise in project management and resource allocation has been instrumental in optimizing the company's efficiency and productivity. She is known for her collaborative leadership style and ability to navigate complex challenges. Jane's forward-thinking approach to operations has not only improved internal processes but has also significantly enhanced customer satisfaction and company growth."
+            name: "Dr. Neema Agarwal",
+            position: "Additional Managing Director",
+            image: "/images/amdbanner.jpg",
+            info: "'Education is the most powerful weapon which you can use to change the world' - Nelson Mandela\n\nIn the course of last 20 years, many technical & management institutes have sprung up all over the country. Graduates passing out every year are highly optimistic that technical courses ensure a rewarding career. The economic, corporate, and social environments are undergoing radical changes. To survive, manage, and excel in this dynamically changing atmosphere, it demands engagement of professionals who are well informed, competent, courageous, and versatile. Beyond the academics, the curriculum at NIET is strongly linked with several recent themes like latest technologies needed by organizations, soft skills, communication, among others. Our approach has resulted in programs of study relevant to the leadership trends and challenges of tomorrow. Classroom learning is made interesting by highly qualified and experienced faculty through interactions, presentations, role plays, case studies and out bound learning programs. This is further reinforced by practical learning through industrial visits and summer training. Students regularly undergo personality development and grooming sessions that lead to both extrinsic and intrinsic confidence boosting and prepares them for the corporate world. We appreciate your interest and want you to know that we are here to bring you a leading edge technical education."
+        },
+
+        {
+            name: "Dr. Raman Batra",
+            position: "Executive Vice President",
+            image: "/images/mfevpbanner.jpg",
+            info: "This new generation is an interesting one. Most of them were born into a world where technology has always been at the forefront. These students rely on Google, texting, social media and Wi-Fi, and they view email - not letter writing - as a formal form of communication. NIET has been helping students write their own stories since its inception. Committed to providing the best jobs by creating life-changing educational opportunities and collaborative learning environments, we have stayed at the forefront of innovation in higher education, providing the tools our students need to make them industry ready from day one and make an impact in the world. NIET has a Pyramid Finishing School, which provides training to the students according to the industry requirements giving the individual student a 360 degree in employability skills. The institute has also made tie-ups with MNCs like Microsoft, Oracle, KPMG, ICICI Direct, Prometric, and Pearson. These tie-ups not only promise to enhance student employability by a manifold, but also take the lead in encouraging 'innovative' learning like never before. Taking the league forward, we have established various innovation labs to provide students hands-on experience in various modern-day technologies. We impart experiential learning and thereby progressively enhance the competencies of our teaching staff and our students. I, thus, invite you to join our movement to create corporate citizens who become role models, wherever they go, for developing their professional career. I promise you a challenging academic experience, with an international flavour, which will truly transform your lives."
         },
         {
-            name: "Mike Johnson",
-            position: "CTO",
-            image: "/images/coll3.png",
-            info: "Mike Johnson is a tech enthusiast and innovator, passionate about pushing the boundaries of technology. With a background in computer science and years of experience in software development, Mike has been at the forefront of adopting and implementing cutting-edge technologies. His expertise spans artificial intelligence, blockchain, and cloud computing. Mike is known for fostering a culture of continuous learning and innovation within the tech team. He has spearheaded several groundbreaking projects that have positioned the company as a technology leader in the industry. Mike's vision and technical acumen continue to drive the company's technological advancements."
+            name: "Dr. Vinod M Kapse",
+            position: "Director",
+            image: "/images/mfdbanner.jpg",
+            info: "Welcome to Noida Institute of Engineering & Technology, Gr. Noida. Ever since its inception in 2001, our endeavour at NIET has been to provide excellent quality of education and training to young minds aspiring to become engineers, managers, pharmacists, and technocrats. In order to achieve this goal, we have established an infrastructure that conforms to the bests in the world. Our faculty members are highly talented and qualified. Additionally, we invite the finest minds from the industry and academia as guest lecturers. With the help of a very supportive staff, we ensure a healthy learning atmosphere for our students. We motivate our students to dream big and guarantee that right spirit and necessary talent are inculcated in the students to help them realize their objectives. We also continuously strive to instil ethical values in our wards so that they become responsible citizens of tomorrow. NIET has always stood for quality and excellence and we make every effort to constantly upgrade and improve ourselves. These efforts have been recognized, appreciated, and awarded by prestigious educational bodies both in India and abroad. I wish you the very best as you choose to become a part of this exciting and vibrant learning community."
         },
     ];
 
