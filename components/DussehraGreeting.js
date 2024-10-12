@@ -6,7 +6,7 @@ const DussehraGreeting = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
-    const audio = new Audio('/audio/festive-sound.mp3');
+    const audio = new Audio('/Music/Jai Shree Ram Ringtone Download Mp3 - MobCup.Com.Co.mp3');
     audio.play();
 
     return () => {
