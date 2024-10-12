@@ -48,12 +48,18 @@ const LazyLoading = ({ onLoadingComplete }) => {
 };
 
 const sliderImages = [
-    '/images/slider1.png',
-    '/images/slider2.png',
-    '/images/slider3.png',
-    '/images/slider4.png',
-    '/images/slider5.png',
-    '/images/slider6.png',
+        '/images/artbinnealeteam.JPG',
+        '/images/sahityaajtakteam.JPG',
+        '/images/coll1.jpg',
+        '/images/coll2.jpg',
+        '/images/coll3.jpg',
+        '/images/coll4.jpg',
+        '/images/coll5.jpg',
+        '/images/coll6.jpg',
+        '/images/coll7.jpg',
+        '/images/coll8.jpg',
+        '/images/amimunteam.jpg',
+
 ];
 
 const collageImages = [
