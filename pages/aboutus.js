@@ -66,8 +66,8 @@ const TeamSection = ({ title, members }) => (
 
 const Carousel = () => {
     const images = [
-        "/images/artbinnealeteam.JPG/.jpg",
-        "/images/sahityaajtakteam.JPG/.jpg",
+        "/images/artbinnealeteam.JPG",
+        "/images/sahityaajtakteam.JPG",
         "/images/coll1.jpg",
         "/images/coll2.jpg",
         "/images/coll3.jpg",
