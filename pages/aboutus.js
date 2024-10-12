@@ -66,14 +66,17 @@ const TeamSection = ({ title, members }) => (
 
 const Carousel = () => {
     const images = [
+        "/images/artbinnealeteam.JPG/.jpg",
+        "/images/sahityaajtakteam.JPG/.jpg",
         "/images/coll1.jpg",
         "/images/coll2.jpg",
         "/images/coll3.jpg",
         "/images/coll4.jpg",
+        "/images/coll5.jpg",
         "/images/coll6.jpg",
         "/images/coll7.jpg",
         "/images/coll8.jpg",
-        "/images/coll9.jpg",
+        "/images/amimunteam.jpg",
     ];
 
     const CustomArrow = ({ direction, onClick }) => (
