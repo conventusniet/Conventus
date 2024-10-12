@@ -81,7 +81,7 @@ const CommitteeDetails = ({ committee, onClose }) => (
 export default function CommitteesPage() {
   const [selectedCommittee, setSelectedCommittee] = useState(null)
 
-  const UnitedNationsCommittees = [
+  const UNCommittees = [
     {
       logo: "/images/coll2.jpg",
       title: "United Nations Security Council;",
@@ -105,7 +105,7 @@ export default function CommitteesPage() {
 
       ],
       expectedOutcomes: "Delegates will propose legal reforms, capacity-building initiatives, and safe spaces for women, empowering them as key agents of peace and societal progress while emphasizing the importance of gender equality and women's empowerment in achieving sustainable global peace and development.",
-    }
+    },
     {
       logo: "/images/coll6.png",
       title: "United Nations Human Rights Council",
@@ -120,7 +120,7 @@ export default function CommitteesPage() {
     },
   ]
 
-  const IndianCommittees = [
+  const IndianComittees = [
     {
       logo: "/images/commaippm.jpg",
       title: "AIPPM",
@@ -149,7 +149,7 @@ export default function CommitteesPage() {
     },
   ]
 
-  const  International Press = [
+  const  InternationalPress = [
     {
       logo: "/images/coll6.png",
       title: "Journalism",
@@ -200,10 +200,10 @@ export default function CommitteesPage() {
         </p>
 
         <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
-          Online Committees
+          UN Committees
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {onlineCommittees.map((committee, index) => (
+          {UNCommittees.map((committee, index) => (
             <CommitteeCard
               key={index}
               logo={committee.logo}
@@ -228,10 +228,10 @@ export default function CommitteesPage() {
         </div>
 
         <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
-          Offline Committees
+        International Press
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {offlineCommittees.map((committee, index) => (
+          {InternationalPress.map((committee, index) => (
             <CommitteeCard
               key={index}
               logo={committee.logo}
@@ -256,10 +256,10 @@ export default function CommitteesPage() {
         </div>
 
         <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
-          Additional Committees
+          Indian Committees
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {additionalCommittees.map((committee, index) => (
+          {IndianComittees.map((committee, index) => (
             <CommitteeCard
               key={index}
               logo={committee.logo}
