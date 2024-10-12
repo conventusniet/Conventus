@@ -153,19 +153,19 @@ export default function AboutPageOne() {
         {
             name: "Dr. Manish Kaushik",
             position: "Dean Student Welfare",
-            image: "/images/coll4.png",
+            image: "/images/manishkaushik.png",
             info: "Welfare of student is of utmost importance to us. The office of Dean Students' Welfare is responsible for all the aspects of students' welfare. The office therefore always motivates the students towards their bright future by engaging them in different academic as well as co-curricular activities so as to fulfill their dreams. The office strives to enhance the students' overall personality and to provide better career opportunities. The office looks after the functioning of various societies and clubs under which students take active participation."
         },
         {
             name: "Miss Kanika Jindal",
             position: "Associate Dean Student Welfare",
-            image: "/images/coll5.png",
+            image: "/images/kanika.png",
             info: "Is working as an Associate Dean Student Welfare and Assistant Professor in the Department of Electronics and Communication Engineering with experience of 13 years. She is graduated with honors in Electronics and Communication Engineering from Uttar Pradesh Technical University in 2010. She is Gold Medalist in M.Tech (VLSI Design) from Uttar Pradesh Technical University in 2012. She is young and dynamic in organizing cultural and technical events."
         },
         {
             name: "Neeti Taneja Mam",
             position: "Faculty Coordinator Conventus",
-            image: "/images/coll6.png",
+            image: "/images/neetitaneja.png",
             info: "Neeti Taneja, as the faculty coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. Her leadership and support have significantly contributed to the growth and success of the club, helping students develop their skills in public speaking, diplomacy, and event management. She is also known for her academic excellence and dedication to the IT department, fostering an environment that encourages innovation and collaborative learning.."
         },
     ];
