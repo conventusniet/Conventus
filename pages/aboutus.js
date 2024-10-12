@@ -180,13 +180,13 @@ export default function AboutPageOne() {
         {
             name: "Pragya Singh",
             position: "Vice President",
-            image: "/images/Vice President.jpg",
+            image: "/images/pragyasingh.jpg",
             info: "As Vice President of Conventus MUN Club, I am committed to fostering an environment where students can explore global issues, enhance their diplomatic skills, and develop into confident leaders. My role involves ensuring that every event and initiative aligns with our mission to inspire meaningful dialogue and promote global understanding. I am passionate about providing opportunities for members to grow, both personally and intellectually, as they engage in the world of international relations and diplomacy. Together, we strive to create lasting impact through thoughtful debate and collaborative solutions. Passionate about creating platforms where dialogue inspires change and diplomacy meets action. Dedicated to empowering students to think globally and lead with purpose"
         },
         {
             name: "Yashraj Ranjan",
             position: "Vice President",
-            image: "/images/vice President2.jpg",
+            image: "/images/yashrajranjan.jpg",
             info: "Yashraj Ranjan is the operational backbone of Conventus, excelling in logistics and process optimization. His meticulous attention to detail and exceptional problem-solving skills have transformed Conventus's internal operations, making them more efficient and effective. Yashraj has implemented several technological solutions that have streamlined membership management, event planning, and communication processes. His forward-thinking approach has not only improved the day-to-day running of Conventus but has also enhanced the overall member experience. Yashraj is known for his ability to handle complex challenges with ease and for his commitment to continuous improvement. His efforts have significantly contributed to Conventus's growth and its ability to serve an ever-expanding membership base."
         },
     ];
