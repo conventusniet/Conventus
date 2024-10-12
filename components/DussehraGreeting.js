@@ -1,76 +1,147 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, VolumeX, Volume2 } from 'lucide-react';
 
-const DussehraGreeting = ({ onClose }) => {
-  const [isOpen, setIsOpen] = useState(true);
+const AutoCurtainReveal = ({ children, onClose }) => {
+  const [isRevealed, setIsRevealed] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isAudioLoaded, setIsAudioLoaded] = useState(false);
+  const audioRef = useRef(null);
 
   useEffect(() => {
-    const audio = new Audio('/Music/Jai Shree Ram Ringtone Download Mp3 - MobCup.Com.Co.mp3');
-    audio.play();
+    audioRef.current = new Audio('/Music/Jai Shree Ram Ringtone Download Mp3 - MobCup.Com.Co.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.autoplay = true;
+    audioRef.current.muted = false; // Ensure it's not muted by default
+
+    const playAudio = () => {
+      audioRef.current.play().catch(error => {
+        console.log('Autoplay prevented:', error);
+        // If autoplay is prevented, we'll unmute and try again when the user interacts
+        setIsMuted(true);
+      });
+    };
+
+    const handleCanPlayThrough = () => {
+      setIsAudioLoaded(true);
+      playAudio();
+    };
+
+    audioRef.current.addEventListener('canplaythrough', handleCanPlayThrough);
+
+    // Attempt to play as soon as possible
+    playAudio();
 
     return () => {
-      audio.pause();
-      audio.currentTime = 0;
+      if (audioRef.current) {
+        audioRef.current.removeEventListener('canplaythrough', handleCanPlayThrough);
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
     };
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsRevealed(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !audioRef.current.muted;
+      setIsMuted(audioRef.current.muted);
+      if (!audioRef.current.muted) {
+        audioRef.current.play().catch(error => console.log('Audio playback failed:', error));
+      }
+    }
+  };
+
   const closeModal = () => {
-    setIsOpen(false);
-    setTimeout(onClose, 500);
+    setIsRevealed(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    setTimeout(onClose, 1000);
+  };
+
+  const curtainVariants = {
+    closed: (i) => ({
+      clipPath: i === 0 ? 'inset(0 0 50% 0)' : 'inset(50% 0 0 0)',
+    }),
+    open: (i) => ({
+      clipPath: i === 0 ? 'inset(0 0 100% 0)' : 'inset(100% 0 0 0)',
+      transition: {
+        duration: 2,
+        ease: "easeInOut",
+        delay: 0.5,
+      },
+    }),
   };
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
+        onClick={closeModal}
+      >
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
-          onClick={closeModal}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative w-full max-w-3xl bg-blue-900 rounded-lg shadow-2xl overflow-hidden"
+          style={{ height: '80vh' }}
+          onClick={(e) => e.stopPropagation()}
         >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative w-full max-w-3xl bg-blue-900 rounded-lg shadow-2xl overflow-hidden"
-            style={{ height: '80vh' }}
-            onClick={(e) => e.stopPropagation()}
+          <button
+            onClick={closeModal}
+            className="absolute top-2 right-2 text-white hover:text-gray-300 transition-colors z-30 p-2"
+            aria-label="Close"
           >
-            <button
-              onClick={closeModal}
-              className="absolute top-2 right-2 text-white hover:text-gray-300 transition-colors z-20 p-2"
-              aria-label="Close"
-            >
-              <X size={32} />
-            </button>
+            <X size={32} />
+          </button>
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-2 right-2 text-white hover:text-gray-300 transition-colors z-30 p-2"
+            aria-label={isMuted ? "Unmute" : "Mute"}
+          >
+            {isMuted ? <VolumeX size={32} /> : <Volume2 size={32} />}
+          </button>
+          <div className="relative z-10 p-8 h-full flex items-center justify-center">
+            {children}
+          </div>
+          {[0, 1].map((i) => (
             <motion.div
-              initial={{ y: '-100%' }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="absolute inset-0 bg-gradient-to-b from-yellow-400 to-orange-500"
-              style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)' }}
+              key={i}
+              custom={i}
+              variants={curtainVariants}
+              initial="closed"
+              animate={isRevealed ? "open" : "closed"}
+              className="absolute inset-0 bg-gradient-to-b from-orange-500 to-yellow-400 z-20"
             />
-            <motion.div
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="absolute inset-0 bg-gradient-to-t from-yellow-400 to-orange-500"
-              style={{ clipPath: 'polygon(0 25%, 100% 0%, 100% 100%, 0 100%)' }}
-            />
-            <div className="relative z-10 p-8 h-full flex items-center justify-center">
-              <img
-                src="/images/Dussehra Instagram Post.png"
-                alt="Happy Dussehra"
-                className="max-w-full max-h-full object-contain rounded-lg shadow-md"
-              />
-            </div>
-          </motion.div>
+          ))}
         </motion.div>
-      )}
+      </motion.div>
     </AnimatePresence>
+  );
+};
+
+const DussehraGreeting = ({ onClose }) => {
+  return (
+    <AutoCurtainReveal onClose={onClose}>
+      <img
+        src="/images/Dussehra Instagram Post.png"
+        alt="Happy Dussehra"
+        className="w-full h-full object-contain"
+      />
+    </AutoCurtainReveal>
   );
 };
 
