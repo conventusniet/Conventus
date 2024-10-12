@@ -8,6 +8,7 @@ import LearnMoreSection from '../components/LearnMore';
 import Footer from '../components/Footer';
 import LazyLoading from '../components/LazyLoading';
 import DussehraGreeting from '../components/DussehraGreeting';
+import ConventusChatbot from '@/components/ConventusChatBot';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -84,6 +85,7 @@ export default function Home() {
         <Maincontent />
         <LearnMoreSection />
         <Contact />
+        <ConventusChatbot/>
       </main>
       <Footer />
     </>
