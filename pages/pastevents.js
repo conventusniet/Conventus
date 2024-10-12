@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { X, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
-
+import ConventusChatbot from '@/components/ConventusChatBot';
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
@@ -214,6 +214,7 @@ const EventsPage = () => {
             />
           ))}
         </div>
+        <ConventusChatbot/>
       </main>
       <Footer />
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Oheader from '../components/OHeader';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu } from 'lucide-react';
+import ConventusChatbot from '@/components/ConventusChatBot';
 // Lazy load the RegistrationForm component
 const RegistrationForm = lazy(() => import('./RegistrationForm'));
 const Header = () => {
@@ -344,6 +345,7 @@ const Registration = () => {
                     </motion.div> */}
                 </motion.div>
             </section>
+            <ConventusChatbot/>
             <Footer />
         </>
     );

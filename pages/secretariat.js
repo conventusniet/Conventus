@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Oheader from '@/components/OHeader'
 import Footer from '@/components/Footer'
-
+import ConventusChatbot from '@/components/ConventusChatBot'
 const SecretariatMember = ({ name, branch }) => (
   <div className="mb-4 text-center">
     <h3 className="text-lg md:text-xl font-semibold text-red-800">{name}</h3>
@@ -96,6 +96,7 @@ export default function SecretariatPage() {
             </div>
           </div>
         </div>
+        <ConventusChatbot/>
       </main>
       
       <Footer />

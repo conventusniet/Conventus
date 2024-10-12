@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-
+import ConventusChatbot from '@/components/ConventusChatBot'
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const slides = [
@@ -341,6 +341,7 @@ export default function CommitteesPage() {
         <h2 className="text-3xl mt-20 text-center font-bold mb-8 text-red-800">Media Gallery</h2>
         <MediaGallery />
       </section>
+      <ConventusChatbot/>
       <Footer />
     </div>
   )

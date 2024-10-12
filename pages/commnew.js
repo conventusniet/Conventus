@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
-
+import ConventusChatbot from '@/components/ConventusChatBot'
 import Link from 'next/link'
 import Oheader from '@/components/OHeader'
 import Footer from '../components/Footer'
@@ -257,6 +257,7 @@ export default function CommitteesPage() {
             </motion.button>
           </Link>
         </div>
+        <ConventusChatbot/>
       </main>
 
       <Footer />

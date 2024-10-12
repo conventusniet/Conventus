@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Oheader from '../components/OHeader';
 import Footer from '../components/Footer';
 import axios from 'axios';
-
+import ConventusChatbot from '@/components/ConventusChatBot';
 
 
 const API_BASE_URL = 'https://conventus.pythonanywhere.com/api';
@@ -267,7 +267,9 @@ const ContactPage = () => {
                         <LinkTreeButton />
                     </div>
                 </div>
+
             </main>
+            <ConventusChatbot/>
             <Footer />
         </div>
     );

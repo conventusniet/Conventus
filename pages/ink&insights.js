@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ChevronLeft, ChevronRight, Volume2, VolumeX, X, Play, Pause } from 'lucide-react';
-
+import ConventusChatbot from '@/components/ConventusChatBot';
 
 const HeroCarousel = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -262,6 +262,7 @@ const InkAndInsightsPage = () => {
                     <h2 className="text-3xl text-center font-bold mb-8 text-red-800">Media Gallery</h2>
                     <MediaGallery />
                 </section>
+                <ConventusChatbot/>
             </main>
             <Footer />
         </div>

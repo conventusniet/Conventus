@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
+import ConventusChatbot from '@/components/ConventusChatBot';
 const LazyLoading = ({ onLoadingComplete }) => {
     const [progress, setProgress] = useState(0);
 
@@ -213,6 +213,7 @@ const MediaPage = () => {
                         </div>
                     </div>
                 </section>
+                <ConventusChatbot/>
             </main>
 
             <Footer />

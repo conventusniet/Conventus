@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ConventusChatbot from '@/components/ConventusChatBot';
 
 const PersonCard = ({ name, position, image, info }) => {
     return (
@@ -225,6 +226,7 @@ export default function AboutPageOne() {
                 </div>
                 <Aboutpara />
                 <JoinSection />
+                <ConventusChatbot/>
             </div>
 
             <hr className="mt-6 sm:mt-12" />

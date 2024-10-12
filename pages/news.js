@@ -6,7 +6,7 @@ import { Share2, FileText } from 'lucide-react'
 import Image from 'next/image'
 import Oheader from '@/components/OHeader'
 import Footer from '@/components/Footer'
-
+import ConventusChatbot from '@/components/ConventusChatBot'
 const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
   const [showReadNow, setShowReadNow] = useState(false)
 
@@ -147,6 +147,7 @@ export default function NewsletterPage() {
             />
           ))}
         </div>
+        <ConventusChatbot/>
       </main>
 
       <Footer />
