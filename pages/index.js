@@ -30,9 +30,50 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>conventus - College Club</title>
-        <meta name="description" content="Your website description" />
+        <title>Conventus - NIET College Club | Model United Nations (MUN)</title>
+        <meta name="description" content="Conventus is the premier college club at NIET, focusing on Model United Nations (MUN) and fostering global awareness, leadership, and diplomatic skills among students." />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.conventusmun.com/" />
+        <meta property="og:title" content="Conventus - NIET College Club | Model United Nations (MUN)" />
+        <meta property="og:description" content="Join Conventus, the leading MUN club at NIET, and develop your diplomatic skills, global awareness, and leadership abilities." />
+        <meta property="og:image" content="https://www.conventusmun.com/og-image.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.conventusmun.com/" />
+        <meta property="twitter:title" content="Conventus - NIET College Club | Model United Nations (MUN)" />
+        <meta property="twitter:description" content="Join Conventus, the leading MUN club at NIET, and develop your diplomatic skills, global awareness, and leadership abilities." />
+        <meta property="twitter:image" content="https://www.conventusmun.com/twitter-image.jpg" />
+
+        {/* Keywords */}
+        <meta name="keywords" content="Conventus, MUN, Model United Nations, NIET, college club, diplomatic skills, global awareness, leadership, student organization, Noida" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://www.conventusmun.com/" />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Conventus",
+              "description": "Conventus is the premier college club at NIET, focusing on Model United Nations (MUN) and fostering global awareness, leadership, and diplomatic skills among students.",
+              "url": "https://www.conventusmun.com/",
+              "logo": "https://www.conventusmun.com/logo.png",
+              "sameAs": [
+                "https://www.facebook.com/ConventusNIET",
+                "https://twitter.com/ConventusNIET",
+                "https://www.instagram.com/conventus_niet/"
+              ]
+            }
+          `}
+        </script>
       </Head>
 
       {showGreeting && <DussehraGreeting onClose={() => setShowGreeting(false)} />}
