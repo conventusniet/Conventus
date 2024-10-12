@@ -153,7 +153,7 @@ export default function AboutPageOne() {
         {
             name: "Dr. Manish Kaushik",
             position: "Dean Student Welfare",
-            image: "/images/manishkaushik.png",
+            image: "/images/manishkaushik.jpg",
             info: "Welfare of student is of utmost importance to us. The office of Dean Students' Welfare is responsible for all the aspects of students' welfare. The office therefore always motivates the students towards their bright future by engaging them in different academic as well as co-curricular activities so as to fulfill their dreams. The office strives to enhance the students' overall personality and to provide better career opportunities. The office looks after the functioning of various societies and clubs under which students take active participation."
         },
         {
