@@ -28,8 +28,7 @@ export default function SecretariatPage() {
     { name: "Tejasv Gupta", branch: "Vice Chairperson UNSC" },
     { name: "Ananya Rajeev", branch: "Co-Chairperson UNCSW" },
     { name: "Yashraj Ranjan", branch: "Substantive Director UNSC" },
-     { name: "Aditri Singh", branch: "Vice Chairperson UNCSW" },
-    
+    { name: "Aditri Singh", branch: "Vice Chairperson UNCSW" },
   ]
   
   const rightMembers = [
