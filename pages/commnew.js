@@ -162,7 +162,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Journalists will deliver well-crafted articles, showcasing their analytical skills and ability to communicate the significance of committee proceedings, offering a deeper understanding of the issues at hand."
     },
     {
-      logo: "/images/coll6.png",
+      logo: "/images/photography.jpg.jpg",
       title: "Photography",
       description: "The Photographers Committee in Model United Nations (MUN) captures the energy and spontaneity of the conference, immortalizing key moments through powerful visuals.",
       objectives: [
