@@ -136,57 +136,57 @@ const EventsPage = () => {
   const events = [
     { 
       image: "/images/coll4.png", 
-      title: "Global Youth Summit",
-      date: "August 15-17, 2023",
-      description: "Join young leaders from around the world to discuss pressing global issues and develop innovative solutions.",
-      location: "New York City, USA",
-      duration: "3 days",
-      participants: "500+ youth delegates"
+      title: "Sabhyta and Silicon",
+      date: "September 8th, 2024",
+      description: "The Sabhyta and Silicon event by Conventus held on September 8, 2024, was a confluence of tradition and technology, highlighting the diverse culture and rich heritage of India under the theme Digital India. The event aimed to show how digital advancements are being used to preserve and promote Indian culture, providing participants with a platform to explore and present various aspects of Indian traditions in a modern context." ,
+      location: "NIET, Greater Noida",
+      duration: "1 day",
+      participants: "15 participants from Conventus and 500+ attendees"
     },
     { 
       image: "/images/coll5.png", 
-      title: "Climate Action Conference",
-      date: "September 22-24, 2023",
-      description: "A platform for environmental experts, policymakers, and activists to address climate change challenges.",
-      location: "Paris, France",
-      duration: "3 days",
-      participants: "1000+ attendees"
+      title: "Breaking Barriers",
+      date: "October 10th, 2024",
+      description: "Breaking Barriers was an event organized in collaboration between the HID Club and the Conventus Society on World Mental Health Day to raise awareness about mental health issues, with a special focus on speaking disorders. The event highlighted that Conventus values not only those who are fluent speakers but also those who face challenges, promoting inclusivity for all. Whether you're a confident speaker or aspire to improve, joining Conventus is open to everyone.",
+      location: "NIET, Greater Noida",
+      duration: "1 day",
+      participants: "9 partcipants from Conventus, 500+ attendees"
     },
     { 
       image: "/images/coll6.png", 
-      title: "Diplomatic Skills Workshop",
-      date: "October 5, 2023",
-      description: "Enhance your negotiation and public speaking skills in this intensive one-day workshop.",
-      location: "Online",
+      title: "Art Binneale Stroll",
+      date: "March 16th, 2024",
+      description: "On 16th March 2024, 1st-year students were treated to an enriching experience at the Red Fort for the Biennale Art Exhibition and Cultural Stroll. Organized with the aim of immersing participants in India's cultural tapestry, the event provided a platform for exploration, intellectual discourse, and personal growth. Through guided tours, art exhibitions, and interactive sessions, students had the opportunity to deepen their understanding of art, history, and global perspectives.",
+      location: "Red Fort, Delhi",
       duration: "1 day",
-      participants: "Limited to 100 participants"
+      participants: "40+ participants"
     },
     { 
       image: "/images/coll7.png", 
-      title: "International Peace Symposium",
-      date: "November 11-12, 2023",
-      description: "Explore strategies for conflict resolution and peacebuilding in this two-day symposium.",
-      location: "Geneva, Switzerland",
+      title: "Sahitya Ajtak",
+      date: "November 26th, 2023",
+      description: "The objective of the Sahitya Aaj Tak visit was to immerse students in the rich literary heritage of India and enhance their understanding of Indian culture. By interacting with prominent figures in literature and indie authors, poets, buerocrats and journalists, students gained valuable insights and inspiration.",
+      location: "Major Dhyanchand Stadium, Delhi",
       duration: "2 days",
-      participants: "300+ diplomats and peace advocates"
+      participants: "50+ participants from Conventus"
     },
     { 
-      image: "/images/coll8.png", 
-      title: "Sustainable Development Goals Forum",
-      date: "January 20-22, 2024",
-      description: "Discuss progress and challenges in achieving the UN Sustainable Development Goals.",
-      location: "Tokyo, Japan",
+      image: "/images/amimunteam.JPG", 
+      title: "AMIMUN",
+      date: "January 19-21, 2024",
+      description: "The Amity International Model United Nations, a simulation and educational model of the United Nations, provided students with an educational platform to learn about diplomacy and international relations. Delegates, representing countries, organisations, or individuals, engaged in negotiations, conducted pre-conference research, formulated position papers, and created policy proposals. The conference culminated in debating and voting on draft resolutions, with the objective of passing them through majority votes. Conventus members partcipated in various committees including UNHRC, AIPPM, UNCSW and IP.",
+      location: "Amity University Noida",
       duration: "3 days",
-      participants: "800+ global leaders and experts"
+      participants: "15 participants from Conventus"
     },
     { 
       image: "/images/coll1.png", 
-      title: "Model United Nations Conference",
-      date: "March 15-18, 2024",
-      description: "Simulate UN committees and debate global issues in this four-day conference for students.",
-      location: "London, UK",
-      duration: "4 days",
-      participants: "1500+ student delegates"
+      title: "Anchoring of Various Events",
+      date: "every month",
+      description: "Conventus is responsible for managing and hosting most major events at NIET, including their anchoring. Over 20 members of Conventus have had the opportunity to anchor and host various events. The society believes in providing chances to newcomers and a diverse group of individuals, rather than limiting opportunities to a select few. This approach not only enhances the speaking skills of its members but also helps them overcome stage fear while fostering inclusivity and variety.",
+      location: "NIET, Greater Noida",
+      duration: "1 day",
+      participants: "20+ from Conventus"
     },
   ];
 
