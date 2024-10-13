@@ -40,25 +40,25 @@ const Contact = () => {
                                     name="Manas Gupta"
                                     title="President"
                                     phone="+91 9289452713"
-                                    email="AIML - 4th Year"
+                                    email="4th Year"
                                 />
                                 <ContactPerson
                                     name="Yashraj Ranjan"
                                     title="Vice - President"
                                     phone="+91 7309328195"
-                                    email="IOT - 3rd Year"
+                                    email="3rd Year"
                                 />
                                 <ContactPerson
                                     name="Pragya Singh"
                                     title="Vice - President"
                                     phone="+91 9953552547"
-                                    email="BioTech - 3rd Year"
+                                    email="3rd Year"
                                 />
                                 <ContactPerson
                                     name="Shagun Mishra"
                                     title="Head Co-Ordinator"
                                     phone="+91 9773649728"
-                                    email="CSE - 3rd Year"
+                                    email="3rd Year"
                                 />
                             </div>
                         </div>
