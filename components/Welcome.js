@@ -40,7 +40,7 @@ const Welcome = () => {
             <div 
                 className="absolute inset-0 bg-cover bg-center z-0 brightness-50"
                 style={{
-                    backgroundImage: "url('/images/HomePage.jpg')"
+                    backgroundImage: "url('/images/niet.jpeg')"
                 }}
             />
             <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
