@@ -59,7 +59,6 @@ const sliderImages = [
         '/images/coll7.jpg',
         '/images/coll8.jpg',
         '/images/amimunteam.jpg',
-
 ];
 
 const collageImages = [
