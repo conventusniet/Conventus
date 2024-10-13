@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Oheader from '@/components/OHeader'
 import Footer from '@/components/Footer'
 import ConventusChatbot from '@/components/ConventusChatBot'
-const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
+const NewsletterCard = ({ day, imageUrl, pdfUrl }) => {
   const [showReadNow, setShowReadNow] = useState(false)
 
   useEffect(() => {
@@ -19,18 +19,18 @@ const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
     try {
       const response = await fetch(pdfUrl)
       const blob = await response.blob()
-      const file = new File([blob], `${semester}_Newsletter_2023-24.pdf`, { type: 'application/pdf' })
+      const file = new File([blob], `${day}_Newsletter_2023-24.pdf`, { type: 'application/pdf' })
 
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           files: [file],
-          title: `${semester} Newsletter 2023-24`,
+          title: `${day} Newsletter 2023-24`,
         })
       } else {
         // Fallback for browsers that don't support file sharing
         const link = document.createElement('a')
         link.href = pdfUrl
-        link.download = `${semester}_Newsletter_2023-24.pdf`
+        link.download = `${day}_Newsletter_2023-24.pdf`
         document.body.appendChild(link)
         link.click()
         document.body.removeChild(link)
@@ -50,7 +50,7 @@ const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
     >
       <Image
         src={imageUrl}
-        alt={`${semester} Semester Newsletter`}
+        alt={`${day} Day Newsletter`}
         layout="fill"
         objectFit="cover"
         className="transition-transform duration-300 hover:scale-105"
@@ -58,7 +58,7 @@ const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
       <div className="absolute bottom-0 left-0 right-0 p-6">
         <div className="bg-gradient-to-r from-black/50 via-black/30 to-transparent p-2 rounded-lg inline-block mb-4">
           <h3 className="text-2xl font-semibold text-white">
-            {semester} Semester
+            {day} Day
           </h3>
         </div>
 
@@ -91,14 +91,14 @@ const NewsletterCard = ({ semester, imageUrl, pdfUrl }) => {
 export default function NewsletterPage() {
   const newsletters = [
     {
-      semester: "First",
+      day: "First",
       imageUrl: "/images/n1.jpg",
-      pdfUrl: "/pdfs/3 (1).pdf"
+      pdfUrl: "/pdfs/Newsletter Day1.pdf"
     },
     {
-      semester: "Second",
-      imageUrl: "/images/coll2.png",
-      pdfUrl: "/pdfs/second-semester-2023-24.pdf"
+      day: "Second",
+      imageUrl: "/images/n2.jpg",
+      pdfUrl: "/pdfs/Newsletter Day2.pdf"
     }
   ]
 
@@ -141,7 +141,7 @@ export default function NewsletterPage() {
           {newsletters.map((newsletter, index) => (
             <NewsletterCard
               key={index}
-              semester={newsletter.semester}
+              day={newsletter.day}
               imageUrl={newsletter.imageUrl}
               pdfUrl={newsletter.pdfUrl}
             />
