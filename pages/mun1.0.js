@@ -66,7 +66,7 @@ const MediaGallery = () => {
     '/images/newsletterreveal1.jpg','/images/joinourcommittees.jpg', '/images/makeadiffernce.jpg', '/images/coll1.jpg',
     '/images/coll2.jpg', '/images/coll4.jpg', '/images/commaippm.jpg', '/images/coll6.jpg',
     '/images/photography.jpg.jpg', '/images/caricature.JPG', '/images/coll3.jpg',
-    '/images/coll5.jpg', '/images/coll7.jpg', '/images/coll8.jpg',
+    '/images/coll5.jpg', '/images/coll7.jpg', '/images/coll8.jpg','/images/discussions.JPG',
     '/images/secretariat1.JPG','/images/upcomingmun2.jpg' ,'/images/newsletterreveal2.jpg', '/images/bjpvscongress.jpg','/images/pushkapurv.jpg',
     '/images/dakshunsc.JPG', '/images/ip1.JPG','/images/indiapak2.JPG', '/images/indiapak.JPG', '/images/secretariat2.jpg', '/images/secretariat4.JPG',
     '/images/secretariat5.JPG', '/images/unsc1.jpg', '/images/uncswbangladesh.JPG','/images/sujalyashrajvaibhav.jpg','/images/blurfromback.jpg',
