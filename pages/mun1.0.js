@@ -192,15 +192,15 @@ const WinnersSection = () => (
       <h2 className="text-3xl font-bold text-center mb-8 text-red-800">MUN Winners</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <WinnerCard
-          images={['/images/coll4.png', '/images/coll5.png', '/images/coll6.png', '/images/coll7.png']}
+          images={['/images/hariomtiwari.jpg', '/images/dakshsharma.jpg', '/images/sahilsaw.jpg']}
           committee="UNSC"
         />
         <WinnerCard
-          images={['/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png']}
+          images={['/images/pragyabestdelegate.jpg', '/images/shrastibhatnagar.jpg',  '/images/shagunmishra.jpg']}
           committee="UNCSW"
         />
         <WinnerCard
-          images={['/images/coll6.png', '/images/coll7.png', '/images/coll8.png', '/images/coll1.png']}
+          images={['/images/sujalarora.jpg', '/images/surajkumar.jpg', '/images/apurvkrishna.jpg']}
           committee="AIPPM"
         />
       </div>
@@ -212,7 +212,7 @@ const WinnersSection = () => (
 Best Delegate: Hariom Tiwari,
 High Commendation: Daksh Sharma, <br>
 Special Mention: Sahil Saw </p>
- <p className="text-lg text-red-600 max-w-2xl mx-auto">
+<p className="text-lg text-red-600 max-w-2xl mx-auto">
 AIPPM:
 Best Delegate: Sujal Arora,
 High Commendation: Suraj Kumar, <br>
