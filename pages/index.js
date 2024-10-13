@@ -31,8 +31,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Conventus - NIET College Club | Model United Nations (MUN)</title>
-        <meta name="description" content="Conventus is the premier college club at NIET, focusing on Model United Nations (MUN) and fostering global awareness, leadership, and diplomatic skills among students." />
+        <title>Conventus - NIET Model United Nations (MUN) | Debate Society</title>
+        <meta name="description" content="Conventus is the premier college Society at NIET, focusing on Model United Nations (MUN) and fostering global awareness, leadership, and diplomatic skills among students." />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
@@ -40,14 +40,14 @@ export default function Home() {
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.conventusmun.com/" />
-        <meta property="og:title" content="Conventus - NIET College Club | Model United Nations (MUN)" />
+        <meta property="og:title" content="Conventus - NIET Model United Nations (MUN) | Debate Society" />
         <meta property="og:description" content="Join Conventus, the leading MUN club at NIET, and develop your diplomatic skills, global awareness, and leadership abilities." />
         <meta property="og:image" content="https://www.conventusmun.com/og-image.jpg" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.conventusmun.com/" />
-        <meta property="twitter:title" content="Conventus - NIET College Club | Model United Nations (MUN)" />
+        <meta property="twitter:title" content="Conventus - NIET Model United Nations (MUN) | Debate Society" />
         <meta property="twitter:description" content="Join Conventus, the leading MUN club at NIET, and develop your diplomatic skills, global awareness, and leadership abilities." />
         <meta property="twitter:image" content="https://www.conventusmun.com/twitter-image.jpg" />
 
