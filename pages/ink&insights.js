@@ -121,7 +121,8 @@ const AuthorSection = ({ image, name, bio, reversed }) => (
 const MediaGallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const images = [
-        '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
+         '/images/exploretheworldofwriting.JPG', '/images/studentpersepectives.JPG', '/images/authorspotlights.JPG',
+        '/images/workshopsand_seminars.JPG', '/images/upcoming_conferences.JPG', 
         '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
         '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
         '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
