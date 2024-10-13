@@ -143,8 +143,7 @@ export default function CommitteesPage() {
 
 
       ],
-      expectedOutcomes: " Delegates will engage in policy discussions, simulate drafting bills, and work collaboratively to address India's contemporary challenges, fostering critical thinking, public speaking, and an understanding of the parliamentary process.
-",
+      expectedOutcomes: " Delegates will engage in policy discussions, simulate drafting bills, and work collaboratively to address India's contemporary challenges, fostering critical thinking, public speaking, and an understanding of the parliamentary process.",
     },
   ]
 
@@ -182,8 +181,7 @@ export default function CommitteesPage() {
 "- Highlight the humor, irony, and conflicts through caricatures  ",
 "- Offer a creative perspective on the political dynamics of the conference ",
       ],
-      expectedOutcomes: "Caricaturists will produce visually engaging illustrations that capture the essence of debates, offering participants and observers a humorous and thought-provoking perspective on the proceedings.
-"
+      expectedOutcomes: "Caricaturists will produce visually engaging illustrations that capture the essence of debates, offering participants and observers a humorous and thought-provoking perspective on the proceedings."
     },
   ]
 
