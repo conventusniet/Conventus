@@ -10,7 +10,7 @@ import ConventusChatbot from '@/components/ConventusChatBot'
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const slides = [
-    { image: '/images/artbinnealeteam.JPG', title: 'Welcome to CONVENTUS', subtitle: 'Shaping the Future of Global Diplomacy' },
+    { image: '/images/newsletterreveal1.jpg', title: 'Welcome to CONVENTUS', subtitle: 'Shaping the Future of Global Diplomacy' },
     { image: '/images/joinourcommittees.jpg', title: 'Join Our Committees', subtitle: 'Engage in Meaningful Discussions' },
     { image: '/images/makeadiffernce.jpg', title: 'Make a Difference', subtitle: 'Address Global Challenges Together' },
   ]
@@ -63,11 +63,11 @@ const HeroCarousel = () => {
 const MediaGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const images = [
-    '/images/joinourcommittees.jpg', '/images/makeadiffernce.jpg', '/images/coll1.jpg',
+    '/images/newsletterreveal1.jpg','/images/joinourcommittees.jpg', '/images/makeadiffernce.jpg', '/images/coll1.jpg',
     '/images/coll2.jpg', '/images/coll4.jpg', '/images/commaippm.jpg', '/images/coll6.jpg',
     '/images/photography.jpg.jpg', '/images/caricature.JPG', '/images/coll3.jpg',
     '/images/coll5.jpg', '/images/coll7.jpg', '/images/coll8.jpg',
-    '/images/secretariat1.JPG','/images/upcomingmun2.jpg' ,
+    '/images/secretariat1.JPG','/images/upcomingmun2.jpg' ,'/images/newsletterreveal2.jpg',
   ];
 
   return (
