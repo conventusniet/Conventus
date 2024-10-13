@@ -209,18 +209,18 @@ const WinnersSection = () => (
       <h3 className="text-2xl font-bold text-red-800 mb-4">Winners</h3>
       <p className="text-lg text-red-600 max-w-2xl mx-auto">
        UNSC:
-Best Delegate: Hariom Tiwari
-High Commendation: Daksh Sharma
+Best Delegate: Hariom Tiwari,
+High Commendation: Daksh Sharma, <br>
 Special Mention: Sahil Saw </p>
  <p className="text-lg text-red-600 max-w-2xl mx-auto">
 AIPPM:
-Best Delegate: Sujal Arora
-High Commendation: Suraj Kumar
+Best Delegate: Sujal Arora,
+High Commendation: Suraj Kumar, <br>
 Special Mention: Apurv Krishna </p>
  <p className="text-lg text-red-600 max-w-2xl mx-auto">
 UNCSW:
-Best Delegate: Pragya Singh
-High Commendation: Shrasti Bhatnagar
+Best Delegate: Pragya Singh,
+High Commendation: Shrasti Bhatnagar, <br>
 Special Mention: Shagun Mishra
 
       </p>
@@ -319,7 +319,7 @@ export default function CommitteesPage() {
             />
             <TeamMember
               name="Manas Gupta"
-              image="/images/manasgupta.jpg"
+              image="/images/manasteam.jpg"
               bio="Secretary General & Chairperson UNSC"
             />
             <TeamMember
