@@ -77,6 +77,7 @@ const Carousel = () => {
         "/images/coll7.jpg",
         "/images/coll8.jpg",
         "/images/amimunteam.jpg",
+         "/images/conventus_events.jpg",
     ];
 
     const CustomArrow = ({ direction, onClick }) => (
