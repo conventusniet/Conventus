@@ -10,9 +10,9 @@ import ConventusChatbot from '@/components/ConventusChatBot'
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const slides = [
-    { image: '/images/coll1.png', title: 'Welcome to CONVENTUS', subtitle: 'Shaping the Future of Global Diplomacy' },
-    { image: '/images/coll2.png', title: 'Join Our Committees', subtitle: 'Engage in Meaningful Discussions' },
-    { image: '/images/coll3.png', title: 'Make a Difference', subtitle: 'Address Global Challenges Together' },
+    { image: '/images/artbinnealeteam.JPG', title: 'Welcome to CONVENTUS', subtitle: 'Shaping the Future of Global Diplomacy' },
+    { image: '/images/joinourcommittees.jpg', title: 'Join Our Committees', subtitle: 'Engage in Meaningful Discussions' },
+    { image: '/images/makeadiffernce.jpg', title: 'Make a Difference', subtitle: 'Address Global Challenges Together' },
   ]
 
   useEffect(() => {
@@ -211,13 +211,13 @@ const WinnersSection = () => (
        UNSC:
 Best Delegate: Hariom Tiwari
 High Commendation: Daksh Sharma
-Special Mention: Sahil Saw
-
+Special Mention: Sahil Saw </p>
+ <p className="text-lg text-red-600 max-w-2xl mx-auto">
 AIPPM:
 Best Delegate: Sujal Arora
 High Commendation: Suraj Kumar
-Special Mention: Apurv Krishna
-
+Special Mention: Apurv Krishna </p>
+ <p className="text-lg text-red-600 max-w-2xl mx-auto">
 UNCSW:
 Best Delegate: Pragya Singh
 High Commendation: Shrasti Bhatnagar
@@ -309,29 +309,25 @@ export default function CommitteesPage() {
           <div className="flex flex-wrap justify-center gap-8">
             <TeamMember
               name="Mr. Manish Kaushik"
-              image="/images/coll1.png"
+              image="/images/Manishkaushik.jpg"
               bio="Dean DSW "
             />
              <TeamMember
               name="Ms. Kanika Jindal "
-              image="/images/coll1.png"
-              bio="Dean DSW"
+              image="/images/Kanika.png"
+              bio="Associate Dean DSW"
             />
             <TeamMember
               name="Manas Gupta"
-              image="/images/coll2.png"
+              image="/images/manasgupta.jpg"
               bio="Secretary General & Chairperson UNSC"
             />
             <TeamMember
               name="Tejasv Gupta"
-              image="/images/coll4.png"
+              image="/images/tejasvgupta.jpg"
               bio="Vice Chairperson UNSC "
             />
-            <TeamMember
-              name="Alex Rodriguez"
-              image="/images/coll5.png"
-              bio="Alex leads our digital initiatives, ensuring CONVENTUS stays at the forefront of virtual diplomacy and online engagement."
-            />
+           
           </div>
         </div>
       </main>
