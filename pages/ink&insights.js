@@ -191,9 +191,9 @@ const MediaGallery = () => {
 
 const InkAndInsightsPage = () => {
     const youtubeShorts = [
-        'EGVbRNW4SJE',
-        'EGVbRNW4SJE',
-        'EGVbRNW4SJE'
+        'oVnosk_lQtA',
+        'LWdHF5w0VMI',
+        'odzrubzvfFw'
     ];
     const [playingVideo, setPlayingVideo] = useState(1); // Default to middle video (index 1)
     const [mutedVideos, setMutedVideos] = useState([true, false, true]); // Middle video unmuted by default
