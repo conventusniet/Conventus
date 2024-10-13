@@ -277,7 +277,7 @@ export default function CommitteesPage() {
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="my-8">
           <Image
-            src="/images/coll1.png"
+            src="/images/coll1.jpg"
             alt="Large horizontal image"
             width={1200}
             height={300} // Reduced height from 400 to 300
