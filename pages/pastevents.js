@@ -11,6 +11,7 @@ const HeroCarousel = () => {
     { image: '/images/coll1.png', title: 'CONVENTUS Events', subtitle: 'Engage in Global Diplomacy' },
     { image: '/images/coll2.png', title: 'Upcoming Conferences', subtitle: 'Join Our International Forums' },
     { image: '/images/coll3.png', title: 'Workshops and Seminars', subtitle: 'Enhance Your Diplomatic Skills' },
+     { image: '/images/coll3.png', title: 'Past Events', subtitle: 'Lets Revive our Past Events' },
   ];
 
   useEffect(() => {
