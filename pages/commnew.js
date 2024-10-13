@@ -83,7 +83,7 @@ export default function CommitteesPage() {
   const UNCommittees = [
     {
       logo: "/images/coll2.jpg",
-      title: "United Nations Security Council;",
+      title: "United Nations Security Council",
       description: "The United Nations Security Council (UNSC) in Model United Nations (MUN) holds primary responsibility for maintaining international peace and security, reflecting the global commitment to address threats to peace.",
       objectives: [
         "- Address threats to international peace", 
