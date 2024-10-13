@@ -58,6 +58,7 @@ const sliderImages = [
         '/images/coll6.jpg',
         '/images/coll7.jpg',
         '/images/coll8.jpg',
+        '/images/conventus_events.jpg',
         '/images/amimunteam.jpg',
 ];
 
