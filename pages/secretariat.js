@@ -24,19 +24,21 @@ export default function SecretariatPage() {
   
   const leftMembers = [
     { name: "Manas Gupta", branch: "Secretary General" },
-    { name: "Tejasv Gupta", branch: "Vice Chairperson UNSC" },
-    { name: "Aditri Singh", branch: "Vice Chairperson UNCSW" },
-    { name: "Ananya Rajeev", branch: "Co-Chairperson UNCSW" },
     { name: "Yutika Rajnak", branch: "Chairperson UNCSW" },
+    { name: "Tejasv Gupta", branch: "Vice Chairperson UNSC" },
+    { name: "Ananya Rajeev", branch: "Co-Chairperson UNCSW" },
+    { name: "Yashraj Ranjan", branch: "Substantive Director UNSC" },
+     { name: "Aditri Singh", branch: "Vice Chairperson UNCSW" },
     
   ]
   
   const rightMembers = [
    { name: "Akhil Pandey", branch: "Moderator AIPPM" },
-    { name: "Yashraj Ranjan", branch: "Substantive Director UNSC" },
+   { name: "Prashant Pandey", branch: "OC Head" },
     { name: "Ashish Sawarn", branch: "Vice-Moderator AIPPM" },
-    { name: "Prashant Pandey", branch: "OC Head" },
+     { name: "Manish Kaushik", branch: "Charge De Affairs" },
     { name: "Ashna", branch: "Rappourter AIPPM" },
+    { name: "Kanika Jindal", branch: "Associate Charge De Affairs" },
   ]
   
   return (
@@ -69,7 +71,7 @@ export default function SecretariatPage() {
       <main className="flex-grow container mx-auto px-4 py-8 mt-[40vh] md:mt-[50vh]">
         <div className="relative w-full aspect-video mb-12 md:mb-16">
           <Image
-            src="/images/coll1.png"
+            src="/images/secretariat1.JPG"
             alt="Secretariat Group Photo"
             layout="fill"
             objectFit="cover"
