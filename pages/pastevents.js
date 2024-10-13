@@ -135,7 +135,7 @@ const EventsPage = () => {
 
   const events = [
     { 
-      image: "/images/coll4.png", 
+      image: "/images/sabhyta_and_silicon.jpg", 
       title: "Sabhyta and Silicon",
       date: "September 8th, 2024",
       description: "The Sabhyta and Silicon event by Conventus held on September 8, 2024 during Padharo Mhare Desh, was a confluence of tradition and technology, highlighting the diverse culture and rich heritage of India under the theme Digital India. The event aimed to show how digital advancements are being used to preserve and promote Indian culture, providing participants with a platform to explore and present various aspects of Indian traditions in a modern context." ,
@@ -144,7 +144,7 @@ const EventsPage = () => {
       participants: "15 participants from Conventus and 500+ attendees"
     },
     { 
-      image: "/images/coll5.png", 
+      image: "/images/breaking_barriers.jpg", 
       title: "Breaking Barriers",
       date: "October 10th, 2024",
       description: "Breaking Barriers was an event organized by the Conventus Society during Jugnu - World Mental Health Day awareness by HID Club, with a special focus on speaking disorders. The event highlighted that Conventus values not only those who are fluent speakers but also those who face challenges, promoting inclusivity for all. Whether you're a confident speaker or aspire to improve, joining Conventus is open to everyone.",
@@ -153,7 +153,7 @@ const EventsPage = () => {
       participants: "9 partcipants from Conventus, 500+ attendees"
     },
     { 
-      image: "/images/coll6.png", 
+      image: "/images/art_binneale_stroll_pastevents.jpg", 
       title: "Art Binneale Stroll",
       date: "March 16th, 2024",
       description: "On 16th March 2024, 1st-year students were treated to an enriching experience at the Red Fort for the Biennale Art Exhibition and Cultural Stroll. Organized with the aim of immersing participants in India's cultural tapestry, the event provided a platform for exploration, intellectual discourse, and personal growth. Through guided tours, art exhibitions, and interactive sessions, students had the opportunity to deepen their understanding of art, history, and global perspectives.",
@@ -162,7 +162,7 @@ const EventsPage = () => {
       participants: "40+ participants"
     },
     { 
-      image: "/images/coll7.png", 
+      image: "/images/sahitya_ajtak_pastevents.jpg", 
       title: "Sahitya Ajtak",
       date: "November 26th, 2023",
       description: "The objective of the Sahitya Aaj Tak visit was to immerse students in the rich literary heritage of India and enhance their understanding of Indian culture. By interacting with prominent figures in literature and indie authors, poets, buerocrats and journalists, students gained valuable insights and inspiration.",
@@ -180,7 +180,7 @@ const EventsPage = () => {
       participants: "15 participants from Conventus"
     },
         { 
-      image: "/images/amimunteam.JPG", 
+      image: "/images/glbmun.jpg", 
       title: "GLBMUN",
       date: "September 26-27, 2024",
       description: "The President and Vice Presidents of the Conventus Society—Manas Gupta, Yashraj Ranjan, and Pragya Singh—were invited to judge the UNSC and AIPPM committees at the GL Bajaj MUN. This recognition underscores their expertise, skills, and experience, while also reflecting their high regards and acceptance within the Greater Noida MUN circle.",
@@ -189,7 +189,7 @@ const EventsPage = () => {
       participants: "3 judges from Conventus"
     },
     { 
-      image: "/images/coll1.png", 
+      image: "/images/anchoring.jpg", 
       title: "Anchoring of Various Events",
       date: "every month",
       description: "Conventus is responsible for managing and hosting most major events at NIET, including their anchoring. Over 20 members of Conventus have had the opportunity to anchor and host various events. The society believes in providing chances to newcomers and a diverse group of individuals, rather than limiting opportunities to a select few. This approach not only enhances the speaking skills of its members but also helps them overcome stage fear while fostering inclusivity and variety.",
@@ -198,7 +198,7 @@ const EventsPage = () => {
       participants: "20+ from Conventus"
     },
        { 
-      image: "/images/amimunteam.JPG", 
+      image: "/images/concord.jpg", 
       title: "Concord",
       date: "September 4th, 2024",
       description: "The CONCORD event, held on 4th September 2024, was a collaborative initiative between the Hope in Darkness Club and the Conventus Society, designed to inspire students to overcome self-doubt and foster self-confidence. The focal point of the event was a powerful speech delivered by A. Laxmi Manasa, a 2nd-year student from the ECE branch, who shared her personal journey from self-doubt to self-confidence, leaving a lasting impact on the audience.",
@@ -207,7 +207,7 @@ const EventsPage = () => {
       participants: "3 participants from Conventus"
     },
         { 
-      image: "/images/amimunteam.JPG", 
+      image: "/images/world_food_day.jpg", 
       title: "World Food Day",
       date: "October 16th, 2023",
       description: "Grateful for the heartwarming success of our World Food Day feeding drive, made possible through the incredible collaboration with Conventus Society, Green Gold Society and Megapixels Club and with the support and guidance of FIAPO @fiapoindia. Special acknowledgement to every dedicated member who's been instrumental in feeding not just mouths but also sowing seeds of love. Together, we're nurturing our world one meal at a time. On World Food Day, October 16th, Green Gold Society teamed up with Conventus and Megapixels for a feeding drive at Jagat Farm Market, Greater Noida, and nearby areas. Let's feed animals, share the love, and raise awareness about our furry friends.",
@@ -216,7 +216,7 @@ const EventsPage = () => {
       participants: "24"
     },
         { 
-      image: "/images/amimunteam.JPG", 
+      image: "/images/independence_day.JPG", 
       title: "Independence Day",
       date: "August 15th, 2024",
       description: "On the occasion of Independence Day, Vice President of The Conventus society, Yashraj Ranjan, delivered a heart-touching poem that celebrated India's glorious history. The poem took the audience on a journey through India's past, starting from the Indus Valley Civilization, through the era of Mahajanapadas and great empires, to the period of British rule. The poem also emphasized India's current stature as a global powerhouse, highlighting the country's booming economy, its role as the pharmacy of the world, advancements in the tech industry, and leadership in the spices industry. Yashraj urged everyone to remember the bravery of the unsung heroes whose legacy continues to inspire the nation",
