@@ -106,7 +106,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Delegates will propose legal reforms, capacity-building initiatives, and safe spaces for women, empowering them as key agents of peace and societal progress while emphasizing the importance of gender equality and women's empowerment in achieving sustainable global peace and development.",
     },
     {
-      logo: "/images/coll6.png",
+      logo: "/images/unhrclogo.jpg",
       title: "United Nations Human Rights Council",
       description: "The United Nations Human Rights Council (UNHRC) in Model United Nations (MUN) is dedicated to promoting and protecting human rights globally, addressing urgent violations and fostering international cooperation",
       objectives: [
@@ -133,7 +133,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Delegates will form alliances, craft policies, and defend their party's stance, echoing the real-life political discourse in India, while proposing practical solutions to address regional and national challenges."
     },
        {
-      logo: "/images/coll5.jpg",
+      logo: "/images/commls.jpg",
       title: "Lok Sabha",
       description: "The Lok Sabha Committee in Model United Nations (MUN) simulates the vibrant proceedings of India’s lower house of Parliament, providing a platform for participants to engage in the democratic process akin to a Youth Parliament.",
       objectives: [
@@ -149,7 +149,7 @@ export default function CommitteesPage() {
 
   const  InternationalPress = [
     {
-      logo: "/images/coll6.png",
+      logo: "/images/coll6.jpg",
       title: "Journalism",
       description: "The Journalists Committee in Model United Nations (MUN) serves as the storytellers of the International Press, observing debates across various committees and capturing the essence of discussions and delegate interactions.",
       objectives: [
@@ -173,7 +173,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Photographers will produce a visual collection that conveys the essence of the MUN, showcasing the passion and deliberation of the participants through impactful images."
     },
          {
-      logo: "/images/coll6.png",
+      logo: "/images/caricature.JPG",
       title: "Caricature",
       description: "The Caricature Committee in Model United Nations (MUN) provides a unique artistic commentary on debates, using satire and creativity to illustrate the intensity of discussions.",
       objectives: [
