@@ -63,11 +63,11 @@ const HeroCarousel = () => {
 const MediaGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const images = [
-    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
-    '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
-    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
-    '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
-    '/images/coll1.png', '/images/coll2.png', '/images/coll3.png', '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
+    '/images/joinourcommittees.jpg', '/images/makeadiffernce.jpg', '/images/coll1.jpg',
+    '/images/coll2.jpg', '/images/coll4.jpg', '/images/commaippm.jpg', '/images/coll6.jpg',
+    '/images/photography.jpg.jpg', '/images/caricature.JPG', '/images/coll3.jpg',
+    '/images/coll5.jpg', '/images/coll7.jpg', '/images/coll8.jpg',
+    '/images/secretariat1.JPG','/images/upcomingmun2.jpg' ,
   ];
 
   return (
