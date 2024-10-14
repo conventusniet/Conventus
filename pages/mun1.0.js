@@ -211,23 +211,23 @@ const WinnersSection = () => (
     <div className="mt-12 text-center">
       <h3 className="text-2xl font-bold text-red-800 mb-4">Winners</h3>
       <p className="text-lg text-red-600 max-w-2xl mx-auto">
-  UNSC: <br>
-  Best Delegate: Hariom Tiwari, <br>
-  High Commendation: Daksh Sharma, <br>
+  UNSC: <br/>
+  Best Delegate: Hariom Tiwari, <br/>
+  High Commendation: Daksh Sharma, <br/>
   Special Mention: Sahil Saw
 </p>
 
 <p className="text-lg text-red-600 max-w-2xl mx-auto">
-  AIPPM: <br>
-  Best Delegate: Sujal Arora, <br>
-  High Commendation: Suraj Kumar, <br>
+  AIPPM: <br/>
+  Best Delegate: Sujal Arora, <br/>
+  High Commendation: Suraj Kumar, <br/>
   Special Mention: Apurv Krishna
 </p>
 
 <p className="text-lg text-red-600 max-w-2xl mx-auto">
-  UNCSW: <br>
-  Best Delegate: Pragya Singh, <br>
-  High Commendation: Shrasti Bhatnagar, <br>
+  UNCSW: <br/>
+  Best Delegate: Pragya Singh, <br/>
+  High Commendation: Shrasti Bhatnagar, <br/>
   Special Mention: Shagun Mishra
 </p>
 
