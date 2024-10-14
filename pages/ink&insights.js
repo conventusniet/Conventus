@@ -121,12 +121,10 @@ const AuthorSection = ({ image, name, bio, reversed }) => (
 const MediaGallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const images = [
-         '/images/exploretheworldofwriting.JPG', '/images/studentpersepectives.JPG', '/images/authorspotlights.JPG',
-        '/images/workshopsand_seminars.JPG', '/images/upcoming_conferences.JPG', 
-        '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
-        '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
-        '/images/coll5.png', '/images/coll6.png', '/images/coll7.png', '/images/coll8.png',
-        '/images/coll1.png', '/images/coll2.png', '/images/coll3.png', '/images/coll1.png', '/images/coll2.png', '/images/coll3.png',
+        '/images/upcoming_conferences.JPG',  '/images/exploretheworldofwriting.JPG', '/images/studentpersepectives.JPG', '/images/authorspotlights.JPG', '/images/workshopsand_seminars.JPG',
+        '/images/ii1.jpg','/images/ii2.jpg','/images/ii3.jpg','/images/ii4.jpg','/images/ii5.jpg',
+        '/images/ii6.jpg','/images/ii7.jpg','/images/ii8.jpg','/images/ii9.jpg','/images/ii10.jpg',
+        '/images/ii11.jpg','/images/ii12.jpg','/images/ii13.jpg','/images/ii14.jpg','/images/ii15.jpg',
     ];
 
     return (
