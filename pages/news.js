@@ -97,7 +97,7 @@ export default function NewsletterPage() {
     },
     {
       day: "Second",
-      imageUrl: "/images/n2.jpg",
+      imageUrl: "/images/n1.jpg",
       pdfUrl: "/pdfs/Newsletter Day2.pdf"
     }
   ]
