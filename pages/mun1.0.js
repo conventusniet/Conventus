@@ -69,7 +69,7 @@ const MediaGallery = () => {
     '/images/coll5.jpg', '/images/coll7.jpg', '/images/coll8.jpg','/images/discussions.JPG',
     '/images/upcomingmun2.jpg',
     '/images/dakshunsc.JPG', '/images/ip1.JPG', '/images/indiapak.JPG','/images/soloindiauncsw.jpg', '/images/secretariat2.jpg', '/images/secretariat4.JPG',
-     '/images/unsc1.jpg', '/images/uncswbangladesh.JPG','/images/indiapak2.JPG','/images/sujalyashrajvaibhav.jpg','/images/blurfromback.jpg','/images/secretariat5.JPG',
+     '/images/unsc1.jpg', '/images/uncswbangladesh.JPG','/images/secretariat6.JPG','/images/indiapak2.JPG','/images/sujalyashrajvaibhav.jpg','/images/blurfromback.jpg','/images/secretariat5.JPG',
     '/images/solodakshunsc.jpg','/images/solobangladeshuncsw.jpg','/images/solomodi.jpg','/images/solonewzealanduncsw.jpg','/images/solopragya.jpg','/images/solorussiauncsw.jpg','/images/soloshagun.jpg','/images/solousaunsc.jpg','/images/manaseb.jpg',
   ];
 
