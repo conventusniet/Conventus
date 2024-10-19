@@ -10,7 +10,7 @@ const LearnMoreSection = () => {
         {
             title: "About Us",
             description: "Know more about our vision and mission",
-            image: "/images/2.JPG",
+            image: "/images/3(temp).jpg",
             route: "/aboutus"
         },
         {
