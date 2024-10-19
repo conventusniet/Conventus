@@ -66,11 +66,11 @@ const TeamSection = ({ title, members }) => (
 
 const Carousel = () => {
     const images = [
-        "/public/images/AB1.jpg",
-        "public/images/AB2.jpg",
-        "public/images/AB3.jpg",
-        "public/images/AB4.jpg",
-        "public/images/AB5.jpg",
+        "/images/AB1.jpg",
+        "/images/AB2.jpg",
+        "/images/AB3.jpg",
+        "/images/AB4.jpg",
+        "/images/AB5.jpg",
     ];
 
     const CustomArrow = ({ direction, onClick }) => (
@@ -131,7 +131,7 @@ export default function AboutPageOne() {
         {
             name: "Dr. Neema Agarwal",
             position: "Additional Managing Director",
-            image: "public/images/amdmam.jpg",
+            image: "/images/amdmam.jpg",
             info: "'Education is the most powerful weapon which you can use to change the world' - Nelson Mandela\n\nIn the course of last 20 years, many technical & management institutes have sprung up all over the country. Graduates passing out every year are highly optimistic that technical courses ensure a rewarding career. The economic, corporate, and social environments are undergoing radical changes. To survive, manage, and excel in this dynamically changing atmosphere, it demands engagement of professionals who are well informed, competent, courageous, and versatile. Beyond the academics, the curriculum at NIET is strongly linked with several recent themes like latest technologies needed by organizations, soft skills, communication, among others. Our approach has resulted in programs of study relevant to the leadership trends and challenges of tomorrow. Classroom learning is made interesting by highly qualified and experienced faculty through interactions, presentations, role plays, case studies and out bound learning programs. This is further reinforced by practical learning through industrial visits and summer training. Students regularly undergo personality development and grooming sessions that lead to both extrinsic and intrinsic confidence boosting and prepares them for the corporate world. We appreciate your interest and want you to know that we are here to bring you a leading edge technical education."
         },
 
@@ -174,7 +174,7 @@ export default function AboutPageOne() {
         {
             name: "Manas Gupta",
             position: "President",
-            image: "public/images/P1.jpg",
+            image: "/images/P1.jpg",
             info: "Manas Gupta is a visionary leader whose passion for innovation and community building has been the driving force behind Conventus's success. With a background in technology and a keen understanding of student needs, Manas has revolutionized the way Conventus operates and engages with its members. His strategic mindset has led to the implementation of several successful initiatives that have significantly increased student participation and community impact. Manas is known for his inclusive leadership style, always encouraging diverse perspectives and fostering a culture of collaboration. Under his guidance, Conventus has expanded its reach and formed valuable partnerships with industry leaders, enhancing opportunities for all members."
         },
         {
