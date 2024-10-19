@@ -24,7 +24,7 @@ const LazyLoading = ({ onLoadingComplete }) => {
       <div className="w-64 h-64 bg-white rounded-full flex items-center justify-center mb-8 overflow-hidden">
         <div className="w-56 h-56 relative">
           <Image
-            src="/images/Conventus-png-min.png"
+            src="/images/Conventus Logo.jpg"
             alt="Logo"
             layout="fill"
             objectFit="contain"
