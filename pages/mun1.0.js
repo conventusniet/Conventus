@@ -195,15 +195,15 @@ const WinnersSection = () => (
       <h2 className="text-3xl font-bold text-center mb-8 text-red-800">MUN Winners</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <WinnerCard
-          images={['/images/NIET7991.jpg', '/images/dakshsharma.jpg', '/images/sahilsaw.jpg']}
+          images={['/images/unsc1.jpg', '/images/unsc2.jpg', '/images/unsc3.jpg']}
           committee="UNSC"
         />
         <WinnerCard
-          images={['/images/NIET7991.jpg', '/images/shrastibhatnagar.jpg',  '/images/shagunmishra.jpg']}
+          images={['/images/uncsw1.jpg','/images/uncsw2.jpg', '/images/uncsw3.jpg']}
           committee="UNCSW"
         />
         <WinnerCard
-          images={['/images/NIET7991.jpg', '/images/surajkumar.jpg', '/images/apurvkrishna.jpg']}
+          images={['/images/aippm1.jpg', '/images/aippm2.jpg', '/images/aippm3.jpg']}
           committee="AIPPM"
         />
       </div>
