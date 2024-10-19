@@ -115,7 +115,7 @@ const DiplomaticResourcesPage = () => {
         "Contemporary foreign policy analysis",
         "Case studies of successful negotiations"
       ],
-      image: "/images/coll4.png"
+      image: "/images/Resources BG.jpg"
     },
     { 
       icon: <Globe size={48} />,
@@ -126,7 +126,7 @@ const DiplomaticResourcesPage = () => {
         "Cultural context and etiquette",
         "Diplomatic terminology guides"
       ],
-      image: "/images/coll5.png"
+      image: "/images/Resources BG.jpg"
     },
     { 
       icon: <Video size={48} />,
@@ -137,7 +137,7 @@ const DiplomaticResourcesPage = () => {
         "Protocol and etiquette in diplomacy",
         "Crisis management simulations"
       ],
-      image: "/images/coll6.png"
+      image: "/images/Resources BG.jpg"
     },
     { 
       icon: <Download size={48} />,
@@ -148,7 +148,7 @@ const DiplomaticResourcesPage = () => {
         "Writing effective diplomatic cables",
         "Public speaking for diplomats"
       ],
-      image: "/images/coll7.png"
+      image: "/images/Resources BG.jpg"
     },
   ];
 
