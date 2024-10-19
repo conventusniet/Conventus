@@ -65,7 +65,7 @@ const AboutConventus = () => {
                         transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
                     >
                         <motion.img
-                            src="/images/background.jpg"
+                            src="/images/2.jpg"
                             alt="Conventus Activities"
                             className="object-cover w-full h-full"
                             initial={{ scale: 1.2 }}
