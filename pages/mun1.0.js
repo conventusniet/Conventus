@@ -390,11 +390,7 @@ export default function CommitteesPage() {
               image="/images/p2.jpg"
               bio="Secretary General & Chairperson UNSC"
             />
-            <TeamMember
-              name="Tejasv Gupta"
-              image="/images/tejasvgupta.jpg"
-              bio="Vice Chairperson UNSC "
-            />
+            
 
           </div>
         </div>
