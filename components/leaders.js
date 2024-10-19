@@ -59,7 +59,7 @@ const LeadershipPage = () => {
                         className="text-center mb-12"
                     >
                         <h3 className="text-4xl font-semibold text-center mb-12 text-red-700">
-                            O U R ㅤT E C H N I C A L ㅤT E A M
+                            O U RㅤT E C H N I C A LㅤT E A M
                         </h3>
                     </motion.div>
 
