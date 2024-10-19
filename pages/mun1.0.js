@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect,useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -244,11 +244,11 @@ const WinnerCard = ({ images, committee, winners }) => {
           <ChevronRight size={24} />
         </button>
       </div>
-      <div className="bg-white p-4">
-        <p className="text-center text-lg font-semibold text-red-800 mb-2">{committee}</p>
-        <ul className="text-sm text-red-600">
+      <div className="p-6 text-center"> {/* Added text-center class here */}
+        <h3 className="text-xl font-semibold mb-4 text-red-700">{committee}</h3>
+        <ul className="space-y-2">
           {winners.map((winner, index) => (
-            <li key={index} className="mb-1">{winner}</li>
+            <li key={index} className="text-gray-700">{winner}</li>
           ))}
         </ul>
       </div>
@@ -390,7 +390,7 @@ export default function CommitteesPage() {
               image="/images/p2.jpg"
               bio="Secretary General & Chairperson UNSC"
             />
-            
+
 
           </div>
         </div>
