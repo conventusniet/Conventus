@@ -63,14 +63,11 @@ const HeroCarousel = () => {
 const MediaGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const images = [
-    '/images/newsletterreveal1.jpg','/images/joinourcommittees.jpg', '/images/makeadiffernce.jpg', '/images/coll1.jpg',
-    '/images/coll2.jpg', '/images/coll4.jpg', '/images/commaippm.jpg', '/images/coll6.jpg',
-    '/images/photography.jpg.jpg', '/images/caricature.JPG', '/images/coll3.jpg',
-    '/images/coll5.jpg', '/images/coll7.jpg', '/images/coll8.jpg','/images/discussions.JPG',
-    '/images/upcomingmun2.jpg',
-    '/images/dakshunsc.JPG', '/images/ip1.JPG', '/images/indiapak.JPG','/images/soloindiauncsw.jpg', '/images/secretariat2.jpg', '/images/secretariat4.JPG',
-     '/images/unsc1.jpg', '/images/uncswbangladesh.JPG','/images/secretariat6.JPG','/images/indiapak2.JPG','/images/sujalyashrajvaibhav.jpg','/images/blurfromback.jpg','/images/secretariat5.JPG',
-    '/images/solodakshunsc.jpg','/images/solobangladeshuncsw.jpg','/images/solomodi.jpg','/images/solonewzealanduncsw.jpg','/images/solopragya.jpg','/images/solorussiauncsw.jpg','/images/soloshagun.jpg','/images/solousaunsc.jpg','/images/manaseb.jpg',
+    '/images/mungallery (1).jpg', '/images/mungallery (2).jpg', '/images/mungallery (3).jpg', '/images/mungallery (4).jpg',
+    '/images/mungallery (5).jpg', '/images/mungallery (6).jpg', '/images/mungallery (7).jpg', '/images/mungallery (8).jpg', 
+    '/images/mungallery (9).jpg', '/images/mungallery (10).jpg', '/images/mungallery (11).jpg', '/images/mungallery (12).jpg',
+    '/images/mungallery (13).jpg', '/images/mungallery (14).jpg', '/images/mungallery (15).jpg', '/images/mungallery (16).jpg',
+    '/images/mungallery (17).jpg', '/images/mungallery (18).jpg', '/images/mungallery (19).jpg', '/images/mungallery (20).jpg',
   ];
 
   return (
