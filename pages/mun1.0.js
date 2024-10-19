@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useRef } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -67,56 +67,80 @@ const MediaGallery = () => {
     '/images/mungallery (5).jpg', '/images/mungallery (6).jpg', '/images/mungallery (7).jpg', '/images/mungallery (8).jpg',
     '/images/mungallery (9).jpg', '/images/mungallery (10).jpg', '/images/mungallery (11).jpg', '/images/mungallery (12).jpg',
     '/images/mungallery (13).jpg', '/images/mungallery (14).jpg', '/images/mungallery (15).jpg', '/images/mungallery (16).jpg',
-    '/images/mungallery (17).jpg', '/images/mungallery (18).jpg', '/images/mungallery (19).jpg', '/images/mungallery (20).jpg',
   ];
+
+  const renderImage = (index, className) => (
+    <motion.div
+      key={index}
+      className={`relative overflow-hidden rounded-lg cursor-pointer ${className}`}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => setSelectedImage(images[index])}
+    >
+      <Image
+        src={images[index]}
+        alt={`Gallery image ${index + 1}`}
+        layout="fill"
+        objectFit="cover"
+        className="rounded-lg"
+      />
+    </motion.div>
+  );
 
   return (
     <div className="relative">
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {images.map((image, index) => (
-          <motion.div
-            key={index}
-            className="relative overflow-hidden rounded-lg cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setSelectedImage(image)}
-          >
-            <Image
-              src={image}
-              alt={`Gallery image ${index + 1}`}
-              width={400}
-              height={300}
-              objectFit="cover"
-              className="rounded-lg"
-            />
-          </motion.div>
-        ))}
+      <div className="grid grid-cols-4 gap-4">
+        {/* First row */}
+        {renderImage(0, "col-span-1 row-span-2 h-[400px]")}
+        {renderImage(1, "col-span-1 h-[200px]")}
+        {renderImage(2, "col-span-1 h-[200px]")}
+        {renderImage(3, "col-span-1 row-span-2 h-[400px]")}
+
+        {/* Second row */}
+        {renderImage(4, "col-span-1 h-[200px]")}
+        {renderImage(5, "col-span-1 h-[200px]")}
+
+        {/* Third row */}
+        {renderImage(6, "col-span-1 row-span-2 h-[400px]")}
+        {renderImage(7, "col-span-1 h-[200px]")}
+        {renderImage(8, "col-span-1 h-[200px]")}
+        {renderImage(9, "col-span-1 row-span-2 h-[400px]")}
+
+        {/* Fourth row */}
+        {renderImage(10, "col-span-1 h-[200px]")}
+        {renderImage(11, "col-span-1 h-[200px]")}
+
+        {/* Fifth row */}
+        {renderImage(12, "col-span-1 h-[200px]")}
+        {renderImage(13, "col-span-1 h-[200px]")}
+        {renderImage(14, "col-span-1 h-[200px]")}
+        {renderImage(15, "col-span-1 h-[200px]")}
       </div>
 
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
             onClick={() => setSelectedImage(null)}
           >
             <motion.div
-              className="relative max-w-4xl max-h-[90vh] bg-white rounded-lg overflow-hidden"
+              className="relative w-full h-full max-w-6xl max-h-screen bg-white overflow-hidden"
               onClick={(e) => e.stopPropagation()}
               layoutId={selectedImage}
             >
-              <Image
-                src={selectedImage}
-                alt="Selected image"
-                width={800}
-                height={600}
-                objectFit="contain"
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src={selectedImage}
+                  alt="Selected image"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
               <motion.button
-                className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2"
+                className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2 z-10"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setSelectedImage(null)}
@@ -130,27 +154,50 @@ const MediaGallery = () => {
     </div>
   );
 };
-
 const WinnerCard = ({ images, committee, winners }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [direction, setDirection] = useState(1)
   const [isHovering, setIsHovering] = useState(false)
+  const intervalRef = useRef(null)
 
   useEffect(() => {
-    let interval
     if (isHovering) {
-      interval = setInterval(() => {
+      intervalRef.current = setInterval(() => {
+        setDirection(1)
         setCurrentIndex((prev) => (prev + 1) % images.length)
-      }, 1500)
+      }, 3000) // Change image every 3 seconds
+    } else {
+      clearInterval(intervalRef.current)
     }
-    return () => clearInterval(interval)
+    return () => clearInterval(intervalRef.current)
   }, [isHovering, images.length])
 
   const nextImage = () => {
+    setDirection(1)
     setCurrentIndex((prev) => (prev + 1) % images.length)
   }
 
   const prevImage = () => {
+    setDirection(-1)
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+  }
+
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0,
+      rotateY: direction > 0 ? -15 : 15,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      rotateY: 0,
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? '-100%' : '100%',
+      opacity: 0,
+      rotateY: direction > 0 ? 15 : -15,
+    }),
   }
 
   return (
@@ -160,20 +207,38 @@ const WinnerCard = ({ images, committee, winners }) => {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        <Image
-          src={images[currentIndex]}
-          alt={`Winner from ${committee}`}
-          layout="fill"
-          objectFit="cover"
-        />
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+              rotateY: { duration: 0.2 },
+            }}
+            className="absolute w-full h-full"
+            style={{ perspective: '1000px' }}
+          >
+            <Image
+              src={images[currentIndex]}
+              alt={`Winner from ${committee}`}
+              layout="fill"
+              objectFit="cover"
+            />
+          </motion.div>
+        </AnimatePresence>
         <button
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-1 transition-opacity opacity-50 hover:opacity-100"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-1 transition-opacity opacity-0 hover:opacity-100 z-10"
           onClick={prevImage}
         >
           <ChevronLeft size={24} />
         </button>
         <button
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-1 transition-opacity opacity-50 hover:opacity-100"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-1 transition-opacity opacity-0 hover:opacity-100 z-10"
           onClick={nextImage}
         >
           <ChevronRight size={24} />
@@ -190,6 +255,8 @@ const WinnerCard = ({ images, committee, winners }) => {
     </div>
   )
 }
+
+
 
 const WinnersSection = () => (
   <div className="bg-red-100 py-12">

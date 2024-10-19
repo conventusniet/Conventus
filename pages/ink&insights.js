@@ -121,59 +121,84 @@ const AuthorSection = ({ image, name, bio, reversed }) => (
 const MediaGallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const images = [
-        '/images/ink (1).jpg', '/images/ink (2).jpg', '/images/ink (3).jpg', '/images/ink (4).jpg', '/images/ink (5).jpg',
-        '/images/ink (6).jpg', '/images/ink (7).jpg', '/images/ink (8).jpg', '/images/ink (9).jpg', '/images/ink (10).jpg',
-        '/images/ink (11).jpg', '/images/ink (12).jpg', '/images/ink (13).jpg', '/images/ink (14).jpg', '/images/ink (15).jpg',
-        '/images/ink (16).jpg', '/images/ink (17).jpg', '/images/ink (18).jpg', '/images/ink (19).jpg', '/images/ink (20).jpg',
+        '/images/ink (1).jpg', '/images/ink (2).jpg', '/images/ink (3).jpg', '/images/ink (4).jpg',
+        '/images/ink (5).jpg', '/images/ink (6).jpg', '/images/ink (7).jpg', '/images/ink (8).jpg',
+        '/images/ink (9).jpg', '/images/ink (10).jpg', '/images/ink (11).jpg', '/images/ink (12).jpg',
+        '/images/ink (13).jpg', '/images/ink (14).jpg', '/images/ink (15).jpg', '/images/ink (16).jpg',
     ];
+
+    const renderImage = (index, className) => (
+        <motion.div
+            key={index}
+            className={`relative overflow-hidden rounded-lg cursor-pointer ${className}`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setSelectedImage(images[index])}
+        >
+            <Image
+                src={images[index]}
+                alt={`Gallery image ${index + 1}`}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+            />
+        </motion.div>
+    );
 
     return (
         <div className="relative">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                {images.map((image, index) => (
-                    <motion.div
-                        key={index}
-                        className="relative overflow-hidden rounded-lg cursor-pointer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setSelectedImage(image)}
-                    >
-                        <Image
-                            src={image}
-                            alt={`Gallery image ${index + 1}`}
-                            width={400}
-                            height={300}
-                            objectFit="cover"
-                            className="rounded-lg"
-                        />
-                    </motion.div>
-                ))}
+            <div className="grid grid-cols-4 gap-4">
+                {/* First row */}
+                {renderImage(0, "col-span-1 row-span-2 h-[400px]")}
+                {renderImage(1, "col-span-1 h-[200px]")}
+                {renderImage(2, "col-span-1 h-[200px]")}
+                {renderImage(3, "col-span-1 row-span-2 h-[400px]")}
+
+                {/* Second row */}
+                {renderImage(4, "col-span-1 h-[200px]")}
+                {renderImage(5, "col-span-1 h-[200px]")}
+
+                {/* Third row */}
+                {renderImage(6, "col-span-1 row-span-2 h-[400px]")}
+                {renderImage(7, "col-span-1 h-[200px]")}
+                {renderImage(8, "col-span-1 h-[200px]")}
+                {renderImage(9, "col-span-1 row-span-2 h-[400px]")}
+
+                {/* Fourth row */}
+                {renderImage(10, "col-span-1 h-[200px]")}
+                {renderImage(11, "col-span-1 h-[200px]")}
+
+                {/* Fifth row */}
+                {renderImage(12, "col-span-1 h-[200px]")}
+                {renderImage(13, "col-span-1 h-[200px]")}
+                {renderImage(14, "col-span-1 h-[200px]")}
+                {renderImage(15, "col-span-1 h-[200px]")}
             </div>
 
             <AnimatePresence>
                 {selectedImage && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
                         onClick={() => setSelectedImage(null)}
                     >
                         <motion.div
-                            className="relative max-w-4xl max-h-[90vh] bg-white rounded-lg overflow-hidden"
+                            className="relative w-full h-full max-w-6xl max-h-screen bg-white overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
                             layoutId={selectedImage}
                         >
-                            <Image
-                                src={selectedImage}
-                                alt="Selected image"
-                                width={800}
-                                height={600}
-                                objectFit="contain"
-                            />
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src={selectedImage}
+                                    alt="Selected image"
+                                    layout="fill"
+                                    objectFit="contain"
+                                />
+                            </div>
                             <motion.button
-                                className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2"
+                                className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2 z-10"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => setSelectedImage(null)}
@@ -261,7 +286,7 @@ const InkAndInsightsPage = () => {
                     <h2 className="text-3xl text-center font-bold mb-8 text-red-800">Media Gallery</h2>
                     <MediaGallery />
                 </section>
-                <ConventusChatbot/>
+                <ConventusChatbot />
             </main>
             <Footer />
         </div>
