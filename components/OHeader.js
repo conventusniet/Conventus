@@ -32,7 +32,7 @@ const Oheader = () => {
                 { href: "/secretariat", label: "Secretariat" },
 
                 { href: "/news", label: "NewsLetter" },
-                { href: "/page3", label: "Diplomatic Resources" },
+                { href: "/Resources", label: "Diplomatic Resources" },
             ]
         },
         { href: "/registration", label: "Register" },
