@@ -16,7 +16,7 @@ const JoinSection = () => {
                     
                     <div className="w-full max-w-3xl mb-12">
                         <Image
-                            src="/images/join-now.png"
+                            src="/images/gs2.jpg"
                             alt="Getting Started"
                             width={2340}
                             height={1560}
