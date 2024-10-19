@@ -6,42 +6,9 @@ const Contact = () => {
     return (
         <section className="py-12 bg-gradient-to-br from-red-50 to-white overflow-hidden">
             <div className="container mx-auto px-4">
-                
 
-                {/* Leadership Profiles */}
-                <div className="mb-20">
-                    <h3 className="text-2xl font-semibold text-center mb-12 text-red-700">Our Technical Team</h3>
-                    <div className="flex flex-wrap justify-center gap-24">
-                        <LeadershipProfile
-                            name="Sanskar Bhardwaj"
-                            designation="Technical Head"
-                            branch="Information Technology"
-                            imageUrl="/images/sanskar.jpg"
-                        />
-                        <LeadershipProfile
-                            name="Anubhav Singh"
-                            designation="Technical Co-Head"
-                            branch="CSE - DS"
-                            imageUrl="/images/anubhav.jpg"
-                        />
-                        <LeadershipProfile
-                            name="Revant Khanna"
-                            designation="Technical Co-Head"
-                            branch="CSE - AI"
-                            imageUrl="/images/revant.jpg"
-                        />
-                    </div>
-                    <motion.p
-                        className="text-center mt-12 max-w-2xl mx-auto text-gray-700"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                    >
-                        Our dedicated technical team brings a wealth of expertise and innovation to Conventus MUN.
-                        With their combined skills in various domains of computer science and information technology,
-                        they ensure seamless execution of all technical aspects of our events.
-                    </motion.p>
-                </div>
+
+
 
                 <h2 className="text-4xl font-bold text-center mb-12 text-red-800">
                     C O N T A C TㅤU S
@@ -123,21 +90,7 @@ const Contact = () => {
     );
 };
 
-const LeadershipProfile = ({ name, designation, branch, imageUrl }) => (
-    <motion.div
-        className="flex flex-col items-center"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-    >
-        <div className="w-64 h-64 rounded-3xl overflow-hidden mb-6 transform transition-transform duration-300 hover:scale-105 shadow-lg">
-            <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
-        </div>
-        <h4 className="font-semibold text-2xl text-gray-800 mb-2">{name}</h4>
-        <p className="text-xl text-red-600 font-medium mb-1">{designation}</p>
-        <p className="text-lg text-gray-600">{branch}</p>
-    </motion.div>
-);
+
 
 const ContactPerson = ({ name, title, phone, email }) => (
     <motion.div

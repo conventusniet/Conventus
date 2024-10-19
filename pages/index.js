@@ -5,6 +5,8 @@ import Welcome from '../components/Welcome';
 import Maincontent from '../components/Maincontent';
 import Contact from '../components/Contact';
 import LearnMoreSection from '../components/LearnMore';
+import leaders from '@/components/leaders';
+import LeadershipPage from '@/components/leaders';
 import Footer from '../components/Footer';
 import LazyLoading from '../components/LazyLoading';
 // import DussehraGreeting from '../components/DussehraGreeting';
@@ -84,6 +86,7 @@ export default function Home() {
         <Welcome />
         <Maincontent />
         <LearnMoreSection />
+        <LeadershipPage/>
         <Contact />
         <ConventusChatbot/>
       </main>
