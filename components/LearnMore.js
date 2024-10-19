@@ -22,7 +22,7 @@ const LearnMoreSection = () => {
         {
             title: "Registration",
             description: "Registration are now open, Secure your front-row seat to diplomacy now!",
-            image: "/images/h4.jpg",
+            image: "/images/h4.png",
             route: "/registration"
         }
     ];
