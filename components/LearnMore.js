@@ -10,19 +10,19 @@ const LearnMoreSection = () => {
         {
             title: "About Us",
             description: "Know more about our vision and mission",
-            image: "/images/3(temp).jpg",
+            image: "/images/3.jpg",
             route: "/aboutus"
         },
         {
             title: "Model United Nations 2025",
             description: "Explore the Second Edition of Conventus MUN",
-            image: "/images/1.jpg",
+            image: "/images/5.jpg",
             route: "/mun1.0"
         },
         {
             title: "Registration",
             description: "Registration are now open, Secure your front-row seat to diplomacy now!",
-            image: "/images/3.jpg",
+            image: "/images/4.jpg",
             route: "/registration"
         }
     ];
