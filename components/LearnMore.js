@@ -14,8 +14,8 @@ const LearnMoreSection = () => {
             route: "/aboutus"
         },
         {
-            title: "Model United Nations 2023",
-            description: "Explore the First Edition of Conventus MUN",
+            title: "Model United Nations 2025",
+            description: "Explore the Second Edition of Conventus MUN",
             image: "/images/1.jpg",
             route: "/mun1.0"
         },
