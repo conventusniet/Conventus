@@ -92,12 +92,12 @@ export default function NewsletterPage() {
   const newsletters = [
     {
       day: "First",
-      imageUrl: "/images/n1.jpg",
+      imageUrl: "/images/Newsletter.jpg",
       pdfUrl: "/pdfs/Newsletter Day1.pdf"
     },
     {
       day: "Second",
-      imageUrl: "/images/n1.jpg",
+      imageUrl: "/images/Newsletter.jpg",
       pdfUrl: "/pdfs/Newsletter Day2.pdf"
     }
   ]
