@@ -56,15 +56,15 @@ const LeadershipPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="text-center mb-12"
+                        className="text-center mb-6"
                     >
-                        <h3 className="text-4xl font-semibold text-center mb-12 text-red-700">
+                        <h3 className="text-4xl font-semibold text-center text-red-700">
                             O U RㅤT E C H N I C A LㅤT E A M
                         </h3>
                     </motion.div>
 
                     <motion.p
-                        className="text-center mt-12 mb-20 max-w-2xl mx-auto text-gray-700"
+                        className="text-center mb-12 max-w-2xl mx-auto text-gray-700"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
