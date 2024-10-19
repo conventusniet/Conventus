@@ -121,10 +121,10 @@ const AuthorSection = ({ image, name, bio, reversed }) => (
 const MediaGallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const images = [
-        '/images/upcoming_conferences.JPG',  '/images/exploretheworldofwriting.JPG', '/images/studentpersepectives.JPG', '/images/authorspotlights.JPG', '/images/workshopsand_seminars.JPG',
-        '/images/ii1.jpg','/images/ii2.jpg','/images/ii3.jpg','/images/ii4.jpg','/images/ii5.jpg',
-        '/images/ii6.jpg','/images/ii7.jpg','/images/ii8.jpg','/images/ii9.jpg','/images/ii10.jpg',
-        '/images/ii11.jpg','/images/ii12.jpg','/images/ii13.jpg','/images/ii14.jpg','/images/ii15.jpg',
+        '/images/ink (1).jpg', '/images/ink (2).jpg', '/images/ink (3).jpg', '/images/ink (4).jpg', '/images/ink (5).jpg',
+        '/images/ink (6).jpg', '/images/ink (7).jpg', '/images/ink (8).jpg', '/images/ink (9).jpg', '/images/ink (10).jpg',
+        '/images/ink (11).jpg', '/images/ink (12).jpg', '/images/ink (13).jpg', '/images/ink (14).jpg', '/images/ink (15).jpg',
+        '/images/ink (16).jpg', '/images/ink (17).jpg', '/images/ink (18).jpg', '/images/ink (19).jpg', '/images/ink (20).jpg',
     ];
 
     return (
