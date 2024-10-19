@@ -16,13 +16,13 @@ const LearnMoreSection = () => {
         {
             title: "Model United Nations 2025",
             description: "Explore the Second Edition of Conventus MUN",
-            image: "/images/h4.jpg",
+            image: "/images/h5.jpg",
             route: "/mun1.0"
         },
         {
             title: "Registration",
             description: "Registration are now open, Secure your front-row seat to diplomacy now!",
-            image: "/images/h5.jpg",
+            image: "/images/h4.jpg",
             route: "/registration"
         }
     ];
