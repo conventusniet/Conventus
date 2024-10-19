@@ -88,6 +88,40 @@ const NewsletterCard = ({ day, imageUrl, pdfUrl }) => {
   )
 }
 
+const PhotoGallery = () => {
+  const images = [
+    '/images/gallery1.jpg',
+    '/images/gallery2.jpg',
+    '/images/gallery3.jpg',
+    '/images/gallery4.jpg'
+  ]
+
+  return (
+    <div className="mt-16">
+      <h2 className="text-4xl font-bold text-red-800 mb-8 text-center">Media Gallery</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {images.map((src, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="relative aspect-square overflow-hidden rounded-lg shadow-lg"
+          >
+            <Image
+              src={src}
+              alt={`Gallery image ${index + 1}`}
+              layout="fill"
+              objectFit="cover"
+              className="transition-transform duration-300 hover:scale-105"
+            />
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function NewsletterPage() {
   const newsletters = [
     {
@@ -113,7 +147,6 @@ export default function NewsletterPage() {
   return (
     <div ref={pageRef} className="min-h-screen flex flex-col bg-red-50">
       <Oheader />
-
       <motion.div
         style={{ y: headerY }}
         className="fixed top-20 left-0 right-0 z-10 bg-red-50 py-12"
@@ -131,7 +164,7 @@ export default function NewsletterPage() {
           </p>
 
           <p className="text-lg mt-10 text-gray-700">
-            At Conventus, Our newsletter is designed to keep you informed and engaged with the latest updates from the Club. Each edition will feature highlights from our recent events, upcoming workshops, and opportunities to get involved. We aim to foster a sense of community and support among our members, providing valuable resources for personal and professional growth. Join us as we explore the dynamic world of Model United Nations, share insights, and celebrate the achievements of our members. Stay connected and be part of our journey toward becoming impactful global citizens! 
+            At Conventus, Our newsletter is designed to keep you informed and engaged with the latest updates from the Club. Each edition will feature highlights from our recent events, upcoming workshops, and opportunities to get involved. We aim to foster a sense of community and support among our members, providing valuable resources for personal and professional growth. Join us as we explore the dynamic world of Model United Nations, share insights, and celebrate the achievements of our members. Stay connected and be part of our journey toward becoming impactful global citizens!
           </p>
         </div>
       </motion.div>
@@ -147,7 +180,10 @@ export default function NewsletterPage() {
             />
           ))}
         </div>
-        <ConventusChatbot/>
+
+        <PhotoGallery />
+
+        <ConventusChatbot />
       </main>
 
       <Footer />
