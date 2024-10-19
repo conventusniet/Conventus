@@ -207,7 +207,7 @@ const Oheader = () => {
                     <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
                             <Image
-                                src="/images/Conventus-png.png"
+                                src="/images/Conventus Logo.jpg"
                                 alt="CONVENTUS Logo"
                                 width={80}
                                 height={80}
