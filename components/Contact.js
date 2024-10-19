@@ -8,6 +8,32 @@ const Contact = () => {
                 <h2 className="text-4xl font-bold text-center mb-12 text-red-800">
                     C O N T A C TㅤU S
                 </h2>
+
+                {/* Leadership Profiles */}
+                <div className="mb-20">
+                    <h3 className="text-2xl font-semibold text-center mb-12 text-red-700">Our Technical Team</h3>
+                    <div className="flex flex-wrap justify-center gap-16">
+                        <LeadershipProfile
+                            name="Sanskar Bhardwaj"
+                            designation="Technical Head"
+                            branch="Information Technology"
+                            imageUrl="/images/sanskar.jpg"
+                        />
+                        <LeadershipProfile
+                            name="Anubhav Singh"
+                            designation="Technical Co-Head"
+                            branch="Data Science"
+                            imageUrl="/images/sanskar.jpg"
+                        />
+                        <LeadershipProfile
+                            name="Revant Khanna"
+                            designation="Technical Co-Head"
+                            branch="Artificial Intelligence"
+                            imageUrl="/images/sanskar.jpg"
+                        />
+                    </div>
+                </div>
+
                 <div className="flex flex-wrap -mx-4 justify-between">
                     {/* Left Column - Map and Address */}
                     <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
@@ -68,6 +94,17 @@ const Contact = () => {
         </section>
     );
 };
+
+const LeadershipProfile = ({ name, designation, branch, imageUrl }) => (
+    <div className="flex flex-col items-center">
+        <div className="w-52 h-52 rounded-3xl overflow-hidden mb-6 transform transition-transform duration-300 hover:scale-105 shadow-lg">
+            <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+        </div>
+        <h4 className="font-semibold text-xl text-gray-800 mb-2">{name}</h4>
+        <p className="text-lg text-red-600 font-medium mb-1">{designation}</p>
+        <p className="text-md text-gray-600">{branch}</p>
+    </div>
+);
 
 const ContactPerson = ({ name, title, phone, email }) => (
     <div className="bg-gray-50 rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300">

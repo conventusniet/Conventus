@@ -18,7 +18,7 @@ export default function Home() {
     // Simulate content loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-      setShowGreeting(true);
+      // setShowGreeting(true);
     }, 4000); // Adjust this time as needed
 
     return () => clearTimeout(timer);
