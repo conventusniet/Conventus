@@ -10,9 +10,9 @@ import ConventusChatbot from '@/components/ConventusChatBot'
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const slides = [
-    { image: '/images/newsletterreveal1.jpg', title: 'Welcome to CONVENTUS', subtitle: 'Shaping the Future of Global Diplomacy' },
-    { image: '/images/joinourcommittees.jpg', title: 'Join Our Committees', subtitle: 'Engage in Meaningful Discussions' },
-    { image: '/images/makeadiffernce.jpg', title: 'Make a Difference', subtitle: 'Address Global Challenges Together' },
+    { image: '/images/munc1.jpg', title: 'NEGATIO', subtitle: 'Make Negotiations' },
+    { image: '/images/munc3.jpg', title: 'SOLUTIO', subtitle: 'Discover Solutions' },
+    { image: '/images/munc2.jpg', title: 'ACTIO', subtitle: 'Implement Action' },
   ]
 
   useEffect(() => {
