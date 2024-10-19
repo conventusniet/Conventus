@@ -48,18 +48,18 @@ const LazyLoading = ({ onLoadingComplete }) => {
 };
 
 const sliderImages = [
-        '/images/artbinnealeteam.JPG',
-        '/images/sahityaajtakteam.JPG',
-        '/images/coll1.jpg',
-        '/images/coll2.jpg',
-        '/images/coll3.jpg',
-        '/images/coll4.jpg',
-        '/images/coll5.jpg',
-        '/images/coll6.jpg',
-        '/images/coll7.jpg',
-        '/images/coll8.jpg',
-        '/images/conventus_events.jpg',
-        '/images/amimunteam.jpg',
+    '/images/artbinnealeteam.JPG',
+    '/images/sahityaajtakteam.JPG',
+    '/images/coll1.jpg',
+    '/images/coll2.jpg',
+    '/images/coll3.jpg',
+    '/images/coll4.jpg',
+    '/images/coll5.jpg',
+    '/images/coll6.jpg',
+    '/images/coll7.jpg',
+    '/images/coll8.jpg',
+    '/images/conventus_events.jpg',
+    '/images/amimunteam.jpg',
 ];
 
 const collageImages = [
@@ -201,7 +201,7 @@ const MediaPage = () => {
                                     key={index}
                                     className={`rounded-lg overflow-hidden shadow-lg cursor-pointer ${index % 7 === 0 ? 'col-span-2 row-span-2' : ''
                                         }`}
-                                    whileHover={{ scale: 1.05, rotate: Math.random() * 10 - 5 }}
+                                    whileHover={{ scale: 1.05 }}
                                     transition={{ duration: 0.3 }}
                                     onClick={() => openModal(src)}
                                 >
@@ -219,7 +219,7 @@ const MediaPage = () => {
                         </div>
                     </div>
                 </section>
-                <ConventusChatbot/>
+                <ConventusChatbot />
             </main>
 
             <Footer />
