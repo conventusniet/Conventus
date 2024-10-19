@@ -64,7 +64,7 @@ const MediaGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const images = [
     '/images/mungallery (1).jpg', '/images/mungallery (2).jpg', '/images/mungallery (3).jpg', '/images/mungallery (4).jpg',
-    '/images/mungallery (5).jpg', '/images/mungallery (6).jpg', '/images/mungallery (7).jpg', '/images/mungallery (8).jpg', 
+    '/images/mungallery (5).jpg', '/images/mungallery (6).jpg', '/images/mungallery (7).jpg', '/images/mungallery (8).jpg',
     '/images/mungallery (9).jpg', '/images/mungallery (10).jpg', '/images/mungallery (11).jpg', '/images/mungallery (12).jpg',
     '/images/mungallery (13).jpg', '/images/mungallery (14).jpg', '/images/mungallery (15).jpg', '/images/mungallery (16).jpg',
     '/images/mungallery (17).jpg', '/images/mungallery (18).jpg', '/images/mungallery (19).jpg', '/images/mungallery (20).jpg',
@@ -131,7 +131,7 @@ const MediaGallery = () => {
   );
 };
 
-const WinnerCard = ({ images, committee }) => {
+const WinnerCard = ({ images, committee, winners }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovering, setIsHovering] = useState(false)
 
@@ -140,7 +140,7 @@ const WinnerCard = ({ images, committee }) => {
     if (isHovering) {
       interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % images.length)
-      }, 1500) // Change image every 1.5 seconds while hovering
+      }, 1500)
     }
     return () => clearInterval(interval)
   }, [isHovering, images.length])
@@ -154,12 +154,12 @@ const WinnerCard = ({ images, committee }) => {
   }
 
   return (
-    <div
-      className="bg-white rounded-lg shadow-lg overflow-hidden"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      <div className="relative h-64 w-full">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div
+        className="relative h-64 w-full"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         <Image
           src={images[currentIndex]}
           alt={`Winner from ${committee}`}
@@ -180,7 +180,12 @@ const WinnerCard = ({ images, committee }) => {
         </button>
       </div>
       <div className="bg-white p-4">
-        <p className="text-center text-lg font-semibold text-red-800">{committee}</p>
+        <p className="text-center text-lg font-semibold text-red-800 mb-2">{committee}</p>
+        <ul className="text-sm text-red-600">
+          {winners.map((winner, index) => (
+            <li key={index} className="mb-1">{winner}</li>
+          ))}
+        </ul>
       </div>
     </div>
   )
@@ -194,43 +199,35 @@ const WinnersSection = () => (
         <WinnerCard
           images={['/images/unsc1.jpg', '/images/unsc2.jpg', '/images/unsc3.jpg']}
           committee="UNSC"
+          winners={[
+            "Best Delegate: Hariom Tiwari",
+            "High Commendation: Daksh Sharma",
+            "Special Mention: Sahil Saw"
+          ]}
         />
         <WinnerCard
-          images={['/images/uncsw1.jpg','/images/uncsw2.jpg', '/images/uncsw3.jpg']}
+          images={['/images/uncsw1.jpg', '/images/uncsw2.jpg', '/images/uncsw3.jpg']}
           committee="UNCSW"
+          winners={[
+            "Best Delegate: Pragya Singh",
+            "High Commendation: Shrasti Bhatnagar",
+            "Special Mention: Shagun Mishra"
+          ]}
         />
         <WinnerCard
           images={['/images/aippm1.jpg', '/images/aippm2.jpg', '/images/aippm3.jpg']}
           committee="AIPPM"
+          winners={[
+            "Best Delegate: Sujal Arora",
+            "High Commendation: Suraj Kumar",
+            "Special Mention: Apurv Krishna"
+          ]}
         />
       </div>
     </div>
-    <div className="mt-12 text-center">
-      <h3 className="text-2xl font-bold text-red-800 mb-4">Winners</h3>
-      <p className="text-lg text-red-600 max-w-2xl mx-auto">
-  UNSC: <br/>
-  Best Delegate: Hariom Tiwari, <br/>
-  High Commendation: Daksh Sharma, <br/>
-  Special Mention: Sahil Saw
-</p>
-
-<p className="text-lg text-red-600 max-w-2xl mx-auto">
-  AIPPM: <br/>
-  Best Delegate: Sujal Arora, <br/>
-  High Commendation: Suraj Kumar, <br/>
-  Special Mention: Apurv Krishna
-</p>
-
-<p className="text-lg text-red-600 max-w-2xl mx-auto">
-  UNCSW: <br/>
-  Best Delegate: Pragya Singh, <br/>
-  High Commendation: Shrasti Bhatnagar, <br/>
-  Special Mention: Shagun Mishra
-</p>
-
-    </div>
   </div>
 )
+
 
 const TeamMember = ({ name, role, image, bio }) => {
   const [isFlipped, setIsFlipped] = useState(false)
@@ -304,7 +301,7 @@ export default function CommitteesPage() {
           </p>
           <p className="text-lg text-gray-700">
             Conventus aims to bring together passionate individuals from around the world to engage in discussions on pressing international issues. Its committees provide a platform for delegates to develop diplomacy skills, broaden their understanding of global affairs, and collaborate on innovative solutions. Covering topics from climate change to global health crises, Conventus encourages participants to shape the future of global diplomacy and make their voices heard.
-  </p>
+          </p>
         </div>
 
         <div className="my-16">
@@ -316,7 +313,7 @@ export default function CommitteesPage() {
               image="/images/deandsw.jpg"
               bio="Dean DSW "
             />
-             <TeamMember
+            <TeamMember
               name="Ms. Kanika Jindal "
               image="/images/asdeandsw.png"
               bio="Associate Dean DSW"
@@ -331,7 +328,7 @@ export default function CommitteesPage() {
               image="/images/tejasvgupta.jpg"
               bio="Vice Chairperson UNSC "
             />
-           
+
           </div>
         </div>
       </main>
@@ -341,7 +338,7 @@ export default function CommitteesPage() {
         <h2 className="text-3xl mt-20 text-center font-bold mb-8 text-red-800">Media Gallery</h2>
         <MediaGallery />
       </section>
-      <ConventusChatbot/>
+      <ConventusChatbot />
       <Footer />
     </div>
   )

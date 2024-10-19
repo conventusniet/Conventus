@@ -22,13 +22,13 @@ const Contact = () => {
                         <LeadershipProfile
                             name="Anubhav Singh"
                             designation="Technical Co-Head"
-                            branch="Data Science"
+                            branch="CSE - DS"
                             imageUrl="/images/sanskar.jpg"
                         />
                         <LeadershipProfile
                             name="Revant Khanna"
                             designation="Technical Co-Head"
-                            branch="Artificial Intelligence"
+                            branch="CSE - AI"
                             imageUrl="/images/sanskar.jpg"
                         />
                     </div>
