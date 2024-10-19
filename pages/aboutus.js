@@ -66,18 +66,11 @@ const TeamSection = ({ title, members }) => (
 
 const Carousel = () => {
     const images = [
-        "/images/artbinnealeteam.JPG",
-        "/images/sahityaajtakteam.JPG",
-        "/images/coll1.jpg",
-        "/images/coll2.jpg",
-        "/images/coll3.jpg",
-        "/images/coll4.jpg",
-        "/images/coll5.jpg",
-        "/images/coll6.jpg",
-        "/images/coll7.jpg",
-        "/images/coll8.jpg",
-        "/images/amimunteam.jpg",
-         "/images/conventus_events.jpg",
+        "/public/images/AB1.jpg",
+        "public/images/AB2.jpg",
+        "public/images/AB3.jpg",
+        "public/images/AB4.jpg",
+        "public/images/AB5.jpg",
     ];
 
     const CustomArrow = ({ direction, onClick }) => (
