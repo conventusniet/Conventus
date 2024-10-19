@@ -195,15 +195,15 @@ const WinnersSection = () => (
       <h2 className="text-3xl font-bold text-center mb-8 text-red-800">MUN Winners</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <WinnerCard
-          images={['/images/hariomtiwari.jpg', '/images/dakshsharma.jpg', '/images/sahilsaw.jpg']}
+          images={['/images/NIET7991.jpg', '/images/dakshsharma.jpg', '/images/sahilsaw.jpg']}
           committee="UNSC"
         />
         <WinnerCard
-          images={['/images/pragyabestdelegate.jpg', '/images/shrastibhatnagar.jpg',  '/images/shagunmishra.jpg']}
+          images={['/images/NIET7991.jpg', '/images/shrastibhatnagar.jpg',  '/images/shagunmishra.jpg']}
           committee="UNCSW"
         />
         <WinnerCard
-          images={['/images/sujalarora.jpg', '/images/surajkumar.jpg', '/images/apurvkrishna.jpg']}
+          images={['/images/NIET7991.jpg', '/images/surajkumar.jpg', '/images/apurvkrishna.jpg']}
           committee="AIPPM"
         />
       </div>
@@ -316,17 +316,17 @@ export default function CommitteesPage() {
           <div className="flex flex-wrap justify-center gap-8">
             <TeamMember
               name="Mr. Manish Kaushik"
-              image="/images/Manishkaushik.jpg"
+              image="/images/deandsw.jpg"
               bio="Dean DSW "
             />
              <TeamMember
               name="Ms. Kanika Jindal "
-              image="/images/Kanika.png"
+              image="/images/asdeandsw.png"
               bio="Associate Dean DSW"
             />
             <TeamMember
               name="Manas Gupta"
-              image="/images/manasteam.jpg"
+              image="/images/p2.jpg"
               bio="Secretary General & Chairperson UNSC"
             />
             <TeamMember
