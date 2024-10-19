@@ -82,7 +82,7 @@ export default function CommitteesPage() {
 
   const UNCommittees = [
     {
-      logo: "/images/coll2.jpg",
+      logo: "/images/unsc_bg.jpg",
       title: "United Nations Security Council",
       description: "The United Nations Security Council (UNSC) in Model United Nations (MUN) holds primary responsibility for maintaining international peace and security, reflecting the global commitment to address threats to peace.",
       objectives: [
@@ -94,7 +94,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Delegates will simulate crisis scenarios and collaboratively draft resolutions aimed at preserving global peace and security, developing actionable strategies to confront contemporary security threats and promoting diplomatic dialogue in an increasingly complex international landscape."
     },
     {
-      logo: "/images/coll4.jpg",
+      logo: "/images/uncsw_bg.jpg",
       title: "United Nations Commission On Status Of Women",
       description: "The United Nations Commission on the Status of Women (UNCSW) in Model United Nations (MUN) focuses on   Preventing the Violation of Women’s Human Rights in Conflict and Post-Conflict Reconstruction  , addressing the unique challenges women face in conflict zones and their critical role in peacebuilding.",
       objectives: [
@@ -106,7 +106,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Delegates will propose legal reforms, capacity-building initiatives, and safe spaces for women, empowering them as key agents of peace and societal progress while emphasizing the importance of gender equality and women's empowerment in achieving sustainable global peace and development.",
     },
     {
-      logo: "/images/unhrclogo.jpg",
+      logo: "/images/unhrc_bg.jpg",
       title: "United Nations Human Rights Council",
       description: "The United Nations Human Rights Council (UNHRC) in Model United Nations (MUN) is dedicated to promoting and protecting human rights globally, addressing urgent violations and fostering international cooperation",
       objectives: [
@@ -121,7 +121,7 @@ export default function CommitteesPage() {
 
   const IndianComittees = [
     {
-      logo: "/images/commaippm.jpg",
+      logo: "/images/aippm_bg.png",
       title: "AIPPM",
       description: "The All India Political Parties Meet (AIPPM) in Model United Nations (MUN) simulates India's dynamic political landscape, where representatives from various political parties debate and negotiate on key national issues, including economic policies, social justice, and governance.",
       objectives: [
@@ -133,7 +133,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Delegates will form alliances, craft policies, and defend their party's stance, echoing the real-life political discourse in India, while proposing practical solutions to address regional and national challenges."
     },
        {
-      logo: "/images/commls.jpg",
+      logo: "/images/lok_sabha_bg.jpg",
       title: "Lok Sabha",
       description: "The Lok Sabha Committee in Model United Nations (MUN) simulates the vibrant proceedings of India’s lower house of Parliament, providing a platform for participants to engage in the democratic process akin to a Youth Parliament.",
       objectives: [
@@ -149,7 +149,7 @@ export default function CommitteesPage() {
 
   const  InternationalPress = [
     {
-      logo: "/images/coll6.jpg",
+      logo: "/images/ip_bg.PNG",
       title: "Journalism",
       description: "The Journalists Committee in Model United Nations (MUN) serves as the storytellers of the International Press, observing debates across various committees and capturing the essence of discussions and delegate interactions.",
       objectives: [
@@ -162,7 +162,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Journalists will deliver well-crafted articles, showcasing their analytical skills and ability to communicate the significance of committee proceedings, offering a deeper understanding of the issues at hand."
     },
     {
-      logo: "/images/photography.jpg.jpg",
+      logo: "//images/ip_bg.PNG",
       title: "Photography",
       description: "The Photographers Committee in Model United Nations (MUN) captures the energy and spontaneity of the conference, immortalizing key moments through powerful visuals.",
       objectives: [
@@ -173,7 +173,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Photographers will produce a visual collection that conveys the essence of the MUN, showcasing the passion and deliberation of the participants through impactful images."
     },
          {
-      logo: "/images/caricature.JPG",
+      logo: "/images/ip_bg.PNG",
       title: "Caricature",
       description: "The Caricature Committee in Model United Nations (MUN) provides a unique artistic commentary on debates, using satire and creativity to illustrate the intensity of discussions.",
       objectives: [
