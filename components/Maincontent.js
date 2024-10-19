@@ -23,7 +23,7 @@ const MainContent = () => {
           <div className="lg:w-2/5 flex flex-col items-center">
             <div className="bg-gray-200 w-full max-w-sm aspect-[3/4] mb-6">
               <img 
-                src="/images/Welcome.JPG" 
+                src="/images/2.jpg" 
                 alt="Conventus" 
                 className="w-full h-full object-cover"
               />
