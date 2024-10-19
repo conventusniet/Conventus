@@ -8,9 +8,9 @@ import ConventusChatbot from '@/components/ConventusChatBot';
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    { image: '/images/coll1.png', title: 'Diplomatic Resources', subtitle: 'Empowering Future Global Leaders' },
-    { image: '/images/coll2.png', title: 'Essential Materials', subtitle: 'Curated Content for Aspiring Diplomats' },
-    { image: '/images/coll3.png', title: 'Expert Insights', subtitle: 'Learn from Experienced Diplomats' },
+    { image: '/images/Resources BG.jpg', title: 'Diplomatic Resources', subtitle: 'Empowering Future Global Leaders' },
+    { image: '/images/Resources BG.jpg', title: 'Essential Materials', subtitle: 'Curated Content for Aspiring Diplomats' },
+    { image: '/images/Resources BG.jpg', title: 'Expert Insights', subtitle: 'Learn from Experienced Diplomats' },
   ];
 
   useEffect(() => {
