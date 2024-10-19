@@ -70,7 +70,7 @@ export default function SecretariatPage() {
       <main className="flex-grow container mx-auto px-4 py-8 mt-[40vh] md:mt-[50vh]">
         <div className="relative w-full aspect-video mb-12 md:mb-16">
           <Image
-            src="/images/secretariat1.JPG"
+            src="/images/Secretariat.jpg"
             alt="Secretariat Group Photo"
             layout="fill"
             objectFit="cover"
