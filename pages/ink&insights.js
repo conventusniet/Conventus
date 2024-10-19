@@ -9,9 +9,9 @@ import ConventusChatbot from '@/components/ConventusChatBot';
 const HeroCarousel = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const slides = [
-        { image: '/images/exploretheworldofwriting.JPG', title: 'Ink & Insights', subtitle: 'Explore the World of Writing' },
-        { image: '/images/studentpersepectives.JPG', title: 'Student Perspectives', subtitle: 'Fresh Voices in Literature' },
-        { image: '/images/authorspotlights.JPG', title: 'Author Spotlights', subtitle: 'Meet the Minds Behind the Books' },
+        { image: '/images/Ink c1.jpg', title: 'Ink & Insights', subtitle: 'Explore the World of Writing' },
+        { image: '/images/Ink c2.jpg', title: 'Author Spotlights', subtitle: 'Meet the Minds Behind the Books' },
+        { image: '/images/Ink c4.jpg', title: 'Student Perspectives', subtitle: 'Fresh Voices in Literature' },
     ];
 
     useEffect(() => {
