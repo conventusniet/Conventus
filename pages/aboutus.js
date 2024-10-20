@@ -165,7 +165,7 @@ export default function AboutPageOne() {
         {
             name: "Neeti Taneja Mam",
             position: "Faculty Coordinator Conventus",
-            image: "/images/asdeandsw.png",
+            image: "/images/faculty_coordinator.jpg",
             info: "Neeti Taneja, as the faculty coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. Her leadership and support have significantly contributed to the growth and success of the club, helping students develop their skills in public speaking, diplomacy, and event management. She is also known for her academic excellence and dedication to the IT department, fostering an environment that encourages innovation and collaborative learning.."
         },
     ];
