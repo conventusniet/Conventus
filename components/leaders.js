@@ -37,13 +37,13 @@ const LeadershipPage = () => {
         {
             name: "Anubhav Singh",
             role: "Technical Co-Head",
-            imageUrl: "/images/aditya.jpg",
+            imageUrl: "/images/tech_2.jpg",
             branch: "CSE - DS"
         },
         {
             name: "Revant Khanna",
             role: "Technical Co-Head",
-            imageUrl: "/images/aditya.jpg",
+            imageUrl: "/images/sanskar.jpg",
             branch: "CSE - AI"
         },
     ];
