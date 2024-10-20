@@ -90,10 +90,10 @@ const NewsletterCard = ({ day, imageUrl, pdfUrl }) => {
 
 const PhotoGallery = () => {
   const images = [
-    '/images/gallery1.jpg',
-    '/images/gallery2.jpg',
-    '/images/gallery3.jpg',
-    '/images/gallery4.jpg'
+    '/images/news_1.jpg',
+    '/images/news_2.jpg',
+    '/images/news_3.jpg',
+    '/images/news_4.jpg'
   ]
 
   return (
