@@ -217,7 +217,7 @@ const EventsPage = () => {
       participants: "24"
     },
         { 
-      image: "/images/pstevt_1.jpg", 
+      image: "/images/pstevt_10.jpg", 
       title: "Independence Day",
       date: "August 15th, 2024",
       description: "On the occasion of Independence Day, Vice President of The Conventus society, Yashraj Ranjan, delivered a heart-touching poem that celebrated India's glorious history. The poem took the audience on a journey through India's past, starting from the Indus Valley Civilization, through the era of Mahajanapadas and great empires, to the period of British rule. The poem also emphasized India's current stature as a global powerhouse, highlighting the country's booming economy, its role as the pharmacy of the world, advancements in the tech industry, and leadership in the spices industry. Yashraj urged everyone to remember the bravery of the unsung heroes whose legacy continues to inspire the nation",
