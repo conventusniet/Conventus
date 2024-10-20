@@ -136,7 +136,7 @@ const EventsPage = () => {
 
   const events = [
     { 
-      image: "/images/debatecompetition.jpg", 
+      image: "/images/upcevt_1.jpg", 
       title: "Annual Debate Competition",
       date: "November 21-22, 2024",
       description: "The Conventus Club is thrilled to host its Annual Debate Competition, featuring themed debates,   group discussions, and JAM (Just A Minute) sessions. Participants will have the opportunity to showcase their speaking skills, express views on current issues, and engage in lively discussions. This event promises to be a platform for debate, collaboration, and quick thinking!",
@@ -145,7 +145,7 @@ const EventsPage = () => {
       participants: "NA"
     },
     { 
-      image: "/images/upcomingmun2.jpg", 
+      image: "/images/upcevt_2.jpg", 
       title: "NIET MUN 2.0",
       date: "February 2025",
       description: "The Conventus Club proudly announces the second edition of the NIET Model United Nations (MUN) conference, scheduled for February 2025. Building on the success of its inaugural edition, NIET MUN 2.0 promises to be even more dynamic and intellectually stimulating, bringing together over 200 participants from diverse backgrounds. Delegates will engage in diplomatic debates, tackling global challenges through a range of committees, including the United Nations Security Council (UNSC), the All India Political Parties Meet (AIPPM) and more. Participants will have the opportunity to enhance their public speaking, negotiation, and problem-solving skills while contributing to resolutions on critical international and national issues. Join us at NIET MUN 2.0 and be part of an event that shapes tomorrow’s leaders and diplomats",
@@ -154,7 +154,7 @@ const EventsPage = () => {
       participants: "NA"
     },
     { 
-      image: "/images/sahitya_ajtak_pastevents.jpg", 
+      image: "/images/upcevt_3.jpg", 
       title: "Sahitya Ajtak",
       date: "November 23-24, 2024",
       description: "The Conventus Society is organizing an exciting trip to the renowned Sahitya Aaj Tak event at Major Dhyan Chand Stadium, Delhi, from November 22 to 24. This annual literary and cultural festival is a grand celebration of India's rich heritage in literature, art, and entertainment. For six years, it has drawn literature enthusiasts and artists alike, becoming a key attraction for lovers of Indian languages, art, and culture. Attendees will have the opportunity to immerse themselves in a vibrant atmosphere filled with engaging sessions, discussions, and performances, showcasing the brilliance of India's literary and artistic traditions. Join us for an unforgettable experience of creativity, culture, and learning!",
