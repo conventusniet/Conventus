@@ -122,6 +122,17 @@ const RegistrationForm = () => {
     { id: 'lang', label: 'Language', icon: Building, type: 'text' },
   ];
 
+  const trip = [
+    { id: 'name', label: 'Name', icon: User, type: 'text' },
+    { id: 'branch', label: 'Branch', icon: User, type: 'text' },
+    { id: 'section', label: 'Section', icon: User, type: 'text' },
+    { id: 'year', label: 'Year', icon: User, type: 'text' },
+    { id: 'erpid', label: 'ERP ID', icon: User, type: 'text' },
+    { id: 'st1', label: 'Statement 1', icon: User, type: 'text' },
+    { id: 'st2', label: 'Statement 2', icon: User, type: 'text' },
+    { id: 'st3', label: 'Statement 3', icon: User, type: 'text' },
+  ];
+
   return (
     <>
       <motion.form
@@ -133,6 +144,61 @@ const RegistrationForm = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {fields.map((field) => (
+            <div key={field.id}>
+              <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor={field.id}>
+                <field.icon className="inline-block mr-2 text-red-600" size={18} />
+                {field.label}
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                id={field.id}
+                type={field.type}
+                placeholder={`Your ${field.label}`}
+                value={formData[field.id]}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          ))}
+        </div>
+        {/* <div className="mt-6">
+          <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="address">
+            <MapPin className="inline-block mr-2 text-red-600" size={18} />
+            Address
+          </label>
+          <textarea
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+            id="address"
+            placeholder="Your Address"
+            rows="3"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div> */}
+        <div className="mt-8 text-center">
+          <motion.button
+            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? 'Submitting...' : 'Register Now'}
+          </motion.button>
+        </div>
+      </motion.form>
+      <motion.form
+        className="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl mx-auto border-2 border-red-600"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        onSubmit={handleSubmit}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {trip.map((field) => (
             <div key={field.id}>
               <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor={field.id}>
                 <field.icon className="inline-block mr-2 text-red-600" size={18} />
