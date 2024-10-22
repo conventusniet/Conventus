@@ -135,6 +135,7 @@ const RegistrationForm = () => {
 
   return (
     <>
+      <h2 className="text-3xl font-bold text-center mb-6">Debate Registration Form</h2>
       <motion.form
         className="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl mx-auto border-2 border-red-600"
         initial={{ opacity: 0, scale: 0.9 }}
@@ -190,6 +191,8 @@ const RegistrationForm = () => {
           </motion.button>
         </div>
       </motion.form>
+      <div className="my-10"></div>
+      <h2 className="text-3xl font-bold text-center mb-6">Trip Registration Form</h2>
       <motion.form
         className="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl mx-auto border-2 border-red-600"
         initial={{ opacity: 0, scale: 0.9 }}
