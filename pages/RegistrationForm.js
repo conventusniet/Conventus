@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, MapPin, X } from 'lucide-react';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://conventus.pythonanywhere.com/api';
-
 const Modal = ({ isOpen, onClose, message, isError }) => {
   return (
     <AnimatePresence>
@@ -28,7 +26,7 @@ const Modal = ({ isOpen, onClose, message, isError }) => {
             >
               <X size={24} />
             </button>
-            <h2 className={`text-2xl font-bold mb-4 ${isError ? 'text-red-600' : 'text-red-600'}`}>
+            <h2 className={`text-2xl font-bold mb-4 ${isError ? 'text-red-600' : 'text-green-600'}`}>
               {isError ? 'Error' : 'Success'}
             </h2>
             <p className="text-gray-700">{message}</p>
@@ -39,31 +37,51 @@ const Modal = ({ isOpen, onClose, message, isError }) => {
   );
 };
 
-const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
+const RegistrationForms = () => {
+  const [debateFormData, setDebateFormData] = useState({
     name: '',
     branch: '',
     section: '',
-    year: '',
+    year: '2024',
     phone: '',
-    lang: '',
+    lang: 'english',
   });
+
+  const [tripFormData, setTripFormData] = useState({
+    name: '',
+    branch: '',
+    section: '',
+    year: '2024',
+    erpid: '',
+    st1: '',
+    st2: '',
+    st3: '',
+  });
+
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const handleChange = (e) => {
+  const handleDebateChange = (e) => {
     const { id, value } = e.target;
-    setFormData((prevData) => ({
+    setDebateFormData((prevData) => ({
       ...prevData,
       [id]: value,
     }));
   };
 
-  const validateForm = () => {
-    for (const key in formData) {
-      if (!formData[key].trim()) {
+  const handleTripChange = (e) => {
+    const { id, value } = e.target;
+    setTripFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  const validateDebateForm = () => {
+    for (const key in debateFormData) {
+      if (!debateFormData[key].trim()) {
         setModalMessage(`Please fill in the ${key} field.`);
         setIsError(true);
         setModalOpen(true);
@@ -73,33 +91,50 @@ const RegistrationForm = () => {
     return true;
   };
 
-  const handleSubmit = async (e) => {
+  const validateTripForm = () => {
+    for (const key in tripFormData) {
+      if (!tripFormData[key].trim()) {
+        setModalMessage(`Please fill in the ${key} field.`);
+        setIsError(true);
+        setModalOpen(true);
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const handleDebateSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateDebateForm()) return;
 
     setLoading(true);
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/register/`, formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await axios.post(
+        'https://conventus.pythonanywhere.com/api/debate-registration/',
+        debateFormData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
 
       if (response.data && response.data.message) {
         setModalMessage(response.data.message);
         setIsError(response.data.message.toLowerCase().includes('failed'));
         if (!isError) {
-          setFormData({
+          setDebateFormData({
             name: '',
+            branch: '',
+            section: '',
+            year: '2024',
             phone: '',
-            email: '',
-            organization: '',
-            address: '',
+            lang: 'english',
           });
         }
       } else {
-        setModalMessage('Registration completed, but the server response was unclear.');
+        setModalMessage('Registration completed successfully!');
         setIsError(false);
       }
     } catch (err) {
@@ -113,149 +148,245 @@ const RegistrationForm = () => {
     }
   };
 
-  const fields = [
+  const handleTripSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateTripForm()) return;
+
+    setLoading(true);
+
+    try {
+      const response = await axios.post(
+        'https://conventus.pythonanywhere.com/api/trip-registration/',
+        tripFormData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.data && response.data.message) {
+        setModalMessage(response.data.message);
+        setIsError(response.data.message.toLowerCase().includes('failed'));
+        if (!isError) {
+          setTripFormData({
+            name: '',
+            branch: '',
+            section: '',
+            year: '2024',
+            erpid: '',
+            st1: '',
+            st2: '',
+            st3: '',
+          });
+        }
+      } else {
+        setModalMessage('Trip registration completed successfully!');
+        setIsError(false);
+      }
+    } catch (err) {
+      setModalMessage(
+        err.response?.data?.message || 'An error occurred while submitting the form. Please try again.'
+      );
+      setIsError(true);
+    } finally {
+      setLoading(false);
+      setModalOpen(true);
+    }
+  };
+
+  const debateFields = [
     { id: 'name', label: 'Name', icon: User, type: 'text' },
-    { id: 'branch', label: 'Branch', icon: User, type: 'text' },
+    { id: 'branch', label: 'Branch', icon: Building, type: 'text' },
     { id: 'section', label: 'Section', icon: User, type: 'text' },
-    { id: 'year', label: 'Year', icon: User, type: 'text' },
+    {
+      id: 'year',
+      label: 'Year',
+      icon: User,
+      type: 'select',
+      options: ['2024', '2023', '2022', '2021'],
+    },
     { id: 'phone', label: 'Phone', icon: Phone, type: 'tel' },
-    { id: 'lang', label: 'Language', icon: Building, type: 'text' },
+    {
+      id: 'lang',
+      label: 'Language',
+      icon: Building,
+      type: 'select',
+      options: ['english', 'hindi'],
+    },
   ];
 
-  const trip = [
+  const tripFields = [
     { id: 'name', label: 'Name', icon: User, type: 'text' },
-    { id: 'branch', label: 'Branch', icon: User, type: 'text' },
+    { id: 'branch', label: 'Branch', icon: Building, type: 'text' },
     { id: 'section', label: 'Section', icon: User, type: 'text' },
-    { id: 'year', label: 'Year', icon: User, type: 'text' },
-    { id: 'erpid', label: 'ERP ID', icon: User, type: 'text' },
-    { id: 'st1', label: 'Statement 1', icon: User, type: 'text' },
-    { id: 'st2', label: 'Statement 2', icon: User, type: 'text' },
-    { id: 'st3', label: 'Statement 3', icon: User, type: 'text' },
+    {
+      id: 'year',
+      label: 'Year',
+      icon: User,
+      type: 'select',
+      options: ['2024', '2023', '2022', '2021'],
+    },
+  ];
+
+  const tripTextareas = [
+    { id: 'erpid', label: 'ERP ID', icon: User },
+    { id: 'st1', label: 'Statement 1', icon: User },
+    { id: 'st2', label: 'Statement 2', icon: User },
+    { id: 'st3', label: 'Statement 3', icon: User },
   ];
 
   return (
-    <>
-      <h2 className="text-3xl font-bold text-center mb-6">Debate Registration Form</h2>
-      <motion.form
-        className="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl mx-auto border-2 border-red-600"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        onSubmit={handleSubmit}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {fields.map((field) => (
-            <div key={field.id}>
+    <div className="container mx-auto px-4 py-8">
+      <div className="mb-16 bg-white rounded-lg shadow-2xl p-8">
+        <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
+          Debate Registration Form
+        </h2>
+        <motion.form
+          className="w-full max-w-4xl mx-auto"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          onSubmit={handleDebateSubmit}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {debateFields.map((field) => (
+              <div key={field.id}>
+                <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor={field.id}>
+                  <field.icon className="inline-block mr-2 text-red-600" size={18} />
+                  {field.label}
+                </label>
+                {field.type === 'select' ? (
+                  <select
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                    id={field.id}
+                    value={debateFormData[field.id]}
+                    onChange={handleDebateChange}
+                    required
+                  >
+                    {field.options.map((option) => (
+                      <option key={option} value={option}>
+                        {option.charAt(0).toUpperCase() + option.slice(1)}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                    id={field.id}
+                    type={field.type}
+                    placeholder={`Enter your ${field.label.toLowerCase()}`}
+                    value={debateFormData[field.id]}
+                    onChange={handleDebateChange}
+                    required
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <motion.button
+              className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? 'Submitting...' : 'Register for Debate'}
+            </motion.button>
+          </div>
+        </motion.form>
+      </div>
+
+      <div className="mb-16 bg-white rounded-lg shadow-2xl p-8">
+        <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
+          Trip Registration Form
+        </h2>
+        <motion.form
+          className="w-full max-w-4xl mx-auto"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          onSubmit={handleTripSubmit}
+        >
+          <div className="flex flex-wrap -mx-3 mb-6">
+            {tripFields.map((field) => (
+              <div key={field.id} className="w-full md:w-1/4 px-3 mb-6">
+                <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor={field.id}>
+                  <field.icon className="inline-block mr-2 text-red-600" size={18} />
+                  {field.label}
+                </label>
+                {field.type === 'select' ? (
+                  <select
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                    id={field.id}
+                    value={tripFormData[field.id]}
+                    onChange={handleTripChange}
+                    required
+                  >
+                    {field.options.map((option) => (
+                      <option key={option} value={option}>
+                        {option.charAt(0).toUpperCase() + option.slice(1)}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                    id={field.id}
+                    type={field.type}
+                    placeholder={`Enter your ${field.label.toLowerCase()}`}
+                    value={tripFormData[field.id]}
+                    onChange={handleTripChange}
+                    required
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {tripTextareas.map((field) => (
+            <div key={field.id} className="mb-6">
               <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor={field.id}>
                 <field.icon className="inline-block mr-2 text-red-600" size={18} />
                 {field.label}
               </label>
-              <input
+              <textarea
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
                 id={field.id}
-                type={field.type}
-                placeholder={`Your ${field.label}`}
-                value={formData[field.id]}
-                onChange={handleChange}
+                placeholder={`Enter your ${field.label.toLowerCase()}`}
+                rows="3"
+                value={tripFormData[field.id]}
+                onChange={handleTripChange}
                 required
               />
             </div>
           ))}
-        </div>
-        {/* <div className="mt-6">
-          <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="address">
-            <MapPin className="inline-block mr-2 text-red-600" size={18} />
-            Address
-          </label>
-          <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-            id="address"
-            placeholder="Your Address"
-            rows="3"
-            value={formData.address}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div> */}
-        <div className="mt-8 text-center">
-          <motion.button
-            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? 'Submitting...' : 'Register Now'}
-          </motion.button>
-        </div>
-      </motion.form>
-      <div className="my-10"></div>
-      <h2 className="text-3xl font-bold text-center mb-6">Trip Registration Form</h2>
-      <motion.form
-        className="bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl mx-auto border-2 border-red-600"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        onSubmit={handleSubmit}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {trip.map((field) => (
-            <div key={field.id}>
-              <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor={field.id}>
-                <field.icon className="inline-block mr-2 text-red-600" size={18} />
-                {field.label}
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                id={field.id}
-                type={field.type}
-                placeholder={`Your ${field.label}`}
-                value={formData[field.id]}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          ))}
-        </div>
-        {/* <div className="mt-6">
-          <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="address">
-            <MapPin className="inline-block mr-2 text-red-600" size={18} />
-            Address
-          </label>
-          <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-            id="address"
-            placeholder="Your Address"
-            rows="3"
-            value={formData.address}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div> */}
-        <div className="mt-8 text-center">
-          <motion.button
-            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? 'Submitting...' : 'Register Now'}
-          </motion.button>
-        </div>
-      </motion.form>
+
+          <div className="mt-8 text-center">
+            <motion.button
+              className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? 'Submitting...' : 'Register for Trip'}
+            </motion.button>
+          </div>
+        </motion.form>
+      </div>
+
       <Modal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         message={modalMessage}
         isError={isError}
       />
-    </>
+    </div>
   );
 };
 
-export default RegistrationForm;
+export default RegistrationForms;
