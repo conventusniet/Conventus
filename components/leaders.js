@@ -43,7 +43,7 @@ const LeadershipPage = () => {
         {
             name: "Revant Khanna",
             role: "Technical Co-Head",
-            imageUrl: "/images/sanskar.jpg",
+            imageUrl: "/images/Revant.jpg",
             branch: "CSE - AI"
         },
     ];
