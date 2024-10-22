@@ -118,7 +118,7 @@ const RegistrationForm = () => {
     { id: 'branch', label: 'Branch', icon: User, type: 'text' },
     { id: 'section', label: 'Section', icon: User, type: 'text' },
     { id: 'year', label: 'Year', icon: User, type: 'text' },
-    { id: 'phone', label: 'Phone', icon: Mail, type: 'tel' },
+    { id: 'phone', label: 'Phone', icon: Phone, type: 'tel' },
     { id: 'lang', label: 'Language', icon: Building, type: 'text' },
   ];
 
@@ -150,12 +150,12 @@ const RegistrationForm = () => {
             </div>
           ))}
         </div>
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="address">
             <MapPin className="inline-block mr-2 text-red-600" size={18} />
             Address
           </label>
-          {/* <textarea
+          <textarea
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
             id="address"
             placeholder="Your Address"
@@ -163,8 +163,8 @@ const RegistrationForm = () => {
             value={formData.address}
             onChange={handleChange}
             required
-          ></textarea> */}
-        </div>
+          ></textarea>
+        </div> */}
         <div className="mt-8 text-center">
           <motion.button
             className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${
