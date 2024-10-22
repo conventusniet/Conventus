@@ -42,10 +42,11 @@ const Modal = ({ isOpen, onClose, message, isError }) => {
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     name: '',
+    branch: '',
+    section: '',
+    year: '',
     phone: '',
-    email: '',
-    organization: '',
-    address: '',
+    lang: '',
   });
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -114,9 +115,11 @@ const RegistrationForm = () => {
 
   const fields = [
     { id: 'name', label: 'Name', icon: User, type: 'text' },
-    { id: 'phone', label: 'Phone', icon: Phone, type: 'tel' },
-    { id: 'email', label: 'Email', icon: Mail, type: 'email' },
-    { id: 'organization', label: 'Organization/Institute/University', icon: Building, type: 'text' },
+    { id: 'branch', label: 'Branch', icon: User, type: 'text' },
+    { id: 'section', label: 'Section', icon: User, type: 'text' },
+    { id: 'year', label: 'Year', icon: User, type: 'text' },
+    { id: 'phone', label: 'Phone', icon: Mail, type: 'tel' },
+    { id: 'lang', label: 'Language', icon: Building, type: 'text' },
   ];
 
   return (
@@ -152,7 +155,7 @@ const RegistrationForm = () => {
             <MapPin className="inline-block mr-2 text-red-600" size={18} />
             Address
           </label>
-          <textarea
+          {/* <textarea
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
             id="address"
             placeholder="Your Address"
@@ -160,7 +163,7 @@ const RegistrationForm = () => {
             value={formData.address}
             onChange={handleChange}
             required
-          ></textarea>
+          ></textarea> */}
         </div>
         <div className="mt-8 text-center">
           <motion.button
