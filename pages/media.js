@@ -56,7 +56,7 @@ const sliderImages = [
 ];
 
 const collageImages = [
-    '/images/Media (1).jpg',
+    '/images/Media (1).JPG',
     '/images/Media (2).jpg',
     '/images/Media (3).jpg',
     '/images/Media (4).jpg',
