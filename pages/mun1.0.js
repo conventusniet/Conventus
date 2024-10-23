@@ -67,8 +67,8 @@ const MediaGallery = () => {
     '/images/mungallery (5).jpg', '/images/mungallery (6).jpg', '/images/mungallery (7).jpg', '/images/mungallery (8).jpg',
     '/images/mungallery (9).jpg', '/images/mungallery (10).jpg', '/images/mungallery (11).jpg', '/images/mungallery (12).jpg',
     '/images/mungallery (13).jpg', '/images/mungallery (14).jpg', '/images/mungallery (15).jpg', '/images/mungallery (16).jpg',
-     '/images/mungallery (17).jpg','/images/mungallery (18).jpg','/images/mungallery (19).jpg',
-    '/images/mungallery (20).jpg', '/images/mungallery (21).jpg','/images/mungallery (22).jpg',
+    '/images/mungallery (17).jpg', '/images/mungallery (18).jpg', '/images/mungallery (19).jpg',
+    '/images/mungallery (20).jpg', '/images/mungallery (21).jpg', '/images/mungallery (22).jpg',
   ];
 
   const renderImage = (index, className) => (
