@@ -225,7 +225,7 @@ const RegistrationForms = () => {
       label: 'Year',
       icon: User,
       type: 'select',
-      options: ['2024', '2023', '2022', '2021'],
+      options: ['1ST', '2ND', '3RD', '4TH'],
     },
   ];
 
