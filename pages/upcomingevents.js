@@ -131,7 +131,7 @@ const EventDetails = ({ event, onClose }) => {
         <div className="text-center">
           <button
             className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
-            onClick={gotoregister()}
+            onClick={gotoregister}
           >
             Register Now
           </button>
