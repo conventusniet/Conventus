@@ -231,9 +231,9 @@ const RegistrationForms = () => {
 
   const tripTextareas = [
     { id: 'erpid', label: 'ERP ID', icon: User },
-    { id: 'st1', label: 'Statement 1', icon: User },
-    { id: 'st2', label: 'Statement 2', icon: User },
-    { id: 'st3', label: 'Statement 3', icon: User },
+    { id: 'st1', label: 'Please agree to bring your college ID card, Without it you will not be allowed to travel (Please type yes to agree)', icon: User },
+    { id: 'st2', label: 'Cultural Strolls are not sponsored, Please acknowledge all expenditure will be your own (Please type yes to agree)', icon: User },
+    { id: 'st3', label: 'Incase of any misfortune or accident neither the college, club or the organizers are responsible (Please type yes to agree)', icon: User },
   ];
 
   return (
