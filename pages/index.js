@@ -11,8 +11,12 @@ import Footer from '../components/Footer';
 import LazyLoading from '../components/LazyLoading';
 import ConventusChatbot from '@/components/ConventusChatBot';
 
+import DiwaliModal from '@/components/DiwaliModal';
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const [showDiwaliModal, setShowDiwaliModal] = useState(true);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,6 +29,11 @@ export default function Home() {
   if (isLoading) {
     return <LazyLoading onLoadingComplete={() => setIsLoading(false)} />;
   }
+
+  const handleDiwaliModalClose = () => {
+    setShowDiwaliModal(false);
+  };
+
 
   return (
     <>
@@ -147,6 +156,11 @@ export default function Home() {
           `}
         </script>
       </Head>
+
+      {/* Diwali Modal - Only show if not closed */}
+      {DiwaliModal && !isLoading && (
+        <DiwaliModal onClose={handleDiwaliModalClose} />
+      )}
 
       <Header />
       <main>
