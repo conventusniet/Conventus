@@ -5,17 +5,17 @@ import Welcome from '../components/Welcome';
 import Maincontent from '../components/Maincontent';
 import Contact from '../components/Contact';
 import LearnMoreSection from '../components/LearnMore';
-import leaders from '@/components/leaders';
+// import leaders from '@/components/leaders';
 import LeadershipPage from '@/components/leaders';
 import Footer from '../components/Footer';
 import LazyLoading from '../components/LazyLoading';
 import ConventusChatbot from '@/components/ConventusChatBot';
 
-import DiwaliModal from '@/components/DiwaliModal';
+// import DiwaliModal from '@/components/DiwaliModal';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [showDiwaliModal, setShowDiwaliModal] = useState(true);
+  // const [showDiwaliModal, setShowDiwaliModal] = useState(true);
 
 
   useEffect(() => {
@@ -30,9 +30,9 @@ export default function Home() {
     return <LazyLoading onLoadingComplete={() => setIsLoading(false)} />;
   }
 
-  const handleDiwaliModalClose = () => {
-    setShowDiwaliModal(false);
-  };
+  // const handleDiwaliModalClose = () => {
+  //   setShowDiwaliModal(false);
+  // };
 
 
   return (
@@ -157,10 +157,10 @@ export default function Home() {
         </script>
       </Head>
 
-      {/* Diwali Modal - Only show if not closed */}
+      {/* Diwali Modal - Only show if not closed
       {DiwaliModal && !isLoading && (
         <DiwaliModal onClose={handleDiwaliModalClose} />
-      )}
+      )} */}
 
       <Header />
       <main>

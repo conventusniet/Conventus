@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, MapPin, X } from 'lucide-react';
 import axios from 'axios';
-
+import OCRegistrationForm from './OCregis';
 const Modal = ({ isOpen, onClose, message, isError }) => {
   return (
     <AnimatePresence>
@@ -238,6 +238,7 @@ const RegistrationForms = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <OCRegistrationForm/>
       <div className="mb-16 bg-white rounded-lg shadow-2xl p-8">
         <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
           Debate Registration Form
