@@ -232,7 +232,7 @@ const OCRegistrationForm = () => {
   return (
     <div className="bg-white rounded-lg shadow-2xl p-8 mb-16">
       <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
-        Conventus MUN OC Registration Form
+      OC Registration
       </h2>
       
       <div className="mb-6">

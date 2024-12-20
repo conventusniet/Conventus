@@ -224,12 +224,23 @@ const DelegateRegistrationForm = () => {
     return (
         <div className="bg-white rounded-lg shadow-2xl p-8 mb-16">
             <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
-                Delegate Registration Form
+                Delegate Registration
             </h2>
 
             <div className="mb-6">
                 {/* <h3 className="text-xl font-semibold mb-2">Registration Details</h3> */}
                 <p className="text-gray-700 mb-4">Note:  The registration fee is non-refundable</p>
+                <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
+ 
+                <h5 className="text-xl font-semibold mb-2">AIPPM</h5>
+                <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.
+                </p>
+                <h5 className="text-xl font-semibold mb-2">UNHRC</h5>
+                <p className="text-gray-700 mb-4">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises : Balancing sovereignty with humanitarian responsibilities.
+                </p>
+                <h5 className="text-xl font-semibold mb-2">UNSC</h5>
+                <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.
+                </p>
 
                 <div className="mb-4">
                     <label className="block text-gray-800 text-sm font-bold mb-2">
