@@ -239,7 +239,7 @@ const RegistrationForms = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <OCRegistrationForm/>
-      <div className="mb-16 bg-white rounded-lg shadow-2xl p-8">
+      {/* <div className="mb-16 bg-white rounded-lg shadow-2xl p-8">
         <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
           Debate Registration Form
         </h2>
@@ -378,7 +378,7 @@ const RegistrationForms = () => {
             </motion.button>
           </div>
         </motion.form>
-      </div>
+      </div> */}
 
       <Modal
         isOpen={modalOpen}
