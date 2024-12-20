@@ -4,241 +4,241 @@ import { User, Phone, Mail, Building, MapPin, X } from 'lucide-react';
 import axios from 'axios';
 import DelegateRegistrationForm from './DelegateRegis';
 import OCRegistrationForm from './OCregis';
-const Modal = ({ isOpen, onClose, message, isError }) => {
+// const Modal = ({ isOpen, onClose, message, isError }) => {
+//   return (
+//     <AnimatePresence>
+//       {isOpen && (
+//         <motion.div
+//           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+//           initial={{ opacity: 0 }}
+//           animate={{ opacity: 1 }}
+//           exit={{ opacity: 0 }}
+//         >
+//           <motion.div
+//             className="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative border-4 border-red-600"
+//             initial={{ scale: 0.9, opacity: 0 }}
+//             animate={{ scale: 1, opacity: 1 }}
+//             exit={{ scale: 0.9, opacity: 0 }}
+//             transition={{ type: 'spring', damping: 15 }}
+//           >
+//             <button
+//               onClick={onClose}
+//               className="absolute top-2 right-2 text-red-500 hover:text-red-700"
+//             >
+//               <X size={24} />
+//             </button>
+//             <h2 className={`text-2xl font-bold mb-4 ${isError ? 'text-red-600' : 'text-green-600'}`}>
+//               {isError ? 'Error' : 'Success'}
+//             </h2>
+//             <p className="text-gray-700">{message}</p>
+//           </motion.div>
+//         </motion.div>
+//       )}
+//     </AnimatePresence>
+//   );
+// };
+
+ const RegistrationForms = () => {
+//   const [debateFormData, setDebateFormData] = useState({
+//     name: '',
+//     branch: '',
+//     section: '',
+//     year: '1ST',
+//     phone: '',
+//     lang: 'english',
+//   });
+
+//   const [tripFormData, setTripFormData] = useState({
+//     name: '',
+//     branch: '',
+//     section: '',
+//     year: '1ST',
+//     erpid: '',
+//     st1: '',
+//     st2: '',
+//     st3: '',
+//   });
+
+//   const [loading, setLoading] = useState(false);
+//   const [modalOpen, setModalOpen] = useState(false);
+//   const [modalMessage, setModalMessage] = useState('');
+//   const [isError, setIsError] = useState(false);
+
+//   const handleDebateChange = (e) => {
+//     const { id, value } = e.target;
+//     setDebateFormData((prevData) => ({
+//       ...prevData,
+//       [id]: value,
+//     }));
+//   };
+
+//   const handleTripChange = (e) => {
+//     const { id, value } = e.target;
+//     setTripFormData((prevData) => ({
+//       ...prevData,
+//       [id]: value,
+//     }));
+//   };
+
+//   const validateDebateForm = () => {
+//     for (const key in debateFormData) {
+//       if (!debateFormData[key].trim()) {
+//         setModalMessage(`Please fill in the ${key} field.`);
+//         setIsError(true);
+//         setModalOpen(true);
+//         return false;
+//       }
+//     }
+//     return true;
+//   };
+
+//   const validateTripForm = () => {
+//     for (const key in tripFormData) {
+//       if (!tripFormData[key].trim()) {
+//         setModalMessage(`Please fill in the ${key} field.`);
+//         setIsError(true);
+//         setModalOpen(true);
+//         return false;
+//       }
+//     }
+//     return true;
+//   };
+
+//   const handleDebateSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validateDebateForm()) return;
+
+//     setLoading(true);
+
+//     try {
+//       const response = await axios.post(
+//         'https://conventus.pythonanywhere.com/api/debate-registration/',
+//         debateFormData,
+//         {
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//         }
+//       );
+
+//       if (response.data && response.data.message) {
+//         setModalMessage(response.data.message);
+//         setIsError(response.data.message.toLowerCase().includes('failed'));
+//         if (!isError) {
+//           setDebateFormData({
+//             name: '',
+//             branch: '',
+//             section: '',
+//             year: '1ST',
+//             phone: '',
+//             lang: 'english',
+//           });
+//         }
+//       } else {
+//         setModalMessage('Registration completed successfully!');
+//         setIsError(false);
+//       }
+//     } catch (err) {
+//       setModalMessage(
+//         err.response?.data?.message || 'An error occurred while submitting the form. Please try again.'
+//       );
+//       setIsError(true);
+//     } finally {
+//       setLoading(false);
+//       setModalOpen(true);
+//     }
+//   };
+
+//   const handleTripSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validateTripForm()) return;
+
+//     setLoading(true);
+
+//     try {
+//       const response = await axios.post(
+//         'https://conventus.pythonanywhere.com/api/trip-registration/',
+//         tripFormData,
+//         {
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//         }
+//       );
+
+//       if (response.data && response.data.message) {
+//         setModalMessage(response.data.message);
+//         setIsError(response.data.message.toLowerCase().includes('failed'));
+//         if (!isError) {
+//           setTripFormData({
+//             name: '',
+//             branch: '',
+//             section: '',
+//             year: '1ST',
+//             erpid: '',
+//             st1: '',
+//             st2: '',
+//             st3: '',
+//           });
+//         }
+//       } else {
+//         setModalMessage('Trip registration completed successfully!');
+//         setIsError(false);
+//       }
+//     } catch (err) {
+//       setModalMessage(
+//         err.response?.data?.message || 'An error occurred while submitting the form. Please try again.'
+//       );
+//       setIsError(true);
+//     } finally {
+//       setLoading(false);
+//       setModalOpen(true);
+//     }
+//   };
+
+//   const debateFields = [
+//     { id: 'name', label: 'Name', icon: User, type: 'text' },
+//     { id: 'branch', label: 'Branch', icon: Building, type: 'text' },
+//     { id: 'section', label: 'Section', icon: User, type: 'text' },
+//     {
+//       id: 'year',
+//       label: 'Year',
+//       icon: User,
+//       type: 'select',
+//       options: ['1ST', '2ND', '3RD', '4TH'],
+//     },
+//     { id: 'phone', label: 'Phone', icon: Phone, type: 'tel' },
+//     {
+//       id: 'lang',
+//       label: 'Language',
+//       icon: Building,
+//       type: 'select',
+//       options: ['english', 'hindi'],
+//     },
+//   ];
+
+//   const tripFields = [
+//     { id: 'name', label: 'Name', icon: User, type: 'text' },
+//     { id: 'branch', label: 'Branch', icon: Building, type: 'text' },
+//     { id: 'section', label: 'Section', icon: User, type: 'text' },
+//     {
+//       id: 'year',
+//       label: 'Year',
+//       icon: User,
+//       type: 'select',
+//       options: ['1ST', '2ND', '3RD', '4TH'],
+//     },
+//   ];
+
+//   const tripTextareas = [
+//     { id: 'erpid', label: 'ERP ID', icon: User },
+//     { id: 'st1', label: 'Please agree to bring your college ID card, Without it you will not be allowed to travel (Please type yes to agree)', icon: User },
+//     { id: 'st2', label: 'Cultural Strolls are not sponsored, Please acknowledge all expenditure will be your own (Please type yes to agree)', icon: User },
+//     { id: 'st3', label: 'Incase of any misfortune or accident neither the college, club or the organizers are responsible (Please type yes to agree)', icon: User },
+//   ];
+
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <motion.div
-            className="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative border-4 border-red-600"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: 'spring', damping: 15 }}
-          >
-            <button
-              onClick={onClose}
-              className="absolute top-2 right-2 text-red-500 hover:text-red-700"
-            >
-              <X size={24} />
-            </button>
-            <h2 className={`text-2xl font-bold mb-4 ${isError ? 'text-red-600' : 'text-green-600'}`}>
-              {isError ? 'Error' : 'Success'}
-            </h2>
-            <p className="text-gray-700">{message}</p>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
-
-const RegistrationForms = () => {
-  const [debateFormData, setDebateFormData] = useState({
-    name: '',
-    branch: '',
-    section: '',
-    year: '1ST',
-    phone: '',
-    lang: 'english',
-  });
-
-  const [tripFormData, setTripFormData] = useState({
-    name: '',
-    branch: '',
-    section: '',
-    year: '1ST',
-    erpid: '',
-    st1: '',
-    st2: '',
-    st3: '',
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
-  const [isError, setIsError] = useState(false);
-
-  const handleDebateChange = (e) => {
-    const { id, value } = e.target;
-    setDebateFormData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
-  };
-
-  const handleTripChange = (e) => {
-    const { id, value } = e.target;
-    setTripFormData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
-  };
-
-  const validateDebateForm = () => {
-    for (const key in debateFormData) {
-      if (!debateFormData[key].trim()) {
-        setModalMessage(`Please fill in the ${key} field.`);
-        setIsError(true);
-        setModalOpen(true);
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const validateTripForm = () => {
-    for (const key in tripFormData) {
-      if (!tripFormData[key].trim()) {
-        setModalMessage(`Please fill in the ${key} field.`);
-        setIsError(true);
-        setModalOpen(true);
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const handleDebateSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateDebateForm()) return;
-
-    setLoading(true);
-
-    try {
-      const response = await axios.post(
-        'https://conventus.pythonanywhere.com/api/debate-registration/',
-        debateFormData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      if (response.data && response.data.message) {
-        setModalMessage(response.data.message);
-        setIsError(response.data.message.toLowerCase().includes('failed'));
-        if (!isError) {
-          setDebateFormData({
-            name: '',
-            branch: '',
-            section: '',
-            year: '1ST',
-            phone: '',
-            lang: 'english',
-          });
-        }
-      } else {
-        setModalMessage('Registration completed successfully!');
-        setIsError(false);
-      }
-    } catch (err) {
-      setModalMessage(
-        err.response?.data?.message || 'An error occurred while submitting the form. Please try again.'
-      );
-      setIsError(true);
-    } finally {
-      setLoading(false);
-      setModalOpen(true);
-    }
-  };
-
-  const handleTripSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateTripForm()) return;
-
-    setLoading(true);
-
-    try {
-      const response = await axios.post(
-        'https://conventus.pythonanywhere.com/api/trip-registration/',
-        tripFormData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      if (response.data && response.data.message) {
-        setModalMessage(response.data.message);
-        setIsError(response.data.message.toLowerCase().includes('failed'));
-        if (!isError) {
-          setTripFormData({
-            name: '',
-            branch: '',
-            section: '',
-            year: '1ST',
-            erpid: '',
-            st1: '',
-            st2: '',
-            st3: '',
-          });
-        }
-      } else {
-        setModalMessage('Trip registration completed successfully!');
-        setIsError(false);
-      }
-    } catch (err) {
-      setModalMessage(
-        err.response?.data?.message || 'An error occurred while submitting the form. Please try again.'
-      );
-      setIsError(true);
-    } finally {
-      setLoading(false);
-      setModalOpen(true);
-    }
-  };
-
-  const debateFields = [
-    { id: 'name', label: 'Name', icon: User, type: 'text' },
-    { id: 'branch', label: 'Branch', icon: Building, type: 'text' },
-    { id: 'section', label: 'Section', icon: User, type: 'text' },
-    {
-      id: 'year',
-      label: 'Year',
-      icon: User,
-      type: 'select',
-      options: ['1ST', '2ND', '3RD', '4TH'],
-    },
-    { id: 'phone', label: 'Phone', icon: Phone, type: 'tel' },
-    {
-      id: 'lang',
-      label: 'Language',
-      icon: Building,
-      type: 'select',
-      options: ['english', 'hindi'],
-    },
-  ];
-
-  const tripFields = [
-    { id: 'name', label: 'Name', icon: User, type: 'text' },
-    { id: 'branch', label: 'Branch', icon: Building, type: 'text' },
-    { id: 'section', label: 'Section', icon: User, type: 'text' },
-    {
-      id: 'year',
-      label: 'Year',
-      icon: User,
-      type: 'select',
-      options: ['1ST', '2ND', '3RD', '4TH'],
-    },
-  ];
-
-  const tripTextareas = [
-    { id: 'erpid', label: 'ERP ID', icon: User },
-    { id: 'st1', label: 'Please agree to bring your college ID card, Without it you will not be allowed to travel (Please type yes to agree)', icon: User },
-    { id: 'st2', label: 'Cultural Strolls are not sponsored, Please acknowledge all expenditure will be your own (Please type yes to agree)', icon: User },
-    { id: 'st3', label: 'Incase of any misfortune or accident neither the college, club or the organizers are responsible (Please type yes to agree)', icon: User },
-  ];
-
-  return (
-    <div className="container mx-auto px-4 py-8">
+    <div>
       <DelegateRegistrationForm/>
       <OCRegistrationForm/>
       {/* <div className="mb-16 bg-white rounded-lg shadow-2xl p-8">
@@ -382,12 +382,12 @@ const RegistrationForms = () => {
         </motion.form>
       </div> */}
 
-      <Modal
+      {/* <Modal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         message={modalMessage}
         isError={isError}
-      />
+      /> */}
     </div>
   );
 };
