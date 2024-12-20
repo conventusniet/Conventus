@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, Building, X } from 'lucide-react';
+import { User, Phone, Mail, Building, X, Search } from 'lucide-react';
 
 const Modal = ({ isOpen, onClose, message, isError }) => {
   return (
@@ -54,6 +54,20 @@ const OCRegistrationForm = () => {
   const [modalMessage, setModalMessage] = useState('');
   const [isError, setIsError] = useState(false);
 
+  const [branchOpen, setBranchOpen] = useState(false);
+  const [sectionOpen, setSectionOpen] = useState(false);
+  const [branchSearch, setBranchSearch] = useState('');
+  const [sectionSearch, setSectionSearch] = useState('');
+
+  const branchRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  const branchOptions = [
+    "ECE", "CSBS", "CSE", "CSE(TWIN)", "CSE-R", "AI", "AI(TWIN)", "DS", "CYS",
+    "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT"
+  ];
+  const sectionOptions = ["A", "B", "C", "D", "E", "F"];
+
   const areaOptions = [
     {
       group: "Teams",
@@ -69,6 +83,22 @@ const OCRegistrationForm = () => {
     }
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (branchRef.current && !branchRef.current.contains(event.target)) {
+        setBranchOpen(false);
+      }
+      if (sectionRef.current && !sectionRef.current.contains(event.target)) {
+        setSectionOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     
@@ -79,7 +109,6 @@ const OCRegistrationForm = () => {
           [name]: checked
         }));
       } else {
-        // Handle areas of interest checkboxes
         setFormData(prev => ({
           ...prev,
           areasOfInterest: checked 
@@ -88,7 +117,6 @@ const OCRegistrationForm = () => {
         }));
       }
     } else if (type === 'radio') {
-      // Handle radio buttons for Other Teams
       setFormData(prev => ({
         ...prev,
         areasOfInterest: [value]
@@ -142,7 +170,6 @@ const OCRegistrationForm = () => {
       areaOptions[0].options.includes(area)
     );
     
-
     if (TeamSelections.length === 0 ) {
       setModalMessage('Please select option from Area of Interest.');
       setIsError(true);
@@ -287,63 +314,94 @@ const OCRegistrationForm = () => {
             />
           </div>
 
-          <div>
+          <div ref={branchRef} className="relative">
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <Building className="inline-block mr-2 text-red-600" size={18} />
               Branch
             </label>
-            <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-              name="branch"
-              value={formData.branch}
-              onChange={handleChange}
-              required
+            <div
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 cursor-pointer"
+              onClick={() => setBranchOpen(!branchOpen)}
             >
-              <option value="">Select Branch</option>
-              <option value="ECE">ECE</option>
-              <option value="CSBS">CSBS</option>
-              <option value="CSE">CSE</option>
-              <option value="CSE(TWIN)">CSE(TWIN)</option>
-              <option value="CSE-R">CSE-R</option>
-              <option value="AI">AI</option>
-              <option value="AI(TWIN)">AI(TWIN)</option>
-              <option value="DS">DS</option>
-              <option value="CYS">CYS</option>
-              <option value="ME">ME</option>
-              <option value="CS">CS</option>
-              <option value="IT">IT</option>
-              <option value="IT(TWIN)">IT(TWIN)</option>
-              <option value="AIML">AIML</option>
-              <option value="AIML(TWIN)">AIML(TWIN)</option>
-              <option value="BIOTECH">BIOTECH</option>
-              <option value="MTECH">MTECH</option>
-              <option value="IOT">IOT</option>
-              {/* Add more branches as needed */}
-            </select>
+              {formData.branch || "Select Branch"}
+            </div>
+            {branchOpen && (
+              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
+                <div className="flex items-center p-2 border-b">
+                  <Search className="text-gray-400 mr-2" size={18} />
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="w-full focus:outline-none"
+                    value={branchSearch}
+                    onChange={(e) => setBranchSearch(e.target.value)}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </div>
+                <ul className="max-h-60 overflow-auto">
+                  {branchOptions
+                    .filter(option => option.toLowerCase().includes(branchSearch.toLowerCase()))
+                    .map((option, index) => (
+                      <li
+                        key={index}
+                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                          handleChange({ target: { name: 'branch', value: option } });
+                          setBranchOpen(false);
+                          setBranchSearch('');
+                        }}
+                      >
+                        {option}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            )}
           </div>
 
-          <div>
+          <div ref={sectionRef} className="relative">
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <Building className="inline-block mr-2 text-red-600" size={18} />
               Section
             </label>
-            <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-              name="section"
-              value={formData.section}
-              onChange={handleChange}
-              required
+            <div
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 cursor-pointer"
+              onClick={() => setSectionOpen(!sectionOpen)}
             >
-              <option value="">Select Section</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-              <option value="E">E</option>
-              <option value="F">F</option>
-              <option value="F">F</option>
-              {/* Add more sections as needed */}
-            </select>
+              {formData.section || "Select Section"}
+            </div>
+            {sectionOpen && (
+              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
+                <div className="flex items-center p-2 border-b">
+                  <Search className="text-gray-400 mr-2" size={18} />
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="w-full focus:outline-none"
+                    value={sectionSearch}
+                    onChange={(e) => setSectionSearch(e.target.value)}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </div>
+                <ul className="max-h-60 overflow-auto">
+                  {sectionOptions
+                    .filter(option => option.toLowerCase().includes(sectionSearch.toLowerCase()))
+                    .map((option, index) => (
+                      <li
+                        key={index}
+                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                          handleChange({ target: { name: 'section', value: option } });
+                          setSectionOpen(false);
+                          setSectionSearch('');
+                        }}
+                      >
+                        {option}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
 
