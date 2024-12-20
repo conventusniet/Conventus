@@ -138,16 +138,13 @@ const OCRegistrationForm = () => {
       setModalOpen(true);
       return false;
     }
-    const pressTeamSelections = formData.areasOfInterest.filter(area => 
+    const TeamSelections = formData.areasOfInterest.filter(area => 
       areaOptions[0].options.includes(area)
     );
-    const otherTeamSelections = formData.areasOfInterest.filter(area => 
-      areaOptions[1].options.includes(area)
-    );
+    
 
-    if (pressTeamSelections.length > 2 || otherTeamSelections.length > 1 || 
-        (pressTeamSelections.length === 0 && otherTeamSelections.length === 0)) {
-      setModalMessage('Please select option from Teams.');
+    if (TeamSelections.length === 0 ) {
+      setModalMessage('Please select option from Area of Interest.');
       setIsError(true);
       setModalOpen(true);
       return false;
