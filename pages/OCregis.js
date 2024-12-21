@@ -41,8 +41,8 @@ const OCRegistrationForm = () => {
     name: '',
     year: '',
     phone: '',
-    email: '',
     institute: 'NIET',
+    email: '',
     branch: '',
     section: '',
     areasOfInterest: [],
@@ -101,7 +101,7 @@ const OCRegistrationForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
+
     if (type === 'checkbox') {
       if (name === 'agreeToTerms') {
         setFormData(prev => ({
@@ -111,7 +111,7 @@ const OCRegistrationForm = () => {
       } else {
         setFormData(prev => ({
           ...prev,
-          areasOfInterest: checked 
+          areasOfInterest: checked
             ? [...prev.areasOfInterest, value]
             : prev.areasOfInterest.filter(area => area !== value)
         }));
@@ -166,11 +166,11 @@ const OCRegistrationForm = () => {
       setModalOpen(true);
       return false;
     }
-    const TeamSelections = formData.areasOfInterest.filter(area => 
+    const TeamSelections = formData.areasOfInterest.filter(area =>
       areaOptions[0].options.includes(area)
     );
-    
-    if (TeamSelections.length === 0 ) {
+
+    if (TeamSelections.length === 0) {
       setModalMessage('Please select option from Area of Interest.');
       setIsError(true);
       setModalOpen(true);
@@ -209,8 +209,8 @@ const OCRegistrationForm = () => {
           name: '',
           year: '',
           phone: '',
-          email: '',
           institute: 'NIET',
+          email: '',
           branch: '',
           section: '',
           areasOfInterest: [],
@@ -232,9 +232,9 @@ const OCRegistrationForm = () => {
   return (
     <div className="bg-white rounded-lg shadow-2xl p-8 mb-16">
       <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
-      OC Registration
+        OC Registration
       </h2>
-      
+
       <div className="mb-6">
         <p className="text-gray-700 mb-2">Details: Organising Committee (OC) will be involved in organising and Management of Conventus MUN in NIET Greater Noida.</p>
         <p className="text-gray-700 mb-2">OC Membership Fee: 200 Rs/- (Food Charges)</p>
@@ -297,6 +297,23 @@ const OCRegistrationForm = () => {
               onChange={handleChange}
               required
             />
+          </div>
+
+          <div>
+            <label className="block text-gray-800 text-sm font-bold mb-2">
+              <Building className="inline-block mr-2 text-red-600" size={18} />
+              Institute
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 bg-gray-100"
+              name="institute"
+              value={formData.institute}
+              onChange={handleChange}
+              disabled
+              required
+            >
+              <option value="NIET">NIET</option>
+            </select>
           </div>
 
           <div>
@@ -452,9 +469,8 @@ const OCRegistrationForm = () => {
 
         <div className="text-center">
           <motion.button
-            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
+            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
@@ -476,4 +492,3 @@ const OCRegistrationForm = () => {
 };
 
 export default OCRegistrationForm;
-
