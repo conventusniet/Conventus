@@ -256,7 +256,8 @@ const DelegateRegistrationForm = () => {
                 <h5 className="text-xl font-semibold mb-2">UNSC</h5>
                 <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.
                 </p>
-                <p className="text-gray-700 mb-4"><span className='text-xl font-semibold'>International Press: </span>It will consist of Journalists, Photographers and Caricature</p>
+                <h5 className="text-xl font-semibold mb-2">IP</h5>
+                <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Caricature</p>
 
                 <div className="mb-4">
                     <label className="block text-gray-800 text-sm font-bold mb-2">
@@ -559,7 +560,7 @@ const DelegateRegistrationForm = () => {
 
                     <div>
                         <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Committee Preference 1
+                            Committee Preference 1 (mention any three)
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
@@ -588,7 +589,7 @@ const DelegateRegistrationForm = () => {
 
                     <div>
                         <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Committee Preference 2
+                            Committee Preference 2 (mention any three)
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
