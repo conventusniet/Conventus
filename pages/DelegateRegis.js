@@ -169,22 +169,33 @@ const DelegateRegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!validateForm()) return;
+
+        // Add this line right at the start
+        console.log("Form submitted with data:", formData);
+
+        if (!validateForm()) {
+            console.log("Form validation failed");
+            return;
+        }
 
         setLoading(true);
-
         const formDataToSend = new FormData();
+
+        // Log each field as it's added to FormData
         Object.keys(formData).forEach(key => {
+            console.log(`${key}:`, formData[key]);
             formDataToSend.append(key, formData[key]);
         });
 
         try {
+            console.log("Sending request to backend...");
             const response = await fetch('https://conventus.pythonanywhere.com/api/delegate-registration/', {
                 method: 'POST',
                 body: formDataToSend,
             });
 
             const data = await response.json();
+            console.log("Response from backend:", data);
 
             if (response.ok) {
                 setModalMessage('Registration completed successfully!');
@@ -209,10 +220,12 @@ const DelegateRegistrationForm = () => {
                     paymentScreenshot: null
                 });
             } else {
+                console.log("Registration failed:", data);
                 setModalMessage(data.message || 'Registration failed. Please try again.');
                 setIsError(true);
             }
         } catch (err) {
+            console.error("Submission error:", err);
             setModalMessage('An error occurred while submitting the form. Please try again.');
             setIsError(true);
         } finally {

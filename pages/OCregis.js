@@ -187,22 +187,45 @@ const OCRegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+
+    // Debug logging
+    console.log("=============== FORM SUBMISSION DEBUG ===============");
+    console.log("Raw form data:", formData);
+
+    // Check for empty fields
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value === '' || value === null || value === undefined ||
+        (Array.isArray(value) && value.length === 0)) {
+        console.log(`Empty field detected - ${key}:`, value);
+      }
+    });
+
+    if (!validateForm()) {
+      console.log("Form validation failed");
+      return;
+    }
 
     setLoading(true);
 
+    // Log the actual data being sent
+    const jsonData = JSON.stringify(formData);
+    console.log("Data being sent to backend:", jsonData);
+
     try {
+      console.log("Making request to backend...");
       const response = await fetch('https://conventus.pythonanywhere.com/api/oc-registration/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: jsonData
       });
 
       const data = await response.json();
+      console.log("Response from backend:", data);
 
       if (response.ok) {
+        console.log("Registration successful");
         setModalMessage('Registration completed successfully!');
         setIsError(false);
         setFormData({
@@ -217,10 +240,12 @@ const OCRegistrationForm = () => {
           agreeToTerms: false
         });
       } else {
+        console.log("Registration failed:", data);
         setModalMessage(data.message || 'Registration failed. Please try again.');
         setIsError(true);
       }
     } catch (err) {
+      console.error("Error during submission:", err);
       setModalMessage('An error occurred while submitting the form. Please try again.');
       setIsError(true);
     } finally {
