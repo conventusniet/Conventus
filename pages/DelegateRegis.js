@@ -179,7 +179,7 @@ const DelegateRegistrationForm = () => {
         });
 
         try {
-            const response = await fetch('YOUR_BACKEND_API_ENDPOINT', {
+            const response = await fetch('https://conventus.pythonanywhere.com/api/delegate-registration/', {
                 method: 'POST',
                 body: formDataToSend,
             });
@@ -231,7 +231,7 @@ const DelegateRegistrationForm = () => {
                 {/* <h3 className="text-xl font-semibold mb-2">Registration Details</h3> */}
                 <p className="text-gray-700 mb-4">Note:  The registration fee is non-refundable</p>
                 <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
- 
+
                 <h5 className="text-xl font-semibold mb-2">AIPPM</h5>
                 <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.
                 </p>
