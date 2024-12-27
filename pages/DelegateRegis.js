@@ -241,23 +241,36 @@ const DelegateRegistrationForm = () => {
             </h2>
 
             <div className="mb-6">
-                {/* <h3 className="text-xl font-semibold mb-2">Registration Details</h3> */}
-                {/* <p className="text-gray-700 mb-4">Registration fee for NIET Delegates: 499</p>
-                <p className="text-gray-700 mb-4">Registration Fee for Outside Delegates: 599</p>
-                <p className="text-gray-700 mb-4">Note:  The registration fee is non-refundable</p>
-                <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
+                <div className="mb-6">
+                    <p className="text-gray-700 mb-4">Registration fee for NIET Delegates: 499</p>
+                    <p className="text-gray-700 mb-4">Registration Fee for Outside Delegates: 599</p>
+                    <p className="text-gray-700 mb-4">Note: The registration fee is non-refundable</p>
+                    <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
 
-                <h5 className="text-xl font-semibold mb-2">AIPPM</h5>
-                <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.
-                </p>
-                <h5 className="text-xl font-semibold mb-2">UNHRC</h5>
-                <p className="text-gray-700 mb-4">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises : Balancing sovereignty with humanitarian responsibilities.
-                </p>
-                <h5 className="text-xl font-semibold mb-2">UNSC</h5>
-                <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.
-                </p>
-                <h5 className="text-xl font-semibold mb-2">IP</h5>
-                <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Caricature</p> */}
+                    <h5 className="text-xl font-semibold mb-2">AIPPM</h5>
+                    <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
+                    <h5 className="text-xl font-semibold mb-2">UNHRC</h5>
+                    <p className="text-gray-700 mb-4">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
+                    <h5 className="text-xl font-semibold mb-2">UNSC</h5>
+                    <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
+                    <h5 className="text-xl font-semibold mb-2">IP</h5>
+                    <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Caricature</p>
+
+                    <div className="mb-4">
+                        <label className="block text-gray-800 text-sm font-bold mb-2">
+                            <Link className="inline-block mr-2 text-red-600" size={18} />
+                            Matrix
+                        </label>
+                        <a
+                            href="YOUR_MATRIX_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-red-600 hover:text-red-700 underline"
+                        >
+                            View Matrix
+                        </a>
+                    </div>
+                </div>
 
 
             </div>
