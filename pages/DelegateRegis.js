@@ -242,7 +242,7 @@ const DelegateRegistrationForm = () => {
 
             <div className="mb-6">
                 {/* <h3 className="text-xl font-semibold mb-2">Registration Details</h3> */}
-                <p className="text-gray-700 mb-4">Registration fee for NIET Delegates: 499</p>
+                {/* <p className="text-gray-700 mb-4">Registration fee for NIET Delegates: 499</p>
                 <p className="text-gray-700 mb-4">Registration Fee for Outside Delegates: 599</p>
                 <p className="text-gray-700 mb-4">Note:  The registration fee is non-refundable</p>
                 <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
@@ -257,22 +257,9 @@ const DelegateRegistrationForm = () => {
                 <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.
                 </p>
                 <h5 className="text-xl font-semibold mb-2">IP</h5>
-                <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Caricature</p>
+                <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Caricature</p> */}
 
-                <div className="mb-4">
-                    <label className="block text-gray-800 text-sm font-bold mb-2">
-                        <Link className="inline-block mr-2 text-red-600" size={18} />
-                        Matrix
-                    </label>
-                    <a
-                        href="YOUR_MATRIX_URL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-red-600 hover:text-red-700 underline"
-                    >
-                        View Matrix
-                    </a>
-                </div>
+
             </div>
 
             <motion.form
@@ -345,6 +332,38 @@ const DelegateRegistrationForm = () => {
                             <option value="OTHER">Other</option>
                         </select>
                     </div>
+
+                    {formData.institute && (
+                        <div className="md:col-span-2 mt-4">
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                <Link className="inline-block mr-2 text-red-600" size={18} />
+                                Link
+                            </label>
+                            {formData.institute === 'NIET' ? (
+                                <div>
+                                    <a
+                                        href="https://rzp.io/rzp/uT97Hix"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-red-600 hover:text-red-700 underline mr-4"
+                                    >
+                                        Payment Link
+                                    </a>
+                                </div>
+                            ) : (
+                                <div>
+                                    <a
+                                        href="https://rzp.io/rzp/Y8X9IkUk"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-red-600 hover:text-red-700 underline mr-4"
+                                    >
+                                        Payment Link
+                                    </a>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     {formData.institute === 'NIET' && (
                         <>
@@ -684,3 +703,4 @@ const DelegateRegistrationForm = () => {
 };
 
 export default DelegateRegistrationForm;
+
