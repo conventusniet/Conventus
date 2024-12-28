@@ -78,7 +78,7 @@ const DelegateRegistrationForm = () => {
     const sectionOptions = ["A", "B", "C", "D", "E", "F"];
 
     const committeeOptions = ['UNSC', 'UNHRC', 'AIPPM', 'IP'];
-    const ipPortfolioOptions = ['Photography', 'Videography', 'Editorial'];
+    const ipPortfolioOptions = ['Photography', 'Videography', 'Journalism'];
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -273,7 +273,7 @@ const DelegateRegistrationForm = () => {
                 <h5 className="text-xl font-semibold mb-2">UNSC</h5>
                 <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
                 <h5 className="text-xl font-semibold mb-2">IP</h5>
-                <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Caricature</p>
+                <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Videographers</p>
 
                 <div className="mb-4">
                     <label className="block text-gray-800 text-sm font-bold mb-2">
