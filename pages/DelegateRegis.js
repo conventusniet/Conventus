@@ -287,8 +287,8 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4">Note: The registration fee is non-refundable</p>
                     <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
 
-                    <h5 className="text-xl font-semibold mb-2">AIPPM</h5>
-                    <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
+                    <h5 className="text-xl font-semibold mb-2">United Nations Security Council</h5>
+                    <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
@@ -303,7 +303,7 @@ const DelegateRegistrationForm = () => {
                             View Link
                         </a>
                     </div>
-                    <h5 className="text-xl font-semibold mb-2">UNHRC</h5>
+                    <h5 className="text-xl font-semibold mb-2">United Nations Human Rights Council</h5>
                     <p className="text-gray-700 mb-4">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
@@ -319,8 +319,8 @@ const DelegateRegistrationForm = () => {
                             View Link
                         </a>
                     </div>
-                    <h5 className="text-xl font-semibold mb-2">UNSC</h5>
-                    <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
+                    <h5 className="text-xl font-semibold mb-2">All India Political Party Meet</h5>
+                    <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
