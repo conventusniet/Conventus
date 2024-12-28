@@ -337,7 +337,7 @@ const DelegateRegistrationForm = () => {
                     </div>
                     <h5 className="text-xl font-semibold mb-2">IP</h5>
                     <p className="text-gray-700 mb-4 text-justify">It will consist of Journalists, Photographers and Videographers</p>
-                    <div className="mb-4">
+                    {/* <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
                             Link
@@ -350,7 +350,7 @@ const DelegateRegistrationForm = () => {
                         >
                             View Link
                         </a>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* <div className="mb-4">
