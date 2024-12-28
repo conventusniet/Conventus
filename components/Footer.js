@@ -44,12 +44,12 @@ const Footer = () => {
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
                         <address className="text-gray-400 not-italic">
-                            19, Institutional Area, <br />
+                            Plot 19, Institutional Area, <br />
                             Knowledge Park II,<br />
                             Greater Noida,<br />
                             Uttar Pradesh, 201306<br />
-                            Email: info@conventus.edu<br />
-                            Contact: +91 - 844-838-4611
+                            Email: conventus@niet.co.in<br />
+                            Contact: +91 - 928-945-2713
                         </address>
                     </div>
                 </div>
