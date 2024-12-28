@@ -289,13 +289,69 @@ const DelegateRegistrationForm = () => {
 
                     <h5 className="text-xl font-semibold mb-2">AIPPM</h5>
                     <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
+                    <div className="mb-4">
+                        <label className="block text-gray-800 text-sm font-bold mb-2">
+                            <Link className="inline-block mr-2 text-red-600" size={18} />
+                            Link
+                        </label>
+                        <a
+                            href="YOUR_MATRIX_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-red-600 hover:text-red-700 underline"
+                        >
+                            View Link
+                        </a>
+                    </div>
                     <h5 className="text-xl font-semibold mb-2">UNHRC</h5>
                     <p className="text-gray-700 mb-4">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
+                    <div className="mb-4">
+                        <label className="block text-gray-800 text-sm font-bold mb-2">
+                            <Link className="inline-block mr-2 text-red-600" size={18} />
+                            Link
+                        </label>
+                        <a
+                            href="YOUR_MATRIX_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-red-600 hover:text-red-700 underline"
+                        >
+                            View Link
+                        </a>
+                    </div>
                     <h5 className="text-xl font-semibold mb-2">UNSC</h5>
                     <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
+                    <div className="mb-4">
+                        <label className="block text-gray-800 text-sm font-bold mb-2">
+                            <Link className="inline-block mr-2 text-red-600" size={18} />
+                            Link
+                        </label>
+                        <a
+                            href="YOUR_MATRIX_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-red-600 hover:text-red-700 underline"
+                        >
+                            View Link
+                        </a>
+                    </div>
                     <h5 className="text-xl font-semibold mb-2">IP</h5>
                     <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Videographers</p>
 
+                    <div className="mb-4">
+                        <label className="block text-gray-800 text-sm font-bold mb-2">
+                            <Link className="inline-block mr-2 text-red-600" size={18} />
+                            Link
+                        </label>
+                        <a
+                            href="YOUR_MATRIX_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-red-600 hover:text-red-700 underline"
+                        >
+                            View Link
+                        </a>
+                    </div>
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
