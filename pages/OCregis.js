@@ -48,14 +48,6 @@ const OCRegistrationForm = () => {
     section: '',
     areasOfInterest: [],
     agreeToTerms: false,
-    participationType: '',
-    portfolio: '',
-    committeePreference1: '',
-    committeePreference2: '',
-    committeePreference3: '',
-    portfolioPreference1: '',
-    portfolioPreference2: '',
-    portfolioPreference3: ''
   });
 
   const [loading, setLoading] = useState(false);
@@ -191,32 +183,8 @@ const OCRegistrationForm = () => {
       setModalOpen(true);
       return false;
     }
-    if (!formData.participationType) {
-      setModalMessage('Please select a participation type.');
-      setIsError(true);
-      setModalOpen(true);
-      return false;
-    }
-    if (!formData.portfolio) {
-      setModalMessage('Please select a portfolio.');
-      setIsError(true);
-      setModalOpen(true);
-      return false;
-    }
-    if (formData.participationType === 'Delegation') {
-      if (!formData.committeePreference1 || !formData.committeePreference2 || !formData.committeePreference3) {
-        setModalMessage('Please select all committee preferences.');
-        setIsError(true);
-        setModalOpen(true);
-        return false;
-      }
-      if (!formData.portfolioPreference1 || !formData.portfolioPreference2 || !formData.portfolioPreference3) {
-        setModalMessage('Please select all portfolio preferences.');
-        setIsError(true);
-        setModalOpen(true);
-        return false;
-      }
-    }
+    
+   
     return true;
   };
 
@@ -270,14 +238,6 @@ const OCRegistrationForm = () => {
           section: '',
           areasOfInterest: [],
           agreeToTerms: false,
-          participationType: '',
-          portfolio: '',
-          committeePreference1: '',
-          committeePreference2: '',
-          committeePreference3: '',
-          portfolioPreference1: '',
-          portfolioPreference2: '',
-          portfolioPreference3: ''
         });
       } else {
         console.log("Registration failed:", data);
