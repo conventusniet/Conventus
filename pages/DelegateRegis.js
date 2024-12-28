@@ -77,6 +77,9 @@ const DelegateRegistrationForm = () => {
     ];
     const sectionOptions = ["A", "B", "C", "D", "E", "F"];
 
+    const committeeOptions = ['UNSC', 'UNHRC', 'AIPPM', 'IP'];
+    const ipPortfolioOptions = ['Photography', 'Videography', 'Editorial'];
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (branchRef.current && !branchRef.current.contains(event.target)) {
@@ -95,16 +98,29 @@ const DelegateRegistrationForm = () => {
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
+
         if (type === 'file') {
             setFormData(prev => ({
                 ...prev,
                 [name]: files[0]
             }));
         } else {
-            setFormData(prev => ({
-                ...prev,
-                [name]: value
-            }));
+            setFormData(prev => {
+                const newData = {
+                    ...prev,
+                    [name]: value
+                };
+
+                // Reset portfolio preference when committee changes
+                if (name === 'committeePreference1') {
+                    newData.portfolioPreference1 = '';
+                }
+                if (name === 'committeePreference2') {
+                    newData.portfolioPreference2 = '';
+                }
+
+                return newData;
+            });
         }
     };
 
@@ -232,6 +248,10 @@ const DelegateRegistrationForm = () => {
             setLoading(false);
             setModalOpen(true);
         }
+    };
+
+    const getAvailableCommittees = () => {
+        return committeeOptions.filter(committee => committee !== formData.committeePreference1);
     };
 
     return (
@@ -587,60 +607,104 @@ const DelegateRegistrationForm = () => {
 
                     <div>
                         <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Committee Preference 1 (mention any three)
+                            Committee Preference 1
                         </label>
-                        <input
+                        <select
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            type="text"
                             name="committeePreference1"
                             value={formData.committeePreference1}
                             onChange={handleChange}
                             required
-                            placeholder="Mention any 3 committees"
-                        />
+                        >
+                            <option value="">Select Committee</option>
+                            {committeeOptions.map((committee) => (
+                                <option key={committee} value={committee}>
+                                    {committee}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div>
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             Portfolio Preference 1
                         </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            type="text"
-                            name="portfolioPreference1"
-                            value={formData.portfolioPreference1}
-                            onChange={handleChange}
-                            required
-                        />
+                        {formData.committeePreference1 === 'IP' ? (
+                            <select
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                                name="portfolioPreference1"
+                                value={formData.portfolioPreference1}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Select Portfolio</option>
+                                {ipPortfolioOptions.map((portfolio) => (
+                                    <option key={portfolio} value={portfolio}>
+                                        {portfolio}
+                                    </option>
+                                ))}
+                            </select>
+                        ) : (
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                                type="text"
+                                name="portfolioPreference1"
+                                value={formData.portfolioPreference1}
+                                onChange={handleChange}
+                                required
+                            />
+                        )}
                     </div>
 
                     <div>
                         <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Committee Preference 2 (mention any three)
+                            Committee Preference 2
                         </label>
-                        <input
+                        <select
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            type="text"
                             name="committeePreference2"
                             value={formData.committeePreference2}
                             onChange={handleChange}
                             required
-                            placeholder="Mention any 3 committees"
-                        />
+                        >
+                            <option value="">Select Committee</option>
+                            {getAvailableCommittees().map((committee) => (
+                                <option key={committee} value={committee}>
+                                    {committee}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div>
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             Portfolio Preference 2
                         </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            type="text"
-                            name="portfolioPreference2"
-                            value={formData.portfolioPreference2}
-                            onChange={handleChange}
-                            required
-                        />
+                        {formData.committeePreference2 === 'IP' ? (
+                            <select
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                                name="portfolioPreference2"
+                                value={formData.portfolioPreference2}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Select Portfolio</option>
+                                {ipPortfolioOptions.map((portfolio) => (
+                                    <option key={portfolio} value={portfolio}>
+                                        {portfolio}
+                                    </option>
+                                ))}
+                            </select>
+                        ) : (
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                                type="text"
+                                name="portfolioPreference2"
+                                value={formData.portfolioPreference2}
+                                onChange={handleChange}
+                                required
+                            />
+                        )}
                     </div>
 
                     <div className="md:col-span-2">
