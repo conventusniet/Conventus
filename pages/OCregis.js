@@ -76,6 +76,9 @@ const OCRegistrationForm = () => {
   ];
   const sectionOptions = ["A", "B", "C", "D", "E", "F"];
 
+  const committeeOptions = ["UNSC", "UNHRC", "AIPPM"];
+  const portfolioOptions = ["India", "Australia", "Narendra Modi"];
+
   const areaOptions = [
     {
       group: "Teams",
@@ -135,6 +138,24 @@ const OCRegistrationForm = () => {
         [name]: value
       }));
     }
+  };
+
+  const handlePreferenceChange = (e) => {
+    const { name, value } = e.target;
+    const preferenceType = name.includes('committee') ? 'committee' : 'portfolio';
+    const otherPreferences = [1, 2, 3].filter(num => `${preferenceType}Preference${num}` !== name);
+
+    if (otherPreferences.some(num => formData[`${preferenceType}Preference${num}`] === value)) {
+      setModalMessage(`You've already selected this ${preferenceType}. Please choose a different option.`);
+      setIsError(true);
+      setModalOpen(true);
+      return;
+    }
+
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const validateForm = () => {
@@ -211,6 +232,20 @@ const OCRegistrationForm = () => {
       }
       if (!formData.portfolioPreference1 || !formData.portfolioPreference2 || !formData.portfolioPreference3) {
         setModalMessage('Please select all portfolio preferences.');
+        setIsError(true);
+        setModalOpen(true);
+        return false;
+      }
+      const committeePreferences = new Set([formData.committeePreference1, formData.committeePreference2, formData.committeePreference3]);
+      const portfolioPreferences = new Set([formData.portfolioPreference1, formData.portfolioPreference2, formData.portfolioPreference3]);
+      if (committeePreferences.size !== 3) {
+        setModalMessage('Please select different options for each committee preference.');
+        setIsError(true);
+        setModalOpen(true);
+        return false;
+      }
+      if (portfolioPreferences.size !== 3) {
+        setModalMessage('Please select different options for each portfolio preference.');
         setIsError(true);
         setModalOpen(true);
         return false;
@@ -540,13 +575,13 @@ const OCRegistrationForm = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
                   name="committeePreference1"
                   value={formData.committeePreference1}
-                  onChange={handleChange}
+                  onChange={handlePreferenceChange}
                   required
                 >
                   <option value="">Select Committee</option>
-                  <option value="UNSC">UNSC</option>
-                  <option value="UNHRC">UNHRC</option>
-                  <option value="AIPPM">AIPPM</option>
+                  {committeeOptions.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
                 </select>
               </div>
 
@@ -558,13 +593,13 @@ const OCRegistrationForm = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
                   name="committeePreference2"
                   value={formData.committeePreference2}
-                  onChange={handleChange}
+                  onChange={handlePreferenceChange}
                   required
                 >
                   <option value="">Select Committee</option>
-                  <option value="UNSC">UNSC</option>
-                  <option value="UNHRC">UNHRC</option>
-                  <option value="AIPPM">AIPPM</option>
+                  {committeeOptions.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
                 </select>
               </div>
 
@@ -576,13 +611,13 @@ const OCRegistrationForm = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
                   name="committeePreference3"
                   value={formData.committeePreference3}
-                  onChange={handleChange}
+                  onChange={handlePreferenceChange}
                   required
                 >
                   <option value="">Select Committee</option>
-                  <option value="UNSC">UNSC</option>
-                  <option value="UNHRC">UNHRC</option>
-                  <option value="AIPPM">AIPPM</option>
+                  {committeeOptions.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -596,13 +631,13 @@ const OCRegistrationForm = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
                   name="portfolioPreference1"
                   value={formData.portfolioPreference1}
-                  onChange={handleChange}
+                  onChange={handlePreferenceChange}
                   required
                 >
                   <option value="">Select Portfolio</option>
-                  <option value="india">India</option>
-                  <option value="australia">Australia</option>
-                  <option value="narendra-modi">Narendra Modi</option>
+                  {portfolioOptions.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
                 </select>
               </div>
 
@@ -614,13 +649,13 @@ const OCRegistrationForm = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
                   name="portfolioPreference2"
                   value={formData.portfolioPreference2}
-                  onChange={handleChange}
+                  onChange={handlePreferenceChange}
                   required
                 >
                   <option value="">Select Portfolio</option>
-                  <option value="india">India</option>
-                  <option value="australia">Australia</option>
-                  <option value="narendra-modi">Narendra Modi</option>
+                  {portfolioOptions.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
                 </select>
               </div>
 
@@ -632,13 +667,13 @@ const OCRegistrationForm = () => {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
                   name="portfolioPreference3"
                   value={formData.portfolioPreference3}
-                  onChange={handleChange}
+                  onChange={handlePreferenceChange}
                   required
                 >
                   <option value="">Select Portfolio</option>
-                  <option value="india">India</option>
-                  <option value="australia">Australia</option>
-                  <option value="narendra-modi">Narendra Modi</option>
+                  {portfolioOptions.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
                 </select>
               </div>
             </div>

@@ -255,521 +255,523 @@ const DelegateRegistrationForm = () => {
     };
 
     return (
-        <div className="bg-white rounded-lg shadow-2xl p-8 mb-16">
-            <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
-                Delegate Registration
-            </h2>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+            <div className="bg-white rounded-lg shadow-2xl p-8 mb-16 text-center max-w-4xl w-full">
+                <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
+                    Delegate Registration
+                </h2>
 
-            <div className="mb-6">
-                <p className="text-gray-700 mb-4">Registration fee for NIET Delegates: 499</p>
-                <p className="text-gray-700 mb-4">Registration Fee for Outside Delegates: 599</p>
-                <p className="text-gray-700 mb-4">Note: The registration fee is non-refundable</p>
-                <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
+                <div className="mb-6">
+                    <p className="text-gray-700 mb-4">Registration fee for NIET Delegates: 499</p>
+                    <p className="text-gray-700 mb-4">Registration Fee for Outside Delegates: 599</p>
+                    <p className="text-gray-700 mb-4">Note: The registration fee is non-refundable</p>
+                    <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
 
-                <h5 className="text-xl font-semibold mb-2">AIPPM</h5>
-                <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
-                <h5 className="text-xl font-semibold mb-2">UNHRC</h5>
-                <p className="text-gray-700 mb-4">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
-                <h5 className="text-xl font-semibold mb-2">UNSC</h5>
-                <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
-                <h5 className="text-xl font-semibold mb-2">IP</h5>
-                <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Videographers</p>
+                    <h5 className="text-xl font-semibold mb-2">AIPPM</h5>
+                    <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
+                    <h5 className="text-xl font-semibold mb-2">UNHRC</h5>
+                    <p className="text-gray-700 mb-4">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
+                    <h5 className="text-xl font-semibold mb-2">UNSC</h5>
+                    <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
+                    <h5 className="text-xl font-semibold mb-2">IP</h5>
+                    <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Videographers</p>
 
-                <div className="mb-4">
-                    <label className="block text-gray-800 text-sm font-bold mb-2">
-                        <Link className="inline-block mr-2 text-red-600" size={18} />
-                        Matrix
-                    </label>
-                    <a
-                        href="YOUR_MATRIX_URL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-red-600 hover:text-red-700 underline"
-                    >
-                        View Matrix
-                    </a>
-                </div>
-            </div>
-            <motion.form
-                className="w-full max-w-4xl mx-auto"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                onSubmit={handleSubmit}
-            >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
+                    <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
-                            <User className="inline-block mr-2 text-red-600" size={18} />
-                            Name
+                            <Link className="inline-block mr-2 text-red-600" size={18} />
+                            Matrix
                         </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            <Mail className="inline-block mr-2 text-red-600" size={18} />
-                            Email
-                        </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            <Phone className="inline-block mr-2 text-red-600" size={18} />
-                            Mobile Number
-                        </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            <Building className="inline-block mr-2 text-red-600" size={18} />
-                            Institute
-                        </label>
-                        <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            name="institute"
-                            value={formData.institute}
-                            onChange={handleChange}
-                            required
+                        <a
+                            href="YOUR_MATRIX_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-red-600 hover:text-red-700 underline"
                         >
-                            <option value="">Select Institute</option>
-                            <option value="NIET">NIET</option>
-                            <option value="OTHER">Other</option>
-                        </select>
+                            View Matrix
+                        </a>
                     </div>
-
-                    {formData.institute && (
-                        <div className="md:col-span-2 mt-4">
-                            <label className="block text-gray-800 text-sm font-bold mb-2">
-                                <Link className="inline-block mr-2 text-red-600" size={18} />
-                                Link
-                            </label>
-                            {formData.institute === 'NIET' ? (
-                                <div>
-                                    <a
-                                        href="https://rzp.io/rzp/uT97Hix"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-red-600 hover:text-red-700 underline mr-4"
-                                    >
-                                        Payment Link
-                                    </a>
-                                </div>
-                            ) : (
-                                <div>
-                                    <a
-                                        href="https://rzp.io/rzp/Y8X9IkUk"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-red-600 hover:text-red-700 underline mr-4"
-                                    >
-                                        Payment Link
-                                    </a>
-                                </div>
-                            )}
-                        </div>
-                    )}
-
-                    {formData.institute === 'NIET' && (
-                        <>
-                            <div ref={branchRef} className="relative">
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    <Building className="inline-block mr-2 text-red-600" size={18} />
-                                    Branch
-                                </label>
-                                <div
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 cursor-pointer"
-                                    onClick={() => setBranchOpen(!branchOpen)}
-                                >
-                                    {formData.branch || "Select Branch"}
-                                </div>
-                                {branchOpen && (
-                                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
-                                        <div className="flex items-center p-2 border-b">
-                                            <Search className="text-gray-400 mr-2" size={18} />
-                                            <input
-                                                type="text"
-                                                placeholder="Search..."
-                                                className="w-full focus:outline-none"
-                                                value={branchSearch}
-                                                onChange={(e) => setBranchSearch(e.target.value)}
-                                                onClick={(e) => e.stopPropagation()}
-                                            />
-                                        </div>
-                                        <ul className="max-h-60 overflow-auto">
-                                            {branchOptions
-                                                .filter(option => option.toLowerCase().includes(branchSearch.toLowerCase()))
-                                                .map((option, index) => (
-                                                    <li
-                                                        key={index}
-                                                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                                                        onClick={() => {
-                                                            handleChange({ target: { name: 'branch', value: option } });
-                                                            setBranchOpen(false);
-                                                            setBranchSearch('');
-                                                        }}
-                                                    >
-                                                        {option}
-                                                    </li>
-                                                ))}
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
-
-                            <div ref={sectionRef} className="relative">
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    <Building className="inline-block mr-2 text-red-600" size={18} />
-                                    Section
-                                </label>
-                                <div
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 cursor-pointer"
-                                    onClick={() => setSectionOpen(!sectionOpen)}
-                                >
-                                    {formData.section || "Select Section"}
-                                </div>
-                                {sectionOpen && (
-                                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
-                                        <div className="flex items-center p-2 border-b">
-                                            <Search className="text-gray-400 mr-2" size={18} />
-                                            <input
-                                                type="text"
-                                                placeholder="Search..."
-                                                className="w-full focus:outline-none"
-                                                value={sectionSearch}
-                                                onChange={(e) => setSectionSearch(e.target.value)}
-                                                onClick={(e) => e.stopPropagation()}
-                                            />
-                                        </div>
-                                        <ul className="max-h-60 overflow-auto">
-                                            {sectionOptions
-                                                .filter(option => option.toLowerCase().includes(sectionSearch.toLowerCase()))
-                                                .map((option, index) => (
-                                                    <li
-                                                        key={index}
-                                                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                                                        onClick={() => {
-                                                            handleChange({ target: { name: 'section', value: option } });
-                                                            setSectionOpen(false);
-                                                            setSectionSearch('');
-                                                        }}
-                                                    >
-                                                        {option}
-                                                    </li>
-                                                ))}
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
-
-                            <div>
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    Year
-                                </label>
-                                <select
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                                    name="year"
-                                    value={formData.year}
-                                    onChange={handleChange}
-                                    required
-                                >
-                                    <option value="">Select Year</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    ERP ID
-                                </label>
-                                <input
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                                    type="text"
-                                    name="erp"
-                                    value={formData.erp}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    Official Email ID
-                                </label>
-                                <input
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                                    type="email"
-                                    name="officialEmail"
-                                    value={formData.officialEmail}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    Payable Amount
-                                </label>
-                                <input
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-gray-100"
-                                    type="text"
-                                    value="₹499"
-                                    disabled
-                                />
-                            </div>
-                        </>
-                    )}
-
-                    {formData.institute === 'OTHER' && (
-                        <>
-                            <div>
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    Institute Name
-                                </label>
-                                <input
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                                    type="text"
-                                    name="instituteCustom"
-                                    value={formData.instituteCustom}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    Payable Amount
-                                </label>
-                                <input
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-gray-100"
-                                    type="text"
-                                    value="₹599"
-                                    disabled
-                                />
-                            </div>
-                        </>
-                    )}
-
-                    {formData.institute && (
+                </div>
+                <motion.form
+                    className="w-full max-w-3xl mx-auto"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    onSubmit={handleSubmit}
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label className="block text-gray-800 text-sm font-bold mb-2">
-                                Transaction Number
+                                <User className="inline-block mr-2 text-red-600" size={18} />
+                                Name
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
                                 type="text"
-                                name="transactionNumber"
-                                value={formData.transactionNumber}
+                                name="name"
+                                value={formData.name}
                                 onChange={handleChange}
                                 required
                             />
                         </div>
-                    )}
 
-                    <div>
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Referral ID (Optional)
-                        </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            type="text"
-                            name="referralId"
-                            value={formData.referralId}
-                            onChange={handleChange}
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Committee Preference 1
-                        </label>
-                        <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            name="committeePreference1"
-                            value={formData.committeePreference1}
-                            onChange={handleChange}
-                            required
-                        >
-                            <option value="">Select Committee</option>
-                            {committeeOptions.map((committee) => (
-                                <option key={committee} value={committee}>
-                                    {committee}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div>
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Portfolio Preference 1
-                        </label>
-                        {formData.committeePreference1 === 'IP' ? (
-                            <select
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                                name="portfolioPreference1"
-                                value={formData.portfolioPreference1}
-                                onChange={handleChange}
-                                required
-                            >
-                                <option value="">Select Portfolio</option>
-                                {ipPortfolioOptions.map((portfolio) => (
-                                    <option key={portfolio} value={portfolio}>
-                                        {portfolio}
-                                    </option>
-                                ))}
-                            </select>
-                        ) : (
+                        <div>
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                <Mail className="inline-block mr-2 text-red-600" size={18} />
+                                Email
+                            </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                                type="text"
-                                name="portfolioPreference1"
-                                value={formData.portfolioPreference1}
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                type="email"
+                                name="email"
+                                value={formData.email}
                                 onChange={handleChange}
                                 required
                             />
-                        )}
-                    </div>
+                        </div>
 
-                    <div>
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Committee Preference 2
-                        </label>
-                        <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                            name="committeePreference2"
-                            value={formData.committeePreference2}
-                            onChange={handleChange}
-                            required
-                        >
-                            <option value="">Select Committee</option>
-                            {getAvailableCommittees().map((committee) => (
-                                <option key={committee} value={committee}>
-                                    {committee}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div>
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            Portfolio Preference 2
-                        </label>
-                        {formData.committeePreference2 === 'IP' ? (
-                            <select
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                                name="portfolioPreference2"
-                                value={formData.portfolioPreference2}
-                                onChange={handleChange}
-                                required
-                            >
-                                <option value="">Select Portfolio</option>
-                                {ipPortfolioOptions.map((portfolio) => (
-                                    <option key={portfolio} value={portfolio}>
-                                        {portfolio}
-                                    </option>
-                                ))}
-                            </select>
-                        ) : (
+                        <div>
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                <Phone className="inline-block mr-2 text-red-600" size={18} />
+                                Mobile Number
+                            </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                                type="text"
-                                name="portfolioPreference2"
-                                value={formData.portfolioPreference2}
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                type="tel"
+                                name="phone"
+                                value={formData.phone}
                                 onChange={handleChange}
                                 required
                             />
-                        )}
-                    </div>
+                        </div>
 
-                    <div className="md:col-span-2">
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            <Upload className="inline-block mr-2 text-red-600" size={18} />
-                            Payment Screenshot
-                        </label>
-                        <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-red-600 transition duration-300">
-                            <div className="space-y-1 text-center">
-                                <FileUp
-                                    className="mx-auto h-12 w-12 text-gray-400"
-                                    aria-hidden="true"
-                                />
-                                <div className="flex text-sm text-gray-600">
-                                    <label
-                                        htmlFor="payment-screenshot"
-                                        className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
-                                    >
-                                        <span>Upload a file</span>
-                                        <input
-                                            id="payment-screenshot"
-                                            name="paymentScreenshot"
-                                            type="file"
-                                            className="sr-only"
-                                            accept="image/*"
-                                            onChange={handleChange}
-                                            ref={fileInputRef}
-                                            required
-                                        />
-                                    </label>
-                                    <p className="pl-1">or drag and drop</p>
-                                </div>
-                                <p className="text-xs text-gray-500">
-                                    PNG, JPG, GIF up to 10MB
-                                </p>
-                                {formData.paymentScreenshot && (
-                                    <p className="text-sm text-green-600">
-                                        Selected file: {formData.paymentScreenshot.name}
-                                    </p>
+                        <div>
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                <Building className="inline-block mr-2 text-red-600" size={18} />
+                                Institute
+                            </label>
+                            <select
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                name="institute"
+                                value={formData.institute}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Select Institute</option>
+                                <option value="NIET">NIET</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                        </div>
+
+                        {formData.institute && (
+                            <div className="md:col-span-2 mt-4">
+                                <label className="block text-gray-800 text-sm font-bold mb-2">
+                                    <Link className="inline-block mr-2 text-red-600" size={18} />
+                                    Link
+                                </label>
+                                {formData.institute === 'NIET' ? (
+                                    <div>
+                                        <a
+                                            href="https://rzp.io/rzp/uT97Hix"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-red-600 hover:text-red-700 underline mr-4"
+                                        >
+                                            Payment Link
+                                        </a>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <a
+                                            href="https://rzp.io/rzp/Y8X9IkUk"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-red-600 hover:text-red-700 underline mr-4"
+                                        >
+                                            Payment Link
+                                        </a>
+                                    </div>
                                 )}
+                            </div>
+                        )}
+
+                        {formData.institute === 'NIET' && (
+                            <>
+                                <div ref={branchRef} className="relative">
+                                    <label className="block text-gray-800 text-sm font-bold mb-2">
+                                        <Building className="inline-block mr-2 text-red-600" size={18} />
+                                        Branch
+                                    </label>
+                                    <div
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 cursor-pointer text-center"
+                                        onClick={() => setBranchOpen(!branchOpen)}
+                                    >
+                                        {formData.branch || "Select Branch"}
+                                    </div>
+                                    {branchOpen && (
+                                        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
+                                            <div className="flex items-center p-2 border-b">
+                                                <Search className="text-gray-400 mr-2" size={18} />
+                                                <input
+                                                    type="text"
+                                                    placeholder="Search..."
+                                                    className="w-full focus:outline-none text-center"
+                                                    value={branchSearch}
+                                                    onChange={(e) => setBranchSearch(e.target.value)}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                />
+                                            </div>
+                                            <ul className="max-h-60 overflow-auto">
+                                                {branchOptions
+                                                    .filter(option => option.toLowerCase().includes(branchSearch.toLowerCase()))
+                                                    .map((option, index) => (
+                                                        <li
+                                                            key={index}
+                                                            className="px-3 py-2 hover:bg-gray-100 cursor-pointer text-center"
+                                                            onClick={() => {
+                                                                handleChange({ target: { name: 'branch', value: option } });
+                                                                setBranchOpen(false);
+                                                                setBranchSearch('');
+                                                            }}
+                                                        >
+                                                            {option}
+                                                        </li>
+                                                    ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div ref={sectionRef} className="relative">
+                                    <label className="block text-gray-800 text-sm font-bold mb-2">
+                                        <Building className="inline-block mr-2 text-red-600" size={18} />
+                                        Section
+                                    </label>
+                                    <div
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 cursor-pointer text-center"
+                                        onClick={() => setSectionOpen(!sectionOpen)}
+                                    >
+                                        {formData.section || "Select Section"}
+                                    </div>
+                                    {sectionOpen && (
+                                        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
+                                            <div className="flex items-center p-2 border-b">
+                                                <Search className="text-gray-400 mr-2" size={18} />
+                                                <input
+                                                    type="text"
+                                                    placeholder="Search..."
+                                                    className="w-full focus:outline-none text-center"
+                                                    value={sectionSearch}
+                                                    onChange={(e) => setSectionSearch(e.target.value)}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                />
+                                            </div>
+                                            <ul className="max-h-60 overflow-auto">
+                                                {sectionOptions
+                                                    .filter(option => option.toLowerCase().includes(sectionSearch.toLowerCase()))
+                                                    .map((option, index) => (
+                                                        <li
+                                                            key={index}
+                                                            className="px-3 py-2 hover:bg-gray-100 cursor-pointer text-center"
+                                                            onClick={() => {
+                                                                handleChange({ target: { name: 'section', value: option } });
+                                                                setSectionOpen(false);
+                                                                setSectionSearch('');
+                                                            }}
+                                                        >
+                                                            {option}
+                                                        </li>
+                                                    ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-800 text-sm font-bold mb-2">
+                                        Year
+                                    </label>
+                                    <select
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                        name="year"
+                                        value={formData.year}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="">Select Year</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-800 text-sm font-bold mb-2">
+                                        ERP ID
+                                    </label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                        type="text"
+                                        name="erp"
+                                        value={formData.erp}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-800 text-sm font-bold mb-2">
+                                        Official Email ID
+                                    </label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                        type="email"
+                                        name="officialEmail"
+                                        value={formData.officialEmail}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-800 text-sm font-bold mb-2">
+                                        Payable Amount
+                                    </label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-gray-100 text-center"
+                                        type="text"
+                                        value="₹499"
+                                        disabled
+                                    />
+                                </div>
+                            </>
+                        )}
+
+                        {formData.institute === 'OTHER' && (
+                            <>
+                                <div>
+                                    <label className="block text-gray-800 text-sm font-bold mb-2">
+                                        Institute Name
+                                    </label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                        type="text"
+                                        name="instituteCustom"
+                                        value={formData.instituteCustom}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-800 text-sm font-bold mb-2">
+                                        Payable Amount
+                                    </label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-gray-100 text-center"
+                                        type="text"
+                                        value="₹599"
+                                        disabled
+                                    />
+                                </div>
+                            </>
+                        )}
+
+                        {formData.institute && (
+                            <div>
+                                <label className="block text-gray-800 text-sm font-bold mb-2">
+                                    Transaction Number
+                                </label>
+                                <input
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                    type="text"
+                                    name="transactionNumber"
+                                    value={formData.transactionNumber}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        )}
+
+                        <div>
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                Referral ID (Optional)
+                            </label>
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                type="text"
+                                name="referralId"
+                                value={formData.referralId}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                Committee Preference 1
+                            </label>
+                            <select
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                name="committeePreference1"
+                                value={formData.committeePreference1}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Select Committee</option>
+                                {committeeOptions.map((committee) => (
+                                    <option key={committee} value={committee}>
+                                        {committee}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                Portfolio Preference 1
+                            </label>
+                            {formData.committeePreference1 === 'IP' ? (
+                                <select
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                    name="portfolioPreference1"
+                                    value={formData.portfolioPreference1}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="">Select Portfolio</option>
+                                    {ipPortfolioOptions.map((portfolio) => (
+                                        <option key={portfolio} value={portfolio}>
+                                            {portfolio}
+                                        </option>
+                                    ))}
+                                </select>
+                            ) : (
+                                <input
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                    type="text"
+                                    name="portfolioPreference1"
+                                    value={formData.portfolioPreference1}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            )}
+                        </div>
+
+                        <div>
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                Committee Preference 2
+                            </label>
+                            <select
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                name="committeePreference2"
+                                value={formData.committeePreference2}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Select Committee</option>
+                                {getAvailableCommittees().map((committee) => (
+                                    <option key={committee} value={committee}>
+                                        {committee}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                Portfolio Preference 2
+                            </label>
+                            {formData.committeePreference2 === 'IP' ? (
+                                <select
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                    name="portfolioPreference2"
+                                    value={formData.portfolioPreference2}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="">Select Portfolio</option>
+                                    {ipPortfolioOptions.map((portfolio) => (
+                                        <option key={portfolio} value={portfolio}>
+                                            {portfolio}
+                                        </option>
+                                    ))}
+                                </select>
+                            ) : (
+                                <input
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+                                    type="text"
+                                    name="portfolioPreference2"
+                                    value={formData.portfolioPreference2}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            )}
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="block text-gray-800 text-sm font-bold mb-2">
+                                <Upload className="inline-block mr-2 text-red-600" size={18} />
+                                Payment Screenshot
+                            </label>
+                            <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-red-600 transition duration-300">
+                                <div className="space-y-1 text-center">
+                                    <FileUp
+                                        className="mx-auto h-12 w-12 text-gray-400"
+                                        aria-hidden="true"
+                                    />
+                                    <div className="flex text-sm text-gray-600">
+                                        <label
+                                            htmlFor="payment-screenshot"
+                                            className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
+                                        >
+                                            <span>Upload a file</span>
+                                            <input
+                                                id="payment-screenshot"
+                                                name="paymentScreenshot"
+                                                type="file"
+                                                className="sr-only"
+                                                accept="image/*"
+                                                onChange={handleChange}
+                                                ref={fileInputRef}
+                                                required
+                                            />
+                                        </label>
+                                        <p className="pl-1">or drag and drop</p>
+                                    </div>
+                                    <p className="text-xs text-gray-500">
+                                        PNG, JPG, GIF up to 10MB
+                                    </p>
+                                    {formData.paymentScreenshot && (
+                                        <p className="text-sm text-green-600">
+                                            Selected file: {formData.paymentScreenshot.name}
+                                        </p>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="text-center">
-                    <motion.button
-                        className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
-                            }`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        type="submit"
-                        disabled={loading}
-                    >
-                        {loading ? 'Submitting...' : 'Submit'}
-                    </motion.button>
-                </div>
-            </motion.form>
+                    <div className="text-center">
+                        <motion.button
+                            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
+                                }`}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            type="submit"
+                            disabled={loading}
+                        >
+                            {loading ? 'Submitting...' : 'Submit'}
+                        </motion.button>
+                    </div>
+                </motion.form>
 
-            <Modal
-                isOpen={modalOpen}
-                onClose={() => setModalOpen(false)}
-                message={modalMessage}
-                isError={isError}
-            />
+                <Modal
+                    isOpen={modalOpen}
+                    onClose={() => setModalOpen(false)}
+                    message={modalMessage}
+                    isError={isError}
+                />
+            </div>
         </div>
     );
 };
