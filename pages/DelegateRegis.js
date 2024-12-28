@@ -272,7 +272,7 @@ const DelegateRegistrationForm = () => {
         }
     };
 
-   
+
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
@@ -282,13 +282,13 @@ const DelegateRegistrationForm = () => {
                 </h2>
 
                 <div className="mb-6">
-                    <p className="text-gray-700 mb-4">Registration fee for NIET Delegates: 499</p>
-                    <p className="text-gray-700 mb-4">Registration Fee for Outside Delegates: 599</p>
-                    <p className="text-gray-700 mb-4">Note: The registration fee is non-refundable</p>
+                    <p className="text-gray-700 mb-4 text-justify">Registration fee for NIET Delegates: 499</p>
+                    <p className="text-gray-700 mb-4 text-justify">Registration Fee for Outside Delegates: 599</p>
+                    <p className="text-gray-700 mb-4 text-justify">Note: The registration fee is non-refundable</p>
                     <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
 
                     <h5 className="text-xl font-semibold mb-2">United Nations Security Council</h5>
-                    <p className="text-gray-700 mb-4">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
+                    <p className="text-gray-700 mb-4 text-justify">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
@@ -304,7 +304,7 @@ const DelegateRegistrationForm = () => {
                         </a>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">United Nations Human Rights Council</h5>
-                    <p className="text-gray-700 mb-4">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
+                    <p className="text-gray-700 mb-4 text-justify">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
@@ -320,7 +320,7 @@ const DelegateRegistrationForm = () => {
                         </a>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">All India Political Party Meet</h5>
-                    <p className="text-gray-700 mb-4">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
+                    <p className="text-gray-700 mb-4 text-justify">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
@@ -336,8 +336,7 @@ const DelegateRegistrationForm = () => {
                         </a>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">IP</h5>
-                    <p className="text-gray-700 mb-4">It will consist of Journalists, Photographers and Videographers</p>
-
+                    <p className="text-gray-700 mb-4 text-justify">It will consist of Journalists, Photographers and Videographers</p>
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
@@ -352,7 +351,9 @@ const DelegateRegistrationForm = () => {
                             View Link
                         </a>
                     </div>
-                    <div className="mb-4">
+                </div>
+
+                {/* <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-bold mb-2">
                             <Link className="inline-block mr-2 text-red-600" size={18} />
                             Matrix
@@ -365,8 +366,8 @@ const DelegateRegistrationForm = () => {
                         >
                             View Matrix
                         </a>
-                    </div>
-                </div>
+                    </div> */}
+
                 <motion.form
                     className="w-full max-w-3xl mx-auto"
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -900,7 +901,7 @@ const DelegateRegistrationForm = () => {
                     isError={isError}
                 />
             </div>
-        </div>
+        </div >
     );
 };
 
