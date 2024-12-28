@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, Building, X, Search, ChevronDown } from 'lucide-react';
+import { User, Phone, Mail, Building, X, Link,Search, ChevronDown } from 'lucide-react';
+
 
 const Modal = ({ isOpen, onClose, message, isError }) => {
   return (
@@ -76,9 +77,6 @@ const OCRegistrationForm = () => {
   ];
   const sectionOptions = ["A", "B", "C", "D", "E", "F"];
 
-  const committeeOptions = ["UNSC", "UNHRC", "AIPPM"];
-  const portfolioOptions = ["India", "Australia", "Narendra Modi"];
-
   const areaOptions = [
     {
       group: "Teams",
@@ -138,24 +136,6 @@ const OCRegistrationForm = () => {
         [name]: value
       }));
     }
-  };
-
-  const handlePreferenceChange = (e) => {
-    const { name, value } = e.target;
-    const preferenceType = name.includes('committee') ? 'committee' : 'portfolio';
-    const otherPreferences = [1, 2, 3].filter(num => `${preferenceType}Preference${num}` !== name);
-
-    if (otherPreferences.some(num => formData[`${preferenceType}Preference${num}`] === value)) {
-      setModalMessage(`You've already selected this ${preferenceType}. Please choose a different option.`);
-      setIsError(true);
-      setModalOpen(true);
-      return;
-    }
-
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
   };
 
   const validateForm = () => {
@@ -232,20 +212,6 @@ const OCRegistrationForm = () => {
       }
       if (!formData.portfolioPreference1 || !formData.portfolioPreference2 || !formData.portfolioPreference3) {
         setModalMessage('Please select all portfolio preferences.');
-        setIsError(true);
-        setModalOpen(true);
-        return false;
-      }
-      const committeePreferences = new Set([formData.committeePreference1, formData.committeePreference2, formData.committeePreference3]);
-      const portfolioPreferences = new Set([formData.portfolioPreference1, formData.portfolioPreference2, formData.portfolioPreference3]);
-      if (committeePreferences.size !== 3) {
-        setModalMessage('Please select different options for each committee preference.');
-        setIsError(true);
-        setModalOpen(true);
-        return false;
-      }
-      if (portfolioPreferences.size !== 3) {
-        setModalMessage('Please select different options for each portfolio preference.');
         setIsError(true);
         setModalOpen(true);
         return false;
@@ -338,14 +304,14 @@ const OCRegistrationForm = () => {
         <p className="text-gray-700 mb-2">Details: Organising Committee (OC) will be involved in organising and Management of Conventus MUN in NIET Greater Noida.</p>
         <p className="text-gray-700 mb-2">OC Membership Fee: 200 Rs/- (Food Charges)</p>
         <p className="text-gray-700 mb-2">Last date to register: 23rd December 2024</p>
-        <a
+        {/* <a
           href="https://rzp.io/rzp/ZjW03Dh"
           target="_blank"
           rel="noopener noreferrer"
           className="text-red-600 hover:text-red-700 underline mr-4"
         >
           Payment Link
-        </a>
+        </a> */}
       </div>
 
       <motion.form
@@ -421,6 +387,27 @@ const OCRegistrationForm = () => {
             >
               <option value="NIET">NIET</option>
             </select>
+          </div>
+
+
+
+          <div className="md:col-span-2 mt-4">
+            <label className="block text-gray-800 text-sm font-bold mb-2">
+              <Link className="inline-block mr-2 text-red-600" size={18} />
+              Link
+            </label>
+
+            <div>
+              <a
+                href="https://rzp.io/rzp/ZjW03Dh "
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-600 hover:text-red-700 underline mr-4"
+              >
+                Payment Link
+              </a>
+            </div>
+
           </div>
 
           <div>
@@ -527,158 +514,7 @@ const OCRegistrationForm = () => {
               </div>
             )}
           </div>
-
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              Participation Type
-            </label>
-            <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-              name="participationType"
-              value={formData.participationType}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Type</option>
-              <option value="IP">IP</option>
-              <option value="Delegation">Delegation</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              Portfolio
-            </label>
-            <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-              name="portfolio"
-              value={formData.portfolio}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Portfolio</option>
-              <option value="journalist">Journalist</option>
-              <option value="photographer">Photographer</option>
-              <option value="videographer">Videographer</option>
-            </select>
-          </div>
         </div>
-
-        {formData.participationType === 'Delegation' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 border-t pt-6">
-            <div className="space-y-4">
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2">
-                  Committee Preference 1
-                </label>
-                <select
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                  name="committeePreference1"
-                  value={formData.committeePreference1}
-                  onChange={handlePreferenceChange}
-                  required
-                >
-                  <option value="">Select Committee</option>
-                  {committeeOptions.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2">
-                  Committee Preference 2
-                </label>
-                <select
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                  name="committeePreference2"
-                  value={formData.committeePreference2}
-                  onChange={handlePreferenceChange}
-                  required
-                >
-                  <option value="">Select Committee</option>
-                  {committeeOptions.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2">
-                  Committee Preference 3
-                </label>
-                <select
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                  name="committeePreference3"
-                  value={formData.committeePreference3}
-                  onChange={handlePreferenceChange}
-                  required
-                >
-                  <option value="">Select Committee</option>
-                  {committeeOptions.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2">
-                  Portfolio Preference 1
-                </label>
-                <select
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                  name="portfolioPreference1"
-                  value={formData.portfolioPreference1}
-                  onChange={handlePreferenceChange}
-                  required
-                >
-                  <option value="">Select Portfolio</option>
-                  {portfolioOptions.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2">
-                  Portfolio Preference 2
-                </label>
-                <select
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                  name="portfolioPreference2"
-                  value={formData.portfolioPreference2}
-                  onChange={handlePreferenceChange}
-                  required
-                >
-                  <option value="">Select Portfolio</option>
-                  {portfolioOptions.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2">
-                  Portfolio Preference 3
-                </label>
-                <select
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-                  name="portfolioPreference3"
-                  value={formData.portfolioPreference3}
-                  onChange={handlePreferenceChange}
-                  required
-                >
-                  <option value="">Select Portfolio</option>
-                  {portfolioOptions.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-        )}
 
         <div className="mb-6">
           <label className="block text-gray-800 text-sm font-bold mb-2">
