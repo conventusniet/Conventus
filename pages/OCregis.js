@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, Building, X, Search } from 'lucide-react';
+import { User, Phone, Mail, Building, X, Search, ChevronDown } from 'lucide-react';
 
 const Modal = ({ isOpen, onClose, message, isError }) => {
   return (
@@ -46,7 +46,15 @@ const OCRegistrationForm = () => {
     branch: '',
     section: '',
     areasOfInterest: [],
-    agreeToTerms: false
+    agreeToTerms: false,
+    participationType: '',
+    portfolio: '',
+    committeePreference1: '',
+    committeePreference2: '',
+    committeePreference3: '',
+    portfolioPreference1: '',
+    portfolioPreference2: '',
+    portfolioPreference3: ''
   });
 
   const [loading, setLoading] = useState(false);
@@ -182,17 +190,41 @@ const OCRegistrationForm = () => {
       setModalOpen(true);
       return false;
     }
+    if (!formData.participationType) {
+      setModalMessage('Please select a participation type.');
+      setIsError(true);
+      setModalOpen(true);
+      return false;
+    }
+    if (!formData.portfolio) {
+      setModalMessage('Please select a portfolio.');
+      setIsError(true);
+      setModalOpen(true);
+      return false;
+    }
+    if (formData.participationType === 'Delegation') {
+      if (!formData.committeePreference1 || !formData.committeePreference2 || !formData.committeePreference3) {
+        setModalMessage('Please select all committee preferences.');
+        setIsError(true);
+        setModalOpen(true);
+        return false;
+      }
+      if (!formData.portfolioPreference1 || !formData.portfolioPreference2 || !formData.portfolioPreference3) {
+        setModalMessage('Please select all portfolio preferences.');
+        setIsError(true);
+        setModalOpen(true);
+        return false;
+      }
+    }
     return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Debug logging
     console.log("=============== FORM SUBMISSION DEBUG ===============");
     console.log("Raw form data:", formData);
 
-    // Check for empty fields
     Object.entries(formData).forEach(([key, value]) => {
       if (value === '' || value === null || value === undefined ||
         (Array.isArray(value) && value.length === 0)) {
@@ -207,7 +239,6 @@ const OCRegistrationForm = () => {
 
     setLoading(true);
 
-    // Log the actual data being sent
     const jsonData = JSON.stringify(formData);
     console.log("Data being sent to backend:", jsonData);
 
@@ -237,7 +268,15 @@ const OCRegistrationForm = () => {
           branch: '',
           section: '',
           areasOfInterest: [],
-          agreeToTerms: false
+          agreeToTerms: false,
+          participationType: '',
+          portfolio: '',
+          committeePreference1: '',
+          committeePreference2: '',
+          committeePreference3: '',
+          portfolioPreference1: '',
+          portfolioPreference2: '',
+          portfolioPreference3: ''
         });
       } else {
         console.log("Registration failed:", data);
@@ -453,7 +492,158 @@ const OCRegistrationForm = () => {
               </div>
             )}
           </div>
+
+          <div>
+            <label className="block text-gray-800 text-sm font-bold mb-2">
+              Participation Type
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              name="participationType"
+              value={formData.participationType}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Type</option>
+              <option value="IP">IP</option>
+              <option value="Delegation">Delegation</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-800 text-sm font-bold mb-2">
+              Portfolio
+            </label>
+            <select
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              name="portfolio"
+              value={formData.portfolio}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Portfolio</option>
+              <option value="journalist">Journalist</option>
+              <option value="photographer">Photographer</option>
+              <option value="videographer">Videographer</option>
+            </select>
+          </div>
         </div>
+
+        {formData.participationType === 'Delegation' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 border-t pt-6">
+            <div className="space-y-4">
+              <div>
+                <label className="block text-gray-800 text-sm font-bold mb-2">
+                  Committee Preference 1
+                </label>
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                  name="committeePreference1"
+                  value={formData.committeePreference1}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Committee</option>
+                  <option value="UNSC">UNSC</option>
+                  <option value="UNHRC">UNHRC</option>
+                  <option value="AIPPM">AIPPM</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-gray-800 text-sm font-bold mb-2">
+                  Committee Preference 2
+                </label>
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                  name="committeePreference2"
+                  value={formData.committeePreference2}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Committee</option>
+                  <option value="UNSC">UNSC</option>
+                  <option value="UNHRC">UNHRC</option>
+                  <option value="AIPPM">AIPPM</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-gray-800 text-sm font-bold mb-2">
+                  Committee Preference 3
+                </label>
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                  name="committeePreference3"
+                  value={formData.committeePreference3}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Committee</option>
+                  <option value="UNSC">UNSC</option>
+                  <option value="UNHRC">UNHRC</option>
+                  <option value="AIPPM">AIPPM</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-gray-800 text-sm font-bold mb-2">
+                  Portfolio Preference 1
+                </label>
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                  name="portfolioPreference1"
+                  value={formData.portfolioPreference1}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Portfolio</option>
+                  <option value="india">India</option>
+                  <option value="australia">Australia</option>
+                  <option value="narendra-modi">Narendra Modi</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-gray-800 text-sm font-bold mb-2">
+                  Portfolio Preference 2
+                </label>
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                  name="portfolioPreference2"
+                  value={formData.portfolioPreference2}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Portfolio</option>
+                  <option value="india">India</option>
+                  <option value="australia">Australia</option>
+                  <option value="narendra-modi">Narendra Modi</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-gray-800 text-sm font-bold mb-2">
+                  Portfolio Preference 3
+                </label>
+                <select
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+                  name="portfolioPreference3"
+                  value={formData.portfolioPreference3}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Portfolio</option>
+                  <option value="india">India</option>
+                  <option value="australia">Australia</option>
+                  <option value="narendra-modi">Narendra Modi</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="mb-6">
           <label className="block text-gray-800 text-sm font-bold mb-2">
@@ -525,3 +715,4 @@ const OCRegistrationForm = () => {
 };
 
 export default OCRegistrationForm;
+
