@@ -86,7 +86,7 @@ const DelegateRegistrationForm = () => {
 
     const branchOptions = [
         "ECE", "CSBS", "CSE", "CSE(TWIN)", "CSE-R", "AI", "AI(TWIN)", "DS", "CYS",
-        "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT"
+        "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT","B. Pharma","MBA","MCA","PGDM"
     ];
     const sectionOptions = ["A", "B", "C", "D", "E", "F"];
 
@@ -442,32 +442,36 @@ const DelegateRegistrationForm = () => {
                                     </label>
                                     {formData.institute === 'NIET' ? (
                                         <div className="flex flex-col items-center space-y-4">
-                                            <img
-                                                src="/api/placeholder/200/200"
-                                                alt="NIET Payment QR"
-                                                className="border rounded-lg"
-                                            />
+                                            <div className="w-48 h-48 border rounded-lg p-2 bg-white shadow-md">
+                                                <img
+                                                    src="/QR's/NIET deleg.jpg"
+                                                    alt="NIET Payment QR"
+                                                    className="w-full h-full object-contain"
+                                                />
+                                            </div>
                                             <a
                                                 href="https://rzp.io/rzp/uT97Hix"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-red-600 hover:text-red-700 underline"
+                                                className="text-red-600 hover:text-red-700 underline text-sm font-medium"
                                             >
                                                 Payment Link
                                             </a>
                                         </div>
                                     ) : (
                                         <div className="flex flex-col items-center space-y-4">
-                                            <img
-                                                src="/api/placeholder/200/200"
-                                                alt="Other Institute Payment QR"
-                                                className="border rounded-lg"
-                                            />
+                                            <div className="w-48 h-48 border rounded-lg p-2 bg-white shadow-md">
+                                                <img
+                                                    src="/QR's/Other Deleg.jpg"
+                                                    alt="Other Institute Payment QR"
+                                                    className="w-full h-full object-contain"
+                                                />
+                                            </div>
                                             <a
                                                 href="https://rzp.io/rzp/Y8X9IkUk"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-red-600 hover:text-red-700 underline"
+                                                className="text-red-600 hover:text-red-700 underline text-sm font-medium"
                                             >
                                                 Payment Link
                                             </a>

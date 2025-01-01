@@ -65,7 +65,7 @@ const OCRegistrationForm = () => {
 
   const branchOptions = [
     "ECE", "CSBS", "CSE", "CSE(TWIN)", "CSE-R", "AI", "AI(TWIN)", "DS", "CYS",
-    "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT"
+    "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT","B. Pharma","MBA","MCA","PGDM"
   ];
   const sectionOptions = ["A", "B", "C", "D", "E", "F"];
 
@@ -369,11 +369,14 @@ const OCRegistrationForm = () => {
             </div> */}
 
             <div className="flex flex-col items-center space-y-4">
-              <img
-                src="/api/placeholder/200/200"
-                alt="NIET Payment QR"
-                className="border rounded-lg"
-              />
+              
+              <div className="w-48 h-48 border rounded-lg p-2 bg-white shadow-md">
+                <img
+                  src="/QR's/OC.jpg"
+                  alt="NIET Payment QR"
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <a
                 href="https://rzp.io/rzp/ZjW03Dh"
                 target="_blank"
