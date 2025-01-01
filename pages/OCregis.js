@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, Building, X, Link,Search, ChevronDown } from 'lucide-react';
+import { User, Phone, Mail, Building, X, Link, Search, ChevronDown } from 'lucide-react';
 
 
 const Modal = ({ isOpen, onClose, message, isError }) => {
@@ -183,8 +183,8 @@ const OCRegistrationForm = () => {
       setModalOpen(true);
       return false;
     }
-    
-   
+
+
     return true;
   };
 
@@ -352,17 +352,33 @@ const OCRegistrationForm = () => {
 
 
           <div className="md:col-span-2 mt-4">
-            <label className="block text-gray-800 text-sm font-bold mb-2">
+            {/* <label className="block text-gray-800 text-sm font-bold mb-2">
               <Link className="inline-block mr-2 text-red-600" size={18} />
               Link
-            </label>
+            </label> */}
 
-            <div>
+            {/* <div>
               <a
                 href="https://rzp.io/rzp/ZjW03Dh "
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-red-600 hover:text-red-700 underline mr-4"
+              >
+                Payment Link
+              </a>
+            </div> */}
+
+            <div className="flex flex-col items-center space-y-4">
+              <img
+                src="/api/placeholder/200/200"
+                alt="NIET Payment QR"
+                className="border rounded-lg"
+              />
+              <a
+                href="https://rzp.io/rzp/ZjW03Dh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-600 hover:text-red-700 underline"
               >
                 Payment Link
               </a>

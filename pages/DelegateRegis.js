@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search } from 'lucide-react';
+import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, Download } from 'lucide-react';
+
 
 const Modal = ({ isOpen, onClose, message, isError }) => {
     return (
@@ -60,7 +61,16 @@ const DelegateRegistrationForm = () => {
         paymentScreenshot: null
     });
 
-
+    const handleMatrixDownload = (url) => {
+        // Function to handle matrix download and open in new tab
+        window.open(url, '_blank');
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = '';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
     const [loading, setLoading] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
@@ -289,51 +299,37 @@ const DelegateRegistrationForm = () => {
 
                     <h5 className="text-xl font-semibold mb-2">United Nations Security Council</h5>
                     <p className="text-gray-700 mb-4 text-justify">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
-                    <div className="mb-4">
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            <Link className="inline-block mr-2 text-red-600" size={18} />
-                            Link
-                        </label>
-                        <a
-                            href="YOUR_MATRIX_URL"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-red-600 hover:text-red-700 underline"
+                    <div className="mb-4 flex items-center justify-center space-x-4">
+                        <button
+                            onClick={() => handleMatrixDownload('/path/to/unsc-matrix.xlsx')}
+                            className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            View Link
-                        </a>
+                            <Download className="mr-2" size={18} />
+                            Download Matrix
+                        </button>
+
                     </div>
                     <h5 className="text-xl font-semibold mb-2">United Nations Human Rights Council</h5>
                     <p className="text-gray-700 mb-4 text-justify">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
-                    <div className="mb-4">
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            <Link className="inline-block mr-2 text-red-600" size={18} />
-                            Link
-                        </label>
-                        <a
-                            href="YOUR_MATRIX_URL"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-red-600 hover:text-red-700 underline"
+                    <div className="mb-4 flex items-center justify-center space-x-4">
+                        <button
+                            onClick={() => handleMatrixDownload('/path/to/unsc-matrix.xlsx')}
+                            className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            View Link
-                        </a>
+                            <Download className="mr-2" size={18} />
+                            Download Matrix
+                        </button>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">All India Political Party Meet</h5>
                     <p className="text-gray-700 mb-4 text-justify">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
-                    <div className="mb-4">
-                        <label className="block text-gray-800 text-sm font-bold mb-2">
-                            <Link className="inline-block mr-2 text-red-600" size={18} />
-                            Link
-                        </label>
-                        <a
-                            href="YOUR_MATRIX_URL"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-red-600 hover:text-red-700 underline"
+                    <div className="mb-4 flex items-center justify-center space-x-4">
+                        <button
+                            onClick={() => handleMatrixDownload('/path/to/unsc-matrix.xlsx')}
+                            className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            View Link
-                        </a>
+                            <Download className="mr-2" size={18} />
+                            Download Matrix
+                        </button>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">IP</h5>
                     <p className="text-gray-700 mb-4 text-justify">It will consist of Journalists, Photographers and Videographers</p>
@@ -441,33 +437,44 @@ const DelegateRegistrationForm = () => {
 
                         {formData.institute && (
                             <div className="md:col-span-2 mt-4">
-                                <label className="block text-gray-800 text-sm font-bold mb-2">
-                                    <Link className="inline-block mr-2 text-red-600" size={18} />
-                                    Link
-                                </label>
-                                {formData.institute === 'NIET' ? (
-                                    <div>
-                                        <a
-                                            href="https://rzp.io/rzp/uT97Hix"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-red-600 hover:text-red-700 underline mr-4"
-                                        >
-                                            Payment Link
-                                        </a>
-                                    </div>
-                                ) : (
-                                    <div>
-                                        <a
-                                            href="https://rzp.io/rzp/Y8X9IkUk"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-red-600 hover:text-red-700 underline mr-4"
-                                        >
-                                            Payment Link
-                                        </a>
-                                    </div>
-                                )}
+                                <div className="flex flex-col items-center space-y-4">
+                                    <label className="block text-gray-800 text-sm font-bold">
+                                        Payment Details
+                                    </label>
+                                    {formData.institute === 'NIET' ? (
+                                        <div className="flex flex-col items-center space-y-4">
+                                            <img
+                                                src="/api/placeholder/200/200"
+                                                alt="NIET Payment QR"
+                                                className="border rounded-lg"
+                                            />
+                                            <a
+                                                href="https://rzp.io/rzp/uT97Hix"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-red-600 hover:text-red-700 underline"
+                                            >
+                                                Payment Link
+                                            </a>
+                                        </div>
+                                    ) : (
+                                        <div className="flex flex-col items-center space-y-4">
+                                            <img
+                                                src="/api/placeholder/200/200"
+                                                alt="Other Institute Payment QR"
+                                                className="border rounded-lg"
+                                            />
+                                            <a
+                                                href="https://rzp.io/rzp/Y8X9IkUk"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-red-600 hover:text-red-700 underline"
+                                            >
+                                                Payment Link
+                                            </a>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         )}
 
