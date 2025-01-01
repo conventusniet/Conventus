@@ -62,11 +62,10 @@ const DelegateRegistrationForm = () => {
     });
 
     const handleMatrixDownload = (url) => {
-        // Function to handle matrix download and open in new tab
-        window.open(url, '_blank');
+        // Create a temporary link element
         const link = document.createElement('a');
         link.href = url;
-        link.download = '';
+        link.download = ''; // This will use the default filename from the server
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -301,7 +300,7 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4 text-justify">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/path/to/unsc-matrix.xlsx')}
+                            onClick={() => handleMatrixDownload('/Matrix/United Nations Security Council.xlsx')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
                             <Download className="mr-2" size={18} />
@@ -313,7 +312,7 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4 text-justify">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/path/to/unsc-matrix.xlsx')}
+                            onClick={() => handleMatrixDownload('/Matrix/UN Human Rights Council.xlsx')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
                             <Download className="mr-2" size={18} />
@@ -324,7 +323,7 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4 text-justify">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/path/to/unsc-matrix.xlsx')}
+                            onClick={() => handleMatrixDownload('/Matrix/All India Political Party Meet.xlsx')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
                             <Download className="mr-2" size={18} />
