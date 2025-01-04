@@ -308,6 +308,20 @@ const Registration = () => {
                     >
                         Embark on a journey of leadership, innovation, and community engagement. Register now to be part of something extraordinary!
                     </motion.p>
+
+                    <motion.p
+                        className="text-lg mb-12 text-center max-w-2xl mx-auto text-gray-600"
+                        variants={itemVariants}
+                    >
+                        <a
+                            href="/pdfs/CMUN II Flyer.pdf"
+                            className="text-red-600 hover:text-red-700 underline transition-colors duration-300"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Check out official Brochure for details here
+                        </a>
+                    </motion.p>
                     <Suspense fallback={<DuckLoader />}>
                         <motion.div
                             className="bg-white shadow-2xl rounded-lg p-8 w-full max-w-4xl mx-auto"
@@ -345,7 +359,7 @@ const Registration = () => {
                     </motion.div> */}
                 </motion.div>
             </section>
-            <ConventusChatbot/>
+            <ConventusChatbot />
             <Footer />
         </>
     );
