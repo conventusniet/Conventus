@@ -127,26 +127,26 @@ export default function AboutPageOne() {
         {
             name: "Dr. Om Prakash Agarwal",
             position: "Managing Director",
-            image: "/images/mdsir.jpg",
+            image: "/digni_img/MD Sir.JPG",
             info: "'Work is Worship'  Success is not a one-shot process. It is the result of a continuous improvement after each failure. The fear of failure needs to be captured in order for a person to learn from his failure too. It is an invaluable opportunity to rectify errors and move forward. Failure in working for a good cause is better than success in working for a wrong cause. Over the years now, NIET has built quite a special position in the private higher education sector. With its distinctive culture, it provides a clear student-centered environment in which to explore existing technical knowledge, and gain new learning at the leading edges of technology development. Our unique educational system ensures that you gain not just depth and breadth in your chosen area of specialization, but also a holistic set of skills that will equip you to face the real world. At every stage, there will be opportunities to expand your boundaries, platforms for collaboration and learning, and recognitions for those who strive to excel. Thus, I would like each one of you to join NIET and aspire as global leaders and a successful human being."
         },
         {
             name: "Dr. Neema Agarwal",
             position: "Additional Managing Director",
-            image: "/images/amdmam.jpg",
+            image: "/digni_img/AMD Ma'am.JPG",
             info: "'Education is the most powerful weapon which you can use to change the world' - Nelson Mandela\n\nIn the course of last 20 years, many technical & management institutes have sprung up all over the country. Graduates passing out every year are highly optimistic that technical courses ensure a rewarding career. The economic, corporate, and social environments are undergoing radical changes. To survive, manage, and excel in this dynamically changing atmosphere, it demands engagement of professionals who are well informed, competent, courageous, and versatile. Beyond the academics, the curriculum at NIET is strongly linked with several recent themes like latest technologies needed by organizations, soft skills, communication, among others. Our approach has resulted in programs of study relevant to the leadership trends and challenges of tomorrow. Classroom learning is made interesting by highly qualified and experienced faculty through interactions, presentations, role plays, case studies and out bound learning programs. This is further reinforced by practical learning through industrial visits and summer training. Students regularly undergo personality development and grooming sessions that lead to both extrinsic and intrinsic confidence boosting and prepares them for the corporate world. We appreciate your interest and want you to know that we are here to bring you a leading edge technical education."
         },
 
         {
             name: "Dr. Raman Batra",
             position: "Executive Vice President",
-            image: "/images/evpsir.jpg",
+            image: "/digni_img/EVP Sir.JPG",
             info: "This new generation is an interesting one. Most of them were born into a world where technology has always been at the forefront. These students rely on Google, texting, social media and Wi-Fi, and they view email - not letter writing - as a formal form of communication. NIET has been helping students write their own stories since its inception. Committed to providing the best jobs by creating life-changing educational opportunities and collaborative learning environments, we have stayed at the forefront of innovation in higher education, providing the tools our students need to make them industry ready from day one and make an impact in the world. NIET has a Pyramid Finishing School, which provides training to the students according to the industry requirements giving the individual student a 360 degree in employability skills. The institute has also made tie-ups with MNCs like Microsoft, Oracle, KPMG, ICICI Direct, Prometric, and Pearson. These tie-ups not only promise to enhance student employability by a manifold, but also take the lead in encouraging 'innovative' learning like never before. Taking the league forward, we have established various innovation labs to provide students hands-on experience in various modern-day technologies. We impart experiential learning and thereby progressively enhance the competencies of our teaching staff and our students. I, thus, invite you to join our movement to create corporate citizens who become role models, wherever they go, for developing their professional career. I promise you a challenging academic experience, with an international flavour, which will truly transform your lives."
         },
         {
             name: "Dr. Vinod M Kapse",
             position: "Director",
-            image: "/images/directorsir.jpg",
+            image: "/digni_img/Director.JPG",
             info: "Welcome to Noida Institute of Engineering & Technology, Gr. Noida. Ever since its inception in 2001, our endeavour at NIET has been to provide excellent quality of education and training to young minds aspiring to become engineers, managers, pharmacists, and technocrats. In order to achieve this goal, we have established an infrastructure that conforms to the bests in the world. Our faculty members are highly talented and qualified. Additionally, we invite the finest minds from the industry and academia as guest lecturers. With the help of a very supportive staff, we ensure a healthy learning atmosphere for our students. We motivate our students to dream big and guarantee that right spirit and necessary talent are inculcated in the students to help them realize their objectives. We also continuously strive to instil ethical values in our wards so that they become responsible citizens of tomorrow. NIET has always stood for quality and excellence and we make every effort to constantly upgrade and improve ourselves. These efforts have been recognized, appreciated, and awarded by prestigious educational bodies both in India and abroad. I wish you the very best as you choose to become a part of this exciting and vibrant learning community."
         },
     ];
@@ -155,19 +155,19 @@ export default function AboutPageOne() {
         {
             name: "Dr. Manish Kaushik",
             position: "Dean Student Welfare",
-            image: "/images/deandsw.jpg",
+            image: "/digni_img/Manish Sir.png",
             info: "Welfare of student is of utmost importance to us. The office of Dean Students' Welfare is responsible for all the aspects of students' welfare. The office therefore always motivates the students towards their bright future by engaging them in different academic as well as co-curricular activities so as to fulfill their dreams. The office strives to enhance the students' overall personality and to provide better career opportunities. The office looks after the functioning of various societies and clubs under which students take active participation."
         },
         {
             name: "Miss Kanika Jindal",
             position: "Associate Dean Student Welfare",
-            image: "/images/asdeandsw.png",
+            image: "/digni_img/Kanika Mam.png",
             info: "Is working as an Associate Dean Student Welfare and Assistant Professor in the Department of Electronics and Communication Engineering with experience of 13 years. She is graduated with honors in Electronics and Communication Engineering from Uttar Pradesh Technical University in 2010. She is Gold Medalist in M.Tech (VLSI Design) from Uttar Pradesh Technical University in 2012. She is young and dynamic in organizing cultural and technical events."
         },
         {
             name: "Neeti Taneja Mam",
             position: "Faculty Coordinator Conventus",
-            image: "/images/faculty_coordinator.jpg",
+            image: "/digni_img/Neeti Mam.jpg",
             info: "Neeti Taneja, as the faculty coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. Her leadership and support have significantly contributed to the growth and success of the club, helping students develop their skills in public speaking, diplomacy, and event management. She is also known for her academic excellence and dedication to the IT department, fostering an environment that encourages innovation and collaborative learning.."
         },
     ];

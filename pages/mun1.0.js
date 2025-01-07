@@ -379,12 +379,12 @@ export default function CommitteesPage() {
           <div className="flex flex-wrap justify-center gap-8">
             <TeamMember
               name="Mr. Manish Kaushik"
-              image="/images/deandsw.jpg"
+              image="/digni_img/Manish Sir.png"
               bio="Dean DSW "
             />
             <TeamMember
               name="Ms. Kanika Jindal "
-              image="/images/asdeandsw.png"
+              image="/digni_img/Kanika Mam.png"
               bio="Associate Dean DSW"
             />
             <TeamMember
