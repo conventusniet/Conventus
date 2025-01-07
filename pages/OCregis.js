@@ -262,7 +262,7 @@ const OCRegistrationForm = () => {
 
       <div className="mb-6">
         <p className="text-gray-700 mb-2">Details: Organising Committee (OC) will be involved in organising and Management of Conventus MUN in NIET Greater Noida.</p>
-        <p className="text-gray-700 mb-2">OC Membership Fee: Rs 200  (Food Charges)</p>
+        <p className="text-gray-700 mb-2">OC Membership Fee: Rs 200</p>
         <p className="text-gray-700 mb-2">Last date to register: 15th February 2025</p>
         {/* <a
           href="https://rzp.io/rzp/ZjW03Dh"
