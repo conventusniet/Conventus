@@ -86,7 +86,7 @@ const DelegateRegistrationForm = () => {
 
     const branchOptions = [
         "ECE", "CSBS", "CSE", "CSE(TWIN)", "CSE-R", "AI", "AI(TWIN)", "DS", "CYS",
-        "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT","B. Pharma","MBA","MCA","PGDM"
+        "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT", "B. Pharma", "MBA", "MCA", "PGDM"
     ];
     const sectionOptions = ["A", "B", "C", "D", "E", "F"];
 
@@ -199,12 +199,24 @@ const DelegateRegistrationForm = () => {
             setModalOpen(true);
             return false;
         }
-        if (!formData.committeePreference1 || !formData.portfolioPreference1) {
-            setModalMessage('Please fill in your first committee and portfolio preference.');
-            setIsError(true);
-            setModalOpen(true);
-            return false;
+
+        // Different validation for IP and Delegate
+        if (formData.participationType === 'IP') {
+            if (!formData.portfolioPreference1) {
+                setModalMessage('Please select your IP portfolio preference.');
+                setIsError(true);
+                setModalOpen(true);
+                return false;
+            }
+        } else if (formData.participationType === 'Delegate') {
+            if (!formData.committeePreference1 || !formData.portfolioPreference1) {
+                setModalMessage('Please fill in your first committee and portfolio preference.');
+                setIsError(true);
+                setModalOpen(true);
+                return false;
+            }
         }
+
         if (!formData.paymentScreenshot) {
             setModalMessage('Please upload payment screenshot.');
             setIsError(true);
@@ -217,8 +229,20 @@ const DelegateRegistrationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Add this line right at the start
-        console.log("Form submitted with data:", formData);
+        // Create a copy of the form data
+        let submissionData = { ...formData };
+
+        // If participation type is IP, set delegate-specific fields to "N/A"
+        if (formData.participationType === 'IP') {
+            submissionData = {
+                ...submissionData,
+                committeePreference1: 'N/A',
+                committeePreference2: 'N/A',
+                committeePreference3: 'N/A',
+                portfolioPreference2: 'N/A',
+                portfolioPreference3: 'N/A'
+            };
+        }
 
         if (!validateForm()) {
             console.log("Form validation failed");
@@ -228,10 +252,10 @@ const DelegateRegistrationForm = () => {
         setLoading(true);
         const formDataToSend = new FormData();
 
-        // Log each field as it's added to FormData
-        Object.keys(formData).forEach(key => {
-            console.log(`${key}:`, formData[key]);
-            formDataToSend.append(key, formData[key]);
+        // Add all fields to FormData
+        Object.keys(submissionData).forEach(key => {
+            console.log(`${key}:`, submissionData[key]);
+            formDataToSend.append(key, submissionData[key]);
         });
 
         try {
@@ -259,10 +283,13 @@ const DelegateRegistrationForm = () => {
                     officialEmail: '',
                     transactionNumber: '',
                     referralId: '',
+                    participationType: '',
                     committeePreference1: '',
                     portfolioPreference1: '',
                     committeePreference2: '',
                     portfolioPreference2: '',
+                    committeePreference3: '',
+                    portfolioPreference3: '',
                     instituteCustom: '',
                     paymentScreenshot: null
                 });
