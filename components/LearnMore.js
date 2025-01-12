@@ -17,7 +17,7 @@ const LearnMoreSection = () => {
             title: "Model United Nations 2025",
             description: "Explore the Second Edition of Conventus MUN",
             image: "/images/h5.jpg",
-            route: "/mun1.0"
+            route: "/mun2.0"
         },
         {
             title: "Registration",

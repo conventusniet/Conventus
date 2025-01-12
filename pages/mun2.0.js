@@ -73,20 +73,20 @@ export default function MUN2Page() {
         </div>
 
         {/* Sponsors Section */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Sponsors & Collaborators</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-            {/* Add sponsor logos here */}
+       
             <div className="w-40 h-40 bg-gray-200 rounded-lg"></div>
             <div className="w-40 h-40 bg-gray-200 rounded-lg"></div>
             <div className="w-40 h-40 bg-gray-200 rounded-lg"></div>
             <div className="w-40 h-40 bg-gray-200 rounded-lg"></div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <div>
-        <Contact/>
+        <Contact />
       </div>
       <ConventusChatbot />
       <Footer />

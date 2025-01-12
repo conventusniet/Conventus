@@ -38,23 +38,25 @@ const LeaderCard = ({ image, name, position, quote }) => (
 const LeadershipSection = () => {
     const leaders = [
         {
-            name: "Yashraj Ranjan",
-            position: "Diector General",
-            image: "/images/vp2.jpg",
-            quote: "Empowering youth to become tomorrow's global leaders through diplomatic discourse and international cooperation."
+            name: "Pragya Singh",
+            position: "Secretary General",
+            image: "/images/vp1.jpg",
+            quote: "Building bridges across cultures through meaningful dialogue and shared understanding."
         },
+        
         {
             name: "Manas Gupta",
             position: "Founder President",
             image: "/images/P1.jpg",
             quote: "Creating a platform where young minds can engage with complex global challenges and develop innovative solutions."
         },
+        
         {
-            name: "Pragya Singh",
-            position: "Secretary General",
-            image: "/images/vp1.jpg",
-            quote: "Building bridges across cultures through meaningful dialogue and shared understanding."
-        }
+            name: "Yashraj Ranjan",
+            position: "Diector General",
+            image: "/images/vp2.jpg",
+            quote: "Empowering youth to become tomorrow's global leaders through diplomatic discourse and international cooperation."
+        },
     ];
 
     return (
