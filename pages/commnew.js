@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -93,18 +92,7 @@ export default function CommitteesPage() {
       ],
       expectedOutcomes: "Delegates will simulate crisis scenarios and collaboratively draft resolutions aimed at preserving global peace and security, developing actionable strategies to confront contemporary security threats and promoting diplomatic dialogue in an increasingly complex international landscape."
     },
-    {
-      logo: "/images/uncsw_bg.jpg",
-      title: "United Nations Commission On Status Of Women",
-      description: "The United Nations Commission on the Status of Women (UNCSW) in Model United Nations (MUN) focuses on   Preventing the Violation of Women’s Human Rights in Conflict and Post-Conflict Reconstruction  , addressing the unique challenges women face in conflict zones and their critical role in peacebuilding.",
-      objectives: [
-        "- Advocate for policies that protect women's rights in conflict situations", 
-"- Ensure women's active engagement in post-conflict reconstruction efforts",  
-"- Explore strategies to prevent rights violations and enhance women's participation"  
-
-      ],
-      expectedOutcomes: "Delegates will propose legal reforms, capacity-building initiatives, and safe spaces for women, empowering them as key agents of peace and societal progress while emphasizing the importance of gender equality and women's empowerment in achieving sustainable global peace and development.",
-    },
+    
     {
       logo: "/images/unhrc_bg.jpg",
       title: "United Nations Human Rights Council",
@@ -132,19 +120,7 @@ export default function CommitteesPage() {
       ],
       expectedOutcomes: "Delegates will form alliances, craft policies, and defend their party's stance, echoing the real-life political discourse in India, while proposing practical solutions to address regional and national challenges."
     },
-       {
-      logo: "/images/lok_sabha_bg.jpg",
-      title: "Lok Sabha",
-      description: "The Lok Sabha Committee in Model United Nations (MUN) simulates the vibrant proceedings of India’s lower house of Parliament, providing a platform for participants to engage in the democratic process akin to a Youth Parliament.",
-      objectives: [
-     " - Debate pressing national issues affecting India",  
-"- Propose and deliberate on legislative solutions  ",
-"- Draft and pass bills aimed at socio-economic and political reforms",  
-
-
-      ],
-      expectedOutcomes: " Delegates will engage in policy discussions, simulate drafting bills, and work collaboratively to address India's contemporary challenges, fostering critical thinking, public speaking, and an understanding of the parliamentary process.",
-    },
+       
   ]
 
   const  InternationalPress = [
@@ -199,16 +175,18 @@ export default function CommitteesPage() {
         <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
           UN Committees
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {UNCommittees.map((committee, index) => (
-            <CommitteeCard
-              key={index}
-              logo={committee.logo}
-              title={committee.title}
-              description={committee.description}
-              onClick={() => setSelectedCommittee(committee)}
-            />
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+            {UNCommittees.map((committee, index) => (
+              <CommitteeCard
+                key={index}
+                logo={committee.logo}
+                title={committee.title}
+                description={committee.description}
+                onClick={() => setSelectedCommittee(committee)}
+              />
+            ))}
+          </div>
         </div>
         <div className="relative items-center justify-center text-center mb-10">
           <Link href="/registration" passHref>
@@ -227,16 +205,18 @@ export default function CommitteesPage() {
         <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
         International Press
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {InternationalPress.map((committee, index) => (
-            <CommitteeCard
-              key={index}
-              logo={committee.logo}
-              title={committee.title}
-              description={committee.description}
-              onClick={() => setSelectedCommittee(committee)}
-            />
-          ))}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+            {InternationalPress.map((committee, index) => (
+              <CommitteeCard
+                key={index}
+                logo={committee.logo}
+                title={committee.title}
+                description={committee.description}
+                onClick={() => setSelectedCommittee(committee)}
+              />
+            ))}
+          </div>
         </div>
         <div className="relative items-center justify-center text-center mb-10">
           <Link href="/registration" passHref>
@@ -255,16 +235,18 @@ export default function CommitteesPage() {
         <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
           Indian Committees
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {IndianComittees.map((committee, index) => (
-            <CommitteeCard
-              key={index}
-              logo={committee.logo}
-              title={committee.title}
-              description={committee.description}
-              onClick={() => setSelectedCommittee(committee)}
-            />
-          ))}
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 justify-items-center">
+            {IndianComittees.map((committee, index) => (
+              <CommitteeCard
+                key={index}
+                logo={committee.logo}
+                title={committee.title}
+                description={committee.description}
+                onClick={() => setSelectedCommittee(committee)}
+              />
+            ))}
+          </div>
         </div>
         <div className="relative items-center justify-center text-center mb-10">
           <Link href="/registration" passHref>

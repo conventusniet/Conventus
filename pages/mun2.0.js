@@ -12,6 +12,9 @@ import Oheader from '../components/OHeader'
 import LeadershipSection from '@/components/mun2.oleadershipsec'
 import CountdownTimer from '../components/mun2.0countdown'
 import SponsorsSection from '../components/mun2.0sponsors'
+import LearnMoreSection from '@/components/mun2.0learnmore'
+import ContactInformation from '@/components/mun2.0moreinfo'
+import Contact from '@/components/mun2.0contact'
 const CommitteeCard = ({ name, description, image }) => (
   <motion.div
     className="bg-white rounded-lg shadow-lg overflow-hidden"
@@ -39,7 +42,7 @@ export default function MUN2Page() {
       <div className='mb-6'><Oheader /></div>
 
       {/* Hero Section */}
-     
+
       <div className='mt-20'><HeroSection /></div>
 
       <div><CountdownTimer /></div>
@@ -59,39 +62,11 @@ export default function MUN2Page() {
         </div>
 
         {/* Committees Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Committees</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <CommitteeCard
-              name="UNSC"
-              description="United Nations Security Council - Addressing international peace and security challenges"
-              image="/images/unsc1.jpg"
-            />
-            <CommitteeCard
-              name="UNHRC"
-              description="United Nations Human Rights Council - Promoting and protecting human rights worldwide"
-              image="/images/uncsw1.jpg"
-            />
-            <CommitteeCard
-              name="AIPPM"
-              description="All India Political Parties Meet - Discussing domestic political issues"
-              image="/images/aippm1.jpg"
-            />
-          </div>
-        </section>
+        <div>
+          <LearnMoreSection />
+        </div>
 
-        {/* Registration Section */}
-        {/* <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Registration</h2>
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold mb-4 text-center">Delegate Applications Now Open!</h3>
-            <div className="flex justify-center">
-              <button className="bg-red-700 text-white px-8 py-3 rounded-lg hover:bg-red-800 transition-colors">
-                Apply as Delegate
-              </button>
-            </div>
-          </div>
-        </section> */}
+
 
         <div>
           <SponsorsSection />
@@ -110,6 +85,9 @@ export default function MUN2Page() {
         </section>
       </main>
 
+      <div>
+        <Contact/>
+      </div>
       <ConventusChatbot />
       <Footer />
     </div>
