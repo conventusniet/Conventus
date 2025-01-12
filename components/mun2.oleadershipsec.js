@@ -1,0 +1,85 @@
+import React from 'react';
+import Image from 'next/image';
+import { Quote } from 'lucide-react';
+
+const LeaderCard = ({ image, name, position, quote }) => (
+    <div className="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300 relative">
+        {/* Quote Mark */}
+        <div className="absolute -top-4 left-8">
+            <Quote className="w-8 h-8 text-red-800 bg-white rounded-full p-1" />
+        </div>
+
+        {/* Image */}
+        <div className="relative w-48 h-48 mx-auto mb-6">
+            <div className="absolute inset-0 bg-red-100 rounded-full" />
+            <Image
+                src={image}
+                alt={name}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-full"
+                priority
+            />
+        </div>
+
+        {/* Quote Text */}
+        <p className="text-gray-700 text-lg text-center mb-6 italic leading-relaxed">
+            {quote}
+        </p>
+
+        {/* Name and Position */}
+        <div className="text-center">
+            <h3 className="text-xl font-bold text-red-800 mb-1">{name}</h3>
+            <p className="text-gray-600">{position}</p>
+        </div>
+    </div>
+);
+
+const LeadershipSection = () => {
+    const leaders = [
+        {
+            name: "Yashraj Ranjan",
+            position: "Diector General",
+            image: "/images/vp2.jpg",
+            quote: "Empowering youth to become tomorrow's global leaders through diplomatic discourse and international cooperation."
+        },
+        {
+            name: "Manas Gupta",
+            position: "Founder President",
+            image: "/images/P1.jpg",
+            quote: "Creating a platform where young minds can engage with complex global challenges and develop innovative solutions."
+        },
+        {
+            name: "Pragya Singh",
+            position: "Secretary General",
+            image: "/images/vp1.jpg",
+            quote: "Building bridges across cultures through meaningful dialogue and shared understanding."
+        }
+    ];
+
+    return (
+        <div className="min-h-screen bg-gradient-to-b from-red-50 to-red-100 py-20 px-4">
+            <div className="container mx-auto">
+                {/* Section Title */}
+                <h2 className="text-4xl font-bold text-center text-red-800 mb-16">
+                    Our Leaders
+                </h2>
+
+                {/* Cards Container */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    {leaders.map((leader, index) => (
+                        <LeaderCard
+                            key={index}
+                            name={leader.name}
+                            position={leader.position}
+                            image={leader.image}
+                            quote={leader.quote}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default LeadershipSection;
