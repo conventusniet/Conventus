@@ -48,7 +48,7 @@ const HeroSection = () => {
 
             {/* CTA Button with Enhanced Styling */}
             <Link
-              href="/delegate-form"
+              href="/DelegateRegis"
               className="transform hover:scale-105 transition-all duration-300"
             >
               <div className="bg-red-700 hover:bg-red-600 text-white px-12 py-4 rounded-lg 
