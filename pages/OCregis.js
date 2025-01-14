@@ -123,6 +123,12 @@ const OCRegistrationForm = () => {
       return;
     }
 
+    // Update formData to include the file name
+    setFormData(prev => ({
+      ...prev,
+      paymentScreenshot: file.name // Store just the filename
+    }));
+
     setPaymentFile(file);
 
     // Create preview URL
@@ -132,7 +138,6 @@ const OCRegistrationForm = () => {
     };
     reader.readAsDataURL(file);
   };
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -614,10 +619,17 @@ const OCRegistrationForm = () => {
                     alt="Payment Screenshot Preview"
                     className="mx-auto h-48 w-auto object-contain"
                   />
+                  {formData.paymentScreenshot && (
+                    <p className="text-sm text-green-600 mt-2">
+                      Selected file: {formData.paymentScreenshot}
+                    </p>
+                  )}
                   <button
+                    type="button"
                     onClick={() => {
                       setPaymentFile(null);
                       setPaymentPreview(null);
+                      setFormData(prev => ({ ...prev, paymentScreenshot: '' }));
                       if (fileInputRef.current) {
                         fileInputRef.current.value = '';
                       }
@@ -645,7 +657,7 @@ const OCRegistrationForm = () => {
                         type="file"
                         className="sr-only"
                         accept="image/*"
-                        onChange={handleChange}
+                        onChange={handleFileChange}
                         ref={fileInputRef}
                       />
                     </label>
