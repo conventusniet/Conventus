@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDown } from 'lucide-react';
 
-
 const Modal = ({ isOpen, onClose, message, isError }) => {
   return (
     <AnimatePresence>
@@ -48,10 +47,11 @@ const OCRegistrationForm = () => {
     branch: '',
     section: '',
     areasOfInterest: [],
-    paymentScreenshot: null,
     agreeToTerms: false,
   });
 
+  const [paymentFile, setPaymentFile] = useState(null);
+  const [paymentPreview, setPaymentPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
@@ -102,8 +102,44 @@ const OCRegistrationForm = () => {
     };
   }, []);
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Validate file type
+    const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!validTypes.includes(file.type)) {
+      setModalMessage('Please upload a valid image file (JPG, PNG, or GIF)');
+      setIsError(true);
+      setModalOpen(true);
+      return;
+    }
+
+    // Validate file size (10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      setModalMessage('File size should be less than 10MB');
+      setIsError(true);
+      setModalOpen(true);
+      return;
+    }
+
+    setPaymentFile(file);
+
+    // Create preview URL
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPaymentPreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    if (type === 'file') {
+      handleFileChange(e);
+      return;
+    }
 
     if (type === 'checkbox') {
       if (name === 'agreeToTerms') {
@@ -185,7 +221,7 @@ const OCRegistrationForm = () => {
       setModalOpen(true);
       return false;
     }
-    if (!formData.paymentScreenshot) {
+    if (!paymentFile) {
       setModalMessage('Please upload payment screenshot.');
       setIsError(true);
       setModalOpen(true);
@@ -198,50 +234,55 @@ const OCRegistrationForm = () => {
       return false;
     }
 
-
     return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("=============== FORM SUBMISSION DEBUG ===============");
-    console.log("Raw form data:", formData);
-
-    Object.entries(formData).forEach(([key, value]) => {
-      if (value === '' || value === null || value === undefined ||
-        (Array.isArray(value) && value.length === 0)) {
-        console.log(`Empty field detected - ${key}:`, value);
-      }
-    });
-
     if (!validateForm()) {
-      console.log("Form validation failed");
       return;
     }
 
     setLoading(true);
 
-    const jsonData = JSON.stringify(formData);
-    console.log("Data being sent to backend:", jsonData);
-
     try {
-      console.log("Making request to backend...");
+      // Create FormData instance for multipart/form-data
+      const submitData = new FormData();
+
+      // Append all form fields with proper type conversion
+      Object.keys(formData).forEach(key => {
+        if (key === 'areasOfInterest') {
+          submitData.append(key, JSON.stringify(formData[key]));
+        } else if (key === 'agreeToTerms') {
+          // Convert JavaScript boolean to string 'True' or 'False' for Python
+          submitData.append(key, formData[key] ? 'True' : 'False');
+        } else {
+          submitData.append(key, formData[key]);
+        }
+      });
+
+      // Append the file
+      if (paymentFile) {
+        submitData.append('paymentScreenshot', paymentFile);
+      }
+
+      // Debug log to check what's being sent
+      for (let pair of submitData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+      }
+
       const response = await fetch('https://conventus.pythonanywhere.com/api/oc-registration/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonData
+        body: submitData,
       });
 
       const data = await response.json();
-      console.log("Response from backend:", data);
 
       if (response.ok) {
-        console.log("Registration successful");
         setModalMessage('Registration completed successfully!');
         setIsError(false);
+        // Reset form
         setFormData({
           name: '',
           year: '',
@@ -252,12 +293,16 @@ const OCRegistrationForm = () => {
           branch: '',
           section: '',
           areasOfInterest: [],
-          paymentScreenshot: null,
           agreeToTerms: false,
         });
+        setPaymentFile(null);
+        setPaymentPreview(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
       } else {
-        console.log("Registration failed:", data);
-        setModalMessage(data.message || 'Registration failed. Please try again.');
+        console.error("Backend error response:", data);
+        setModalMessage(Array.isArray(data) ? data.join(' ') : (data.message || 'Registration failed. Please try again.'));
         setIsError(true);
       }
     } catch (err) {
@@ -269,7 +314,6 @@ const OCRegistrationForm = () => {
       setModalOpen(true);
     }
   };
-
   return (
     <div className="bg-white rounded-lg shadow-2xl p-8 mb-16">
       <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
@@ -563,36 +607,54 @@ const OCRegistrationForm = () => {
           </label>
           <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-red-600 transition duration-300">
             <div className="space-y-1 text-center">
-              <FileUp
-                className="mx-auto h-12 w-12 text-gray-400"
-                aria-hidden="true"
-              />
-              <div className="flex text-sm text-gray-600">
-                <label
-                  htmlFor="ocpayment-screenshot"
-                  className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
-                >
-                  <span>Upload a file</span>
-                  <input
-                    id="ocpayment-screenshot"
-                    name="paymentScreenshot"
-                    type="file"
-                    className="sr-only"
-                    accept="image/*"
-                    onChange={handleChange}
-                    ref={fileInputRef}
-                    required
+              {paymentPreview ? (
+                <div className="mt-2">
+                  <img
+                    src={paymentPreview}
+                    alt="Payment Screenshot Preview"
+                    className="mx-auto h-48 w-auto object-contain"
                   />
-                </label>
-                <p className="pl-1">or drag and drop</p>
-              </div>
-              <p className="text-xs text-gray-500">
-                PNG, JPG, GIF up to 10MB
-              </p>
-              {formData.paymentScreenshot && (
-                <p className="text-sm text-green-600">
-                  Selected file: {formData.paymentScreenshot.name}
-                </p>
+                  <button
+                    onClick={() => {
+                      setPaymentFile(null);
+                      setPaymentPreview(null);
+                      if (fileInputRef.current) {
+                        fileInputRef.current.value = '';
+                      }
+                    }}
+                    className="mt-2 text-red-600 hover:text-red-700"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <FileUp
+                    className="mx-auto h-12 w-12 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  <div className="flex text-sm text-gray-600">
+                    <label
+                      htmlFor="ocpayment-screenshot"
+                      className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
+                    >
+                      <span>Upload a file</span>
+                      <input
+                        id="ocpayment-screenshot"
+                        name="paymentScreenshot"
+                        type="file"
+                        className="sr-only"
+                        accept="image/*"
+                        onChange={handleChange}
+                        ref={fileInputRef}
+                      />
+                    </label>
+                    <p className="pl-1">or drag and drop</p>
+                  </div>
+                  <p className="text-xs text-gray-500">
+                    PNG, JPG, GIF up to 10MB
+                  </p>
+                </>
               )}
             </div>
           </div>
