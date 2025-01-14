@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, Building, X, Link, Search, ChevronDown } from 'lucide-react';
+import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDown } from 'lucide-react';
 
 
 const Modal = ({ isOpen, onClose, message, isError }) => {
@@ -43,10 +43,12 @@ const OCRegistrationForm = () => {
     year: '',
     phone: '',
     institute: 'NIET',
+    transactionNumber: '',
     email: '',
     branch: '',
     section: '',
     areasOfInterest: [],
+    paymentScreenshot: null,
     agreeToTerms: false,
   });
 
@@ -54,7 +56,7 @@ const OCRegistrationForm = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [isError, setIsError] = useState(false);
-
+  const fileInputRef = useRef(null);
   const [branchOpen, setBranchOpen] = useState(false);
   const [sectionOpen, setSectionOpen] = useState(false);
   const [branchSearch, setBranchSearch] = useState('');
@@ -65,7 +67,7 @@ const OCRegistrationForm = () => {
 
   const branchOptions = [
     "ECE", "CSBS", "CSE", "CSE(TWIN)", "CSE-R", "AI", "AI(TWIN)", "DS", "CYS",
-    "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT","B. Pharma","MBA","MCA","PGDM"
+    "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT", "B. Pharma", "MBA", "MCA", "PGDM"
   ];
   const sectionOptions = ["A", "B", "C", "D", "E", "F"];
 
@@ -149,6 +151,12 @@ const OCRegistrationForm = () => {
       setModalOpen(true);
       return false;
     }
+    if (!formData.transactionNumber) {
+      setModalMessage('Please enter transaction number.');
+      setIsError(true);
+      setModalOpen(true);
+      return false;
+    }
     if (!formData.email.trim()) {
       setModalMessage('Please enter your email.');
       setIsError(true);
@@ -173,6 +181,12 @@ const OCRegistrationForm = () => {
 
     if (TeamSelections.length === 0) {
       setModalMessage('Please select option from Area of Interest.');
+      setIsError(true);
+      setModalOpen(true);
+      return false;
+    }
+    if (!formData.paymentScreenshot) {
+      setModalMessage('Please upload payment screenshot.');
       setIsError(true);
       setModalOpen(true);
       return false;
@@ -233,10 +247,12 @@ const OCRegistrationForm = () => {
           year: '',
           phone: '',
           institute: 'NIET',
+          transactionNumber: '',
           email: '',
           branch: '',
           section: '',
           areasOfInterest: [],
+          paymentScreenshot: null,
           agreeToTerms: false,
         });
       } else {
@@ -369,7 +385,7 @@ const OCRegistrationForm = () => {
             </div> */}
 
             <div className="flex flex-col items-center space-y-4">
-              
+
               <div className="w-48 h-48 border rounded-lg p-2 bg-white shadow-md">
                 <img
                   src="/QR's/OC.jpg"
@@ -388,6 +404,23 @@ const OCRegistrationForm = () => {
             </div>
 
           </div>
+
+
+          <div>
+            <label className="block text-gray-800 text-sm font-bold mb-2">
+              Transaction Number
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
+              type="text"
+              name="transactionNumber"
+              value={formData.transactionNumber}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+
 
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
@@ -523,7 +556,47 @@ const OCRegistrationForm = () => {
             </div>
           ))}
         </div>
-
+        <div className="md:col-span-2">
+          <label className="block text-gray-800 text-sm font-bold mb-2">
+            <Upload className="inline-block mr-2 text-red-600" size={18} />
+            Payment Screenshot
+          </label>
+          <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-red-600 transition duration-300">
+            <div className="space-y-1 text-center">
+              <FileUp
+                className="mx-auto h-12 w-12 text-gray-400"
+                aria-hidden="true"
+              />
+              <div className="flex text-sm text-gray-600">
+                <label
+                  htmlFor="ocpayment-screenshot"
+                  className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
+                >
+                  <span>Upload a file</span>
+                  <input
+                    id="ocpayment-screenshot"
+                    name="paymentScreenshot"
+                    type="file"
+                    className="sr-only"
+                    accept="image/*"
+                    onChange={handleChange}
+                    ref={fileInputRef}
+                    required
+                  />
+                </label>
+                <p className="pl-1">or drag and drop</p>
+              </div>
+              <p className="text-xs text-gray-500">
+                PNG, JPG, GIF up to 10MB
+              </p>
+              {formData.paymentScreenshot && (
+                <p className="text-sm text-green-600">
+                  Selected file: {formData.paymentScreenshot.name}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
         <div className="mb-6">
           <div className="flex items-center">
             <input
