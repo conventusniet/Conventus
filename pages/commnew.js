@@ -1,40 +1,50 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { X } from 'lucide-react'
 import ConventusChatbot from '@/components/ConventusChatBot'
 import Link from 'next/link'
 import Oheader from '@/components/OHeader'
 import Footer from '../components/Footer'
 
-const CommitteeCard = ({ logo, title, description, onClick }) => (
+const CommitteeCard = ({ logo, title, description, objectives, onClick }) => (
   <motion.div
-    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition transform hover:scale-105"
+    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 hover:scale-105"
     onClick={onClick}
   >
     <div className="relative h-48 w-full">
       <Image
-        src={logo}
+        src={logo || "/placeholder.svg"}
         alt={title}
         layout="fill"
         objectFit="cover"
       />
     </div>
-    <div className="p-6 text-center">
+    <div className="p-6">
       <h3 className="text-red-800 text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-red-600 text-md">{description.slice(0, 100)}...</p>
+      <p className="text-red-600 text-sm mb-3">{description.slice(0, 100)}...</p>
+      {objectives && (
+        <div className="text-red-500 text-sm">
+          <p className="font-medium mb-1">Agenda:</p>
+          <ul className="list-disc list-inside">
+            {objectives.slice(0, 2).map((objective, index) => (
+              <li key={index}>{objective}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   </motion.div>
 )
 
 const CommitteeDetails = ({ committee, onClose }) => (
   <motion.div
-    initial={{ opacity: 0, scale: 0.9 }}
-    animate={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0, scale: 0.9 }}
-    className="fixed inset-0 bg-white z-50 overflow-y-auto p-4"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="fixed inset-0 bg-black/50 z-50 overflow-y-auto p-4"
   >
-    <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg shadow-lg">
+    <div className="max-w-2xl mx-auto relative bg-white p-6 rounded-lg shadow-lg mt-20">
       <button
         className="absolute top-4 right-4 text-red-600 hover:text-red-800"
         onClick={onClose}
@@ -43,7 +53,7 @@ const CommitteeDetails = ({ committee, onClose }) => (
       </button>
       <div className="text-center">
         <Image
-          src={committee.logo}
+          src={committee.logo || "/placeholder.svg"}
           alt={committee.title}
           width={100}
           height={100}
@@ -53,7 +63,7 @@ const CommitteeDetails = ({ committee, onClose }) => (
         <p className="text-md text-red-700 mb-4">{committee.description}</p>
       </div>
       <div className="mb-4">
-        <h3 className="text-xl font-semibold text-red-800 mb-2">Committee Objectives</h3>
+        <h3 className="text-xl font-semibold text-red-800 mb-2">Agenda</h3>
         <ul className="list-disc list-inside text-red-700">
           {committee.objectives.map((objective, index) => (
             <li key={index}>{objective}</li>
@@ -63,14 +73,6 @@ const CommitteeDetails = ({ committee, onClose }) => (
       <div className="mb-4">
         <h3 className="text-xl font-semibold text-red-800 mb-2">Expected Outcomes</h3>
         <p className="text-md text-red-700">{committee.expectedOutcomes}</p>
-      </div>
-      <div className="text-center">
-        <button
-          className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
-          onClick={() => alert(`You have joined the ${committee.title} committee!`)}
-        >
-          Join
-        </button>
       </div>
     </div>
   </motion.div>
@@ -85,23 +87,20 @@ export default function CommitteesPage() {
       title: "United Nations Security Council",
       description: "The United Nations Security Council (UNSC) in Model United Nations (MUN) holds primary responsibility for maintaining international peace and security, reflecting the global commitment to address threats to peace.",
       objectives: [
-        "- Address threats to international peace", 
-"- Authorize peacekeeping operations",
-"- Recommend solutions to international conflicts "
-
+        "Address threats to international peace", 
+        "Authorize peacekeeping operations",
+        "Recommend solutions to international conflicts"
       ],
       expectedOutcomes: "Delegates will simulate crisis scenarios and collaboratively draft resolutions aimed at preserving global peace and security, developing actionable strategies to confront contemporary security threats and promoting diplomatic dialogue in an increasingly complex international landscape."
     },
-    
     {
       logo: "/images/unhrc_bg.jpg",
       title: "United Nations Human Rights Council",
       description: "The United Nations Human Rights Council (UNHRC) in Model United Nations (MUN) is dedicated to promoting and protecting human rights globally, addressing urgent violations and fostering international cooperation",
       objectives: [
-       " - Address urgent human rights violations ", 
-"- Promote universal respect for human rights",
-"- Enhance international cooperation in protecting human rights ",
-
+        "Address urgent human rights violations", 
+        "Promote universal respect for human rights",
+        "Enhance international cooperation in protecting human rights"
       ],
       expectedOutcomes: "Delegates will draft resolutions and action plans aimed at rectifying human rights abuses, establishing preventive measures, and promoting global justice and human rights standards.",
     },
@@ -111,53 +110,49 @@ export default function CommitteesPage() {
     {
       logo: "/images/aippm_bg.png",
       title: "AIPPM",
-      description: "The All India Political Parties Meet (AIPPM) in Model United Nations (MUN) simulates India's dynamic political landscape, where representatives from various political parties debate and negotiate on key national issues, including economic policies, social justice, and governance.",
+      description: "The All India Political Parties Meet (AIPPM) in Model United Nations (MUN) simulates India's dynamic political landscape, where representatives from various political parties debate and negotiate on key national issues.",
       objectives: [
-        "-Simulate India's domestic political environment",
-"- Debate critical national issues like poverty, healthcare, and education",  
-"- Encourage collaboration among diverse political ideologies"  
-
+        "Simulate India's domestic political environment",
+        "Debate critical national issues",  
+        "Encourage political collaboration"
       ],
       expectedOutcomes: "Delegates will form alliances, craft policies, and defend their party's stance, echoing the real-life political discourse in India, while proposing practical solutions to address regional and national challenges."
     },
-       
   ]
 
-  const  InternationalPress = [
+  const InternationalPress = [
     {
-      logo: "/images/ip_bg.PNG",
+      logo: "/images/journalism_bg.png",
       title: "Journalism",
-      description: "The Journalists Committee in Model United Nations (MUN) serves as the storytellers of the International Press, observing debates across various committees and capturing the essence of discussions and delegate interactions.",
+      description: "The Journalists Committee serves as the storytellers of the International Press, observing debates across various committees and capturing the essence of discussions.",
       objectives: [
-        "- Observe and report on committee debates and negotiations ",
-"- Craft insightful articles reflecting key issues and dynamics  ",
-"- Analyze the global and local impacts of MUN discussions  "
-
-
+        "Report on committee proceedings",
+        "Write analytical articles",
+        "Document conference developments"
       ],
-      expectedOutcomes: "Journalists will deliver well-crafted articles, showcasing their analytical skills and ability to communicate the significance of committee proceedings, offering a deeper understanding of the issues at hand."
+      expectedOutcomes: "Journalists will deliver well-crafted articles, showcasing their analytical skills and ability to communicate the significance of committee proceedings."
     },
     {
-      logo: "/images/ip_bg.PNG",
+      logo: "/images/photography_bg.png",
       title: "Photography",
-      description: "The Photographers Committee in Model United Nations (MUN) captures the energy and spontaneity of the conference, immortalizing key moments through powerful visuals.",
+      description: "The Photographers Committee captures the energy and spontaneity of the conference, immortalizing key moments through powerful visuals.",
       objectives: [
-        "- Capture the emotions, intensity, and key moments of the conference  ",
-"- Portray the atmosphere and dynamics of committee sessions",  
-"- Create a visual narrative that brings the event to life  "
+        "Capture key conference moments",
+        "Create visual documentation",
+        "Build event portfolio"
       ],
-      expectedOutcomes: "Photographers will produce a visual collection that conveys the essence of the MUN, showcasing the passion and deliberation of the participants through impactful images."
+      expectedOutcomes: "Photographers will produce a visual collection that conveys the essence of the MUN, showcasing the passion and deliberation of the participants."
     },
-         {
-      logo: "/images/ip_bg.PNG",
+    {
+      logo: "/images/caricature_bg.png",
       title: "Caricature",
-      description: "The Caricature Committee in Model United Nations (MUN) provides a unique artistic commentary on debates, using satire and creativity to illustrate the intensity of discussions.",
+      description: "The Caricature Committee provides a unique artistic commentary on debates, using satire and creativity to illustrate the intensity of discussions.",
       objectives: [
-       " - Create satirical and insightful illustrations of committee debates",  
-"- Highlight the humor, irony, and conflicts through caricatures  ",
-"- Offer a creative perspective on the political dynamics of the conference ",
+        "Create satirical illustrations",
+        "Capture debate highlights",
+        "Provide artistic perspective"
       ],
-      expectedOutcomes: "Caricaturists will produce visually engaging illustrations that capture the essence of debates, offering participants and observers a humorous and thought-provoking perspective on the proceedings."
+      expectedOutcomes: "Caricaturists will produce visually engaging illustrations that capture the essence of debates, offering a humorous and thought-provoking perspective."
     },
   ]
 
@@ -180,53 +175,19 @@ export default function CommitteesPage() {
             {UNCommittees.map((committee, index) => (
               <CommitteeCard
                 key={index}
-                logo={committee.logo}
-                title={committee.title}
-                description={committee.description}
+                {...committee}
                 onClick={() => setSelectedCommittee(committee)}
               />
             ))}
           </div>
         </div>
-        <div className="relative items-center justify-center text-center mb-10">
+        <div className="text-center mt-10 mb-16">
           <Link href="/registration" passHref>
             <motion.button
-              className="inline-block mt-10 px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:bg-red-700"
+              className="px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 hover:bg-red-700"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-
             >
-
-              Register Now
-            </motion.button>
-          </Link>
-        </div>
-
-        <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
-        International Press
-        </h2>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
-            {InternationalPress.map((committee, index) => (
-              <CommitteeCard
-                key={index}
-                logo={committee.logo}
-                title={committee.title}
-                description={committee.description}
-                onClick={() => setSelectedCommittee(committee)}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="relative items-center justify-center text-center mb-10">
-          <Link href="/registration" passHref>
-            <motion.button
-              className="inline-block mt-10 px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:bg-red-700"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-
-            >
-
               Register Now
             </motion.button>
           </Link>
@@ -240,27 +201,50 @@ export default function CommitteesPage() {
             {IndianComittees.map((committee, index) => (
               <CommitteeCard
                 key={index}
-                logo={committee.logo}
-                title={committee.title}
-                description={committee.description}
+                {...committee}
                 onClick={() => setSelectedCommittee(committee)}
               />
             ))}
           </div>
         </div>
-        <div className="relative items-center justify-center text-center mb-10">
+        <div className="text-center mt-10 mb-16">
           <Link href="/registration" passHref>
             <motion.button
-              className="inline-block mt-10 px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:bg-red-700"
+              className="px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 hover:bg-red-700"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-
             >
-
               Register Now
             </motion.button>
           </Link>
         </div>
+
+        <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
+          International Press
+        </h2>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+            {InternationalPress.map((committee, index) => (
+              <CommitteeCard
+                key={index}
+                {...committee}
+                onClick={() => setSelectedCommittee(committee)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="text-center mt-10 mb-16">
+          <Link href="/registration" passHref>
+            <motion.button
+              className="px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 hover:bg-red-700"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Register Now
+            </motion.button>
+          </Link>
+        </div>
+
         <ConventusChatbot/>
       </main>
 
@@ -277,3 +261,4 @@ export default function CommitteesPage() {
     </div>
   )
 }
+

@@ -50,7 +50,7 @@ export default function MUN2Page() {
       <main className="flex-grow container mx-auto px-4 py-12">
         {/* About Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Welcome to CMUN 2.5!</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Welcome to CMUN 2025!</h2>
           <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto">
             Building on the success of our inaugural edition, NIET Conventus MUN returns with an even more ambitious vision.
             Join us for two days of intensive diplomacy, debate, and dialogue as we tackle pressing global challenges.

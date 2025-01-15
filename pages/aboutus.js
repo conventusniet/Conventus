@@ -125,7 +125,7 @@ const Carousel = () => {
 export default function AboutPageOne() {
     const management = [
         {
-            name: "Dr. Om Prakash Agarwal",
+            name: "Dr. O.P Agarwal",
             position: "Managing Director",
             image: "/digni_img/MD Sir.JPG",
             info: "'Work is Worship'  Success is not a one-shot process. It is the result of a continuous improvement after each failure. The fear of failure needs to be captured in order for a person to learn from his failure too. It is an invaluable opportunity to rectify errors and move forward. Failure in working for a good cause is better than success in working for a wrong cause. Over the years now, NIET has built quite a special position in the private higher education sector. With its distinctive culture, it provides a clear student-centered environment in which to explore existing technical knowledge, and gain new learning at the leading edges of technology development. Our unique educational system ensures that you gain not just depth and breadth in your chosen area of specialization, but also a holistic set of skills that will equip you to face the real world. At every stage, there will be opportunities to expand your boundaries, platforms for collaboration and learning, and recognitions for those who strive to excel. Thus, I would like each one of you to join NIET and aspire as global leaders and a successful human being."
@@ -159,14 +159,14 @@ export default function AboutPageOne() {
             info: "Welfare of student is of utmost importance to us. The office of Dean Students' Welfare is responsible for all the aspects of students' welfare. The office therefore always motivates the students towards their bright future by engaging them in different academic as well as co-curricular activities so as to fulfill their dreams. The office strives to enhance the students' overall personality and to provide better career opportunities. The office looks after the functioning of various societies and clubs under which students take active participation."
         },
         {
-            name: "Miss Kanika Jindal",
+            name: "Ms. Kanika Jindal",
             position: "Associate Dean Student Welfare",
             image: "/digni_img/Kanika Mam.png",
             info: "Is working as an Associate Dean Student Welfare and Assistant Professor in the Department of Electronics and Communication Engineering with experience of 13 years. She is graduated with honors in Electronics and Communication Engineering from Uttar Pradesh Technical University in 2010. She is Gold Medalist in M.Tech (VLSI Design) from Uttar Pradesh Technical University in 2012. She is young and dynamic in organizing cultural and technical events."
         },
         {
-            name: "Neeti Taneja Mam",
-            position: "Faculty Coordinator Conventus",
+            name: "Ms. Neeti Taneja",
+            position: "Faculty Co-Ordinator",
             image: "/digni_img/Neeti Mam.jpg",
             info: "Neeti Taneja, as the faculty coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. Her leadership and support have significantly contributed to the growth and success of the club, helping students develop their skills in public speaking, diplomacy, and event management. She is also known for her academic excellence and dedication to the IT department, fostering an environment that encourages innovation and collaborative learning.."
         },
