@@ -4,12 +4,15 @@ import Image from 'next/image';
 
 const MovingStrip = () => {
   return (
-    <div className="w-full bg-red-800/80 py-3 overflow-hidden">
-      <div className="animate-marquee whitespace-nowrap">
-        <span className="mx-4 text-white text-lg">• Building Tomorrow's Leaders Today</span>
-        <span className="mx-4 text-white text-lg">• Join the Global Dialogue</span>
-        <span className="mx-4 text-white text-lg">• Shape International Policy</span>
-        <span className="mx-4 text-white text-lg">• Experience Diplomacy First-hand</span>
+    <div className="w-full bg-red-800 py-4 overflow-hidden">
+      <div className="flex animate-marquee whitespace-nowrap">
+        {[...Array(10)].map((_, index) => (
+          <React.Fragment key={index}>
+            <span className="mx-8 text-white text-2xl font-semibold">• Negatio</span>
+            <span className="mx-8 text-white text-2xl font-semibold">• Solutio</span>
+            <span className="mx-8 text-white text-2xl font-semibold">• Actio</span>
+          </React.Fragment>
+        ))}
       </div>
     </div>
   );
@@ -70,3 +73,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
