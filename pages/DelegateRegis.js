@@ -318,9 +318,9 @@ const DelegateRegistrationForm = () => {
                 </h2>
 
                 <div className="mb-6">
-                    <p className="text-gray-700 mb-4 text-justify">Registration fee for NIET Delegates: Rs 499</p>
+                    {/* <p className="text-gray-700 mb-4 text-justify">Registration fee for NIET Delegates: Rs 499</p>
                     <p className="text-gray-700 mb-4 text-justify">Registration Fee for Outside Delegates: Rs 599</p>
-                    <p className="text-gray-700 mb-4 text-justify">Note: The registration fee is non-refundable</p>
+                    <p className="text-gray-700 mb-4 text-justify">Note: The registration fee is non-refundable</p> */}
                     <h3 className="text-xl font-semibold mb-4">Committees & Agendas</h3>
 
                     <h5 className="text-xl font-semibold mb-2">United Nations Security Council</h5>
