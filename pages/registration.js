@@ -314,7 +314,7 @@ const Registration = () => {
                         variants={itemVariants}
                     >
                         <a
-                            href="/pdfs/CMUN II Flyer.pdf"
+                            href="/pdfs/CMUN 2025 Brochure.pdf"
                             className="text-red-600 hover:text-red-700 underline transition-colors duration-300"
                             target="_blank"
                             rel="noopener noreferrer"
