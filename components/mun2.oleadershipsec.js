@@ -10,7 +10,7 @@ const LeaderCard = ({ image, name, position, quote }) => (
         </div>
 
         <div className="relative w-64 h-64 mx-auto mb-6 overflow-hidden">
-            <div className="absolute inset-0 bg-transparent rounded-full" />
+            <div className="absolute inset-0 bg-red-100 rounded-full" />
             <Image
                 src={image}
                 alt={name}
