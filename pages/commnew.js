@@ -145,14 +145,14 @@ export default function CommitteesPage() {
     },
     {
       logo: "/images/caricature_bg.png",
-      title: "Caricature",
-      description: "The Caricature Committee provides a unique artistic commentary on debates, using satire and creativity to illustrate the intensity of discussions.",
+      title: "Videography",
+      description: "The Videography Committee provides a unique artistic commentary on debates, using satire and creativity to illustrate the intensity of discussions.",
       objectives: [
         "Create satirical illustrations",
         "Capture debate highlights",
         "Provide artistic perspective"
       ],
-      expectedOutcomes: "Caricaturists will produce visually engaging illustrations that capture the essence of debates, offering a humorous and thought-provoking perspective."
+      expectedOutcomes: "Videographists will produce visually engaging illustrations that capture the essence of debates, offering a humorous and thought-provoking perspective."
     },
   ]
 

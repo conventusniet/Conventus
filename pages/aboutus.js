@@ -15,7 +15,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ConventusChatbot from '@/components/ConventusChatBot';
 
-const PersonCard = ({ name, position, image, info }) => {
+
+const PersonCard = ({ name, position, image, info, imageClassName = "" }) => {
     return (
         <motion.div
             className="w-72 h-96 [perspective:1000px] group sm:w-full sm:max-w-sm md:w-96 lg:w-80"
@@ -26,13 +27,15 @@ const PersonCard = ({ name, position, image, info }) => {
             >
                 {/* Front of the card */}
                 <div className="absolute inset-0">
-                    <Image
-                        className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                        src={image}
-                        alt={name}
-                        width={288}
-                        height={384}
-                    />
+                    <div className={`relative h-full ${imageClassName}`}>
+                        <Image
+                            className="h-full w-full rounded-xl shadow-xl shadow-black/40"
+                            src={image}
+                            alt={name}
+                            width={288}
+                            height={384}
+                        />
+                    </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-70 text-black p-4 rounded-b-xl">
                         <h3 className="text-xl font-bold">{name}</h3>
                         <p className="font-medium">{position}</p>
@@ -58,7 +61,11 @@ const TeamSection = ({ title, members }) => (
         <h3 className="text-3xl sm:text-5xl text-gray-800 mb-10 sm:mb-10 text-center">{title}</h3>
         <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
             {members.map((member, index) => (
-                <PersonCard key={index} {...member} />
+                <PersonCard
+                    key={index}
+                    {...member}
+                    imageClassName={member.name === "Ms. Kanika Jindal" ? "object-contain" : "object-cover"}
+                />
             ))}
         </div>
     </div>
@@ -228,7 +235,7 @@ export default function AboutPageOne() {
                 </div>
                 <Aboutpara />
                 <JoinSection />
-                <ConventusChatbot/>
+                <ConventusChatbot />
             </div>
 
             <hr className="mt-6 sm:mt-12" />

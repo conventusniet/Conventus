@@ -9,18 +9,21 @@ const LeaderCard = ({ image, name, position, quote }) => (
             <Quote className="w-8 h-8 text-red-800 bg-white rounded-full p-1" />
         </div>
 
-        {/* Image */}
-        <div className="relative w-48 h-48 mx-auto mb-6">
-            <div className="absolute inset-0 bg-red-100 rounded-full" />
+        <div className="relative w-64 h-64 mx-auto mb-6 overflow-hidden">
+            <div className="absolute inset-0 bg-transparent rounded-full" />
             <Image
                 src={image}
                 alt={name}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-full"
+                fill
+                style={{
+                    objectFit: 'cover',
+                    objectPosition: 'center top'
+                   
+                }}
                 priority
             />
         </div>
+
 
         {/* Quote Text */}
         <p className="text-gray-700 text-lg text-center mb-6 italic leading-relaxed">
@@ -40,21 +43,21 @@ const LeadershipSection = () => {
         {
             name: "Pragya Singh",
             position: "Secretary General",
-            image: "/images/vp1.jpg",
+            image: "/images/vp1.png",
             quote: "Building bridges across cultures through meaningful dialogue and shared understanding."
         },
-        
+
         {
             name: "Manas Gupta",
             position: "Founder President",
-            image: "/images/P1.jpg",
+            image: "/images/p1.png",
             quote: "Creating a platform where young minds can engage with complex global challenges and develop innovative solutions."
         },
-        
+
         {
             name: "Yashraj Ranjan",
             position: "Diector General",
-            image: "/images/vp2.jpg",
+            image: "/images/vp2.png",
             quote: "Empowering youth to become tomorrow's global leaders through diplomatic discourse and international cooperation."
         },
     ];
