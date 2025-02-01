@@ -1,33 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { memo } from 'react';
+import useSWR from 'swr';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { X, Mail } from 'lucide-react';
+import { X, Mail, RefreshCcw } from 'lucide-react';
 import Oheader from '@/components/OHeader';
-import Footer from '../components/Footer';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
 
 const API_BASE_URL = 'https://conventus.pythonanywhere.com/api';
 
+// Define a fetcher function for SWR
+const fetcher = url => axios.get(url).then(res => res.data);
+
+// Memoized table row for performance
+const SubmissionRow = memo(({ submission, onReply }) => (
+  <tr key={submission.id}>
+    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+      {submission.name}
+    </td>
+    <td className="px-6 py-4 whitespace-nowrap text-sm">
+      <a
+        href={`mailto:${submission.email}`}
+        className="text-red-600 hover:text-red-700"
+        aria-label={`Email ${submission.name}`}
+      >
+        {submission.email}
+      </a>
+    </td>
+    <td className="px-6 py-4 text-sm text-gray-600 max-w-xs break-words">
+      {submission.message}
+    </td>
+    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      {new Date(submission.created_at).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })}
+    </td>
+    <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">
+      <button
+        onClick={() => onReply(submission.email)}
+        className="flex items-center hover:text-red-700 transition-colors"
+        aria-label={`Reply to ${submission.email}`}
+      >
+        <Mail className="w-4 h-4 mr-2" />
+        <span>Reply</span>
+      </button>
+    </td>
+  </tr>
+));
+
 const AdminContactPage = () => {
-  const [submissions, setSubmissions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const fetchSubmissions = async () => {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/contact/`);
-        setSubmissions(response.data);
-        setError('');
-      } catch (err) {
-        setError('Failed to fetch submissions. Please try again later.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSubmissions();
-  }, []);
+  const { data: submissions, error, mutate } = useSWR(
+    `${API_BASE_URL}/contact/`,
+    fetcher,
+    { refreshInterval: 60000 } // Optional: auto-refresh every minute
+  );
 
   const handleReply = (email) => {
     window.location.href = `mailto:${email}?subject=Re: Your Contact Submission to Conventus`;
@@ -36,16 +64,31 @@ const AdminContactPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Oheader />
-      
-      <main className="flex-grow container mx-auto px-4 mt-[8%] sm:px-6 lg:px-8 py-8">
-        <div className="mb-8 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-red-600">Contact Submissions</h1>
-          <Link href="/" className="text-red-600 hover:text-red-700 flex items-center">
-            ← Back to Home
-          </Link>
+
+      <main className="flex-grow container mx-auto px-4 mt-24 sm:px-6 lg:px-8 py-8">
+        <div className="mb-8 flex flex-col sm:flex-row justify-center items-center">
+          <h1 className="text-3xl font-bold flex-1 text-center text-red-600 mb-4 sm:mb-0">
+            Contact Submissions
+          </h1>
+          <div className="flex items-center space-x-4">
+            <button
+              // onClick={() => mutate()}
+              onClick={() => window.location.reload()}
+              
+            >
+              <RefreshCcw className="w-5 h-5 mr-2 text-red-600" />
+       
+            </button>
+            <Link
+              href="/"
+              className="text-red-600 hover:text-red-700 flex items-center"
+            >
+              ← Back to Home
+            </Link>
+          </div>
         </div>
 
-        {loading ? (
+        {(!submissions && !error) ? (
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
             <p className="mt-4 text-gray-600">Loading submissions...</p>
@@ -53,7 +96,7 @@ const AdminContactPage = () => {
         ) : error ? (
           <div className="bg-red-100 p-4 rounded-lg text-red-700 flex items-center">
             <X className="w-5 h-5 mr-2" />
-            {error}
+            Failed to fetch submissions. Please try again later.
           </div>
         ) : (
           <motion.div
@@ -68,7 +111,7 @@ const AdminContactPage = () => {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-sm font-medium text-red-600 uppercase tracking-wider">
@@ -90,38 +133,11 @@ const AdminContactPage = () => {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {submissions.map((submission) => (
-                    <tr key={submission.id}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {submission.name}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                        <a
-                          href={`mailto:${submission.email}`}
-                          className="text-red-600 hover:text-red-700"
-                        >
-                          {submission.email}
-                        </a>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-gray-600 max-w-xs">
-                        {submission.message}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(submission.created_at).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric',
-                        })}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">
-                        <button
-                          onClick={() => handleReply(submission.email)}
-                          className="flex items-center hover:text-red-700 transition-colors"
-                        >
-                          <Mail className="w-4 h-4 mr-2" />
-                          <span>Reply</span>
-                        </button>
-                      </td>
-                    </tr>
+                    <SubmissionRow
+                      key={submission.id}
+                      submission={submission}
+                      onReply={handleReply}
+                    />
                   ))}
                 </tbody>
               </table>
