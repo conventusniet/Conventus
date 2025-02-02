@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import {React,useEffect, useState, memo } from 'react';
 import useSWR from 'swr';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -98,7 +98,7 @@ const ReplyModal = ({ isOpen, onClose, submission, onSubmit }) => {
     const [errorMsg, setErrorMsg] = useState('');
 
     // Reset form when modal opens/closes
-    React.useEffect(() => {
+   useEffect(() => {
         if (isOpen) {
             setReplyText('');
             setErrorMsg('');
