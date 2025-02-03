@@ -2,6 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDown } from 'lucide-react';
 
+// Configuration constant for registration status
+const REGISTRATION_STATUS = {
+  IS_OPEN: false, // Toggle this to open/close registration
+  CLOSED_MESSAGE: "OC registration has been closed. Thank you for your interest!",
+  CLOSED_NOTICE: "Registration for Organizing Committee is now closed. For any queries, submit them at https://conventusmun.com/ContactForm",
+  PAYMENT_DISABLED_TEXT: "Payment submission disabled - Registration closed"
+};
 const Modal = ({ isOpen, onClose, message, isError }) => {
   return (
     <AnimatePresence>
@@ -37,6 +44,7 @@ const Modal = ({ isOpen, onClose, message, isError }) => {
 };
 
 const OCRegistrationForm = () => {
+  const [isRegistrationClosed] = useState(!REGISTRATION_STATUS.IS_OPEN);
   const [formData, setFormData] = useState({
     name: '',
     year: '',
@@ -244,7 +252,13 @@ const OCRegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+ // Registration closed check
+ if (isRegistrationClosed) {
+  setModalMessage(REGISTRATION_STATUS.CLOSED_MESSAGE);
+  setIsError(true);
+  setModalOpen(true);
+  return;
+}
     if (!validateForm()) {
       return;
     }
@@ -321,22 +335,28 @@ const OCRegistrationForm = () => {
   };
   return (
     <div className="bg-white rounded-lg shadow-2xl p-8 mb-16">
+      {/* Registration Closed Banner */}
+      {isRegistrationClosed && (
+        <div className="bg-red-100 border-l-4 border-red-600 text-red-800 p-4 mb-6" role="alert">
+          <div className="flex items-center">
+            <X className="w-6 h-6 mr-2" />
+            <strong className="text-lg">Registration Closed</strong>
+          </div>
+          <p className="mt-2">{REGISTRATION_STATUS.CLOSED_NOTICE}</p>
+        </div>
+      )}
+
       <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
         OC Registration
       </h2>
 
       <div className="mb-6">
-        <p className="text-gray-700 mb-2">Details: Organising Committee (OC) will be involved in organising and Management of Conventus MUN in NIET Greater Noida.</p>
-        <p className="text-gray-700 mb-2">OC Membership Fee: Rs 200</p>
-        <p className="text-gray-700 mb-2">Last date to register: 15th February 2025</p>
-        {/* <a
-          href="https://rzp.io/rzp/ZjW03Dh"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-red-600 hover:text-red-700 underline mr-4"
-        >
-          Payment Link
-        </a> */}
+        {/* Updated payment information section */}
+        <div className="text-gray-500 opacity-75">
+          <p className="mb-2 line-through">OC Membership Fee: Rs 200</p>
+          <p className="mb-2">{REGISTRATION_STATUS.PAYMENT_DISABLED_TEXT}</p>
+          <p className="mb-2 line-through">Last date to register: 3rd February 2025</p>
+        </div>
       </div>
 
       <motion.form
@@ -347,38 +367,42 @@ const OCRegistrationForm = () => {
         onSubmit={handleSubmit}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {/* Updated input fields with disabled state */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <User className="inline-block mr-2 text-red-600" size={18} />
               Name
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none disabled:opacity-75 disabled:bg-gray-100"
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
+              disabled={isRegistrationClosed}
               required
             />
           </div>
 
+          {/* Repeat similar disabled prop for all other inputs */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <User className="inline-block mr-2 text-red-600" size={18} />
               Year
             </label>
             <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none disabled:opacity-75 disabled:bg-gray-100"
               name="year"
               value={formData.year}
               onChange={handleChange}
+              disabled={isRegistrationClosed}
               required
             >
-              <option value="">Select Year</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              <option value="" disabled={isRegistrationClosed}>Select Year</option>
+              <option value="1" disabled={isRegistrationClosed}>1</option>
+              <option value="2" disabled={isRegistrationClosed}>2</option>
+              <option value="3" disabled={isRegistrationClosed}>3</option>
+              <option value="4" disabled={isRegistrationClosed}>4</option>
             </select>
           </div>
 
@@ -393,6 +417,7 @@ const OCRegistrationForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              disabled={isRegistrationClosed}
               required
             />
           </div>
@@ -416,287 +441,58 @@ const OCRegistrationForm = () => {
 
 
 
-          <div className="md:col-span-2 mt-4">
-            {/* <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Link className="inline-block mr-2 text-red-600" size={18} />
-              Link
-            </label> */}
-
-            {/* <div>
-              <a
-                href="https://rzp.io/rzp/ZjW03Dh "
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-red-600 hover:text-red-700 underline mr-4"
-              >
-                Payment Link
-              </a>
-            </div> */}
-
+          {/* Updated QR Code Section */}
+          <div className="md:col-span-2 mt-4 opacity-75">
             <div className="flex flex-col items-center space-y-4">
-
-              <div className="w-48 h-48 border rounded-lg p-2 bg-white shadow-md">
+              <div className="w-48 h-48 border rounded-lg p-2 bg-gray-50 shadow-md">
                 <img
                   src="/QR's/OC.jpg"
-                  alt="NIET Payment QR"
-                  className="w-full h-full object-contain"
+                  alt="NIET Payment QR (Disabled)"
+                  className="w-full h-full object-contain grayscale"
                 />
               </div>
-              <a
-                href="https://rzp.io/rzp/ZjW03Dh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-red-600 hover:text-red-700 underline"
-              >
-                Payment Link
-              </a>
+              <span className="text-gray-500 text-sm">
+                Payment system disabled - Registration closed
+              </span>
             </div>
-
           </div>
 
-
-          <div>
+          {/* Updated File Upload Section */}
+          <div className="md:col-span-2">
             <label className="block text-gray-800 text-sm font-bold mb-2">
-              Transaction Number
+              <Upload className="inline-block mr-2 text-red-600" size={18} />
+              Payment Screenshot
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 text-center"
-              type="text"
-              name="transactionNumber"
-              value={formData.transactionNumber}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-
-
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Mail className="inline-block mr-2 text-red-600" size={18} />
-              Official Email Id
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div ref={branchRef} className="relative">
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Building className="inline-block mr-2 text-red-600" size={18} />
-              Branch
-            </label>
-            <div
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 cursor-pointer"
-              onClick={() => setBranchOpen(!branchOpen)}
-            >
-              {formData.branch || "Select Branch"}
-            </div>
-            {branchOpen && (
-              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
-                <div className="flex items-center p-2 border-b">
-                  <Search className="text-gray-400 mr-2" size={18} />
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    className="w-full focus:outline-none"
-                    value={branchSearch}
-                    onChange={(e) => setBranchSearch(e.target.value)}
-                    onClick={(e) => e.stopPropagation()}
-                  />
+            <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-50">
+              <div className="space-y-1 text-center opacity-75">
+                <FileUp className="mx-auto h-12 w-12 text-gray-400" />
+                <div className="flex text-sm text-gray-600">
+                  <span className="relative cursor-not-allowed rounded-md font-medium">
+                    Upload disabled
+                  </span>
                 </div>
-                <ul className="max-h-60 overflow-auto">
-                  {branchOptions
-                    .filter(option => option.toLowerCase().includes(branchSearch.toLowerCase()))
-                    .map((option, index) => (
-                      <li
-                        key={index}
-                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                        onClick={() => {
-                          handleChange({ target: { name: 'branch', value: option } });
-                          setBranchOpen(false);
-                          setBranchSearch('');
-                        }}
-                      >
-                        {option}
-                      </li>
-                    ))}
-                </ul>
+                <p className="text-xs text-gray-500">
+                  Submission closed - {REGISTRATION_STATUS.PAYMENT_DISABLED_TEXT}
+                </p>
               </div>
-            )}
-          </div>
-
-          <div ref={sectionRef} className="relative">
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Building className="inline-block mr-2 text-red-600" size={18} />
-              Section
-            </label>
-            <div
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 cursor-pointer"
-              onClick={() => setSectionOpen(!sectionOpen)}
-            >
-              {formData.section || "Select Section"}
-            </div>
-            {sectionOpen && (
-              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
-                <div className="flex items-center p-2 border-b">
-                  <Search className="text-gray-400 mr-2" size={18} />
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    className="w-full focus:outline-none"
-                    value={sectionSearch}
-                    onChange={(e) => setSectionSearch(e.target.value)}
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                </div>
-                <ul className="max-h-60 overflow-auto">
-                  {sectionOptions
-                    .filter(option => option.toLowerCase().includes(sectionSearch.toLowerCase()))
-                    .map((option, index) => (
-                      <li
-                        key={index}
-                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                        onClick={() => {
-                          handleChange({ target: { name: 'section', value: option } });
-                          setSectionOpen(false);
-                          setSectionSearch('');
-                        }}
-                      >
-                        {option}
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="mb-6">
-          <label className="block text-gray-800 text-sm font-bold mb-2">
-            Area of Interest (Choose a option from Teams)
-          </label>
-          {areaOptions.map((group, groupIndex) => (
-            <div key={groupIndex} className="mb-4">
-              <p className="font-semibold mb-2">{group.group}</p>
-              {group.options.map((option, optionIndex) => (
-                <div key={optionIndex} className="flex items-center mb-2">
-                  <input
-                    type={group.type}
-                    name={group.type === 'radio' ? 'otherTeams' : 'areasOfInterest'}
-                    value={option}
-                    checked={formData.areasOfInterest.includes(option)}
-                    onChange={handleChange}
-                    className={`mr-2 form-${group.type} h-5 w-5 text-red-600 rounded-full`}
-                    disabled={
-                      group.type === 'checkbox' &&
-                      formData.areasOfInterest.length >= 2 &&
-                      !formData.areasOfInterest.includes(option)
-                    }
-                  />
-                  <label className="text-gray-700">{option}</label>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="md:col-span-2">
-          <label className="block text-gray-800 text-sm font-bold mb-2">
-            <Upload className="inline-block mr-2 text-red-600" size={18} />
-            Payment Screenshot
-          </label>
-          <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-red-600 transition duration-300">
-            <div className="space-y-1 text-center">
-              {paymentPreview ? (
-                <div className="mt-2">
-                  <img
-                    src={paymentPreview}
-                    alt="Payment Screenshot Preview"
-                    className="mx-auto h-48 w-auto object-contain"
-                  />
-                  {formData.paymentScreenshot && (
-                    <p className="text-sm text-green-600 mt-2">
-                      Selected file: {formData.paymentScreenshot}
-                    </p>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setPaymentFile(null);
-                      setPaymentPreview(null);
-                      setFormData(prev => ({ ...prev, paymentScreenshot: '' }));
-                      if (fileInputRef.current) {
-                        fileInputRef.current.value = '';
-                      }
-                    }}
-                    className="mt-2 text-red-600 hover:text-red-700"
-                  >
-                    Remove
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <FileUp
-                    className="mx-auto h-12 w-12 text-gray-400"
-                    aria-hidden="true"
-                  />
-                  <div className="flex text-sm text-gray-600">
-                    <label
-                      htmlFor="ocpayment-screenshot"
-                      className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
-                    >
-                      <span>Upload a file</span>
-                      <input
-                        id="ocpayment-screenshot"
-                        name="paymentScreenshot"
-                        type="file"
-                        className="sr-only"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        ref={fileInputRef}
-                      />
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  </div>
-                  <p className="text-xs text-gray-500">
-                    PNG, JPG, GIF up to 10MB
-                  </p>
-                </>
-              )}
             </div>
           </div>
         </div>
-        <div className="mb-6">
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              name="agreeToTerms"
-              checked={formData.agreeToTerms}
-              onChange={handleChange}
-              className="mr-2 form-checkbox h-5 w-5 text-red-600 rounded-full"
-              required
-            />
-            <label className="text-gray-700">
-              I Agree to pay Rs 200 as a membership fee after selection of me as an Organising Team Member and I understand that failing to pay this fee may result in cancellation of my selection as an Organising Team Member.
-            </label>
-          </div>
-        </div>
 
+        {/* Updated Submit Button */}
         <div className="text-center">
           <motion.button
-            className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className={`${
+              isRegistrationClosed 
+                ? 'bg-gray-400 cursor-not-allowed'
+                : 'bg-red-600 hover:bg-red-700'
+            } text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300`}
+            whileHover={!isRegistrationClosed ? { scale: 1.05 } : {}}
+            whileTap={!isRegistrationClosed ? { scale: 0.95 } : {}}
             type="submit"
-            disabled={loading}
+            disabled={isRegistrationClosed}
           >
-            {loading ? 'Submitting...' : 'Submit'}
+            {isRegistrationClosed ? 'Registration Closed' : 'Submit'}
           </motion.button>
         </div>
       </motion.form>
@@ -712,4 +508,3 @@ const OCRegistrationForm = () => {
 };
 
 export default OCRegistrationForm;
-

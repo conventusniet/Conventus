@@ -88,7 +88,7 @@ const DelegateRegistrationForm = () => {
         "ECE", "CSBS", "CSE", "CSE(TWIN)", "CSE-R", "AI", "AI(TWIN)", "DS", "CYS",
         "ME", "CS", "IT", "IT(TWIN)", "AIML", "AIML(TWIN)", "BIOTECH", "MTECH", "IOT", "B. Pharma", "MBA", "MCA", "PGDM"
     ];
-    const sectionOptions = ["A", "B", "C", "D", "E", "F"];
+    const sectionOptions = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
     const committeeOptions = ['UNSC', 'UNHRC', 'AIPPM'];
     const ipPortfolioOptions = ['Journalist', 'Photographer', 'Videographer'];
