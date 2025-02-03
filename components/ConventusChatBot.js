@@ -4,7 +4,7 @@ import { MessageCircle, Send, X, ExternalLink } from 'lucide-react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize the Gemini API
-const genAI = new GoogleGenerativeAI('AIzaSyCWg6FodT1KF6KpN1PtCQLb77m_EZ1wMsg');
+const genAI = new GoogleGenerativeAI('AIzaSyAzB3UMIo9hHjO-f5i6s0s6nLVG9i3CSK8');
 
 const TypewriterEffect = ({ text }) => {
     const [displayedText, setDisplayedText] = useState('');
