@@ -300,7 +300,8 @@ const Registration = () => {
                         className="text-5xl font-bold mb-8 text-center text-red-600"
                         variants={itemVariants}
                     >
-                        Join Conventus
+                        Register For Conventus MUN
+
                     </motion.h2>
                     <motion.p
                         className="text-xl mb-12 text-center max-w-2xl mx-auto text-gray-700"
