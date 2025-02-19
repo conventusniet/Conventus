@@ -57,7 +57,7 @@ const Contact = () => {
                         >
                             <h3 className="text-2xl font-semibold mb-8 text-red-700 text-center">For More Information Contact Us</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-                            <ContactPerson
+                                <ContactPerson
                                     name="Pragya Singh"
                                     title="Secretary General"
                                     phone="+91 9953552547"
@@ -75,11 +75,11 @@ const Contact = () => {
                                 <ContactPerson
                                     name="Ameya Atreya"
                                     title="Delegate Affairs"
-                                    phone="+91 9289452713"
+                                    phone="+91 8448835989"
                                 />
-                                
-                                
-                                
+
+
+
                             </div>
                         </motion.div>
                     </div>
