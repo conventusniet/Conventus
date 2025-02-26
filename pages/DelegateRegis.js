@@ -331,7 +331,7 @@ const DelegateRegistrationForm = () => {
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
                             <Download className="mr-2" size={18} />
-                            Download Matrix
+                            View Matrix
                         </button>
 
                     </div>
@@ -343,7 +343,7 @@ const DelegateRegistrationForm = () => {
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
                             <Download className="mr-2" size={18} />
-                            Download Matrix
+                            View Matrix
                         </button>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">All India Political Party Meet</h5>
@@ -354,7 +354,7 @@ const DelegateRegistrationForm = () => {
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
                             <Download className="mr-2" size={18} />
-                            Download Matrix
+                            View Matrix
                         </button>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">IP</h5>
