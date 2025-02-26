@@ -330,7 +330,7 @@ const DelegateRegistrationForm = () => {
                             onClick={() => window.open('https://docs.google.com/spreadsheets/d/143eDDNCPQHaGE-jOL5oBKuZIGTFNt2uB/edit?usp=sharing&ouid=105922611711816574457&rtpof=true&sd=true', '_blank')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            <Eye className="mr-2" size={18} />
+                            <Eye className="mr-2" size={20} />
                             View Matrix
                         </button>
 
@@ -339,10 +339,10 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4 text-justify">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/Matrix/UN Human Rights Council.xlsx')}
+                            onClick={() => window.open('https://docs.google.com/spreadsheets/d/14RhNt0rqxsM_SU8Bcmkpw47sc2R1uKtg/edit?usp=sharing&ouid=105922611711816574457&rtpof=true&sd=true', '_blank')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            <Download className="mr-2" size={18} />
+                            <Eye className="mr-2" size={20} />
                             View Matrix
                         </button>
                     </div>
@@ -350,10 +350,10 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4 text-justify">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/Matrix/All India Political Party Meet.xlsx')}
+                            onClick={() => window.open('https://docs.google.com/spreadsheets/d/1v24pWSGc2l_dpdxBVMlfY6X5oo2Bx9T6/edit?usp=drive_link&ouid=105922611711816574457&rtpof=true&sd=true', '_blank')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            <Download className="mr-2" size={18} />
+                            <Eye className="mr-2" size={20} />
                             View Matrix
                         </button>
                     </div>
