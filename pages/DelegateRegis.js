@@ -327,7 +327,7 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4 text-justify">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/Matrix/United Nations Security Council.xlsx')}
+                            onClick={() => window.open('https://docs.google.com/spreadsheets/d/143eDDNCPQHaGE-jOL5oBKuZIGTFNt2uB/edit?usp=sharing&ouid=105922611711816574457&rtpof=true&sd=true', '_blank')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
                             <Download className="mr-2" size={18} />
