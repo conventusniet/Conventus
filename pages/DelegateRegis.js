@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, Download } from 'lucide-react';
+import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, Download, Eye } from 'lucide-react';
 
 
 const Modal = ({ isOpen, onClose, message, isError }) => {
@@ -330,7 +330,7 @@ const DelegateRegistrationForm = () => {
                             onClick={() => window.open('https://docs.google.com/spreadsheets/d/143eDDNCPQHaGE-jOL5oBKuZIGTFNt2uB/edit?usp=sharing&ouid=105922611711816574457&rtpof=true&sd=true', '_blank')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            <Download className="mr-2" size={18} />
+                            <Eye className="mr-2" size={18} />
                             View Matrix
                         </button>
 
