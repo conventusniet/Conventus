@@ -76,10 +76,10 @@ const Contact = () => {
                                     email="3rd Year"
                                 />
                                 <ContactPerson
-                                    name="Shagun Mishra"
-                                    title="Head Co-Ordinator"
-                                    phone="+91 9773649728"
-                                    email="3rd Year"
+                                    name="Ameya Atreya"
+                                    title="USG Delegate Affairs"
+                                    phone="+91 84488 35989"
+                                    email="2nd Year"
                                 />
                             </div>
                         </motion.div>
