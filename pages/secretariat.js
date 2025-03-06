@@ -53,10 +53,10 @@ export default function SecretariatPage() {
             SECRETARIAT
           </h1>
           <h2 className="text-2xl md:text-4xl font-semibold text-red-700 mb-1">
-            First Edition
+            Second Edition
           </h2>
           <h3 className="text-xl md:text-3xl font-semibold text-red-700 mb-3">
-            2023-24
+            2024-25
           </h3>
           <p className="text-lg md:text-xl text-red-600 mb-3">
             "Leadership is not about being in charge. It is about taking care of those in your charge."
@@ -70,7 +70,7 @@ export default function SecretariatPage() {
       <main className="flex-grow container mx-auto px-4 py-8 mt-[40vh] md:mt-[50vh]">
         <div className="relative w-full aspect-video mb-12 md:mb-16">
           <Image
-            src="/images/Secretariat.jpg"
+            src="/images/sc1.jpeg"
             alt="Secretariat Group Photo"
             layout="fill"
             objectFit="cover"

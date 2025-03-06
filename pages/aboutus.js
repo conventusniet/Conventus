@@ -183,19 +183,19 @@ export default function AboutPageOne() {
         {
             name: "Manas Gupta",
             position: "President",
-            image: "/images/P1.jpg",
+            image: "/images/up1.jpeg",
             info: "Manas Gupta is a visionary leader whose passion for innovation and community building has been the driving force behind Conventus's success. With a background in technology and a keen understanding of student needs, Manas has revolutionized the way Conventus operates and engages with its members. His strategic mindset has led to the implementation of several successful initiatives that have significantly increased student participation and community impact. Manas is known for his inclusive leadership style, always encouraging diverse perspectives and fostering a culture of collaboration. Under his guidance, Conventus has expanded its reach and formed valuable partnerships with industry leaders, enhancing opportunities for all members."
         },
         {
             name: "Pragya Singh",
             position: "Vice President",
-            image: "/images/vp1.jpg",
+            image: "/images/uvp1.jpeg",
             info: "As Vice President of Conventus MUN Club, I am committed to fostering an environment where students can explore global issues, enhance their diplomatic skills, and develop into confident leaders. My role involves ensuring that every event and initiative aligns with our mission to inspire meaningful dialogue and promote global understanding. I am passionate about providing opportunities for members to grow, both personally and intellectually, as they engage in the world of international relations and diplomacy. Together, we strive to create lasting impact through thoughtful debate and collaborative solutions. Passionate about creating platforms where dialogue inspires change and diplomacy meets action. Dedicated to empowering students to think globally and lead with purpose"
         },
         {
             name: "Yashraj Ranjan",
             position: "Vice President",
-            image: "/images/vp2.jpg",
+            image: "/images/uvp2.jpeg",
             info: "Yashraj Ranjan is the operational backbone of Conventus, excelling in logistics and process optimization. His meticulous attention to detail and exceptional problem-solving skills have transformed Conventus's internal operations, making them more efficient and effective. Yashraj has implemented several technological solutions that have streamlined membership management, event planning, and communication processes. His forward-thinking approach has not only improved the day-to-day running of Conventus but has also enhanced the overall member experience. Yashraj is known for his ability to handle complex challenges with ease and for his commitment to continuous improvement. His efforts have significantly contributed to Conventus's growth and its ability to serve an ever-expanding membership base."
         },
     ];
@@ -208,16 +208,26 @@ export default function AboutPageOne() {
                 <div className="flex flex-col space-y-1 pb-10 pt-12 md:pt-24 sm:space-y-1">
                     <h1 className="text-5xl font-bold text-center">About</h1>
                     <div className="flex justify-center min-h-[200px]">
+                        <div className="max-w-4xl space-y-8">
+                            <p className="text-base sm:text-2xl text-center text-gray-600 md:text-xl">
+                                The Conventus Model United Nations Club is a student-centric body that provides a forum to engage with a transforming world. We combine adaptability with NIET's vision to build bridges between delegates from various backgrounds who share a passion for debate and dialogue. We aim to help delegates understand the fundamental workings of the United Nations, where diplomacy, debate, and global engagement come to life. At Conventus, we are driven by a passion for international affairs, leadership, and collaboration.
+                            </p>
 
-                        <p className="max-w-4xl text-base sm:text-2xl text-center text-gray-600 md:text-xl">The Conventusl Model United Nations Club is a student-centric body that allows us to provide a forum that will serve to engage with a transforming world and combine it with the ability to adapt that is integral to the NIET’S Vision as a bridge between delegates from various backgrounds, united in their ardour for debate and dialogue. We aim to encourage delegates to understand the fundamental working of the United Nations, where diplomacy, debate, and global engagement come to life! At Conventus, we are driven by a passion for international affairs, leadership, and collaboration. Our mission is to cultivate a platform that nurtures critical thinking, problem-solving, and public speaking skills, empowering students to take on the role of global leaders. We believe that every voice matters, and together, we can contribute to shaping a more just, peaceful, and interconnected world. Whether you're a seasoned MUN enthusiast or new to the world of diplomacy, our doors are always open for those who wish to make a difference. Conventus MUN offers more than just an extracurricular activity; it provides a transformative experience that prepares students for leadership roles both within and beyond the academic sphere. Looking to the future, Conventus MUN aims to establish itself as a renowned conference for its active engagement in national and international MUN circuits. We envision expanding our outreach by collaborating with other universities and organizations, hosting prestigious MUN conferences, and continuously evolving to meet the needs of a changing world. Our team is committed to promoting diplomacy, leadership, and global awareness through innovative events, engaging discussions, and impactful MUN conferences. Together, we ensure that Conventus remains a space where students can grow, connect, and make a difference. Our vision is to create a legacy of diplomats and leaders who are not only knowledgeable but also compassionate, ethical, and driven to create a better future for all. The talent is there, and the future is clear : We want to continue our MUN journey into the future with more experience and motivation and belief in our fellow young student diplomats. With endless opportunities for learning, personal growth, and making a global impact, Conventus is the perfect place for anyone who believes in the power of dialogue and action. Step into the world of diplomacy, engage with global issues, and be part of a community that strives to build bridges of understanding.
-                        </p>
+                            <p className="text-base sm:text-2xl text-center text-gray-600 md:text-xl">
+                                Our mission is to cultivate a platform that nurtures critical thinking, problem-solving, and public speaking skills, empowering students to become global leaders. Whether you're a seasoned MUN enthusiast or new to diplomacy, our doors are always open. Conventus MUN offers more than just an extracurricular activity - it provides a transformative experience that prepares students for leadership roles both within and beyond academia. Looking to the future, we aim to establish ourselves as a renowned conference through active engagement in national and international MUN circuits.
+                            </p>
+
+                            <p className="text-base sm:text-2xl text-center text-gray-600 md:text-xl">
+                                Our team is committed to promoting diplomacy, leadership, and global awareness through innovative events and impactful conferences. We strive to create a legacy of diplomats and leaders who are knowledgeable, compassionate, and ethical. With endless opportunities for learning and personal growth, Conventus is the perfect place for anyone who believes in the power of dialogue and action. Step into the world of diplomacy, engage with global issues, and be part of a community that builds bridges of understanding.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div className="flex items-center justify-center mb-2">
                     <div className="space-y-6 md:w-3/4">
                         <h3 className="text-4xl sm:text-6xl font-bold text-gray-800 text-center">Meet Our Team</h3>
                         <p className="max-w-4xl text-base sm:text-2xl text-gray-700 md:text-xl">
-                            At the heart of Conventus MUN Club is a dedicated team of passionate and driven individuals who work tirelessly to bring the club’s vision to life. Together, we ensure that Conventus remains a space where students can grow, connect, and make a differen
+                            At the heart of Conventus MUN Club is a dedicated team of passionate and driven individuals who work tirelessly to bring the club's vision to life. Together, we ensure that Conventus remains a space where students can grow, connect, and make a difference.
                         </p>
                     </div>
                 </div>

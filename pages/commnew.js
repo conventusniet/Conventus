@@ -122,7 +122,7 @@ export default function CommitteesPage() {
 
   const InternationalPress = [
     {
-      logo: "/images/journalism_bg.png",
+      logo: "/images/uip.jpeg",
       title: "Journalism",
       description: "The Journalists Committee serves as the storytellers of the International Press, observing debates across various committees and capturing the essence of discussions.",
       objectives: [
@@ -133,7 +133,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Journalists will deliver well-crafted articles, showcasing their analytical skills and ability to communicate the significance of committee proceedings."
     },
     {
-      logo: "/images/photography_bg.png",
+      logo: "/images/uip.jpeg",
       title: "Photography",
       description: "The Photographers Committee captures the energy and spontaneity of the conference, immortalizing key moments through powerful visuals.",
       objectives: [
@@ -144,7 +144,7 @@ export default function CommitteesPage() {
       expectedOutcomes: "Photographers will produce a visual collection that conveys the essence of the MUN, showcasing the passion and deliberation of the participants."
     },
     {
-      logo: "/images/caricature_bg.png",
+      logo: "/images/uip.jpeg",
       title: "Videography",
       description: "The Videography Committee provides a unique artistic commentary on debates, using satire and creativity to illustrate the intensity of discussions.",
       objectives: [
