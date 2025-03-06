@@ -23,21 +23,21 @@ export default function SecretariatPage() {
   const headerY = useTransform(scrollYProgress, [0, 0.2], ["0%", "-100%"])
   
   const leftMembers = [
-    { name: "Manas Gupta", branch: "Secretary General" },
-    { name: "Yutika Rajnak", branch: "Chairperson UNCSW" },
-    { name: "Tejasv Gupta", branch: "Vice Chairperson UNSC" },
-    { name: "Ananya Rajeev", branch: "Co-Chairperson UNCSW" },
-    { name: "Yashraj Ranjan", branch: "Substantive Director UNSC" },
-    { name: "Aditri Singh", branch: "Vice Chairperson UNCSW" },
+    { name: "Manas Gupta", branch: "Founder - President" },
+    { name: "Pragya Singh", branch: "Secretary General" },
+    { name: "Yashraj Ranjan", branch: "Director General" },
+    { name: "Ameya Atreya", branch: "USG Delegate Affairs" },
+    { name: "Sanskar Bhardwaj", branch: "UDG Web Operations" },
+    { name: "Utkarsh Aggarwal", branch: "USG Media" },
   ]
   
   const rightMembers = [
-   { name: "Akhil Pandey", branch: "Moderator AIPPM" },
-   { name: "Prashant Pandey", branch: "OC Head" },
-    { name: "Ashish Sawarn", branch: "Vice-Moderator AIPPM" },
-     { name: "Manish Kaushik", branch: "Charge De Affairs" },
-    { name: "Ashna", branch: "Rappourter AIPPM" },
-    { name: "Kanika Jindal", branch: "Associate Charge De Affairs" },
+    { name: "Disha Dubey", branch: "USG Social Media" },
+    { name: "Ujjawal Sinha", branch: "UDG Design" },
+    { name: "Shivanshu Pandey", branch: "USG Marketing & PR" },
+    { name: "Apruv Krishna", branch: "UDG Logistics & Operations" },
+    { name: "Anshuman Parashar", branch: "UDG Finance" },
+    { name: "Ankit Mehra", branch: "UDG Hospitality" },
   ]
   
   return (
