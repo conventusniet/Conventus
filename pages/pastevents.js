@@ -8,10 +8,10 @@ import ConventusChatbot from '@/components/ConventusChatBot';
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    { image: 'images/HomePage.jpg', title: 'CONVENTUS Events', subtitle: 'Engage in Global Diplomacy' },
-    { image: 'images/HomePage.jpg', title: 'Upcoming Conferences', subtitle: 'Join Our International Forums' },
-    { image: 'images/HomePage.jpg', title: 'Workshops and Seminars', subtitle: 'Enhance Your Diplomatic Skills' },
-     { image: 'images/HomePage.jpg', title: 'Past Events', subtitle: 'Lets Revive our Past Events' },
+    { image: '/images/HomePage.jpg', title: 'CONVENTUS Events', subtitle: 'Engage in Global Diplomacy' },
+    { image: '/images/HomePage.jpg', title: 'Upcoming Conferences', subtitle: 'Join Our International Forums' },
+    { image: '/images/HomePage.jpg', title: 'Workshops and Seminars', subtitle: 'Enhance Your Diplomatic Skills' },
+     { image: '/images/HomePage.jpg', title: 'Past Events', subtitle: 'Lets Revive our Past Events' },
   ];
 
   useEffect(() => {
@@ -60,26 +60,26 @@ const HeroCarousel = () => {
 };
 
 const EventCard = ({ image, title, date, description, onClick }) => (
-  <motion.div 
-    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition transform hover:scale-105 flex h-80 border-2 border-red-200"
+  <motion.div
+    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer flex h-104 border-2 border-red-200"
     onClick={onClick}
   >
     <div className="flex-1 p-8 flex flex-col justify-between">
       <div>
-        <h3 className="text-red-800 text-3xl font-semibold mb-3">{title}</h3>
-        <p className="text-red-600 text-lg mb-3"><Calendar className="inline mr-2" size={20} />{date}</p>
-        <p className="text-gray-700 text-xl">{description}</p>
+        <h3 className="text-red-800 text-3xl text-center font-semibold mb-3">{title}</h3>
+        <p className="text-red-600 text-md text-center mb-3"><Calendar className="inline mr-2" size={16} />{date}</p>
+        <p className="text-gray-700 text-md overflow-y-auto max-h-60 mb-3">{description}</p>
       </div>
-      <button className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition text-lg self-start">
+      <button className="bg-red-600 text-white text-center px-4 py-1 rounded-lg hover:bg-red-700 transition text-lg self-center">
         Learn More
       </button>
     </div>
     <div className="relative h-auto w-2/5">
-      <Image 
-        src={image} 
-        alt={title} 
-        layout="fill" 
-        objectFit="cover" 
+      <Image
+        src={image}
+        alt={title}
+        layout="fill"
+        objectFit="cover"
       />
     </div>
   </motion.div>
@@ -93,22 +93,22 @@ const EventDetails = ({ event, onClose }) => (
     className="fixed inset-0 bg-white z-50 overflow-y-auto p-4"
   >
     <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg shadow-lg border-2 border-red-200">
-      <button
-        className="absolute top-4 right-4 text-red-600 hover:text-red-800"
-        onClick={onClose}
-      >
-        <X size={24} />
-      </button>
+    <button
+          className="absolute -top-1 right-0 text-red-600 hover:text-red-800"
+          onClick={onClose}
+        >
+          <X size={32} />
+        </button>
       <div className="text-center">
         <Image 
           src={event.image} 
           alt={event.title} 
-          width={400} 
-          height={200} 
+          width={800} 
+          height={400} 
           className="mx-auto mb-4 rounded-lg" 
         />
-        <h2 className="text-2xl font-bold text-red-800 mb-2">{event.title}</h2>
-        <p className="text-md text-red-600 mb-4"><Calendar className="inline mr-2" size={18} />{event.date}</p>
+        <h2 className="text-3xl font-bold text-red-800 mb-2">{event.title}</h2>
+        <p className="text-lg text-red-600 mb-4"><Calendar className="inline mr-2" size={18} />{event.date}</p>
         <p className="text-md text-gray-700 mb-4">{event.description}</p>
       </div>
       <div className="mb-4">

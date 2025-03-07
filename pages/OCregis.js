@@ -6,7 +6,7 @@ import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDo
 const REGISTRATION_STATUS = {
   IS_OPEN: false, // Toggle this to open/close registration
   CLOSED_MESSAGE: "OC registration has been closed. Thank you for your interest!",
-  CLOSED_NOTICE: "Registration for Organizing Committee is now closed. For any queries, submit them at https://conventusmun.com/ContactForm",
+  CLOSED_NOTICE: "Registration for Organizing Committee is now closed. For any queries, submit them at contact page",
   PAYMENT_DISABLED_TEXT: "Payment submission disabled - Registration closed"
 };
 const Modal = ({ isOpen, onClose, message, isError }) => {

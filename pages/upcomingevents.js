@@ -64,16 +64,16 @@ const HeroCarousel = () => {
 
 const EventCard = ({ image, title, date, description, onClick }) => (
   <motion.div
-    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition transform hover:scale-105 flex h-80 border-2 border-red-200"
+    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer flex h-104 border-2 border-red-200"
     onClick={onClick}
   >
     <div className="flex-1 p-8 flex flex-col justify-between">
       <div>
-        <h3 className="text-red-800 text-3xl font-semibold mb-3">{title}</h3>
-        <p className="text-red-600 text-lg mb-3"><Calendar className="inline mr-2" size={20} />{date}</p>
-        <p className="text-gray-700 text-xl overflow-y-auto max-h-24">{description}</p>
+        <h3 className="text-red-800 text-3xl text-center font-semibold mb-3">{title}</h3>
+        <p className="text-red-600 text-md text-center mb-3"><Calendar className="inline mr-2" size={16} />{date}</p>
+        <p className="text-gray-700 text-md overflow-y-auto max-h-60 mb-3">{description}</p>
       </div>
-      <button className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition text-lg self-start">
+      <button className="bg-red-600 text-white text-center px-4 py-1 rounded-lg hover:bg-red-700 transition text-lg self-center">
         Learn More
       </button>
     </div>
@@ -103,21 +103,21 @@ const EventDetails = ({ event, onClose }) => {
     >
       <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg shadow-lg border-2 border-red-200">
         <button
-          className="absolute top-4 right-4 text-red-600 hover:text-red-800"
+          className="absolute -top-1 right-0 text-red-600 hover:text-red-800"
           onClick={onClose}
         >
-          <X size={24} />
+          <X size={32} />
         </button>
         <div className="text-center">
           <Image
             src={event.image}
             alt={event.title}
-            width={400}
-            height={200}
+            width={800}
+            height={400}
             className="mx-auto mb-4 rounded-lg"
           />
-          <h2 className="text-2xl font-bold text-red-800 mb-2">{event.title}</h2>
-          <p className="text-md text-red-600 mb-4"><Calendar className="inline mr-2" size={18} />{event.date}</p>
+          <h2 className="text-4xl font-bold text-red-800 mb-2">{event.title}</h2>
+          <p className="text-lg text-red-600 mb-4"><Calendar className="inline mr-2" size={18} />{event.date}</p>
           <p className="text-md text-gray-700 mb-4">{event.description}</p>
         </div>
         <div className="mb-4">
@@ -125,7 +125,7 @@ const EventDetails = ({ event, onClose }) => {
           <ul className="list-disc list-inside text-gray-700">
             <li>Location: {event.location}</li>
             <li>Duration: {event.duration}</li>
-            <li>Participants: {event.participants}</li>
+            {/* <li>Participants: {event.participants}</li> */}
           </ul>
         </div>
         <div className="text-center">

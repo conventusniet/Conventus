@@ -80,7 +80,7 @@ const LeadershipSection = () => {
         {
             name: "Yashraj Ranjan",
             position: "Director General",
-            image: "/images/vp2.png",
+            image: "/images/1738895725813-removebg-preview.png",
             quote: "Empowering youth to become tomorrow's global leaders through diplomatic discourse and international cooperation.",
             linkedin: "https://www.linkedin.com/in/yashrajranjan29",
             instagram: "https://www.instagram.com/yashrajranjan29/",
