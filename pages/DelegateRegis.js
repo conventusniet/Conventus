@@ -330,7 +330,7 @@ const DelegateRegistrationForm = () => {
     return (
 
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-            <div className="bg-white rounded-lg mt-24 shadow-2xl p-8 mb-16 text-center max-w-4xl w-full">
+            <div className="bg-white rounded-lg shadow-2xl p-8 mb-16 text-center max-w-4xl w-full">
                 <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
                     Delegate Registration
                 </h2>
