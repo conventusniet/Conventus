@@ -62,9 +62,9 @@ const LeadershipSection = () => {
             position: "Secretary General",
             image: "/images/vp1.png",
             quote: "Building bridges across cultures through meaningful dialogue and shared understanding.",
-            linkedin: "https://www.linkedin.com/in/pragyasingh",
-            instagram: "https://www.instagram.com/pragyasingh",
-            github: "https://github.com/pragyasingh",
+            linkedin: "https://www.linkedin.com/in/pragya-singh-0715b9248/",
+            instagram: "https://www.instagram.com/pragyasingghh/",
+            github: "https://github.com/pragyasingh08/",
             phone: "+919953552547"
         },
         {
@@ -72,9 +72,9 @@ const LeadershipSection = () => {
             position: "Founder President",
             image: "/images/p1.png",
             quote: "Creating a platform where young minds can engage with complex global challenges and develop innovative solutions.",
-            linkedin: "https://www.linkedin.com/in/manasgupta",
-            instagram: "https://www.instagram.com/manasgupta",
-            github: "https://github.com/manasgupta",
+            linkedin: "https://www.linkedin.com/in/manasgupta--/",
+            instagram: "https://www.instagram.com/14manasgupta/",
+            github: "https://github.com/14ManasGupta/",
             phone: "+919289452713"
         },
         {
@@ -82,9 +82,9 @@ const LeadershipSection = () => {
             position: "Director General",
             image: "/images/1738895725813-removebg-preview.png",
             quote: "Empowering youth to become tomorrow's global leaders through diplomatic discourse and international cooperation.",
-            linkedin: "https://www.linkedin.com/in/yashrajranjan29",
+            linkedin: "https://www.linkedin.com/in/yashrajranjan29/",
             instagram: "https://www.instagram.com/yashrajranjan29/",
-            github: "https://github.com/yashrajranjan",
+            github: "https://github.com/yashrajranjan29/",
             phone: "+917309328195"
         },
     ];
