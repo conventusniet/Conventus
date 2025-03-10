@@ -327,11 +327,13 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4 text-justify">Addressing Security Crises and Regional Instability in Middle East while promoting reconstruction Governance and peace negotiations among key stakeholders.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/Matrix/United Nations Security Council.xlsx')}
+                            // onClick={() => handleMatrixDownload('/Matrix/United Nations Security Council.xlsx')}
+                            onClick={() => window.open('https://docs.google.com/spreadsheets/d/143eDDNCPQHaGE-jOL5oBKuZIGTFNt2uB/edit?usp=drivesdk&ouid=105922611711816574457&rtpof=true&sd=true', '_blank')}
+
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            <Download className="mr-2" size={20} />
-                            Download Matrix
+                            <Eye className="mr-2" size={20} />
+                            View Matrix
                         </button>
 
                     </div>
@@ -339,22 +341,24 @@ const DelegateRegistrationForm = () => {
                     <p className="text-gray-700 mb-4 text-justify">Rights of Refugees and Asylum Seekers Amidst Global Migration Crises: Balancing sovereignty with humanitarian responsibilities.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/Matrix/UN Human Rights Council.xlsx')}
+                            onClick={() => window.open('https://docs.google.com/spreadsheets/d/14RhNt0rqxsM_SU8Bcmkpw47sc2R1uKtg/edit?usp=drivesdk&ouid=105922611711816574457&rtpof=true&sd=true', '_blank')}
+
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            <Download className="mr-2" size={20} />
-                            Download Matrix
+                            <Eye className="mr-2" size={20} />
+                            View Matrix
                         </button>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">All India Political Party Meet</h5>
                     <p className="text-gray-700 mb-4 text-justify">One Nation, One Election: Evaluating the feasibility, impact on governance, and democratic implications of simultaneous elections while balancing federalism.</p>
                     <div className="mb-4 flex items-center justify-center space-x-4">
                         <button
-                            onClick={() => handleMatrixDownload('/Matrix/All India Political Party Meet.xlsx')}
+                            // onClick={() => handleMatrixDownload('/Matrix/All India Political Party Meet.xlsx')}
+                            onClick={() => window.open('https://docs.google.com/spreadsheets/d/1v24pWSGc2l_dpdxBVMlfY6X5oo2Bx9T6/edit?usp=drivesdk&ouid=105922611711816574457&rtpof=true&sd=true', '_blank')}
                             className="flex items-center text-red-600 hover:text-red-700"
                         >
-                            <Download className="mr-2" size={20} />
-                            Download Matrix
+                            <Eye className="mr-2" size={20} />
+                            View Matrix
                         </button>
                     </div>
                     <h5 className="text-xl font-semibold mb-2">IP</h5>
