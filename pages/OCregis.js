@@ -4,7 +4,7 @@ import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDo
 
 // Configuration constant for registration status
 const REGISTRATION_STATUS = {
-  IS_OPEN: true, // Changed to true to open registration
+  IS_OPEN: false, // Changed to false to close registration
   CLOSED_MESSAGE: "OC registration has been closed. Thank you for your interest!",
   CLOSED_NOTICE: "Registration for Organizing Committee is now closed. For any queries, submit them at contact page",
   PAYMENT_DISABLED_TEXT: "Payment submission disabled - Registration closed"
@@ -335,7 +335,7 @@ const OCRegistrationForm = () => {
   };
   return (
     <div className="bg-white rounded-lg shadow-2xl p-8 mb-16">
-      {/* Registration Closed Banner - Will not be displayed now */}
+      {/* Registration Closed Banner - Now displayed because isRegistrationClosed is true */}
       {isRegistrationClosed && (
         <div className="bg-red-100 border-l-4 border-red-600 text-red-800 p-4 mb-6" role="alert">
           <div className="flex items-center">
@@ -351,10 +351,10 @@ const OCRegistrationForm = () => {
       </h2>
 
       <div className="mb-6">
-        {/* Updated payment information section - Removed strikethrough */}
+        {/* Payment information section with registration closed indication */}
         <div className="text-gray-700">
           <p className="mb-2">OC Membership Fee: Rs 200</p>
-          {/* <p className="mb-2">Last date to register: 3rd February 2025</p> */}
+          <p className="mb-2 text-red-600">{REGISTRATION_STATUS.PAYMENT_DISABLED_TEXT}</p>
         </div>
       </div>
 
@@ -366,14 +366,14 @@ const OCRegistrationForm = () => {
         onSubmit={handleSubmit}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          {/* Name field - Now enabled */}
+          {/* Name field - Now disabled */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <User className="inline-block mr-2 text-red-600" size={18} />
               Name
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 bg-gray-100"
               type="text"
               name="name"
               value={formData.name}
@@ -383,14 +383,14 @@ const OCRegistrationForm = () => {
             />
           </div>
 
-          {/* Year field - Now enabled */}
+          {/* Year field - Now disabled */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <User className="inline-block mr-2 text-red-600" size={18} />
               Year
             </label>
             <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 bg-gray-100"
               name="year"
               value={formData.year}
               onChange={handleChange}
@@ -405,14 +405,14 @@ const OCRegistrationForm = () => {
             </select>
           </div>
 
-          {/* Phone field - Now enabled */}
+          {/* Phone field - Now disabled */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <Phone className="inline-block mr-2 text-red-600" size={18} />
               Phone No.
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 bg-gray-100"
               type="tel"
               name="phone"
               value={formData.phone}
@@ -440,14 +440,14 @@ const OCRegistrationForm = () => {
             </select>
           </div>
 
-          {/* Email field */}
+          {/* Email field - Now disabled */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <Mail className="inline-block mr-2 text-red-600" size={18} />
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 bg-gray-100"
               type="email"
               name="email"
               value={formData.email}
@@ -457,14 +457,14 @@ const OCRegistrationForm = () => {
             />
           </div>
 
-          {/* Transaction Number */}
+          {/* Transaction Number - Now disabled */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <Link className="inline-block mr-2 text-red-600" size={18} />
               Transaction Number
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 bg-gray-100"
               type="text"
               name="transactionNumber"
               value={formData.transactionNumber}
@@ -474,7 +474,7 @@ const OCRegistrationForm = () => {
             />
           </div>
 
-          {/* Branch Dropdown */}
+          {/* Branch Dropdown - Now disabled */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <Building className="inline-block mr-2 text-red-600" size={18} />
@@ -485,7 +485,7 @@ const OCRegistrationForm = () => {
                 type="button"
                 onClick={() => setBranchOpen(!branchOpen)}
                 disabled={isRegistrationClosed}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 flex justify-between items-center"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 flex justify-between items-center bg-gray-100"
               >
                 {formData.branch || 'Select Branch'}
                 <ChevronDown size={16} />
@@ -526,7 +526,7 @@ const OCRegistrationForm = () => {
             </div>
           </div>
 
-          {/* Section Dropdown */}
+          {/* Section Dropdown - Now disabled */}
           <div>
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <Building className="inline-block mr-2 text-red-600" size={18} />
@@ -537,7 +537,7 @@ const OCRegistrationForm = () => {
                 type="button"
                 onClick={() => setSectionOpen(!sectionOpen)}
                 disabled={isRegistrationClosed}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 flex justify-between items-center"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 flex justify-between items-center bg-gray-100"
               >
                 {formData.section || 'Select Section'}
                 <ChevronDown size={16} />
@@ -578,68 +578,59 @@ const OCRegistrationForm = () => {
             </div>
           </div>
 
-          {/* QR Code Section - Now enabled */}
+          {/* QR Code Section - Now with disabled styling */}
           <div className="md:col-span-2 mt-4">
             <div className="flex flex-col items-center space-y-4">
-              <div className="w-48 h-48 border rounded-lg p-2 bg-gray-50 shadow-md">
+              <div className="w-48 h-48 border rounded-lg p-2 bg-gray-50 shadow-md opacity-50">
                 <img
                   src="/QR's/OC.jpg"
                   alt="NIET Payment QR"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-gray-700 text-sm">
+              <span className="text-gray-500 text-sm line-through">
                 Scan to pay OC Membership Fee (Rs 200)
               </span>
             </div>
           </div>
 
-          {/* File Upload Section - Now enabled */}
+          {/* File Upload Section - Now disabled */}
           <div className="md:col-span-2">
             <label className="block text-gray-800 text-sm font-bold mb-2">
               <Upload className="inline-block mr-2 text-red-600" size={18} />
               Payment Screenshot
             </label>
-            <div 
-              className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
-              onClick={() => !isRegistrationClosed && fileInputRef.current?.click()}
+            <div
+              className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md bg-gray-100 opacity-50"
             >
-              {paymentPreview ? (
-                <div className="w-full text-center">
-                  <img src={paymentPreview} alt="Payment Preview" className="max-h-48 mx-auto" />
-                  <p className="mt-2 text-sm text-gray-500">{paymentFile?.name}</p>
+              <div className="space-y-1 text-center">
+                <FileUp className="mx-auto h-12 w-12 text-gray-400" />
+                <div className="flex text-sm text-gray-600">
+                  <label
+                    className="relative cursor-not-allowed bg-white rounded-md font-medium text-gray-500"
+                  >
+                    <span>Upload disabled</span>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      className="sr-only"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      disabled={isRegistrationClosed}
+                    />
+                  </label>
                 </div>
-              ) : (
-                <div className="space-y-1 text-center">
-                  <FileUp className="mx-auto h-12 w-12 text-gray-400" />
-                  <div className="flex text-sm text-gray-600">
-                    <label
-                      className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-500"
-                    >
-                      <span>Upload a file</span>
-                      <input
-                        ref={fileInputRef}
-                        type="file"
-                        className="sr-only"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        disabled={isRegistrationClosed}
-                      />
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  </div>
-                  <p className="text-xs text-gray-500">
-                    PNG, JPG, GIF up to 10MB
-                  </p>
-                </div>
-              )}
+                <p className="text-xs text-gray-500">
+                  Registration closed
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Area of Interest */}
-          <div className="md:col-span-2">
+          {/* Area of Interest - Now disabled */}
+          <div className="md:col-span-2 opacity-50">
             <h3 className="block text-gray-800 text-lg font-bold mb-3">Area of Interest</h3>
-            
+
             {areaOptions.map((group, groupIndex) => (
               <div key={groupIndex} className="mb-4">
                 <h4 className="text-gray-700 font-medium mb-2">{group.group}</h4>
@@ -656,9 +647,9 @@ const OCRegistrationForm = () => {
                         disabled={isRegistrationClosed}
                         className="mt-1 mr-2"
                       />
-                      <label 
+                      <label
                         htmlFor={`option-${groupIndex}-${optionIndex}`}
-                        className="text-gray-700"
+                        className="text-gray-500"
                       >
                         {option}
                       </label>
@@ -669,8 +660,8 @@ const OCRegistrationForm = () => {
             ))}
           </div>
 
-          {/* Terms and Conditions */}
-          <div className="md:col-span-2">
+          {/* Terms and Conditions - Now disabled */}
+          <div className="md:col-span-2 opacity-50">
             <div className="flex items-start">
               <input
                 id="terms"
@@ -681,27 +672,21 @@ const OCRegistrationForm = () => {
                 disabled={isRegistrationClosed}
                 className="mt-1 mr-2"
               />
-              <label htmlFor="terms" className="text-gray-700">
+              <label htmlFor="terms" className="text-gray-500">
                 I agree to the terms and conditions, and understand that the OC membership fee is non-refundable.
               </label>
             </div>
           </div>
         </div>
 
-        {/* Submit Button - Now enabled */}
+        {/* Submit Button - Now disabled */}
         <div className="text-center">
           <motion.button
-            className={`${
-              isRegistrationClosed 
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-red-600 hover:bg-red-700'
-            } text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300`}
-            whileHover={!isRegistrationClosed ? { scale: 1.05 } : {}}
-            whileTap={!isRegistrationClosed ? { scale: 0.95 } : {}}
+            className="bg-gray-400 cursor-not-allowed text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300"
             type="submit"
             disabled={isRegistrationClosed}
           >
-            {isRegistrationClosed ? 'Registration Closed' : 'Submit'}
+            Registration Closed
           </motion.button>
         </div>
       </motion.form>
