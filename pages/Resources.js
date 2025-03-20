@@ -46,33 +46,72 @@ const HeroCarousel = () => {
   );
 };
 
-const ResourceCard = ({ icon, title, description, files }) => (
-  <motion.div 
-    className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:scale-105 flex flex-col h-600 border-2 border-red-150"
-  >
-    <div className="bg-red-600 p-4 text-white">
-      {icon}
-    </div>
-    <div className="p-6 flex-grow">
-      <h3 className="text-red-800 text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-700">{description}</p>
-      <div className="max-h-32 overflow-y-auto pr-2 pb-8 pt-2">
-        <ul className="list-disc list-inside text-gray-700">
-          {files.map((file, index) => (
-            <li key={index}>
-              <a href={file} download className="text-red-600 hover:underline">
-                {file.split('/').pop()}
-              </a>
-            </li>
-          ))}
-        </ul>
+const ResourceCard = ({ icon, title, description, files }) => {
+  let categorizedFiles = [];
+  let currentCategory = "General";  // Default category if no division is specified
+  let currentFiles = [];
+
+  // Categorize files by detecting divisions
+  files.forEach((file) => {
+    if (file.startsWith("#division ")) {
+      // Push previous group with the current category
+      if (currentFiles.length > 0) {
+        categorizedFiles.push({ category: currentCategory, files: currentFiles });
+        currentFiles = [];
+      }
+
+      // Set the new category name by extracting it from the #division tag
+      currentCategory = file.replace("#division ", "").replace(/'/g, "").trim();
+    } else {
+      currentFiles.push(file);
+    }
+  });
+
+  // Push the last group
+  if (currentFiles.length > 0) {
+    categorizedFiles.push({ category: currentCategory, files: currentFiles });
+  }
+
+  return (
+    <motion.div 
+      className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform flex flex-col border-2 border-red-150"
+    >
+      <div className="bg-red-600 p-4 text-white">
+        {icon}
       </div>
-    </div>
-    <div>
-      
-    </div>
-  </motion.div>
-);
+      <div className="p-6 flex-grow">
+        <h2 className="text-red-800 text-xl font-semibold mb-2 text-center" >{title}</h2>
+        <p className="text-gray-700 text-center">{description}</p>
+
+        <div className="max-h-52 overflow-y-auto pr-2 pb-8 pt-4">
+          {categorizedFiles.map((group, index) => (
+            <div key={index} className="mb-4">
+              {/* Display the Category Title */}
+              <h4 className="text-red-700 font-semibold text-lg mb-2">{group.category}</h4>
+              
+              <ul className="list-disc list-inside text-gray-700 pl-4">
+                {group.files.map((file, fileIndex) => (
+                  <li key={fileIndex}>
+                    <a href={file} download className="text-red-600 hover:underline">
+                      {file.split('/').pop()}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Add separator unless it's the last section */}
+              {index !== categorizedFiles.length - 1 && (
+                <hr className="border-t-2 border-gray-300 my-3" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+
 
 // const ResourceDetails = ({ resource, onClose }) => (
 //   <motion.div 
@@ -162,11 +201,13 @@ const DiplomaticResourcesPage = () => {
         ],
         image: "/images/Resources BG.jpg",
         files: [
+            "#division 'Debating'", 
             "/Debating & Research/Debating & Research/Debating/Argumentation.pdf",
             "/Debating & Research/Debating & Research/Debating/Caucusing.pdf",
             "/Debating & Research/Debating & Research/Debating/Mod-Coc-Tips.jpg",
             "/Debating & Research/Debating & Research/Debating/MUN_Vocabulary.pdf",
             "/Debating & Research/Debating & Research/Debating/Points of Order Explained.pdf",
+            "#division 'Researching'",
             "/Debating & Research/Debating & Research/Researching/Basic-Research-Guide.pdf",
             "/Debating & Research/Debating & Research/Researching/how-to-Research.pdf",
             "/Debating & Research/Debating & Research/Researching/Minor-Tips.jpg",
@@ -185,11 +226,14 @@ const DiplomaticResourcesPage = () => {
         ],
         image: "/images/Resources BG.jpg",
         files: [
+          "#division 'Draft Resolution'",
           "/Documentation/Documentation/Draft Resolution/Resolution Phrases_.pdf",
           "/Documentation/Documentation/Draft Resolution/sample_dr.pdf",
           "/Documentation/Documentation/Draft Resolution/writing-guide.pdf",
+          "#division 'Position Paper'",
           "/Documentation/Documentation/Position Paper/Sample_Position_Paper.pdf",
           "/Documentation/Documentation/Position Paper/winning_PP.pdf",
+          "#division 'Working Paper'",
           "/Documentation/Documentation/Working Paper/Preambulatory and Operative Clauses 2020.pdf",
           "/Documentation/Documentation/Working Paper/Sample Working Paper.pdf",
           "/Documentation/Documentation/Working Paper/Sample-Working-Papers-1.pdf"
