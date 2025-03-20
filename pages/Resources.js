@@ -76,7 +76,7 @@ const ResourceCard = ({ icon, title, description, files }) => {
     <motion.div 
       className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform flex flex-col border-2 border-red-150"
     >
-      <div className="bg-red-600 p-4 text-white">
+      <div className="bg-red-600 p-4 text-white flex justify-center">
         {icon}
       </div>
       <div className="p-6 flex-grow">
@@ -87,7 +87,7 @@ const ResourceCard = ({ icon, title, description, files }) => {
           {categorizedFiles.map((group, index) => (
             <div key={index} className="mb-4">
               {/* Display the Category Title */}
-              <h4 className="text-red-700 font-semibold text-lg mb-2">{group.category}</h4>
+              <h4 className="text-red-700 font-semibold text-lg mb-2 text-center">{group.category}</h4>
               
               <ul className="list-disc list-inside text-gray-700 pl-4">
                 {group.files.map((file, fileIndex) => (
