@@ -998,4 +998,3 @@ const DelegateRegistrationForm = () => {
 };
 
 export default DelegateRegistrationForm;
-

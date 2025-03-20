@@ -304,6 +304,14 @@ const Registration = () => {
 
                     </motion.h2>
                     <motion.p
+                        className="text-2xl font-bold mb-12 text-center max-w-2xl mx-auto text-gray-700"
+                        variants={itemVariants}
+                    >
+                        ACCOMMODATION SLOTS FOR CMUN ARE NOW FULL.
+
+                        DELEGATES SHOULD REGISTER ONLY IF THEY CAN ARRANGE THEIR OWN STAY. THERE IS STRICTLY NO ACCOMMODATION FOR GIRLS, AND BOYS MUST CONFIRM AVAILABLE OPTIONS WITH THE DIRECTOR GENERAL BEFORE REGISTERING.
+                    </motion.p>
+                    <motion.p
                         className="text-xl mb-12 text-center max-w-2xl mx-auto text-gray-700"
                         variants={itemVariants}
                     >
