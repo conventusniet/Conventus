@@ -5,26 +5,21 @@ const SponsorsSection = () => {
     const sponsors = [
         {
             id: 1,
-            name: "Sponsor 1",
-            tier: "Platinum",
+            tier: "UNITEUP NGO",
+            name: "Social Impact Partner",
+            tier: "UNITEUP NGO",
             logo: "/images/HomePage.jpg"
         },
         {
             id: 2,
-            name: "Sponsor 2",
-            tier: "Gold",
+            name: "VISIONIAS ",
+            tier: "Educational Partner",
             logo: "/images/HomePage.jpg"
         },
         {
             id: 3,
-            name: "Sponsor 3",
-            tier: "Silver",
-            logo: "/images/HomePage.jpg"
-        },
-        {
-            id: 4,
-            name: "Sponsor 4",
-            tier: "Silver",
+            name: "Dublieu",
+            tier: "Outreach Partner",
             logo: "/images/HomePage.jpg"
         }
     ];
@@ -42,7 +37,7 @@ const SponsorsSection = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-8 max-w-6xl mx-auto">
                     {sponsors.map((sponsor) => (
                         <div
                             key={sponsor.id}
