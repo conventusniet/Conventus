@@ -8,19 +8,19 @@ const SponsorsSection = () => {
             tier: "UNITEUP NGO",
             name: "Social Impact Partner",
             tier: "UNITEUP NGO",
-            logo: "/images/HomePage.jpg"
+            logo: "/images/unite_up.jpg"
         },
         {
             id: 2,
             name: "VISIONIAS ",
             tier: "Educational Partner",
-            logo: "/images/HomePage.jpg"
+            logo: "/images/vision_ias.jpg"
         },
         {
             id: 3,
             name: "Dublieu",
             tier: "Outreach Partner",
-            logo: "/images/HomePage.jpg"
+            logo: "/images/dublieu.png"
         }
     ];
 
