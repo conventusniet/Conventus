@@ -5,21 +5,20 @@ const SponsorsSection = () => {
     const sponsors = [
         {
             id: 1,
-            tier: "UNITEUP NGO",
-            name: "Social Impact Partner",
-            tier: "UNITEUP NGO",
+            name: "UNITEUP NGO",
+            tier: "Social Impact",
             logo: "/images/unite_up.jpg"
         },
         {
             id: 2,
             name: "VISIONIAS ",
-            tier: "Educational Partner",
+            tier: "Educational",
             logo: "/images/vision_ias.jpg"
         },
         {
             id: 3,
             name: "Dublieu",
-            tier: "Outreach Partner",
+            tier: "Outreach",
             logo: "/images/dublieu.png"
         }
     ];
