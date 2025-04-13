@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDown } from "lucide-react"
+import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDown, XCircle } from "lucide-react"
 
 // Configuration constant for registration status
 const REGISTRATION_STATUS = {
