@@ -1,19 +1,19 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import Header from '../components/Header'
+// import { ChevronLeft, ChevronRight } from 'lucide-react'
+// import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ConventusChatbot from '../components/ConventusChatBot'
 import HeroSection from '../components/mun2herosection'
 import Oheader from '../components/OHeader'
 import LeadershipSection from '@/components/mun2.oleadershipsec'
-import CountdownTimer from '../components/mun2.0countdown'
+import SessionAdjournedBanner from '../components/mun2.0SessionAdjournedBanner'
 import SponsorsSection from '../components/mun2.0sponsors'
 import LearnMoreSection from '@/components/mun2.0learnmore'
-import ContactInformation from '@/components/mun2.0moreinfo'
+// import ContactInformation from '@/components/mun2.0moreinfo'
 import Contact from '@/components/mun2.0contact'
 const CommitteeCard = ({ name, description, image }) => (
   <motion.div
@@ -45,16 +45,35 @@ export default function MUN2Page() {
 
       <div className='mt-20'><HeroSection /></div>
 
-      <div><CountdownTimer /></div>
+      <div><SessionAdjournedBanner /></div>
 
       <main className="flex-grow container mx-auto px-4 py-12">
-        {/* About Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Welcome to CMUN 2025!</h2>
-          <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto">
-            Building on the success of our inaugural edition, NIET Conventus MUN returns with an even more ambitious vision.
-            Join us for two days of intensive diplomacy, debate, and dialogue as we tackle pressing global challenges.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-3xl font-bold text-center mb-8 text-red-800">CMUN 2025 - A Diplomatic Success</h2>
+            
+            <div className="text-lg text-gray-700 text-center max-w-4xl mx-auto space-y-4">
+              <p>
+                The Secretariat is pleased to announce the successful conclusion of the 2nd Edition of NIET Conventus Model United Nations 2025.
+                Building upon our inaugural assembly, this year's conference elevated diplomatic discourse to unprecedented heights.
+              </p>
+              
+              <p>
+                Distinguished delegates from across the region convened for two days of substantive debate, coalition-building, and resolution drafting.
+                The committees addressed critical global challenges, from climate security to international peacekeeping frameworks, with delegates
+                demonstrating exceptional diplomatic acumen and negotiation skills.
+              </p>
+              
+              <p>
+                The Dais extends formal recognition to all participating delegations, honorable chairs, and esteemed faculty advisors
+                whose contributions ensured the conference's diplomatic success and substantive excellence.
+              </p>
+            </div>
+          </motion.div>
         </section>
 
         <div>

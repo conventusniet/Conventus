@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const MovingStrip = () => {
   return (
@@ -36,8 +37,7 @@ const HeroSection = () => {
         {/* Main Content */}
         <div className="absolute inset-0 flex flex-col">
           {/* Content Container */}
-          <div className="flex-1 container mx-auto flex flex-col justify-center items-center px-4 space-y-16">
-            {/* Title Section with Enhanced Typography */}
+          <div className="flex-1 container mx-auto flex flex-col justify-center items-center px-4 space-y-12">
             <div className="text-center max-w-5xl">
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
                 2nd Edition of
@@ -49,17 +49,18 @@ const HeroSection = () => {
               </h2>
             </div>
 
-            {/* CTA Button with Enhanced Styling */}
-            <Link
-              href="/DelegateRegis"
-              className="transform hover:scale-105 transition-all duration-300"
+            {/* Session Adjourned Notice */}
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
             >
-              <div className="bg-red-700 hover:bg-red-600 text-white px-12 py-4 rounded-lg 
-                            text-xl font-semibold shadow-lg hover:shadow-2xl 
-                            border-2 border-red-400/30 backdrop-blur-sm">
-                Register Now
+              <div className="inline-block border-t-2 border-b-2 border-white/70 py-3 px-8">
+                <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2">SESSION ADJOURNED</h3>
+                <p className="text-white/90 text-lg">The Secretariat thanks all delegations for their diplomatic excellence</p>
               </div>
-            </Link>
+            </motion.div>
           </div>
 
           {/* Moving Strip at Bottom */}
