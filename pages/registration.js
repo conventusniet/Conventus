@@ -296,6 +296,46 @@ const Registration = () => {
                     initial="hidden"
                     animate="visible"
                 >
+
+                <motion.h2
+                    className="text-5xl font-bold mb-8 text-center text-red-600"
+                    variants={itemVariants}
+                >
+                    CMUN 2025 - Session Adjourned
+                </motion.h2>
+
+                <motion.p
+                    className="text-2xl font-bold mb-6 text-center max-w-2xl mx-auto text-gray-700"
+                    variants={itemVariants}
+                >
+                    OFFICIAL COMMUNIQUÉ
+                </motion.p>
+
+                <motion.p
+                    className="text-xl mb-8 text-center max-w-3xl mx-auto text-gray-700"
+                    variants={itemVariants}
+                >
+                    The Secretariat announces that Conventus Model United Nations 2025 has officially concluded. The Dais extends sincere appreciation to all distinguished delegates, honorable chairs, and esteemed faculty advisors for their diplomatic engagement and substantive debate.
+                </motion.p>
+
+                <motion.p
+                    className="text-lg mb-8 text-center max-w-3xl mx-auto text-gray-700"
+                    variants={itemVariants}
+                >
+                    Resolutions passed during this session have been archived and the conference outcomes have been formally documented. Delegations seeking certificates or conference materials may direct formal inquiries to the Secretary-General's office.
+                </motion.p>
+
+                <motion.p
+                    className="text-lg mb-12 text-center max-w-2xl mx-auto text-red-600 font-semibold"
+                    variants={itemVariants}
+                >
+                    Registration for CMUN 2025 is now closed. The Secretariat looks forward to welcoming returning and new delegations at future sessions.
+                </motion.p>
+      
+                    {/*
+                    
+                    Registrations form for CMUN 2.0
+                    
                     <motion.h2
                         className="text-5xl font-bold mb-8 text-center text-red-600"
                         variants={itemVariants}
@@ -303,6 +343,7 @@ const Registration = () => {
                         Register For Conventus MUN
 
                     </motion.h2>
+
                     <motion.p
                         className="text-2xl font-bold mb-12 text-center max-w-2xl mx-auto text-gray-700"
                         variants={itemVariants}
@@ -338,7 +379,7 @@ const Registration = () => {
                         >
                             <RegistrationForm />
                         </motion.div>
-                    </Suspense>
+                    </Suspense>*/}
                     {/* <motion.div
                         className="mt-16 text-center"
                         variants={itemVariants}
