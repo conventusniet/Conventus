@@ -18,7 +18,7 @@ const SessionAdjournedBanner = () => {
         The CMUN 2025 proceedings have officially concluded. The Secretariat thanks all delegations for their diplomatic contributions.
       </p>
       <p className="text-md text-gray-600 text-center">
-        Conference outcomes and passed resolutions have been archived. Certificates and documentation are available upon formal request.
+        Conference outcomes and passed resolutions have been archived.
       </p>
     </motion.div>
   );

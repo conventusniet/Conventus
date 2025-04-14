@@ -322,7 +322,7 @@ const Registration = () => {
                     className="text-lg mb-8 text-center max-w-3xl mx-auto text-gray-700"
                     variants={itemVariants}
                 >
-                    Resolutions passed during this session have been archived and the conference outcomes have been formally documented. Delegations seeking certificates or conference materials may direct formal inquiries to the Secretary-General's office.
+                    Resolutions passed during this session have been archived and the conference outcomes have been formally documented.
                 </motion.p>
 
                 <motion.p
