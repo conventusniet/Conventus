@@ -6,7 +6,6 @@ import ConventusChatbot from "../components/ConventusChatBot";
 import HeroSection from "../components/mun2herosection";
 import Oheader from "../components/OHeader";
 import LeadershipSection from "@/components/mun2.oleadershipsec";
-import SessionAdjournedBanner from "../components/mun2.0SessionAdjournedBanner";
 import SponsorsSection from "../components/mun2.0sponsors";
 import LearnMoreSection from "@/components/mun2.0learnmore";
 import Contact from "@/components/mun2.0contact";
@@ -25,10 +24,6 @@ export default function MUN2Page() {
 
       <div className="mt-20">
         <HeroSection />
-      </div>
-
-      <div className="mx-4 md:mx-8 lg:mx-16">
-        <SessionAdjournedBanner />
       </div>
 
       <main className="flex-grow container mx-auto px-4 py-12">
