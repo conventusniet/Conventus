@@ -1,136 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
-
-const ImageModal = ({ src, isOpen, onClose }) => {
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0, rotateY: 90 }}
-                    animate={{ opacity: 1, rotateY: 0 }}
-                    exit={{ opacity: 0, rotateY: -90 }}
-                    transition={{ duration: 0.5 }}
-                    className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-                    onClick={onClose}
-                >
-                    <motion.div
-                        className="relative max-w-4xl max-h-full"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <Image
-                            src={src}
-                            alt="CMUN 2.0 Gallery Image"
-                            width={1000}
-                            height={1000}
-                            layout="intrinsic"
-                            objectFit="contain"
-                            className="rounded-lg"
-                        />
-                        <motion.button
-                            className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2 z-10"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={onClose}
-                        >
-                            <X size={24} />
-                        </motion.button>
-                    </motion.div>
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
-};
+import React from 'react';
+import PinterestGallery from './PinterestGallery';
 
 const MUN2Gallery = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [activeTab, setActiveTab] = useState('all');
-    
     const galleryImages = [
-        { src: "/images/mun2.0/gallery/day1-1.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-2.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-3.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-4.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-5.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-6.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-7.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-8.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-9.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-10.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-11.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-12.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-13.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-14.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-15.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-16.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-17.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-18.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-19.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-20.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-21.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-22.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-23.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-24.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-25.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-26.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-27.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-28.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-29.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-30.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-31.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-32.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-33.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-34.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-35.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-36.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-37.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day1-38.webp", day: 1 },
-        { src: "/images/mun2.0/gallery/day2-1.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-2.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-3.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-4.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-5.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-6.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-7.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-8.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-9.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-10.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-11.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-12.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-13.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-14.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-15.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-16.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-17.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-18.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-19.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-20.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-21.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-22.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-23.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-24.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-25.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-26.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-27.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-28.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-29.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-30.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-31.webp", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-32.webp", day: 2 }
+        { src: "/images/mun2.0/gallery/day1-1.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-2.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-3.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-4.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-5.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-6.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-7.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-8.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-9.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-10.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-11.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-12.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-13.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-14.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-15.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-16.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-17.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-18.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-19.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-20.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-21.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-22.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-23.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-24.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-25.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-26.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-27.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-28.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-29.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-30.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-31.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-32.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-33.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-34.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-35.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-36.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-37.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day1-38.webp", badge: "Day 1", day: 1 },
+        { src: "/images/mun2.0/gallery/day2-1.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-2.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-3.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-4.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-5.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-6.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-7.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-8.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-9.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-10.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-11.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-12.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-13.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-14.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-15.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-16.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-17.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-18.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-19.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-20.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-21.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-22.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-23.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-24.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-25.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-26.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-27.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-28.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-29.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-30.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-31.webp", badge: "Day 2", day: 2 },
+        { src: "/images/mun2.0/gallery/day2-32.webp", badge: "Day 2", day: 2 }
     ];
 
-    const openModal = (src) => {
-        setSelectedImage(src);
+    const filterFunction = (images, tab) => {
+        if (tab === 'all') return images;
+        return images.filter(img => img.day === parseInt(tab));
     };
 
-    const closeModal = () => {
-        setSelectedImage(null);
-    };
-
-    const filteredImages = activeTab === 'all' 
-        ? galleryImages 
-        : galleryImages.filter(img => img.day === parseInt(activeTab));
+    const tabs = [
+        { label: "All Days", value: "all" },
+        { label: "Day 1", value: "1" },
+        { label: "Day 2", value: "2" }
+    ];
 
     return (
         <section className="py-16 bg-gradient-to-r from-red-50 to-white mb-16">
@@ -141,77 +95,14 @@ const MUN2Gallery = () => {
                     <p className="text-red-700 text-lg max-w-2xl mx-auto mb-8">
                         Capturing the memorable moments from CMUN 2.0
                     </p>
-                    
-                    {/* Day Filter Tabs */}
-                    <div className="flex justify-center items-center space-x-4 mb-8 flex-wrap">
-                        <button 
-                            onClick={() => setActiveTab('all')}
-                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 m-2 ${
-                                activeTab === 'all' 
-                                    ? 'bg-red-600 text-white shadow-md' 
-                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                            }`}
-                        >
-                            All Days
-                        </button>
-                        <button 
-                            onClick={() => setActiveTab('1')}
-                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 m-2 ${
-                                activeTab === '1' 
-                                    ? 'bg-red-600 text-white shadow-md' 
-                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                            }`}
-                        >
-                            Day 1
-                        </button>
-                        <button 
-                            onClick={() => setActiveTab('2')}
-                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 m-2 ${
-                                activeTab === '2' 
-                                    ? 'bg-red-600 text-white shadow-md' 
-                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                            }`}
-                        >
-                            Day 2
-                        </button>
-                    </div>
                 </div>
-
-                <AnimatePresence mode="wait">
-                    <motion.div 
-                        key={activeTab}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="masonry-grid"
-                    >
-                        {/* Pinterest-style CSS grid masonry layout - preserving natural image heights */}
-                        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-                            {filteredImages.map((image, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="break-inside-avoid mb-4 relative overflow-hidden rounded-lg cursor-pointer shadow-md"
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.99 }}
-                                    onClick={() => openModal(image.src)}
-                                >
-                                    <div className="relative">
-                                        <img
-                                            src={image.src}
-                                            alt={`CMUN 2.0 Day ${image.day}`}
-                                            className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
-                                            loading={index < 12 ? "eager" : "lazy"}
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end">
-                                            <span className="text-white text-sm font-medium m-3 px-2 py-1 bg-red-600 rounded-full">Day {image.day}</span>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
+                
+                <PinterestGallery 
+                    images={galleryImages}
+                    tabs={tabs}
+                    defaultTab="all"
+                    filterFunction={filterFunction}
+                />
 
                 <div className="text-center mt-10">
                     <a 
@@ -222,12 +113,6 @@ const MUN2Gallery = () => {
                     </a>
                 </div>
             </div>
-
-            <ImageModal
-                src={selectedImage}
-                isOpen={!!selectedImage}
-                onClose={closeModal}
-            />
         </section>
     );
 };
