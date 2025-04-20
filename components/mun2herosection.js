@@ -21,13 +21,11 @@ const MovingStrip = () => {
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 3;
+  const totalSlides = 1;
   const autoPlayRef = useRef();
   
   const images = [
     "/images/AB1.jpg",
-    "/images/AB1.jpg",
-    "/images/AB1.jpg"
   ];
 
   const nextSlide = () => {

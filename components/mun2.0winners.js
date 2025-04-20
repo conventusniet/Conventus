@@ -104,7 +104,6 @@ const MUN2Winners = () => {
             name: "United Nations Security Council",
             images: [
                 "/images/unsc_bg.jpg",
-                "/images/unhrc_bg.jpg",
             ],
             winners: [
                 { award: "Best Delegate", name: "Rakshit Kapoor", institute: "France" },
