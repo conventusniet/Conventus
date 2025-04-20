@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
@@ -46,7 +46,7 @@ const ImageModal = ({ src, isOpen, onClose }) => {
 const MUN2Gallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [activeTab, setActiveTab] = useState('all');
-
+    
     const galleryImages = [
         { src: "/images/mun2.0/gallery/day1-1.webp", day: 1 },
         { src: "/images/mun2.0/gallery/day1-2.webp", day: 1 },
@@ -128,14 +128,6 @@ const MUN2Gallery = () => {
         setSelectedImage(null);
     };
 
-    const getImageSize = (index) => {
-        // Make every 5th image larger (2x2 grid span)
-        if (index % 5 === 0) {
-            return "col-span-2 row-span-2";
-        }
-        return "";
-    };
-
     const filteredImages = activeTab === 'all' 
         ? galleryImages 
         : galleryImages.filter(img => img.day === parseInt(activeTab));
@@ -151,10 +143,10 @@ const MUN2Gallery = () => {
                     </p>
                     
                     {/* Day Filter Tabs */}
-                    <div className="flex justify-center items-center space-x-4 mb-8">
+                    <div className="flex justify-center items-center space-x-4 mb-8 flex-wrap">
                         <button 
                             onClick={() => setActiveTab('all')}
-                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 ${
+                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 m-2 ${
                                 activeTab === 'all' 
                                     ? 'bg-red-600 text-white shadow-md' 
                                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -164,7 +156,7 @@ const MUN2Gallery = () => {
                         </button>
                         <button 
                             onClick={() => setActiveTab('1')}
-                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 ${
+                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 m-2 ${
                                 activeTab === '1' 
                                     ? 'bg-red-600 text-white shadow-md' 
                                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -174,7 +166,7 @@ const MUN2Gallery = () => {
                         </button>
                         <button 
                             onClick={() => setActiveTab('2')}
-                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 ${
+                            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 m-2 ${
                                 activeTab === '2' 
                                     ? 'bg-red-600 text-white shadow-md' 
                                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -192,30 +184,32 @@ const MUN2Gallery = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+                        className="masonry-grid"
                     >
-                        {filteredImages.map((image, index) => (
-                            <motion.div
-                                key={index}
-                                className={`relative overflow-hidden rounded-lg cursor-pointer shadow-md ${getImageSize(index)}`}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.99 }}
-                                onClick={() => openModal(image.src)}
-                            >
-                                <Image
-                                    src={image.src}
-                                    alt={`CMUN 2.0 Day ${image.day}`}
-                                    width={400}
-                                    height={400}
-                                    layout="responsive"
-                                    objectFit="cover"
-                                    className="transition-transform duration-500 hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end">
-                                    <span className="text-white text-sm font-medium m-3 px-2 py-1 bg-red-600 rounded-full">Day {image.day}</span>
-                                </div>
-                            </motion.div>
-                        ))}
+                        {/* Pinterest-style CSS grid masonry layout - preserving natural image heights */}
+                        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                            {filteredImages.map((image, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="break-inside-avoid mb-4 relative overflow-hidden rounded-lg cursor-pointer shadow-md"
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.99 }}
+                                    onClick={() => openModal(image.src)}
+                                >
+                                    <div className="relative">
+                                        <img
+                                            src={image.src}
+                                            alt={`CMUN 2.0 Day ${image.day}`}
+                                            className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
+                                            loading={index < 12 ? "eager" : "lazy"}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end">
+                                            <span className="text-white text-sm font-medium m-3 px-2 py-1 bg-red-600 rounded-full">Day {image.day}</span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </motion.div>
                 </AnimatePresence>
 
