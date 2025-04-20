@@ -143,9 +143,9 @@ const MUN2Winners = () => {
                 "/images/uip.jpeg",
             ],
             winners: [
-                { award: "Best Journalist", name: "Coming Soon", institute: "Official Results Pending" },
-                { award: "Best Photographer", name: "Coming Soon", institute: "Official Results Pending" },
-                { award: "Best Cartoonist", name: "Coming Soon", institute: "Official Results Pending" }
+                { award: "Best Journalist", name: "Gauri Pandey", institute: "" },
+                { award: "High Commendation Journalist", name: "Stefanie K Saji", institute: "" },
+                { award: "Best Photographer", name: "Yakshit Ranga", institute: "" }
             ]
         }
     ];
