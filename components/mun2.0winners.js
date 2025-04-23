@@ -131,7 +131,9 @@ const MUN2Winners = () => {
         {
             name: "All India Political Parties Meet",
             images: [
-                "/images/aippm_bg.png",
+                "/images/mun2.0/winners/AIPPM/AIPPM_Best-Representative.jpg",
+                "/images/mun2.0/winners/AIPPM/AIPPM_High-Commendation.jpg",
+                "/images/mun2.0/winners/AIPPM/AIPPM_Special-Mention.jpg",
             ],
             winners: [
                 { award: "Best Delegate", name: "Soumya Mishra", institute: "Kapil Sibal" },
