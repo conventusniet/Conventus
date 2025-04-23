@@ -103,7 +103,9 @@ const MUN2Winners = () => {
         {
             name: "United Nations Security Council",
             images: [
-                "/images/unsc_bg.jpg",
+                "/images/mun2.0/winners/UNSC/UNSC_Best-Delegate.jpg",
+                "/images/mun2.0/winners/UNSC/UNSC_High-Commendation.jpg",
+                "/images/mun2.0/winners/UNSC/UNSC_Special-Mention.jpg",
             ],
             winners: [
                 { award: "Best Delegate", name: "Rakshit Kapoor", institute: "France" },
@@ -115,7 +117,9 @@ const MUN2Winners = () => {
         {
             name: "United Nations Human Rights Council",
             images: [
-                "/images/unhrc_bg.jpg",
+                "/images/mun2.0/winners/UNHRC/UNHRC_Best-Delegate.jpg",
+                "/images/mun2.0/winners/UNHRC/UNHRC_High-Commendation.jpg",
+                "/images/mun2.0/winners/UNHRC/UNHRC_Special-Mention.jpg",
             ],
             winners: [
                 { award: "Best Delegate", name: "Sarthak Srivastava", institute: "Saudi Arabia" },
