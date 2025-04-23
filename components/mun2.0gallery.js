@@ -72,18 +72,35 @@ const MUN2Gallery = () => {
         { src: "/images/mun2.0/gallery/day2-29.webp", badge: "Day 2", day: 2 },
         { src: "/images/mun2.0/gallery/day2-30.webp", badge: "Day 2", day: 2 },
         { src: "/images/mun2.0/gallery/day2-31.webp", badge: "Day 2", day: 2 },
-        { src: "/images/mun2.0/gallery/day2-32.webp", badge: "Day 2", day: 2 }
+        { src: "/images/mun2.0/gallery/day2-32.webp", badge: "Day 2", day: 2 },
+        // Winners - UNSC Winners
+        { src: "/images/mun2.0/winners/UNSC/UNSC_Best-Delegate.jpg", badge: "UNSC Best Delegate", category: "winner", committee: "UNSC" },
+        { src: "/images/mun2.0/winners/UNSC/UNSC_High-Commendation.jpg", badge: "UNSC High Commendation", category: "winner", committee: "UNSC" },
+        { src: "/images/mun2.0/winners/UNSC/UNSC_Special-Mention.jpg", badge: "UNSC Special Mention", category: "winner", committee: "UNSC" },
+        // Winners - UNHRC Winners 
+        { src: "/images/mun2.0/winners/UNHRC/UNHRC_Best-Delegate.jpg", badge: "UNHRC Best Delegate", category: "winner", committee: "UNHRC" },
+        { src: "/images/mun2.0/winners/UNHRC/UNHRC_High-Commendation.jpg", badge: "UNHRC High Commendation", category: "winner", committee: "UNHRC" },
+        { src: "/images/mun2.0/winners/UNHRC/UNHRC_Special-Mention.jpg", badge: "UNHRC Special Mention", category: "winner", committee: "UNHRC" },
+        // Winners - AIPPM Winners
+        { src: "/images/mun2.0/winners/AIPPM/AIPPM_Best-Representative.jpg", badge: "AIPPM Best Representative", category: "winner", committee: "AIPPM" },
+        { src: "/images/mun2.0/winners/AIPPM/AIPPM_High-Commendation.jpg", badge: "AIPPM High Commendation", category: "winner", committee: "AIPPM" },
+        { src: "/images/mun2.0/winners/AIPPM/AIPPM_Special-Mention.jpg", badge: "AIPPM Special Mention", category: "winner", committee: "AIPPM" },
+        // Winners - International Press Winners
+        { src: "/images/mun2.0/winners/IP/IP_Best-Journalist.jpg", badge: "IP Best Journalist", category: "winner", committee: "IP" },
+        { src: "/images/mun2.0/winners/IP/IP_Outstanding-Journalist.jpg", badge: "IP Outstanding Journalist", category: "winner", committee: "IP" }
     ];
 
     const filterFunction = (images, tab) => {
         if (tab === 'all') return images;
+        if (tab === 'winner') return images.filter(img => img.category === 'winner');
         return images.filter(img => img.day === parseInt(tab));
     };
 
     const tabs = [
         { label: "All Days", value: "all" },
         { label: "Day 1", value: "1" },
-        { label: "Day 2", value: "2" }
+        { label: "Day 2", value: "2" },
+        { label: "Winners", value: "winner" }
     ];
 
     return (

@@ -110,9 +110,29 @@ const mun1Images = [
     { src: '/images/Media (18).jpg', badge: "Other Events" },
 ];
 
+// New Winners images from MUN2.0Winners.js
+const winnersImages = [
+    // UNSC Winners
+    { src: "/images/mun2.0/winners/UNSC/UNSC_Best-Delegate.jpg", badge: "UNSC Best Delegate", category: "winner", committee: "UNSC" },
+    { src: "/images/mun2.0/winners/UNSC/UNSC_High-Commendation.jpg", badge: "UNSC High Commendation", category: "winner", committee: "UNSC" },
+    { src: "/images/mun2.0/winners/UNSC/UNSC_Special-Mention.jpg", badge: "UNSC Special Mention", category: "winner", committee: "UNSC" },
+    // UNHRC Winners 
+    { src: "/images/mun2.0/winners/UNHRC/UNHRC_Best-Delegate.jpg", badge: "UNHRC Best Delegate", category: "winner", committee: "UNHRC" },
+    { src: "/images/mun2.0/winners/UNHRC/UNHRC_High-Commendation.jpg", badge: "UNHRC High Commendation", category: "winner", committee: "UNHRC" },
+    { src: "/images/mun2.0/winners/UNHRC/UNHRC_Special-Mention.jpg", badge: "UNHRC Special Mention", category: "winner", committee: "UNHRC" },
+    // AIPPM Winners
+    { src: "/images/mun2.0/winners/AIPPM/AIPPM_Best-Representative.jpg", badge: "AIPPM Best Representative", category: "winner", committee: "AIPPM" },
+    { src: "/images/mun2.0/winners/AIPPM/AIPPM_High-Commendation.jpg", badge: "AIPPM High Commendation", category: "winner", committee: "AIPPM" },
+    { src: "/images/mun2.0/winners/AIPPM/AIPPM_Special-Mention.jpg", badge: "AIPPM Special Mention", category: "winner", committee: "AIPPM" },
+    // International Press Winners
+    { src: "/images/mun2.0/winners/IP/IP_Best-Journalist.jpg", badge: "IP Best Journalist", category: "winner", committee: "IP" },
+    { src: "/images/mun2.0/winners/IP/IP_Outstanding-Journalist.jpg", badge: "IP Outstanding Journalist", category: "winner", committee: "IP" }
+];
+
 const allGalleryImages = [
     ...mun2Images,
-    ...mun1Images
+    ...mun1Images,
+    ...winnersImages
 ];
 
 const MediaPage = () => {
@@ -165,6 +185,8 @@ const MediaPage = () => {
                 return images.filter(img => img.day !== undefined);
             case 'other':
                 return images.filter(img => img.badge === "Other Events");
+            case 'winners':
+                return images.filter(img => img.category === "winner");
             default:
                 return images;
         }
@@ -173,7 +195,8 @@ const MediaPage = () => {
     const tabs = [
         { label: "All Images", value: "all" },
         { label: "MUN 2.0", value: "mun2.0" },
-        { label: "Other Events", value: "other" }
+        { label: "MUN 2.0 Winners", value: "winners" },
+        { label: "Other Events", value: "other" },
     ];
 
     return (
