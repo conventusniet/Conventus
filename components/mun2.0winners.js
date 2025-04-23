@@ -26,14 +26,14 @@ const CommitteeImageCarousel = ({ images, committeeName }) => {
         const play = () => {
             autoPlayRef.current();
         };
-        const interval = setInterval(play, 4000);
+        const interval = setInterval(play, 5000);
         return () => clearInterval(interval);
     }, [images.length]);
     
     if (images.length === 0) return null;
     
     return (
-        <div className="relative h-56 w-full">
+        <div className="relative h-64 w-full">
             {/* Images container */}
             {images.map((img, idx) => (
                 <motion.div
