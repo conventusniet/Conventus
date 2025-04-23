@@ -145,7 +145,8 @@ const MUN2Winners = () => {
         {
             name: "International Press",
             images: [
-                "/images/uip.jpeg",
+                "/images/mun2.0/winners/IP/IP_Best-Journalist.jpg",
+                "/images/mun2.0/winners/IP/IP_Outstanding-Journalist.jpg",
             ],
             winners: [
                 { award: "Best Journalist", name: "Gauri Pandey", institute: "" },
