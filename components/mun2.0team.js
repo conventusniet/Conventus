@@ -12,7 +12,7 @@ const MUN2Team = () => {
             alt: 'CMUN 2.0 Team Photo'
         },
         {
-            src: '/images/mun2.0/team1.jpg',
+            src: '/images/mun2.0/team-day-1.jpg',
             alt: 'CMUN 2.0 Team Members'
         }
     ];
