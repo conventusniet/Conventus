@@ -120,7 +120,7 @@ export default function NewsletterPage() {
             NEWSLETTERS
           </h1>
           <p className="text-2xl text-red-600 font-semibold mb-1">
-            Conventus Model United Nations 2095
+            Conventus Model United Nations 2025
           </p>
           <p className="text-xl text-gray-700 italic">
             Noida Institute of Engineering and Technology
