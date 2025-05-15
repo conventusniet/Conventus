@@ -7,87 +7,65 @@ import Image from 'next/image'
 import Oheader from '@/components/OHeader'
 import Footer from '@/components/Footer'
 import ConventusChatbot from '@/components/ConventusChatBot'
+import FlipbookNewsletter from '@/components/FlipbookNewsletter'
+
 const NewsletterCard = ({ day, imageUrl, pdfUrl }) => {
-  const [showReadNow, setShowReadNow] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowReadNow(true), 500)
-    return () => clearTimeout(timer)
-  }, [])
-
   const handleShare = async () => {
     try {
-      const response = await fetch(pdfUrl)
-      const blob = await response.blob()
-      const file = new File([blob], `${day}_Newsletter_2023-24.pdf`, { type: 'application/pdf' })
-
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      if (navigator.share) {
         await navigator.share({
-          files: [file],
-          title: `${day} Newsletter 2023-24`,
+          title: `${day} Newsletter - CMUN`,
+          url: pdfUrl,
         })
       } else {
-        // Fallback for browsers that don't support file sharing
-        const link = document.createElement('a')
-        link.href = pdfUrl
-        link.download = `${day}_Newsletter_2023-24.pdf`
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
+        navigator.clipboard.writeText(pdfUrl)
+        alert('Link copied to clipboard!')
       }
     } catch (error) {
-      console.error('Error sharing file:', error)
-      alert('Unable to share the file. You can download it directly from the "Read Now" link.')
+      console.error('Error sharing:', error)
     }
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="relative w-full aspect-[3/4] mx-auto overflow-hidden rounded-xl"
-    >
-      <Image
-        src={imageUrl}
-        alt={`${day} Day Newsletter`}
-        layout="fill"
-        objectFit="cover"
-        className="transition-transform duration-300 hover:scale-105"
-      />
-      <div className="absolute bottom-0 left-0 right-0 p-6">
-        <div className="bg-gradient-to-r from-black/50 via-black/30 to-transparent p-2 rounded-lg inline-block mb-4">
-          <h3 className="text-2xl font-semibold text-white">
-            {day} Day
-          </h3>
+    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+      <div className="relative">
+        <div className="relative h-64 w-full">
+          <Image
+            src={imageUrl}
+            alt={`${day} Newsletter`}
+            layout="fill"
+            objectFit="cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={showReadNow ? { opacity: 1 } : { opacity: 0 }}
-          className="flex justify-between items-center"
-        >
-          <a
-            href={pdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition text-sm"
-          >
-            <FileText className="mr-2" size={16} />
-            Read Now
-          </a>
-          <button
-            onClick={handleShare}
-            className="p-2 bg-white rounded-full hover:bg-gray-100 transition"
-          >
-            <Share2 size={20} className="text-gray-800" />
-          </button>
-        </motion.div>
+        <div className="absolute bottom-0 left-0 p-6 text-white">
+          <h3 className="text-2xl font-bold">{day} Day</h3>
+          <p className="text-lg">CMUN 1.0 Newsletter</p>
+        </div>
       </div>
-    </motion.div>
+      <div className="p-4 flex justify-between">
+        <a
+          href={pdfUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center text-red-600 hover:text-red-800 font-semibold"
+        >
+          <FileText className="mr-2" size={18} />
+          Read PDF
+        </a>
+        <button
+          onClick={handleShare}
+          className="flex items-center text-gray-600 hover:text-gray-800"
+        >
+          <Share2 className="mr-2" size={18} />
+          Share
+        </button>
+      </div>
+    </div>
   )
 }
 
+// Photo gallery with hover effects
 const PhotoGallery = () => {
   const images = [
     '/images/news_1.jpg',
@@ -98,18 +76,17 @@ const PhotoGallery = () => {
 
   return (
     <div className="mt-16">
-      <h2 className="text-4xl font-bold text-red-800 mb-8 text-center">Media Gallery</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {images.map((src, index) => (
+      <h2 className="text-3xl font-bold text-center mb-8 text-red-800">Photo Gallery</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {images.map((image, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative aspect-square overflow-hidden rounded-lg shadow-lg"
+            className="relative rounded-lg overflow-hidden h-48 md:h-64"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.3 }}
           >
             <Image
-              src={src}
+              src={image}
               alt={`Gallery image ${index + 1}`}
               layout="fill"
               objectFit="cover"
@@ -123,19 +100,6 @@ const PhotoGallery = () => {
 }
 
 export default function NewsletterPage() {
-  const newsletters = [
-    {
-      day: "First",
-      imageUrl: "/images/Newsletter.jpg",
-      pdfUrl: "/pdfs/Newsletter Day1.pdf"
-    },
-    {
-      day: "Second",
-      imageUrl: "/images/Newsletter.jpg",
-      pdfUrl: "/pdfs/Newsletter Day2.pdf"
-    }
-  ]
-
   const pageRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: pageRef,
@@ -149,36 +113,53 @@ export default function NewsletterPage() {
       <Oheader />
       <motion.div
         style={{ y: headerY }}
-        className="fixed top-20 left-0 right-0 z-10 bg-red-50 py-12"
+        className="fixed top-20 left-0 right-0 z-10 bg-red-50 py-8"
       >
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-6xl font-bold text-red-800 mb-4">
-            NEWSLETTER
+        <div className="max-w-3xl mx-auto text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-red-800 mb-3">
+            NEWSLETTERS
           </h1>
-          <h2 className="text-4xl font-semibold text-red-700 mb-6">
-            2023-24
-          </h2>
-          <p className="text-xl text-red-600">
-            Stay updated with our bi-annual newsletters covering all the important events
-            and achievements throughout the academic year.
+          <p className="text-2xl text-red-600 font-semibold mb-1">
+            Conventus Model United Nations 2025
+          </p>
+          <p className="text-xl text-gray-700 italic">
+            Noida Institute of Engineering and Technology
           </p>
 
+          {/* 
           <p className="text-lg mt-10 text-gray-700">
-            At Conventus, Our newsletter is designed to keep you informed and engaged with the latest updates from the Club. Each edition will feature highlights from our recent events, upcoming workshops, and opportunities to get involved. We aim to foster a sense of community and support among our members, providing valuable resources for personal and professional growth. Join us as we explore the dynamic world of Model United Nations, share insights, and celebrate the achievements of our members. Stay connected and be part of our journey toward becoming impactful global citizens!
+            Our newsletters capture the essence of Conventus events with comprehensive 
+            coverage, featuring highlights, interviews, and impactful moments.
           </p>
+          */}
         </div>
       </motion.div>
 
-      <main className="flex-grow container mx-auto px-4 py-8 mt-[calc(100vh-25vh)]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {newsletters.map((newsletter, index) => (
+      <main className="flex-grow container mx-auto px-4 py-8 mt-[calc(100vh-40vh)]">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-red-800 mb-8 text-center">Latest Edition</h2>
+          <FlipbookNewsletter
+            title="CMUN 2.0 Newsletter"
+            imageUrl="/images/mun2.0/newsletter-preview.jpg"
+            pdfUrl="/pdfs/CMUN_2.0_Newsletter.pdf"
+            showDownload={true}
+          />
+        </div>
+
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-red-800 mb-8 text-center">Previous Editions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <NewsletterCard
-              key={index}
-              day={newsletter.day}
-              imageUrl={newsletter.imageUrl}
-              pdfUrl={newsletter.pdfUrl}
+              day="First"
+              imageUrl="/images/Newsletter.jpg"
+              pdfUrl="/pdfs/Newsletter Day1.pdf"
             />
-          ))}
+            <NewsletterCard
+              day="Second"
+              imageUrl="/images/Newsletter.jpg"
+              pdfUrl="/pdfs/Newsletter Day2.pdf"
+            />
+          </div>
         </div>
 
         <PhotoGallery />

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDown } from "lucide-react"
+import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDown, XCircle } from "lucide-react"
 
 // Configuration constant for registration status
 const REGISTRATION_STATUS = {
@@ -45,6 +45,7 @@ const Modal = ({ isOpen, onClose, message, isError }) => {
 
 const OCRegistrationForm = () => {
   const [isRegistrationClosed] = useState(!REGISTRATION_STATUS.IS_OPEN) // Inverted to match the variable name
+  const [isDisabled, setIsDisabled] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     year: "",
@@ -375,350 +376,359 @@ const OCRegistrationForm = () => {
           {isRegistrationClosed && <p className="mb-2 text-red-600">{REGISTRATION_STATUS.PAYMENT_DISABLED_TEXT}</p>}
         </div>
       </div>
-
-      <motion.form
-        className="w-full max-w-4xl mx-auto"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        onSubmit={handleSubmit}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          {/* Name field */}
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <User className="inline-block mr-2 text-red-600" size={18} />
-              Name
-            </label>
-            <input
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              disabled={isRegistrationClosed}
-              required
-            />
+      <div>
+        {isDisabled && (
+          <div className="flex items-center text-red-500 text-xl font-bold mb-4">
+            <XCircle className="mr-2" />
+            Form Closed
           </div>
-
-          {/* Year field */}
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <User className="inline-block mr-2 text-red-600" size={18} />
-              Year
-            </label>
-            <select
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
-              name="year"
-              value={formData.year}
-              onChange={handleChange}
-              disabled={isRegistrationClosed}
-              required
-            >
-              <option value="">Select Year</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </div>
-
-          {/* Phone field */}
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Phone className="inline-block mr-2 text-red-600" size={18} />
-              Phone No.
-            </label>
-            <input
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              disabled={isRegistrationClosed}
-              required
-            />
-          </div>
-
-          {/* Institute field - Still disabled as it's fixed to NIET */}
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Building className="inline-block mr-2 text-red-600" size={18} />
-              Institute
-            </label>
-            <select
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 bg-gray-100"
-              name="institute"
-              value={formData.institute}
-              onChange={handleChange}
-              disabled
-              required
-            >
-              <option value="NIET">NIET</option>
-            </select>
-          </div>
-
-          {/* Email field */}
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Mail className="inline-block mr-2 text-red-600" size={18} />
-              Email
-            </label>
-            <input
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              disabled={isRegistrationClosed}
-              required
-            />
-          </div>
-
-          {/* Transaction Number */}
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Link className="inline-block mr-2 text-red-600" size={18} />
-              Transaction Number
-            </label>
-            <input
-              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
-              type="text"
-              name="transactionNumber"
-              value={formData.transactionNumber}
-              onChange={handleChange}
-              disabled={isRegistrationClosed}
-              required
-            />
-          </div>
-
-          {/* Branch Dropdown */}
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Building className="inline-block mr-2 text-red-600" size={18} />
-              Branch
-            </label>
-            <div className="relative" ref={branchRef}>
-              <button
-                type="button"
-                onClick={() => setBranchOpen(!branchOpen)}
+        )}
+      </div>
+      <fieldset disabled={isDisabled}>
+        <motion.form
+          className="w-full max-w-4xl mx-auto"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          onSubmit={handleSubmit}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            {/* Name field */}
+            <div>
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <User className="inline-block mr-2 text-red-600" size={18} />
+                Name
+              </label>
+              <input
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 disabled={isRegistrationClosed}
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 flex justify-between items-center ${isRegistrationClosed ? "bg-gray-100" : ""}`}
-              >
-                {formData.branch || "Select Branch"}
-                <ChevronDown size={16} />
-              </button>
-              {branchOpen && (
-                <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
-                  <div className="sticky top-0 bg-white p-2">
-                    <div className="relative">
-                      <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
-                      <input
-                        type="text"
-                        placeholder="Search branch..."
-                        value={branchSearch}
-                        onChange={(e) => setBranchSearch(e.target.value)}
-                        className="w-full pl-8 pr-2 py-1 border rounded"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    {branchOptions
-                      .filter((option) => option.toLowerCase().includes(branchSearch.toLowerCase()))
-                      .map((option) => (
-                        <div
-                          key={option}
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                          onClick={() => {
-                            setFormData((prev) => ({ ...prev, branch: option }))
-                            setBranchOpen(false)
-                            setBranchSearch("")
-                          }}
-                        >
-                          {option}
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              )}
+                required
+              />
             </div>
-          </div>
 
-          {/* Section Dropdown */}
-          <div>
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Building className="inline-block mr-2 text-red-600" size={18} />
-              Section
-            </label>
-            <div className="relative" ref={sectionRef}>
-              <button
-                type="button"
-                onClick={() => setSectionOpen(!sectionOpen)}
+            {/* Year field */}
+            <div>
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <User className="inline-block mr-2 text-red-600" size={18} />
+                Year
+              </label>
+              <select
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
+                name="year"
+                value={formData.year}
+                onChange={handleChange}
                 disabled={isRegistrationClosed}
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 flex justify-between items-center ${isRegistrationClosed ? "bg-gray-100" : ""}`}
+                required
               >
-                {formData.section || "Select Section"}
-                <ChevronDown size={16} />
-              </button>
-              {sectionOpen && (
-                <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
-                  <div className="sticky top-0 bg-white p-2">
-                    <div className="relative">
-                      <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
-                      <input
-                        type="text"
-                        placeholder="Search section..."
-                        value={sectionSearch}
-                        onChange={(e) => setSectionSearch(e.target.value)}
-                        className="w-full pl-8 pr-2 py-1 border rounded"
-                      />
+                <option value="">Select Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+
+            {/* Phone field */}
+            <div>
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <Phone className="inline-block mr-2 text-red-600" size={18} />
+                Phone No.
+              </label>
+              <input
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                disabled={isRegistrationClosed}
+                required
+              />
+            </div>
+
+            {/* Institute field - Still disabled as it's fixed to NIET */}
+            <div>
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <Building className="inline-block mr-2 text-red-600" size={18} />
+                Institute
+              </label>
+              <select
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 bg-gray-100"
+                name="institute"
+                value={formData.institute}
+                onChange={handleChange}
+                disabled
+                required
+              >
+                <option value="NIET">NIET</option>
+              </select>
+            </div>
+
+            {/* Email field */}
+            <div>
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <Mail className="inline-block mr-2 text-red-600" size={18} />
+                Email
+              </label>
+              <input
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                disabled={isRegistrationClosed}
+                required
+              />
+            </div>
+
+            {/* Transaction Number */}
+            <div>
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <Link className="inline-block mr-2 text-red-600" size={18} />
+                Transaction Number
+              </label>
+              <input
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 ${isRegistrationClosed ? "bg-gray-100" : ""}`}
+                type="text"
+                name="transactionNumber"
+                value={formData.transactionNumber}
+                onChange={handleChange}
+                disabled={isRegistrationClosed}
+                required
+              />
+            </div>
+
+            {/* Branch Dropdown */}
+            <div>
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <Building className="inline-block mr-2 text-red-600" size={18} />
+                Branch
+              </label>
+              <div className="relative" ref={branchRef}>
+                <button
+                  type="button"
+                  onClick={() => setBranchOpen(!branchOpen)}
+                  disabled={isRegistrationClosed}
+                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 flex justify-between items-center ${isRegistrationClosed ? "bg-gray-100" : ""}`}
+                >
+                  {formData.branch || "Select Branch"}
+                  <ChevronDown size={16} />
+                </button>
+                {branchOpen && (
+                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                    <div className="sticky top-0 bg-white p-2">
+                      <div className="relative">
+                        <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+                        <input
+                          type="text"
+                          placeholder="Search branch..."
+                          value={branchSearch}
+                          onChange={(e) => setBranchSearch(e.target.value)}
+                          className="w-full pl-8 pr-2 py-1 border rounded"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    {sectionOptions
-                      .filter((option) => option.toLowerCase().includes(sectionSearch.toLowerCase()))
-                      .map((option) => (
-                        <div
-                          key={option}
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                          onClick={() => {
-                            setFormData((prev) => ({ ...prev, section: option }))
-                            setSectionOpen(false)
-                            setSectionSearch("")
-                          }}
-                        >
-                          {option}
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* QR Code Section */}
-          <div className="md:col-span-2 mt-4">
-            <div className="flex flex-col items-center space-y-4">
-              <div
-                className={`w-48 h-48 border rounded-lg p-2 bg-gray-50 shadow-md ${isRegistrationClosed ? "opacity-50" : ""}`}
-              >
-                <img src="/QR's/OC.jpg" alt="NIET Payment QR" className="w-full h-full object-contain" />
-              </div>
-              <span className={`text-sm ${isRegistrationClosed ? "text-gray-500 line-through" : "text-gray-700"}`}>
-                Scan to pay OC Membership Fee (Rs 200)
-              </span>
-            </div>
-          </div>
-
-          {/* File Upload Section */}
-          <div className="md:col-span-2">
-            <label className="block text-gray-800 text-sm font-bold mb-2">
-              <Upload className="inline-block mr-2 text-red-600" size={18} />
-              Payment Screenshot
-            </label>
-            <div
-              className={`mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md ${isRegistrationClosed ? "bg-gray-100 opacity-50" : ""}`}
-            >
-              <div className="space-y-1 text-center">
-                <FileUp className="mx-auto h-12 w-12 text-gray-400" />
-                <div className="flex text-sm text-gray-600">
-                  <label
-                    className={`relative ${isRegistrationClosed ? "cursor-not-allowed bg-white rounded-md font-medium text-gray-500" : "cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-500"}`}
-                  >
-                    <span>{isRegistrationClosed ? "Upload disabled" : "Upload a file"}</span>
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      className="sr-only"
-                      accept="image/*"
-                      onChange={handleFileChange}
-                      disabled={isRegistrationClosed}
-                    />
-                  </label>
-                </div>
-                <p className="text-xs text-gray-500">
-                  {isRegistrationClosed ? "Registration closed" : "PNG, JPG, GIF up to 10MB"}
-                </p>
-                {paymentPreview && (
-                  <div className="mt-2">
-                    <img
-                      src={paymentPreview || "/placeholder.svg"}
-                      alt="Payment Preview"
-                      className="h-20 w-auto mx-auto border rounded"
-                    />
+                    <div>
+                      {branchOptions
+                        .filter((option) => option.toLowerCase().includes(branchSearch.toLowerCase()))
+                        .map((option) => (
+                          <div
+                            key={option}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            onClick={() => {
+                              setFormData((prev) => ({ ...prev, branch: option }))
+                              setBranchOpen(false)
+                              setBranchSearch("")
+                            }}
+                          >
+                            {option}
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 )}
               </div>
             </div>
-          </div>
 
-          {/* Area of Interest */}
-          <div className={`md:col-span-2 ${isRegistrationClosed ? "opacity-50" : ""}`}>
-            <h3 className="block text-gray-800 text-lg font-bold mb-3">Area of Interest</h3>
-
-            {areaOptions.map((group, groupIndex) => (
-              <div key={groupIndex} className="mb-4">
-                <h4 className="text-gray-700 font-medium mb-2">{group.group}</h4>
-                <div className="space-y-2">
-                  {group.options.map((option, optionIndex) => (
-                    <div key={optionIndex} className="flex items-start">
-                      <input
-                        id={`option-${groupIndex}-${optionIndex}`}
-                        type={group.type}
-                        name={group.type === "radio" ? "teamOption" : option}
-                        value={option}
-                        checked={formData.areasOfInterest.includes(option)}
-                        onChange={handleChange}
-                        disabled={isRegistrationClosed}
-                        className="mt-1 mr-2"
-                      />
-                      <label
-                        htmlFor={`option-${groupIndex}-${optionIndex}`}
-                        className={isRegistrationClosed ? "text-gray-500" : "text-gray-700"}
-                      >
-                        {option}
-                      </label>
+            {/* Section Dropdown */}
+            <div>
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <Building className="inline-block mr-2 text-red-600" size={18} />
+                Section
+              </label>
+              <div className="relative" ref={sectionRef}>
+                <button
+                  type="button"
+                  onClick={() => setSectionOpen(!sectionOpen)}
+                  disabled={isRegistrationClosed}
+                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-red-600 transition duration-300 flex justify-between items-center ${isRegistrationClosed ? "bg-gray-100" : ""}`}
+                >
+                  {formData.section || "Select Section"}
+                  <ChevronDown size={16} />
+                </button>
+                {sectionOpen && (
+                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                    <div className="sticky top-0 bg-white p-2">
+                      <div className="relative">
+                        <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+                        <input
+                          type="text"
+                          placeholder="Search section..."
+                          value={sectionSearch}
+                          onChange={(e) => setSectionSearch(e.target.value)}
+                          className="w-full pl-8 pr-2 py-1 border rounded"
+                        />
+                      </div>
                     </div>
-                  ))}
+                    <div>
+                      {sectionOptions
+                        .filter((option) => option.toLowerCase().includes(sectionSearch.toLowerCase()))
+                        .map((option) => (
+                          <div
+                            key={option}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            onClick={() => {
+                              setFormData((prev) => ({ ...prev, section: option }))
+                              setSectionOpen(false)
+                              setSectionSearch("")
+                            }}
+                          >
+                            {option}
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* QR Code Section */}
+            <div className="md:col-span-2 mt-4">
+              <div className="flex flex-col items-center space-y-4">
+                <div
+                  className={`w-48 h-48 border rounded-lg p-2 bg-gray-50 shadow-md ${isRegistrationClosed ? "opacity-50" : ""}`}
+                >
+                  <img src="/QR's/OC.jpg" alt="NIET Payment QR" className="w-full h-full object-contain" />
+                </div>
+                <span className={`text-sm ${isRegistrationClosed ? "text-gray-500 line-through" : "text-gray-700"}`}>
+                  Scan to pay OC Membership Fee (Rs 200)
+                </span>
+              </div>
+            </div>
+
+            {/* File Upload Section */}
+            <div className="md:col-span-2">
+              <label className="block text-gray-800 text-sm font-bold mb-2">
+                <Upload className="inline-block mr-2 text-red-600" size={18} />
+                Payment Screenshot
+              </label>
+              <div
+                className={`mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md ${isRegistrationClosed ? "bg-gray-100 opacity-50" : ""}`}
+              >
+                <div className="space-y-1 text-center">
+                  <FileUp className="mx-auto h-12 w-12 text-gray-400" />
+                  <div className="flex text-sm text-gray-600">
+                    <label
+                      className={`relative ${isRegistrationClosed ? "cursor-not-allowed bg-white rounded-md font-medium text-gray-500" : "cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-500"}`}
+                    >
+                      <span>{isRegistrationClosed ? "Upload disabled" : "Upload a file"}</span>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        className="sr-only"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        disabled={isRegistrationClosed}
+                      />
+                    </label>
+                  </div>
+                  <p className="text-xs text-gray-500">
+                    {isRegistrationClosed ? "Registration closed" : "PNG, JPG, GIF up to 10MB"}
+                  </p>
+                  {paymentPreview && (
+                    <div className="mt-2">
+                      <img
+                        src={paymentPreview || "/placeholder.svg"}
+                        alt="Payment Preview"
+                        className="h-20 w-auto mx-auto border rounded"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
 
-          {/* Terms and Conditions */}
-          <div className={`md:col-span-2 ${isRegistrationClosed ? "opacity-50" : ""}`}>
-            <div className="flex items-start">
-              <input
-                id="terms"
-                type="checkbox"
-                name="agreeToTerms"
-                checked={formData.agreeToTerms}
-                onChange={handleChange}
-                disabled={isRegistrationClosed}
-                className="mt-1 mr-2"
-              />
-              <label htmlFor="terms" className={isRegistrationClosed ? "text-gray-500" : "text-gray-700"}>
-                I agree to the terms and conditions, and understand that the OC membership fee is non-refundable.
-              </label>
+            {/* Area of Interest */}
+            <div className={`md:col-span-2 ${isRegistrationClosed ? "opacity-50" : ""}`}>
+              <h3 className="block text-gray-800 text-lg font-bold mb-3">Area of Interest</h3>
+
+              {areaOptions.map((group, groupIndex) => (
+                <div key={groupIndex} className="mb-4">
+                  <h4 className="text-gray-700 font-medium mb-2">{group.group}</h4>
+                  <div className="space-y-2">
+                    {group.options.map((option, optionIndex) => (
+                      <div key={optionIndex} className="flex items-start">
+                        <input
+                          id={`option-${groupIndex}-${optionIndex}`}
+                          type={group.type}
+                          name={group.type === "radio" ? "teamOption" : option}
+                          value={option}
+                          checked={formData.areasOfInterest.includes(option)}
+                          onChange={handleChange}
+                          disabled={isRegistrationClosed}
+                          className="mt-1 mr-2"
+                        />
+                        <label
+                          htmlFor={`option-${groupIndex}-${optionIndex}`}
+                          className={isRegistrationClosed ? "text-gray-500" : "text-gray-700"}
+                        >
+                          {option}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Terms and Conditions */}
+            <div className={`md:col-span-2 ${isRegistrationClosed ? "opacity-50" : ""}`}>
+              <div className="flex items-start">
+                <input
+                  id="terms"
+                  type="checkbox"
+                  name="agreeToTerms"
+                  checked={formData.agreeToTerms}
+                  onChange={handleChange}
+                  disabled={isRegistrationClosed}
+                  className="mt-1 mr-2"
+                />
+                <label htmlFor="terms" className={isRegistrationClosed ? "text-gray-500" : "text-gray-700"}>
+                  I agree to the terms and conditions, and understand that the OC membership fee is non-refundable.
+                </label>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Submit Button */}
-        <div className="text-center">
-          <motion.button
-            className={`${isRegistrationClosed ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 hover:scale-105"
-              } 
+          {/* Submit Button */}
+          <div className="text-center">
+            <motion.button
+              className={`${isRegistrationClosed ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 hover:scale-105"
+                } 
               text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300`}
-            type="submit"
-            disabled={isRegistrationClosed || loading}
-            whileHover={!isRegistrationClosed ? { scale: 1.05 } : {}}
-            whileTap={!isRegistrationClosed ? { scale: 0.95 } : {}}
-          >
-            {loading ? "Submitting..." : isRegistrationClosed ? "Registration Closed" : "Submit Registration"}
-          </motion.button>
-        </div>
-      </motion.form>
+              type="submit"
+              disabled={isRegistrationClosed || loading}
+              whileHover={!isRegistrationClosed ? { scale: 1.05 } : {}}
+              whileTap={!isRegistrationClosed ? { scale: 0.95 } : {}}
+            >
+              {loading ? "Submitting..." : isRegistrationClosed ? "Registration Closed" : "Submit Registration"}
+            </motion.button>
+          </div>
+        </motion.form>
+      </fieldset>
 
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} message={modalMessage} isError={isError} />
     </div>
