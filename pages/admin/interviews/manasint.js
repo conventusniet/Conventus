@@ -389,37 +389,38 @@ export default function AdminDashboard() {
       <header className="bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md sticky top-0 z-10">
         <div className="px-4 py-3">
           <div className="flex items-center justify-between">
-            {viewMode === "detail" ? (
-              <button onClick={goBackToList} className="flex items-center text-white">
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                <span className="font-medium">Back</span>
-              </button>
-            ) : (
-              <button
-                onClick={() => setShowMenu(!showMenu)}
-                className="p-2 rounded-full hover:bg-red-500 transition-colors"
-              >
-                {/* <Menu className="h-5 w-5" /> */}
-              </button>
-            )}
+            {(() => {
+              if (viewMode === "detail") {
+                return (
+                  <button onClick={goBackToList} className="flex items-center text-white">
+                    <ArrowLeft className="h-7 w-7" />
+                    
+                  </button>
+                )
+              }
+            })()}
 
-            <h1 className="text-xl font-bold">
+
+            <h1 className="text-xl font-bold justify-center flex-1 text-center">
               {viewMode === "detail" ? selectedInterview?.candidate_name || "Interview Details" : "Interview Admin"}
             </h1>
 
-            {viewMode === "list" ? (
-              <button
-                onClick={() => fetchInterviews()}
-                className="p-2 rounded-full hover:bg-red-500 transition-colors"
-                aria-label="Refresh"
-              >
-                <RefreshCw className="h-5 w-5" />
-              </button>
-            ) : (
-              <button className="p-2 rounded-full hover:bg-red-500 transition-colors" aria-label="More options">
-                {/* <MoreVertical className="h-5 w-5" /> */}
-              </button>
-            )}
+            {(() => {
+              if (viewMode === "list") {
+                return (
+                  <button
+                    onClick={() => fetchInterviews()}
+                    className="p-2 rounded-full hover:bg-red-500 transition-colors"
+                    aria-label="Refresh"
+                  >
+                    <RefreshCw className="h-5 w-5" />
+                  </button>
+                );
+              }
+            })()}
+
+
+
           </div>
 
           {/* Search bar - only in list view */}
@@ -445,519 +446,527 @@ export default function AdminDashboard() {
           )}
         </div>
 
-     
-        
+
+
 
         {/* Filter bar - only in list view */}
-        {viewMode === "list" && (
-          <div className="px-4 py-2 bg-red-800 flex items-center justify-between">
-            <button onClick={() => setShowFilters(!showFilters)} className="flex items-center text-white text-sm">
-              <Filter className="h-4 w-4 mr-1" />
-              <span>Filter & Sort</span>
-              {showFilters ? <ChevronUp className="h-4 w-4 ml-1" /> : <ChevronDown className="h-4 w-4 ml-1" />}
-            </button>
+        {
+          viewMode === "list" && (
+            <div className="px-4 py-2 bg-red-800 flex items-center justify-between">
+              <button onClick={() => setShowFilters(!showFilters)} className="flex items-center text-white text-sm">
+                <Filter className="h-4 w-4 mr-1" />
+                <span>Filter & Sort</span>
+                {showFilters ? <ChevronUp className="h-4 w-4 ml-1" /> : <ChevronDown className="h-4 w-4 ml-1" />}
+              </button>
 
-            <div className="text-white text-sm">
-              {filteredInterviews.length} {filteredInterviews.length === 1 ? "interview" : "interviews"}
+              <div className="text-white text-sm">
+                {filteredInterviews.length} {filteredInterviews.length === 1 ? "interview" : "interviews"}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
 
         {/* Expanded filter options */}
-        {viewMode === "list" && showFilters && (
-          <div className="px-4 py-3 bg-red-50 border-b border-red-200">
-            <div className="text-sm font-medium text-red-800 mb-2">Sort by:</div>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => handleSort("started_at")}
-                className={`px-3 py-1 rounded-full text-xs flex items-center ${
-                  sortConfig.key === "started_at"
+        {
+          viewMode === "list" && showFilters && (
+            <div className="px-4 py-3 bg-red-50 border-b border-red-200">
+              <div className="text-sm font-medium text-red-800 mb-2">Sort by:</div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => handleSort("started_at")}
+                  className={`px-3 py-1 rounded-full text-xs flex items-center ${sortConfig.key === "started_at"
                     ? "bg-red-600 text-white"
                     : "bg-white text-gray-700 border border-gray-300"
-                }`}
-              >
-                Date
-                {sortConfig.key === "started_at" &&
-                  (sortConfig.direction === "asc" ? (
-                    <ChevronUp className="ml-1 h-3 w-3" />
-                  ) : (
-                    <ChevronDown className="ml-1 h-3 w-3" />
-                  ))}
-              </button>
-              <button
-                onClick={() => handleSort("candidate_name")}
-                className={`px-3 py-1 rounded-full text-xs flex items-center ${
-                  sortConfig.key === "candidate_name"
+                    }`}
+                >
+                  Date
+                  {sortConfig.key === "started_at" &&
+                    (sortConfig.direction === "asc" ? (
+                      <ChevronUp className="ml-1 h-3 w-3" />
+                    ) : (
+                      <ChevronDown className="ml-1 h-3 w-3" />
+                    ))}
+                </button>
+                <button
+                  onClick={() => handleSort("candidate_name")}
+                  className={`px-3 py-1 rounded-full text-xs flex items-center ${sortConfig.key === "candidate_name"
                     ? "bg-red-600 text-white"
                     : "bg-white text-gray-700 border border-gray-300"
-                }`}
-              >
-                Name
-                {sortConfig.key === "candidate_name" &&
-                  (sortConfig.direction === "asc" ? (
-                    <ChevronUp className="ml-1 h-3 w-3" />
-                  ) : (
-                    <ChevronDown className="ml-1 h-3 w-3" />
-                  ))}
-              </button>
-              <button
-                onClick={() => handleSort("responses")}
-                className={`px-3 py-1 rounded-full text-xs flex items-center ${
-                  sortConfig.key === "responses"
+                    }`}
+                >
+                  Name
+                  {sortConfig.key === "candidate_name" &&
+                    (sortConfig.direction === "asc" ? (
+                      <ChevronUp className="ml-1 h-3 w-3" />
+                    ) : (
+                      <ChevronDown className="ml-1 h-3 w-3" />
+                    ))}
+                </button>
+                <button
+                  onClick={() => handleSort("responses")}
+                  className={`px-3 py-1 rounded-full text-xs flex items-center ${sortConfig.key === "responses"
                     ? "bg-red-600 text-white"
                     : "bg-white text-gray-700 border border-gray-300"
-                }`}
-              >
-                Responses
-                {sortConfig.key === "responses" &&
-                  (sortConfig.direction === "asc" ? (
-                    <ChevronUp className="ml-1 h-3 w-3" />
-                  ) : (
-                    <ChevronDown className="ml-1 h-3 w-3" />
-                  ))}
-              </button>
+                    }`}
+                >
+                  Responses
+                  {sortConfig.key === "responses" &&
+                    (sortConfig.direction === "asc" ? (
+                      <ChevronUp className="ml-1 h-3 w-3" />
+                    ) : (
+                      <ChevronDown className="ml-1 h-3 w-3" />
+                    ))}
+                </button>
+              </div>
             </div>
-          </div>
-        )}
-      </header>
+          )
+        }
+      </header >
 
       {/* Main Content */}
-      <main className="flex-1 px-4 py-4">
+      < main className="flex-1 px-4 py-4" >
         {/* Error Message */}
-        {error && (
-          <div className="bg-red-50 border-l-4 border-red-600 p-3 mb-4 rounded-r-lg shadow-sm flex justify-between items-center">
-            <div className="flex items-center">
-              <AlertCircle className="w-5 h-5 text-red-600 mr-2 flex-shrink-0" />
-              <p className="text-red-800 text-sm">{error}</p>
+        {
+          error && (
+            <div className="bg-red-50 border-l-4 border-red-600 p-3 mb-4 rounded-r-lg shadow-sm flex justify-between items-center">
+              <div className="flex items-center">
+                <AlertCircle className="w-5 h-5 text-red-600 mr-2 flex-shrink-0" />
+                <p className="text-red-800 text-sm">{error}</p>
+              </div>
+              <button onClick={() => setError("")} className="text-red-600 hover:text-red-800">
+                <X className="w-4 h-4" />
+              </button>
             </div>
-            <button onClick={() => setError("")} className="text-red-600 hover:text-red-800">
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        )}
+          )
+        }
 
         {/* Loading State */}
-        {loading && (
-          <div className="flex flex-col items-center justify-center py-12">
-            <div className="w-12 h-12 border-3 border-red-600 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="text-gray-600">Loading data...</p>
-          </div>
-        )}
+        {
+          loading && (
+            <div className="flex flex-col items-center justify-center py-12">
+              <div className="w-12 h-12 border-3 border-red-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p className="text-gray-600">Loading data...</p>
+            </div>
+          )
+        }
 
         {/* List View */}
-        {!loading && viewMode === "list" && (
-          <>
-            {/* No Results */}
-            {filteredInterviews.length === 0 && (
-              <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-                <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                  <Search className="h-8 w-8 text-gray-400" />
-                </div>
-                <h3 className="text-lg font-medium text-gray-800 mb-1">No interviews found</h3>
-                <p className="text-gray-600 text-sm">
-                  {searchTerm ? "Try adjusting your search terms" : "No interviews have been recorded yet"}
-                </p>
-              </div>
-            )}
-
-            {/* Interviews List */}
-            {filteredInterviews.length > 0 && (
-              <div className="space-y-3">
-                {filteredInterviews.map((interview) => (
-                  <div
-                    key={interview.id}
-                    className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200"
-                  >
-                    <div
-                      className="p-4 cursor-pointer active:bg-gray-50"
-                      onClick={() => viewInterviewDetails(interview)}
-                    >
-                      <div className="flex items-start">
-                        <div className="bg-red-100 text-red-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-3">
-                          <User className="h-5 w-5" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-gray-800 truncate">{interview.candidate_name}</h3>
-                          <div className="flex flex-col text-xs text-gray-500 mt-1">
-                            <span className="flex items-center">
-                              <Mail className="h-3 w-3 mr-1 flex-shrink-0" />
-                              <span className="truncate">{interview.candidate_email}</span>
-                            </span>
-                            <span className="flex items-center mt-1">
-                              <Calendar className="h-3 w-3 mr-1 flex-shrink-0" />
-                              {formatDate(interview.started_at)}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="ml-2 flex flex-col items-end">
-                          <span
-                            className={`px-2 py-1 rounded-full text-xs font-medium ${
-                              interview.responses.length > 0
-                                ? "bg-green-100 text-green-800"
-                                : "bg-yellow-100 text-yellow-800"
-                            }`}
-                          >
-                            {interview.responses.length > 0 ? "Completed" : "Incomplete"}
-                          </span>
-                          <span className="text-xs text-gray-500 mt-1">
-                            {interview.responses.length} {interview.responses.length === 1 ? "response" : "responses"}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+        {
+          !loading && viewMode === "list" && (
+            <>
+              {/* No Results */}
+              {filteredInterviews.length === 0 && (
+                <div className="bg-white rounded-xl shadow-sm p-8 text-center">
+                  <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                    <Search className="h-8 w-8 text-gray-400" />
                   </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
-
-        {/* Detail View */}
-        {!loading && viewMode === "detail" && selectedInterview && (
-          <div className="space-y-4">
-            {/* Candidate Info Card */}
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
-              <div className="p-4">
-                <div className="flex justify-between items-start">
-                  <div className="flex items-center">
-                    <div className="bg-red-100 text-red-600 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 mr-3">
-                      <User className="h-6 w-6" />
-                    </div>
-                    {editMode === `interview-${selectedInterview.id}` ? (
-                      <div className="space-y-2">
-                        <input
-                          type="text"
-                          value={editData.candidate_name}
-                          onChange={(e) => setEditData({ ...editData, candidate_name: e.target.value })}
-                          className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                          placeholder="Candidate Name"
-                        />
-                        <input
-                          type="email"
-                          value={editData.candidate_email}
-                          onChange={(e) => setEditData({ ...editData, candidate_email: e.target.value })}
-                          className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                          placeholder="Email Address"
-                        />
-                        <div className="flex space-x-2 mt-2">
-                          <button
-                            onClick={() => handleUpdateInterview(selectedInterview.id)}
-                            className="bg-green-600 text-white px-3 py-1 rounded-md flex items-center text-sm"
-                          >
-                            <Check className="h-4 w-4 mr-1" />
-                            Save
-                          </button>
-                          <button
-                            onClick={cancelEdit}
-                            className="bg-gray-600 text-white px-3 py-1 rounded-md flex items-center text-sm"
-                          >
-                            <X className="h-4 w-4 mr-1" />
-                            Cancel
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div>
-                        <h2 className="font-bold text-lg text-gray-800">{selectedInterview.candidate_name}</h2>
-                        <div className="text-sm text-gray-600 mt-1">
-                          <div className="flex items-center">
-                            <Mail className="h-4 w-4 mr-1" />
-                            {selectedInterview.candidate_email}
-                          </div>
-                          <div className="flex items-center mt-1">
-                            <Calendar className="h-4 w-4 mr-1" />
-                            {formatDate(selectedInterview.started_at)}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {!editMode && (
-                    <div className="flex space-x-1">
-                      <button
-                        onClick={() => startEditInterview(selectedInterview)}
-                        className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
-                        title="Edit Interview"
-                      >
-                        <Edit className="h-4 w-4" />
-                      </button>
-                      <button
-                        onClick={() => setDeleteConfirm(`interview-${selectedInterview.id}`)}
-                        className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
-                        title="Delete Interview"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                {/* Delete Confirmation */}
-                {deleteConfirm === `interview-${selectedInterview.id}` && (
-                  <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-red-800 font-medium mb-3 text-sm">
-                      Are you sure you want to delete this interview? This action cannot be undone.
-                    </p>
-                    <div className="flex space-x-3">
-                      <button
-                        onClick={() => handleDeleteInterview(selectedInterview.id)}
-                        className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors text-sm"
-                      >
-                        Yes, Delete
-                      </button>
-                      <button
-                        onClick={() => setDeleteConfirm(null)}
-                        className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors text-sm"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Responses Section */}
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
-              <button
-                onClick={() => toggleExpandSection("responses")}
-                className="flex items-center justify-between w-full p-4 hover:bg-gray-50 transition-colors border-b border-gray-200"
-              >
-                <div className="flex items-center">
-                  <MessageSquare className="h-5 w-5 mr-2 text-red-600" />
-                  <span className="font-medium">Responses ({selectedInterview.responses.length})</span>
-                </div>
-                {expandedSection.responses ? (
-                  <ChevronUp className="h-4 w-4 text-gray-500" />
-                ) : (
-                  <ChevronDown className="h-4 w-4 text-gray-500" />
-                )}
-              </button>
-
-              {expandedSection.responses && (
-                <div className="p-4 space-y-4 max-h-[60vh] overflow-y-auto">
-                  {selectedInterview.responses.length === 0 ? (
-                    <div className="text-center py-8">
-                      <Info className="h-10 w-10 text-gray-300 mx-auto mb-2" />
-                      <p className="text-gray-500 text-sm">No responses recorded</p>
-                    </div>
-                  ) : (
-                    selectedInterview.responses.map((response) => (
-                      <div
-                        key={response.id}
-                        className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow"
-                      >
-                        <div className="flex justify-between items-start mb-3">
-                          <h4 className="font-medium text-gray-800 text-sm">{getQuestionText(response.question)}</h4>
-                          <div className="flex space-x-1">
-                            <button
-                              onClick={() => startEditResponse(response)}
-                              className="p-1 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
-                              title="Edit Response"
-                            >
-                              <Edit className="h-4 w-4" />
-                            </button>
-                            <button
-                              onClick={() => setDeleteConfirm(`response-${response.id}`)}
-                              className="p-1 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
-                              title="Delete Response"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </button>
-                          </div>
-                        </div>
-
-                        {editMode === `response-${response.id}` ? (
-                          <div className="space-y-2">
-                            <textarea
-                              value={editData.transcript}
-                              onChange={(e) => setEditData({ ...editData, transcript: e.target.value })}
-                              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500 min-h-[100px]"
-                              placeholder="Response transcript"
-                            />
-                            <div className="flex space-x-2">
-                              <button
-                                onClick={() => handleUpdateResponse(selectedInterview.id, response.id)}
-                                className="bg-green-600 text-white px-3 py-1 rounded-md flex items-center text-sm"
-                              >
-                                <Check className="h-4 w-4 mr-1" />
-                                Save
-                              </button>
-                              <button
-                                onClick={cancelEdit}
-                                className="bg-gray-600 text-white px-3 py-1 rounded-md flex items-center text-sm"
-                              >
-                                <X className="h-4 w-4 mr-1" />
-                                Cancel
-                              </button>
-                            </div>
-                          </div>
-                        ) : (
-                          <>
-                            <div className="bg-gray-50 p-3 rounded-md mb-3">
-                              <p className="text-gray-700 whitespace-pre-wrap text-sm">{response.transcript}</p>
-                            </div>
-
-                            <div className="flex flex-wrap items-center justify-between text-xs">
-                              <span className="text-gray-500 flex items-center">
-                                <Calendar className="h-3 w-3 mr-1" />
-                                {formatDate(response.answered_at)}
-                              </span>
-
-                              {response.audio && (
-                                <a
-                                  href={response.audio}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex items-center text-red-600 hover:text-red-800 mt-2 sm:mt-0 bg-red-50 px-2 py-1 rounded-md"
-                                >
-                                  <Mic className="h-3 w-3 mr-1" />
-                                  Listen to Audio
-                                </a>
-                              )}
-                            </div>
-
-                            {/* Delete Confirmation */}
-                            {deleteConfirm === `response-${response.id}` && (
-                              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                                <p className="text-red-800 font-medium mb-3 text-sm">
-                                  Are you sure you want to delete this response?
-                                </p>
-                                <div className="flex space-x-3">
-                                  <button
-                                    onClick={() => handleDeleteResponse(selectedInterview.id, response.id)}
-                                    className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors text-sm"
-                                  >
-                                    Yes, Delete
-                                  </button>
-                                  <button
-                                    onClick={() => setDeleteConfirm(null)}
-                                    className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors text-sm"
-                                  >
-                                    Cancel
-                                  </button>
-                                </div>
-                              </div>
-                            )}
-                          </>
-                        )}
-                      </div>
-                    ))
-                  )}
+                  <h3 className="text-lg font-medium text-gray-800 mb-1">No interviews found</h3>
+                  <p className="text-gray-600 text-sm">
+                    {searchTerm ? "Try adjusting your search terms" : "No interviews have been recorded yet"}
+                  </p>
                 </div>
               )}
-            </div>
 
-            {/* Profile Section */}
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
-              <button
-                onClick={() => toggleExpandSection("profile")}
-                className="flex items-center justify-between w-full p-4 hover:bg-gray-50 transition-colors border-b border-gray-200"
-              >
-                <div className="flex items-center">
-                  <User className="h-5 w-5 mr-2 text-red-600" />
-                  <span className="font-medium">Candidate Profile</span>
-                </div>
-                {expandedSection.profile ? (
-                  <ChevronUp className="h-4 w-4 text-gray-500" />
-                ) : (
-                  <ChevronDown className="h-4 w-4 text-gray-500" />
-                )}
-              </button>
-
-              {expandedSection.profile && (
-                <div className="p-4">
-                  {!selectedInterview.profile ? (
-                    <div className="text-center py-8">
-                      <Info className="h-10 w-10 text-gray-300 mx-auto mb-2" />
-                      <p className="text-gray-500 text-sm">No profile information available</p>
-                    </div>
-                  ) : (
-                    <div className="space-y-6">
-                      {/* Project Links */}
-                      <div>
-                        <h4 className="font-medium text-gray-800 mb-3 flex items-center border-b border-gray-200 pb-2 text-sm">
-                          <LinkIcon className="h-4 w-4 mr-2 text-red-600" />
-                          Project Links
-                        </h4>
-                        {!selectedInterview.profile.project_links ? (
-                          <p className="text-gray-500 italic text-sm">No project links provided</p>
-                        ) : (
-                          <div className="space-y-2">
-                            {parseProjectLinks(selectedInterview.profile.project_links).map((link, index) => (
-                              <div
-                                key={index}
-                                className="flex items-center bg-gray-50 p-2 rounded-md hover:bg-gray-100 transition-colors"
-                              >
-                                <a
-                                  href={link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-red-600 hover:text-red-800 hover:underline flex items-center text-sm"
-                                >
-                                  <ExternalLink className="h-4 w-4 mr-2 flex-shrink-0" />
-                                  <span className="break-all">{link}</span>
-                                </a>
-                              </div>
-                            ))}
+              {/* Interviews List */}
+              {filteredInterviews.length > 0 && (
+                <div className="space-y-3">
+                  {filteredInterviews.map((interview) => (
+                    <div
+                      key={interview.id}
+                      className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200"
+                    >
+                      <div
+                        className="p-4 cursor-pointer active:bg-gray-50"
+                        onClick={() => viewInterviewDetails(interview)}
+                      >
+                        <div className="flex items-start">
+                          <div className="bg-red-100 text-red-600 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-3">
+                            <User className="h-5 w-5" />
                           </div>
-                        )}
-                      </div>
-
-                      {/* Resume */}
-                      <div>
-                        <h4 className="font-medium text-gray-800 mb-3 flex items-center border-b border-gray-200 pb-2 text-sm">
-                          <FileText className="h-4 w-4 mr-2 text-red-600" />
-                          Resume
-                        </h4>
-                        {!selectedInterview.profile.resume ? (
-                          <p className="text-gray-500 italic text-sm">No resume uploaded</p>
-                        ) : (
-                          <div className="flex items-center">
-                            <a
-                              href={selectedInterview.profile.resume}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg flex items-center transition-colors text-sm"
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-bold text-gray-800 truncate">{interview.candidate_name}</h3>
+                            <div className="flex flex-col text-xs text-gray-500 mt-1">
+                              <span className="flex items-center">
+                                <Mail className="h-3 w-3 mr-1 flex-shrink-0" />
+                                <span className="truncate">{interview.candidate_email}</span>
+                              </span>
+                              <span className="flex items-center mt-1">
+                                <Calendar className="h-3 w-3 mr-1 flex-shrink-0" />
+                                {formatDate(interview.started_at)}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="ml-2 flex flex-col items-end">
+                            <span
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${interview.responses.length > 0
+                                ? "bg-green-100 text-green-800"
+                                : "bg-yellow-100 text-yellow-800"
+                                }`}
                             >
-                              <Download className="h-4 w-4 mr-2" />
-                              Download Resume
-                            </a>
+                              {interview.responses.length > 0 ? "Completed" : "Incomplete"}
+                            </span>
+                            <span className="text-xs text-gray-500 mt-1">
+                              {interview.responses.length} {interview.responses.length === 1 ? "response" : "responses"}
+                            </span>
                           </div>
-                        )}
+                        </div>
                       </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )
+        }
 
-                      {/* Profile Image */}
-                      {selectedInterview.profile.profile_image && (
+        {/* Detail View */}
+        {
+          !loading && viewMode === "detail" && selectedInterview && (
+            <div className="space-y-4">
+              {/* Candidate Info Card */}
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+                <div className="p-4">
+                  <div className="flex justify-between items-start">
+                    <div className="flex items-center">
+                      <div className="bg-red-100 text-red-600 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 mr-3">
+                        <User className="h-6 w-6" />
+                      </div>
+                      {editMode === `interview-${selectedInterview.id}` ? (
+                        <div className="space-y-2">
+                          <input
+                            type="text"
+                            value={editData.candidate_name}
+                            onChange={(e) => setEditData({ ...editData, candidate_name: e.target.value })}
+                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                            placeholder="Candidate Name"
+                          />
+                          <input
+                            type="email"
+                            value={editData.candidate_email}
+                            onChange={(e) => setEditData({ ...editData, candidate_email: e.target.value })}
+                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                            placeholder="Email Address"
+                          />
+                          <div className="flex space-x-2 mt-2">
+                            <button
+                              onClick={() => handleUpdateInterview(selectedInterview.id)}
+                              className="bg-green-600 text-white px-3 py-1 rounded-md flex items-center text-sm"
+                            >
+                              <Check className="h-4 w-4 mr-1" />
+                              Save
+                            </button>
+                            <button
+                              onClick={cancelEdit}
+                              className="bg-gray-600 text-white px-3 py-1 rounded-md flex items-center text-sm"
+                            >
+                              <X className="h-4 w-4 mr-1" />
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
                         <div>
-                          <h4 className="font-medium text-gray-800 mb-3 flex items-center border-b border-gray-200 pb-2 text-sm">
-                            <User className="h-4 w-4 mr-2 text-red-600" />
-                            Profile Image
-                          </h4>
-                          <div className="flex justify-center">
-                            <img
-                              src={selectedInterview.profile.profile_image || "/placeholder.svg"}
-                              alt={`${selectedInterview.candidate_name}'s profile`}
-                              className="max-w-full h-auto rounded-lg border border-gray-200 shadow-sm"
-                            />
+                          <h2 className="font-bold text-lg text-gray-800">{selectedInterview.candidate_name}</h2>
+                          <div className="text-sm text-gray-600 mt-1">
+                            <div className="flex items-center">
+                              <Mail className="h-4 w-4 mr-1" />
+                              {selectedInterview.candidate_email}
+                            </div>
+                            <div className="flex items-center mt-1">
+                              <Calendar className="h-4 w-4 mr-1" />
+                              {formatDate(selectedInterview.started_at)}
+                            </div>
                           </div>
                         </div>
                       )}
                     </div>
+
+                    {!editMode && (
+                      <div className="flex space-x-1">
+                        <button
+                          onClick={() => startEditInterview(selectedInterview)}
+                          className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
+                          title="Edit Interview"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </button>
+                        <button
+                          onClick={() => setDeleteConfirm(`interview-${selectedInterview.id}`)}
+                          className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
+                          title="Delete Interview"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Delete Confirmation */}
+                  {deleteConfirm === `interview-${selectedInterview.id}` && (
+                    <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-red-800 font-medium mb-3 text-sm">
+                        Are you sure you want to delete this interview? This action cannot be undone.
+                      </p>
+                      <div className="flex space-x-3">
+                        <button
+                          onClick={() => handleDeleteInterview(selectedInterview.id)}
+                          className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors text-sm"
+                        >
+                          Yes, Delete
+                        </button>
+                        <button
+                          onClick={() => setDeleteConfirm(null)}
+                          className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors text-sm"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
                   )}
                 </div>
-              )}
+              </div>
+
+              {/* Responses Section */}
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+                <button
+                  onClick={() => toggleExpandSection("responses")}
+                  className="flex items-center justify-between w-full p-4 hover:bg-gray-50 transition-colors border-b border-gray-200"
+                >
+                  <div className="flex items-center">
+                    <MessageSquare className="h-5 w-5 mr-2 text-red-600" />
+                    <span className="font-medium">Responses ({selectedInterview.responses.length})</span>
+                  </div>
+                  {expandedSection.responses ? (
+                    <ChevronUp className="h-4 w-4 text-gray-500" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4 text-gray-500" />
+                  )}
+                </button>
+
+                {expandedSection.responses && (
+                  <div className="p-4 space-y-4 max-h-[60vh] overflow-y-auto">
+                    {selectedInterview.responses.length === 0 ? (
+                      <div className="text-center py-8">
+                        <Info className="h-10 w-10 text-gray-300 mx-auto mb-2" />
+                        <p className="text-gray-500 text-sm">No responses recorded</p>
+                      </div>
+                    ) : (
+                      selectedInterview.responses.map((response) => (
+                        <div
+                          key={response.id}
+                          className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow"
+                        >
+                          <div className="flex justify-between items-start mb-3">
+                            <h4 className="font-medium text-gray-800 text-sm">{getQuestionText(response.question)}</h4>
+                            <div className="flex space-x-1">
+                              <button
+                                onClick={() => startEditResponse(response)}
+                                className="p-1 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
+                                title="Edit Response"
+                              >
+                                <Edit className="h-4 w-4" />
+                              </button>
+                              <button
+                                onClick={() => setDeleteConfirm(`response-${response.id}`)}
+                                className="p-1 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
+                                title="Delete Response"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </button>
+                            </div>
+                          </div>
+
+                          {editMode === `response-${response.id}` ? (
+                            <div className="space-y-2">
+                              <textarea
+                                value={editData.transcript}
+                                onChange={(e) => setEditData({ ...editData, transcript: e.target.value })}
+                                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500 min-h-[100px]"
+                                placeholder="Response transcript"
+                              />
+                              <div className="flex space-x-2">
+                                <button
+                                  onClick={() => handleUpdateResponse(selectedInterview.id, response.id)}
+                                  className="bg-green-600 text-white px-3 py-1 rounded-md flex items-center text-sm"
+                                >
+                                  <Check className="h-4 w-4 mr-1" />
+                                  Save
+                                </button>
+                                <button
+                                  onClick={cancelEdit}
+                                  className="bg-gray-600 text-white px-3 py-1 rounded-md flex items-center text-sm"
+                                >
+                                  <X className="h-4 w-4 mr-1" />
+                                  Cancel
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <>
+                              <div className="bg-gray-50 p-3 rounded-md mb-3">
+                                <p className="text-gray-700 whitespace-pre-wrap text-sm">{response.transcript}</p>
+                              </div>
+
+                              <div className="flex flex-wrap items-center justify-between text-xs">
+                                <span className="text-gray-500 flex items-center">
+                                  <Calendar className="h-3 w-3 mr-1" />
+                                  {formatDate(response.answered_at)}
+                                </span>
+
+                                {response.audio && (
+                                  <a
+                                    href={response.audio}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center text-red-600 hover:text-red-800 mt-2 sm:mt-0 bg-red-50 px-2 py-1 rounded-md"
+                                  >
+                                    <Mic className="h-3 w-3 mr-1" />
+                                    Listen to Audio
+                                  </a>
+                                )}
+                              </div>
+
+                              {/* Delete Confirmation */}
+                              {deleteConfirm === `response-${response.id}` && (
+                                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                                  <p className="text-red-800 font-medium mb-3 text-sm">
+                                    Are you sure you want to delete this response?
+                                  </p>
+                                  <div className="flex space-x-3">
+                                    <button
+                                      onClick={() => handleDeleteResponse(selectedInterview.id, response.id)}
+                                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors text-sm"
+                                    >
+                                      Yes, Delete
+                                    </button>
+                                    <button
+                                      onClick={() => setDeleteConfirm(null)}
+                                      className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors text-sm"
+                                    >
+                                      Cancel
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Profile Section */}
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+                <button
+                  onClick={() => toggleExpandSection("profile")}
+                  className="flex items-center justify-between w-full p-4 hover:bg-gray-50 transition-colors border-b border-gray-200"
+                >
+                  <div className="flex items-center">
+                    <User className="h-5 w-5 mr-2 text-red-600" />
+                    <span className="font-medium">Candidate Profile</span>
+                  </div>
+                  {expandedSection.profile ? (
+                    <ChevronUp className="h-4 w-4 text-gray-500" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4 text-gray-500" />
+                  )}
+                </button>
+
+                {expandedSection.profile && (
+                  <div className="p-4">
+                    {!selectedInterview.profile ? (
+                      <div className="text-center py-8">
+                        <Info className="h-10 w-10 text-gray-300 mx-auto mb-2" />
+                        <p className="text-gray-500 text-sm">No profile information available</p>
+                      </div>
+                    ) : (
+                      <div className="space-y-6">
+                        {/* Project Links */}
+                        <div>
+                          <h4 className="font-medium text-gray-800 mb-3 flex items-center border-b border-gray-200 pb-2 text-sm">
+                            <LinkIcon className="h-4 w-4 mr-2 text-red-600" />
+                            Project Links
+                          </h4>
+                          {!selectedInterview.profile.project_links ? (
+                            <p className="text-gray-500 italic text-sm">No project links provided</p>
+                          ) : (
+                            <div className="space-y-2">
+                              {parseProjectLinks(selectedInterview.profile.project_links).map((link, index) => (
+                                <div
+                                  key={index}
+                                  className="flex items-center bg-gray-50 p-2 rounded-md hover:bg-gray-100 transition-colors"
+                                >
+                                  <a
+                                    href={link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-red-600 hover:text-red-800 hover:underline flex items-center text-sm"
+                                  >
+                                    <ExternalLink className="h-4 w-4 mr-2 flex-shrink-0" />
+                                    <span className="break-all">{link}</span>
+                                  </a>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Resume */}
+                        <div>
+                          <h4 className="font-medium text-gray-800 mb-3 flex items-center border-b border-gray-200 pb-2 text-sm">
+                            <FileText className="h-4 w-4 mr-2 text-red-600" />
+                            Resume
+                          </h4>
+                          {!selectedInterview.profile.resume ? (
+                            <p className="text-gray-500 italic text-sm">No resume uploaded</p>
+                          ) : (
+                            <div className="flex items-center">
+                              <a
+                                href={selectedInterview.profile.resume}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg flex items-center transition-colors text-sm"
+                              >
+                                <Download className="h-4 w-4 mr-2" />
+                                Download Resume
+                              </a>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Profile Image */}
+                        {selectedInterview.profile.profile_image && (
+                          <div>
+                            <h4 className="font-medium text-gray-800 mb-3 flex items-center border-b border-gray-200 pb-2 text-sm">
+                              <User className="h-4 w-4 mr-2 text-red-600" />
+                              Profile Image
+                            </h4>
+                            <div className="flex justify-center">
+                              <img
+                                src={selectedInterview.profile.profile_image || "/placeholder.svg"}
+                                alt={`${selectedInterview.candidate_name}'s profile`}
+                                className="max-w-full h-auto rounded-lg border border-gray-200 shadow-sm"
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        )}
-      </main>
+          )
+        }
+      </main >
 
-   
-      
 
-     
-     
-    </div>
+
+
+
+
+    </div >
   )
 }
