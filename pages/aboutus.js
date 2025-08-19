@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Menu, ChevronDown, ChevronRight, ChevronLeft } from 'lucide-react';
-import Aboutpara from '@/components/aboutpara'
+import AboutPara from '@/components/aboutpara'
 import { TestimonialOne } from '@/components/testmono'
 import Header from '@/components/Header';
 import Oheader from '../components/OHeader';
@@ -244,7 +244,7 @@ export default function AboutPageOne() {
                         </div>
                     </div>
                 </div>
-                <Aboutpara />
+                <AboutPara />
                 <JoinSection />
                 <ConventusChatbot />
             </div>
