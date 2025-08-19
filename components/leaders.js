@@ -81,6 +81,19 @@ const leaders = [
             whatsapp: "https://wa.me/+919870525753",
         },
     },
+
+    {
+        name: "Sarvesh Mishra",
+        role: "Technical Co-Head",
+        imageUrl: "/images/Sarvesh_Mishra.webp",
+        branch: "CSE",
+        socialLinks: {
+            linkedin: "https://linkedin.com/in/sarveshji",
+            github: "https://github.com/SarveshCS",
+            instagram: "https://www.instagram.com/sarveshmishra.py",
+            whatsapp: "https://wa.me/+919547282935",
+        },
+    },
 ]
 
 const LeadershipPage = () => (
@@ -107,7 +120,7 @@ const LeadershipPage = () => (
                     all technical aspects of our events.
                 </motion.p>
 
-                <div className="flex flex-wrap justify-center gap-24">
+                <div className="flex flex-wrap justify-center gap-24 lg:gap-16 md:gap-24">
                     {leaders.map((leader, index) => (
                         <LeadershipCard key={leader.name} {...leader} />
                     ))}

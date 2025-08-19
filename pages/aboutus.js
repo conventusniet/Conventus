@@ -181,24 +181,25 @@ export default function AboutPageOne() {
 
     const leaders = [
         {
-            name: "Manas Gupta",
-            position: "President",
-            image: "/images/up1.jpeg",
-            info: "Manas Gupta is a visionary leader whose passion for innovation and community building has been the driving force behind Conventus's success. With a background in technology and a keen understanding of student needs, Manas has revolutionized the way Conventus operates and engages with its members. His strategic mindset has led to the implementation of several successful initiatives that have significantly increased student participation and community impact. Manas is known for his inclusive leadership style, always encouraging diverse perspectives and fostering a culture of collaboration. Under his guidance, Conventus has expanded its reach and formed valuable partnerships with industry leaders, enhancing opportunities for all members."
-        },
-        {
-            name: "Pragya Singh",
-            position: "Vice President",
-            image: "/images/uvp1.jpeg",
-            info: "As Vice President of Conventus MUN Club, I am committed to fostering an environment where students can explore global issues, enhance their diplomatic skills, and develop into confident leaders. My role involves ensuring that every event and initiative aligns with our mission to inspire meaningful dialogue and promote global understanding. I am passionate about providing opportunities for members to grow, both personally and intellectually, as they engage in the world of international relations and diplomacy. Together, we strive to create lasting impact through thoughtful debate and collaborative solutions. Passionate about creating platforms where dialogue inspires change and diplomacy meets action. Dedicated to empowering students to think globally and lead with purpose"
-        },
-        {
             name: "Yashraj Ranjan",
-            position: "Vice President",
+            position: "President",
             image: "/images/uvp2.jpeg",
-            info: "Yashraj Ranjan is the operational backbone of Conventus, excelling in logistics and process optimization. His meticulous attention to detail and exceptional problem-solving skills have transformed Conventus's internal operations, making them more efficient and effective. Yashraj has implemented several technological solutions that have streamlined membership management, event planning, and communication processes. His forward-thinking approach has not only improved the day-to-day running of Conventus but has also enhanced the overall member experience. Yashraj is known for his ability to handle complex challenges with ease and for his commitment to continuous improvement. His efforts have significantly contributed to Conventus's growth and its ability to serve an ever-expanding membership base."
+            info: "As President of Conventus MUN Club, Yashraj Ranjan leads with vision and dedication, ensuring the club thrives as a hub for diplomacy, debate, and leadership. He is committed to creating meaningful opportunities for members to explore international relations, sharpen their critical thinking, and develop as future leaders. With his inclusive leadership style, Yashraj fosters collaboration and empowers members to contribute their ideas, driving Conventus forward as a platform where dialogue inspires real impact."
+        },
+        {
+            name: "Ameya Atreya",
+            position: "Vice President",
+            image: "/images/Ameya_Atreya.jpg",
+            info: "As Vice President, Ameya Atreya plays a key role in strengthening the club’s initiatives and supporting members in their personal and professional growth. He is passionate about cultivating a space where students can engage with pressing global issues, practice diplomacy, and enhance their leadership abilities. Ameya ensures that every event aligns with Conventus’s mission to promote dialogue, inclusivity, and global awareness."
+        },
+        {
+            name: "Deepanjali Sharma",
+            position: "Vice President",
+            image: "/images/Deepanjali_Sharma.jpg",
+            info: "As Vice President, Deepanjali Sharma is dedicated to fostering collaboration and innovation within the Conventus community. She is deeply committed to empowering students to express their perspectives on international affairs while building confidence and communication skills. Through her leadership, Deepanjali ensures that the club remains a dynamic environment where students grow into thoughtful, impactful leaders ready to engage with the world."
         },
     ];
+
 
     return (
         <div className="bg-[#EEEFF2]">
