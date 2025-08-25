@@ -7,7 +7,7 @@ import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, ChevronDo
 // Configuration constant for registration status
 const REGISTRATION_STATUS = {
   IS_OPEN: true, // Set to true to open registration
-  CLOSED_MESSAGE: "OC registration has been closed. Thank you for your interest!",
+  CLOSED_MESSAGE: "OC registration has been closed. Thank you for your interest! ",
   CLOSED_NOTICE: "Registration for Organizing Committee is now closed. For any queries, submit them at contact page",
   PAYMENT_DISABLED_TEXT: "Payment submission disabled - Registration closed",
 }
