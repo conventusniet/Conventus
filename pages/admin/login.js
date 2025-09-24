@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Oheader from '@/components/OHeader';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 
@@ -36,7 +36,7 @@ const AdminLogin = () => {
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
-            <Oheader />
+            <Header theme="red" />
             <main className="flex-grow container mx-auto px-4 mt-24 sm:px-6 lg:px-8 py-8">
                 <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
                     <h1 className="text-2xl font-bold mb-6 text-center text-red-600">

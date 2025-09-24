@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ theme = 'default' }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
@@ -20,10 +20,6 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    useEffect(() => {
-        console.log('Current path:', router.pathname);
-    }, [router.pathname]);
-
     const navItems = [
         { href: "/", label: "Home" },
         { href: "/aboutus", label: "About Us" },
@@ -32,12 +28,10 @@ const Header = () => {
             label: "MUN",
             dropdown: [
                 { href: "/mun2.0", label: "MUN 2.0" },
-                { href: "/mun1.0", label: "MUN 1.0" },
-                
                 { href: "/secretariat", label: "Secretariat" },
-                
-                { href: "/news", label: "NewsLetter" },
                 { href: "/Resources", label: "Diplomatic Resources" },
+                { href: "/mun1.0", label: "MUN 1.0" },
+                { href: "/news", label: "NewsLetter" },
             ]
         },
         { href: "/registration", label: "Register" },
@@ -119,6 +113,24 @@ const Header = () => {
         return router.pathname.startsWith(href);
     };
 
+    const getNavTextColor = (isMobile = false) => {
+        if (theme === 'red') {
+            return isMobile ? 'text-red-800' : 'text-red-600 hover:text-red-400';
+        }
+        return isMobile 
+            ? 'text-red-800' 
+            : scrolled 
+                ? 'text-red-800 hover:text-red-600' 
+                : 'text-white hover:text-red-200';
+    };
+
+    const getMobileButtonColor = () => {
+        if (theme === 'red') {
+            return 'text-red-600';
+        }
+        return scrolled ? 'text-red-600' : 'text-white';
+    };
+
     const renderNavItem = (item, isMobile = false) => {
         const active = isActive(item.href);
 
@@ -132,9 +144,7 @@ const Header = () => {
                     <button
                         className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold nav-font ${isMobile
                             ? 'text-red-800 py-4'
-                            : scrolled
-                                ? 'text-red-800 hover:text-red-600'
-                                : 'text-white hover:text-red-200'
+                            : getNavTextColor()
                             } ${active ? 'underline underline-offset-4' : ''}`}
                         onClick={() => isMobile && setMobileEventsOpen(prev => prev === item.label ? null : item.label)}
                     >
@@ -186,9 +196,7 @@ const Header = () => {
                         block text-xl xl:text-1xl font-semibold nav-font
                         ${isMobile
                             ? 'text-red-800 py-4'
-                            : scrolled
-                                ? 'text-red-800 hover:text-red-600'
-                                : 'text-white hover:text-red-200'
+                            : getNavTextColor()
                         }
                         ${active ? 'underline underline-offset-4' : ''}
                     `}
@@ -209,7 +217,7 @@ const Header = () => {
                 transition={{ duration: 0.5 }}
             >
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-                    <nav className="hidden lg:flex space-x-12 xl:space-x-16 flex-1 justify-end">
+                    <nav className={`hidden lg:flex ${theme === 'red' ? 'space-x-8 xl:space-x-12' : 'space-x-12 xl:space-x-16'} flex-1 justify-end`}>
                         {leftNavItems.map((item) => renderNavItem(item))}
                     </nav>
 
@@ -225,12 +233,12 @@ const Header = () => {
                         </div>
                     </Link>
 
-                    <nav className="hidden lg:flex space-x-8 xl:space-x-12 flex-1">
+                    <nav className={`hidden lg:flex ${theme === 'red' ? 'space-x-8 xl:space-x-12' : 'space-x-8 xl:space-x-12'} flex-1`}>
                         {rightNavItems.map((item) => renderNavItem(item))}
                     </nav>
 
                     <motion.button
-                        className={`lg:hidden ${scrolled ? 'text-red-600' : 'text-white'} z-50`}
+                        className={`lg:hidden ${getMobileButtonColor()} z-50`}
                         onClick={() => setIsOpen(!isOpen)}
                         whileTap={{ scale: 0.95 }}
                     >

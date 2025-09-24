@@ -3,7 +3,6 @@ import { X, Menu, ChevronDown, ChevronRight, ChevronLeft } from 'lucide-react';
 import AboutPara from '@/components/aboutpara'
 import { TestimonialOne } from '@/components/testmono'
 import Header from '@/components/Header';
-import Oheader from '../components/OHeader';
 import Footer from '../components/Footer';
 import RegistrationButton from '../components/RegistrationButton'
 import Image from 'next/image';

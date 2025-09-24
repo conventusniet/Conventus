@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, RefreshCcw } from 'lucide-react';
-import Oheader from '@/components/OHeader';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link'
 import { getCookie, setCookie } from 'cookies-next';
@@ -276,7 +276,7 @@ const AdminContactPage = () => {
     };
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
-            <Oheader />
+            <Header theme="red" />
 
             <main className="flex-grow container mx-auto px-4 mt-24 sm:px-6 lg:px-8 py-8">
                 <div className="mb-8 flex flex-col sm:flex-row justify-center items-center">

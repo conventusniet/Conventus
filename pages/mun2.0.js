@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import ConventusChatbot from "../components/ConventusChatBot";
 import HeroSection from "../components/mun2herosection";
-import Oheader from "../components/OHeader";
+import Header from "../components/Header";
 import LeadershipSection from "@/components/mun2.oleadershipsec";
 import SponsorsSection from "../components/mun2.0sponsors";
 import LearnMoreSection from "@/components/mun2.0learnmore";
@@ -19,7 +19,7 @@ export default function MUN2Page() {
   return (
     <div className="min-h-screen flex flex-col bg-red-50">
       <div className="mb-6">
-        <Oheader />
+        <Header theme="red" />
       </div>
 
       <div className="mt-20">

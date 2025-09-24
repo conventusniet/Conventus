@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import ConventusChatbot from '@/components/ConventusChatBot'
 import Link from 'next/link'
-import Oheader from '@/components/OHeader'
+import Header from '@/components/Header'
 import Footer from '../components/Footer'
 
 const CommitteeCard = ({ logo, title, description, objectives, onClick }) => (
@@ -158,7 +158,7 @@ export default function CommitteesPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-red-50">
-      <Oheader />
+      <Header theme="red" />
       <main className="flex-grow mt-20 container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-8 text-red-800">
           Committees

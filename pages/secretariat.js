@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
-import Oheader from '@/components/OHeader'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ConventusChatbot from '@/components/ConventusChatBot'
 
@@ -69,7 +69,7 @@ export default function SecretariatPage() {
   
   return (
     <div ref={pageRef} className="min-h-screen flex flex-col bg-gradient-to-b from-red-50 to-white">
-      <Oheader />
+      <Header theme="red" />
       
       <motion.div
         style={{ y: headerY }}

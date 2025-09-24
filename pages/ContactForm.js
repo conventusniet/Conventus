@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Oheader from '../components/OHeader';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import axios from 'axios';
 import ConventusChatbot from '@/components/ConventusChatBot';
@@ -239,7 +239,7 @@ const LinkTreeButton = () => (
 const ContactPage = () => {
     return (
         <div className="min-h-screen flex flex-col">
-            <Oheader />
+            <Header theme="red" />
             <main className="flex-grow bg-gradient-to-b from-gray-100 to-red-100 flex items-center justify-center px-4">
                 <div className="container mx-auto py-12 md:py-20 mt-10">
                     <motion.h1

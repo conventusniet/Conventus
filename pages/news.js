@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Share2, FileText } from 'lucide-react'
 import Image from 'next/image'
-import Oheader from '@/components/OHeader'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ConventusChatbot from '@/components/ConventusChatBot'
 import FlipbookNewsletter from '@/components/FlipbookNewsletter'
@@ -110,7 +110,7 @@ export default function NewsletterPage() {
 
   return (
     <div ref={pageRef} className="min-h-screen flex flex-col bg-red-50">
-      <Oheader />
+      <Header theme="red" />
       <motion.div
         style={{ y: headerY }}
         className="fixed top-20 left-0 right-0 z-10 bg-red-50 py-8"

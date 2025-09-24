@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Phone, Mail, Building, X, Link, Upload, FileUp, Search, Download, Eye, XCircle } from 'lucide-react';
-import Oheader from '@/components/OHeader';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 const Modal = ({ isOpen, onClose, message, isError }) => {
     return (
