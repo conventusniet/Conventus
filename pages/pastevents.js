@@ -265,6 +265,15 @@ const EventsPage = () => {
       duration: "2 days",
       participants: "180+ participants (Including OC + Delegates)"
     },
+    { 
+      image: "/images/pstevt_13.jpg", 
+      title: "Voice & Verdict",
+      date: "September 1-4, 2025",
+      description: "Voice & Verdict: NIET's INTER BRANCH Debate Championship 2025 was a prestigious cultural debate competition that brought together students from all branches of NIET. The event was aligned with SDG Goals, encouraging participants to engage in meaningful discussions on sustainable development topics. This inter-branch championship provided a platform for students to showcase their debating skills, critical thinking, and knowledge of global issues while fostering healthy competition across different academic disciplines.",
+      location: "NIET, Greater Noida",
+      duration: "3 days (1pm to 3pm daily)",
+      participants: "100+ participants (across all branches)"
+    },
     
   ];
 
