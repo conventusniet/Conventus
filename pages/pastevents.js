@@ -134,6 +134,28 @@ const EventDetails = ({ event, onClose }) => (
 const EventsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
+  // Function to parse date strings and convert to Date objects for sorting
+  const parseEventDate = (dateString) => {
+    // Handle special case for "every month"
+    if (dateString.toLowerCase() === "every month") {
+      return new Date(); // Current date for ongoing events
+    }
+    
+    // Convert to lowercase for case-insensitive parsing
+    let normalizedDate = dateString.toLowerCase();
+    
+    // Handle date ranges (e.g., "January 19-21, 2024" -> take first date)
+    normalizedDate = normalizedDate.replace(/(\d+)-\d+/, '$1');
+    
+    // Remove ordinal suffixes (st, nd, rd, th) from the date
+    normalizedDate = normalizedDate.replace(/(\d+)(st|nd|rd|th)/, '$1');
+    
+    // Capitalize first letter of each word for proper Date parsing
+    normalizedDate = normalizedDate.replace(/\b\w/g, char => char.toUpperCase());
+    
+    return new Date(normalizedDate);
+  };
+
   const events = [
     { 
       image: "/images/pstevt_1.jpg", 
@@ -225,8 +247,24 @@ const EventsPage = () => {
       duration: "1 Day",
       participants: "2"
     },
+    { 
+      image: "/images/pstevt_11.jpg", 
+      title: "Sanskriti 3.0",
+      date: "April 10th, 2024",
+      description: "Sanskriti 3.0 brought stories, emotions, and iconic characters to life on stage — an unforgettable celebration of cinema, creativity, and culture. With a crowd of 200+ and enthusiastic student participation, the event truly lived up to its 'Retro vs Bollywood' theme, leaving behind memories wrapped in music, lights, and applause.",
+      location: "NIET, Greater Noida",
+      duration: "1 day",
+      participants: "200+ attendees with student participation"
+    },
     
   ];
+
+  // Sort events by date from latest to oldest
+  const sortedEvents = events.sort((a, b) => {
+    const dateA = parseEventDate(a.date);
+    const dateB = parseEventDate(b.date);
+    return dateB - dateA; // Sort in descending order (latest first)
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-red-50">
@@ -241,7 +279,7 @@ const EventsPage = () => {
         </p>
 
         <div className="space-y-12">
-          {events.map((event, index) => (
+          {sortedEvents.map((event, index) => (
             <EventCard 
               key={index}
               image={event.image}
