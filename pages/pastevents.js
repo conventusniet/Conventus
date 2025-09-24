@@ -256,6 +256,15 @@ const EventsPage = () => {
       duration: "1 day",
       participants: "200+ attendees with student participation"
     },
+    { 
+      image: "/images/pstevt_12.jpg", 
+      title: "CMUN 2025",
+      date: "March 22-23, 2025",
+      description: "CMUN 2025 (MUN 2.0) was a comprehensive Model United Nations conference focused on Sustainable Development Goals (SDG). This offline debate program brought together delegates from various institutions to engage in diplomatic discussions and negotiations on critical global issues. The event emphasized the importance of sustainable development and international cooperation in addressing contemporary challenges.",
+      location: "NIET, Greater Noida",
+      duration: "2 days",
+      participants: "180+ participants (Including OC + Delegates)"
+    },
     
   ];
 
