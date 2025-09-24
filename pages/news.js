@@ -8,6 +8,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ConventusChatbot from '@/components/ConventusChatBot'
 import FlipbookNewsletter from '@/components/FlipbookNewsletter'
+import ExternalNewsletter from '@/components/ExternalNewsletter'
 
 const NewsletterCard = ({ day, imageUrl, pdfUrl }) => {
   const handleShare = async () => {
@@ -160,6 +161,23 @@ export default function NewsletterPage() {
               pdfUrl="/pdfs/Newsletter Day2.pdf"
             />
           </div>
+        </div>
+
+        {/* NIET Times Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-blue-800 mb-4 text-center">College Publications</h2>
+          <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+            Stay updated with the latest happenings across NIET through our official college newsletter
+          </p>
+          <ExternalNewsletter
+            title="NIET Times"
+            description="The official newsletter of Noida Institute of Engineering and Technology featuring campus news, academic achievements, student activities, faculty insights, and institutional updates. Stay connected with the broader NIET community through comprehensive coverage of college life and developments."
+            imageUrl="/images/NIET_Times_2025.png"
+            externalUrl="https://noidainstituteofengtech-my.sharepoint.com/personal/conventus_niet_co_in/_layouts/15/onedrive.aspx?ga=1&id=%2Fpersonal%2Fconventus%5Fniet%5Fco%5Fin%2FDocuments%2FNIET%20Times%2F00%20Summer%20Edition%2F%23219%5FNIET%5FTimes%2Epdf&parent=%2Fpersonal%2Fconventus%5Fniet%5Fco%5Fin%2FDocuments%2FNIET%20Times%2F00%20Summer%20Edition"
+            publisherName="NIET Official"
+            edition="Summer Edition 2025"
+            publishDate="2025"
+          />
         </div>
 
         <PhotoGallery />
