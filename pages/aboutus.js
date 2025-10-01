@@ -48,7 +48,7 @@ const PersonCard = ({ name, position, image, info, imageClassName = "" }) => {
             whileHover={{ scale: 1.03 }}
             onClick={handleClick}
         >
-            <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-lg bg-black">
+            <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-lg bg-red-600/90">
                 {/* Image: fill the whole card or show fallback color if image missing */}
                 {image && image.trim() ? (
                     <div className={`absolute inset-0 ${imageClassName} overflow-hidden ${imageEffectClasses}`}>
