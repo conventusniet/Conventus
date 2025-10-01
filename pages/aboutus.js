@@ -223,7 +223,7 @@ export default function AboutPageOne() {
             name: "Mr. Shiv Nayan Prakash",
             position: "Faculty Co-Ordinator",
             image: "",
-            info: "Shiv Nayan Prakash, as the faculty coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. His leadership and support have significantly contributed to the growth and success of the club, helping students develop their skills in public speaking, diplomacy, and event management. He is also known for his academic excellence and dedication to the IT department, fostering an environment that encourages innovation and collaborative learning."
+            info: "Mr. Shivnayan Prakash, the Faculty Coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. His leadership and expertise in communication and public speaking have significantly contributed to the growth and success of the club, helping students develop their skills in rhetoric, diplomacy, and event management. With a strong academic background—holding an M.A. in English from Hansraj College, DU, a PG Diploma in Translation, and currently pursuing his PhD—he brings valuable experience in research, linguistic studies, debate, and theater. His dedication to fostering critical thinking and effective communication enables students to excel in public discourse and collaborative learning."
         },
     ];
 
