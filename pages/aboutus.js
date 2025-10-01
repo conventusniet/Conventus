@@ -16,41 +16,98 @@ import ConventusChatbot from '@/components/ConventusChatBot';
 
 
 const PersonCard = ({ name, position, image, info, imageClassName = "" }) => {
+    const [active, setActive] = React.useState(false);
+
+    // Clear active on resize to desktop so hover works normally
+    React.useEffect(() => {
+        function onResize() {
+            if (typeof window !== 'undefined' && window.innerWidth >= 768) setActive(false);
+        }
+        if (typeof window !== 'undefined') window.addEventListener('resize', onResize);
+        return () => {
+            if (typeof window !== 'undefined') window.removeEventListener('resize', onResize);
+        };
+    }, []);
+
+    function handleClick() {
+        // toggle only on small screens (mobile) to avoid interfering with desktop hover
+        if (typeof window !== 'undefined' && window.innerWidth < 768) {
+            setActive((s) => !s);
+        }
+    }
+
+    // compute classes for image blur/brightness when hovered (desktop) or active (mobile)
+    const imageEffectClasses = `md:group-hover:filter md:group-hover:blur-sm md:group-hover:brightness-75 ${active ? 'filter blur-sm brightness-75' : ''}`;
+
+    // overlay visibility: visible when hovered on md+ OR when active on mobile
+    const overlayVisibleMobile = active ? 'opacity-100 max-h-56' : 'opacity-0 max-h-0';
+
     return (
         <motion.div
-            className="w-72 h-96 [perspective:1000px] group sm:w-full sm:max-w-sm md:w-96 lg:w-80"
-            whileHover={{ scale: 1.05 }}
+            className="w-64 h-96 group sm:w-full sm:max-w-sm md:w-80 lg:w-72 mx-auto"
+            whileHover={{ scale: 1.03 }}
+            onClick={handleClick}
         >
-            <motion.div
-                className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
-            >
-                {/* Front of the card */}
-                <div className="absolute inset-0">
-                    <div className={`relative h-full ${imageClassName}`}>
+            <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-lg bg-black">
+                {/* Image: fill the whole card or show fallback color if image missing */}
+                {image && image.trim() ? (
+                    <div className={`absolute inset-0 ${imageClassName} overflow-hidden ${imageEffectClasses}`}>
                         <Image
-                            className="h-full w-full rounded-xl shadow-xl shadow-black/40"
                             src={image}
                             alt={name}
-                            width={288}
-                            height={384}
+                            layout="fill"
+                            objectFit="cover"
+                            priority={false}
                         />
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-70 text-black p-4 rounded-b-xl">
-                        <h3 className="text-xl font-bold">{name}</h3>
-                        <p className="font-medium">{position}</p>
-                    </div>
+                ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-700 to-red-500" />
+                )}
+
+                {/* Gradient overlay appears on hover (desktop) or when active (mobile) */}
+                <div className={`absolute inset-0 transition-all duration-400 pointer-events-none md:group-hover:opacity-100 ${active ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 </div>
 
-                {/* Back of the card */}
-                <div className="absolute inset-0 h-full w-full rounded-xl bg-red-50 px-6 py-8 text-center text-gray-800 [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-y-auto">
-                    <div className="flex min-h-full flex-col items-center justify-start">
-                        <h3 className="text-2xl font-bold mb-4 text-red-800 font-sans">{name}</h3>
-                        <p className="text-base leading-relaxed font-sans text-gray-700 tracking-wide">
-                            {info}
-                        </p>
+                {/* Panel container - moves on hover for desktop, or when active on mobile */}
+                <div className="absolute left-4 right-4 bottom-4 z-30">
+                    <div className={`transform transition-transform duration-500 ${active ? 'translate-y-0' : 'translate-y-10'} md:group-hover:translate-y-0`}>
+                        <div className="bg-black/15 backdrop-blur-sm border border-white/20 rounded-xl p-4 shadow-md h-[calc(100%-32px)] overflow-hidden flex flex-col">
+                            <div className="flex items-start justify-between">
+                                <div>
+                                    <h3 className="text-lg font-semibold text-gray-100">{name}</h3>
+                                    <p className="text-sm text-red-200">{position}</p>
+                                </div>
+                            </div>
+
+                            <div className={`person-details mt-3 overflow-y-auto px-1 py-1 text-sm text-gray-100 transition-all duration-400 ${overlayVisibleMobile} md:max-h-0 md:opacity-0 md:group-hover:opacity-100 md:group-hover:max-h-56`}>
+                                <p className="leading-relaxed text-gray-100">{info}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
+
+            {/* Scoped scrollbar styles for the details area (works across modern browsers) */}
+            <style jsx>{`
+                .person-details::-webkit-scrollbar {
+                    height: 8px;
+                    width: 8px;
+                }
+                .person-details::-webkit-scrollbar-track {
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 8px;
+                }
+                .person-details::-webkit-scrollbar-thumb {
+                    background: rgba(220,38,38,0.9); /* red-700 */
+                    border-radius: 8px;
+                }
+                /* Firefox */
+                :global(.person-details) {
+                    scrollbar-width: thin;
+                    scrollbar-color: rgba(220,38,38,0.9) rgba(255,255,255,0.1);
+                }
+            `}</style>
         </motion.div>
     );
 };
@@ -102,7 +159,6 @@ const Carousel = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3000,
         prevArrow: <CustomArrow direction="left" />,
         nextArrow: <CustomArrow direction="right" />,
     };
@@ -164,10 +220,10 @@ export default function AboutPageOne() {
             info: "Is working as an Associate Dean Student Welfare and Assistant Professor in the Department of Electronics and Communication Engineering with experience of 13 years. She is graduated with honors in Electronics and Communication Engineering from Uttar Pradesh Technical University in 2010. She is Gold Medalist in M.Tech (VLSI Design) from Uttar Pradesh Technical University in 2012. She is young and dynamic in organizing cultural and technical events."
         },
         {
-            name: "Ms. Neeti Taneja",
+            name: "Mr. Shiv Nayan Prakash",
             position: "Faculty Co-Ordinator",
-            image: "/digni_img/Neeti Mam.jpg",
-            info: "Neeti Taneja, as the faculty coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. Her leadership and support have significantly contributed to the growth and success of the club, helping students develop their skills in public speaking, diplomacy, and event management. She is also known for her academic excellence and dedication to the IT department, fostering an environment that encourages innovation and collaborative learning.."
+            image: "",
+            info: "Shiv Nayan Prakash, as the faculty coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. His leadership and support have significantly contributed to the growth and success of the club, helping students develop their skills in public speaking, diplomacy, and event management. He is also known for his academic excellence and dedication to the IT department, fostering an environment that encourages innovation and collaborative learning."
         },
     ];
 
@@ -201,18 +257,24 @@ export default function AboutPageOne() {
                 <div className="flex flex-col space-y-1 pb-10 pt-12 md:pt-24 sm:space-y-1">
                     <h1 className="text-5xl font-bold text-center">About</h1>
                     <div className="flex justify-center min-h-[200px]">
-                        <div className="max-w-4xl space-y-8">
-                            <p className="text-base sm:text-2xl text-center text-gray-600 md:text-xl">
-                                The Conventus Model United Nations Club is a student-centric body that provides a forum to engage with a transforming world. We combine adaptability with NIET's vision to build bridges between delegates from various backgrounds who share a passion for debate and dialogue. We aim to help delegates understand the fundamental workings of the United Nations, where diplomacy, debate, and global engagement come to life. At Conventus, we are driven by a passion for international affairs, leadership, and collaboration.
-                            </p>
+                        <div className="max-w-3xl space-y-6">
+                            <div className="border-l-2 border-red-200 pl-6">
+                                <p className="text-base sm:text-xl text-center text-gray-700 md:text-lg leading-relaxed tracking-wide">
+                                    The Conventus Model United Nations Club is a student-centric body that provides a forum to engage with a transforming world. We combine adaptability with NIET's vision to build bridges between delegates from various backgrounds who share a passion for debate and dialogue. We aim to help delegates understand the fundamental workings of the United Nations, where diplomacy, debate, and global engagement come to life. At Conventus, we are driven by a passion for international affairs, leadership, and collaboration.
+                                </p>
+                            </div>
 
-                            <p className="text-base sm:text-2xl text-center text-gray-600 md:text-xl">
-                                Our mission is to cultivate a platform that nurtures critical thinking, problem-solving, and public speaking skills, empowering students to become global leaders. Whether you're a seasoned MUN enthusiast or new to diplomacy, our doors are always open. Conventus MUN offers more than just an extracurricular activity - it provides a transformative experience that prepares students for leadership roles both within and beyond academia. Looking to the future, we aim to establish ourselves as a renowned conference through active engagement in national and international MUN circuits.
-                            </p>
+                            <div className="border-l-2 border-red-100 pl-6">
+                                <p className="text-base sm:text-xl text-center text-gray-700 md:text-lg leading-relaxed tracking-wide">
+                                    Our mission is to cultivate a platform that nurtures critical thinking, problem-solving, and public speaking skills, empowering students to become global leaders. Whether you're a seasoned MUN enthusiast or new to diplomacy, our doors are always open. Conventus MUN offers more than just an extracurricular activity - it provides a transformative experience that prepares students for leadership roles both within and beyond academia. Looking to the future, we aim to establish ourselves as a renowned conference through active engagement in national and international MUN circuits.
+                                </p>
+                            </div>
 
-                            <p className="text-base sm:text-2xl text-center text-gray-600 md:text-xl">
-                                Our team is committed to promoting diplomacy, leadership, and global awareness through innovative events and impactful conferences. We strive to create a legacy of diplomats and leaders who are knowledgeable, compassionate, and ethical. With endless opportunities for learning and personal growth, Conventus is the perfect place for anyone who believes in the power of dialogue and action. Step into the world of diplomacy, engage with global issues, and be part of a community that builds bridges of understanding.
-                            </p>
+                            <div className="border-l-2 border-red-100 pl-6">
+                                <p className="text-base sm:text-xl text-center text-gray-700 md:text-lg leading-relaxed tracking-wide">
+                                    Our team is committed to promoting diplomacy, leadership, and global awareness through innovative events and impactful conferences. We strive to create a legacy of diplomats and leaders who are knowledgeable, compassionate, and ethical. With endless opportunities for learning and personal growth, Conventus is the perfect place for anyone who believes in the power of dialogue and action. Step into the world of diplomacy, engage with global issues, and be part of a community that builds bridges of understanding.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

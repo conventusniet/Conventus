@@ -250,7 +250,7 @@ const EventsPage = () => {
     { 
       image: "/images/pstevt_11.png", 
       title: "Sanskriti 3.0",
-      date: "April 10th, 2024",
+      date: "April 10th, 2025",
       description: "Sanskriti 3.0 brought stories, emotions, and iconic characters to life on stage — an unforgettable celebration of cinema, creativity, and culture. With a crowd of 200+ and enthusiastic student participation, the event truly lived up to its 'Retro vs Bollywood' theme, leaving behind memories wrapped in music, lights, and applause.",
       location: "NIET, Greater Noida",
       duration: "1 day",

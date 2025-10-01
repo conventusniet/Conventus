@@ -16,12 +16,13 @@ const SocialIcon = ({ href, icon: Icon, color }) => (
 
 const LeadershipCard = ({ name, role, imageUrl, description, socialLinks }) => (
     <motion.div
-        className="flex flex-col items-center"
+        className="w-full sm:w-64 flex flex-col items-center"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
     >
-        <div className="w-64 h-64 rounded-3xl overflow-hidden mb-6 transform transition-transform duration-300 hover:scale-105 shadow-lg">
+        {/* Image container: relative so desktop overlay can slide up */}
+        <div className="relative w-64 h-64 rounded-3xl overflow-hidden mb-6 transform transition-transform duration-300 group hover:scale-105 shadow-lg">
             <Image
                 src={imageUrl || "/placeholder.svg"}
                 alt={name}
@@ -29,16 +30,37 @@ const LeadershipCard = ({ name, role, imageUrl, description, socialLinks }) => (
                 height={256}
                 className="w-full h-full object-cover"
             />
-        </div>
-        <h4 className="font-semibold text-2xl text-gray-800 mb-2">{name}</h4>
-        <p className="text-xl text-red-600 font-medium mb-1">{role}</p>
-        <p className="text-lg text-gray-600 mb-4">{description}</p>
 
-        <div className="flex space-x-4">
-            {socialLinks.linkedin && <SocialIcon href={socialLinks.linkedin} icon={Linkedin} color="blue" />}
-            {socialLinks.github && <SocialIcon href={socialLinks.github} icon={Github} color="gray" />}
-            {socialLinks.instagram && <SocialIcon href={socialLinks.instagram} icon={Instagram} color="pink" />}
-            {socialLinks.whatsapp && <SocialIcon href={socialLinks.whatsapp} icon={WhatsApp} color="green" />}
+            {/* Small name bar visible on desktop (sm and up) before hover */}
+            <div className="hidden sm:flex absolute left-0 right-0 bottom-0 justify-center items-center bg-white/90 py-2 px-3">
+                <h4 className="font-semibold text-lg text-gray-800 truncate">{name}</h4>
+            </div>
+
+            {/* Sliding overlay for desktop (hidden on mobile) */}
+            <div className="hidden sm:block absolute left-0 right-0 bottom-0 bg-white/95 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <h4 className="font-semibold text-2xl text-gray-800 mb-1">{name}</h4>
+                <p className="text-xl text-red-600 font-medium mb-1">{role}</p>
+                {description && <p className="text-lg text-gray-600 mb-4">{description}</p>}
+                <div className="flex space-x-4">
+                    {socialLinks.linkedin && <SocialIcon href={socialLinks.linkedin} icon={Linkedin} color="blue" />}
+                    {socialLinks.github && <SocialIcon href={socialLinks.github} icon={Github} color="gray" />}
+                    {socialLinks.instagram && <SocialIcon href={socialLinks.instagram} icon={Instagram} color="pink" />}
+                    {socialLinks.whatsapp && <SocialIcon href={socialLinks.whatsapp} icon={WhatsApp} color="green" />}
+                </div>
+            </div>
+        </div>
+
+        {/* Mobile layout: stacked content under the image (visible only on mobile) */}
+        <div className="block sm:hidden text-center px-2">
+            <h4 className="font-semibold text-2xl text-gray-800 mb-2">{name}</h4>
+            <p className="text-xl text-red-600 font-medium mb-1">{role}</p>
+            {description && <p className="text-lg text-gray-600 mb-4">{description}</p>}
+            <div className="flex justify-center space-x-4">
+                {socialLinks.linkedin && <SocialIcon href={socialLinks.linkedin} icon={Linkedin} color="blue" />}
+                {socialLinks.github && <SocialIcon href={socialLinks.github} icon={Github} color="gray" />}
+                {socialLinks.instagram && <SocialIcon href={socialLinks.instagram} icon={Instagram} color="pink" />}
+                {socialLinks.whatsapp && <SocialIcon href={socialLinks.whatsapp} icon={WhatsApp} color="green" />}
+            </div>
         </div>
     </motion.div>
 )
@@ -120,7 +142,7 @@ const LeadershipPage = () => (
                     all technical aspects of our events.
                 </motion.p>
 
-                <div className="flex flex-wrap justify-center gap-24 lg:gap-16 md:gap-24">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap items-center sm:justify-center gap-8 sm:gap-24 lg:gap-16 md:gap-24">
                     {leaders.map((leader, index) => (
                         <LeadershipCard key={leader.name} {...leader} />
                     ))}
