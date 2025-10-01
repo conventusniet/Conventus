@@ -88,6 +88,24 @@ const EventCard = ({ image, title, date, description, onClick }) => (
   </motion.div>
 );
 
+const EmptyState = () => (
+  <div className="max-w-3xl mx-auto">
+    <div className="bg-white rounded-xl shadow-lg border border-red-200 p-10 text-center">
+      <div className="flex items-center justify-center mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" />
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        </svg>
+      </div>
+      <h2 className="text-3xl font-bold text-red-800 mb-2">Coming soon</h2>
+      <p className="text-lg text-red-600 mb-6">We're preparing our next event — details will be announced here shortly. Check back soon or follow our socials for updates.</p>
+      <div className="flex justify-center">
+        <a className="inline-block bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition" href="/">Back to home</a>
+      </div>
+    </div>
+  </div>
+);
+
 const EventDetails = ({ event, onClose }) => {
   function gotoregister() {
     window.location.href = "https://conventusmun.com/registration";
@@ -145,15 +163,6 @@ const EventsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const events = [
-    {
-      image: "/images/upcevt_2.jpg",
-      title: "NIET MUN 2.0",
-      date: "22-23 March 2025",
-      description: "The Conventus Club proudly announces the second edition of the NIET Model United Nations (MUN) conference, scheduled for February 2025. Building on the success of its inaugural edition, NIET MUN 2.0 promises to be even more dynamic and intellectually stimulating, bringing together over 200 participants from diverse backgrounds. Delegates will engage in diplomatic debates, tackling global challenges through a range of committees, including the United Nations Security Council (UNSC), the All India Political Parties Meet (AIPPM) and more. Participants will have the opportunity to enhance their public speaking, negotiation, and problem-solving skills while contributing to resolutions on critical international and national issues. Join us at NIET MUN 2.0 and be part of an event that shapes tomorrow's leaders and diplomats",
-      location: "NIET, Greater Noida",
-      duration: "2 days",
-      participants: "NA"
-    },
   ];
 
 
@@ -170,16 +179,20 @@ const EventsPage = () => {
         </p>
 
         <div className="space-y-12">
-          {events.map((event, index) => (
-            <EventCard
-              key={index}
-              image={event.image}
-              title={event.title}
-              date={event.date}
-              description={event.description}
-              onClick={() => setSelectedEvent(event)}
-            />
-          ))}
+          {events.length === 0 ? (
+            <EmptyState />
+          ) : (
+            events.map((event, index) => (
+              <EventCard
+                key={index}
+                image={event.image}
+                title={event.title}
+                date={event.date}
+                description={event.description}
+                onClick={() => setSelectedEvent(event)}
+              />
+            ))
+          )}
         </div>
         <ConventusChatbot />
       </main>
