@@ -166,8 +166,8 @@ export default function NewsletterPage() {
 
         {/* NIET Times Section */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-blue-800 mb-4 text-center">College Publications</h2>
-          <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-red-800 mb-4 text-center">College Publications</h2>
+          <p className="text-center text-red-600 mb-8 max-w-3xl mx-auto">
             Stay updated with the latest happenings across NIET through our official college newsletter
           </p>
           <ExternalNewsletter
