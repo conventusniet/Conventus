@@ -274,6 +274,43 @@ const EventsPage = () => {
       duration: "3 days (1pm to 3pm daily)",
       participants: "100+ participants (across all branches)"
     },
+    { 
+      image: "/images/pstevt_14.jpg", 
+      title: "Jagmag - Diplomatic Cupcakes",
+      date: "October 20th, 2024",
+      description: "The \"Diplomatic Cupcakes\" stall, organized by the Conventus Society during the \"Jagmag\" event, aimed to raise awareness about the United Nations while providing an engaging and fun-filled experience for participants. Through interactive games and creative activities, the stall sought to educate attendees about global diplomacy and international cooperation.",
+      location: "NIET, Greater Noida",
+      duration: "360 minutes",
+      participants: "1500 (13 from Conventus)"
+    },
+    { 
+      image: "/images/pstevt_15.jpg", 
+      title: "Basant Panchami",
+      date: "February 2nd, 2025",
+      description: "Basant Panchami (Saraswati Puja) celebrates the arrival of spring and is dedicated to Goddess Saraswati, the deity of wisdom, knowledge, and the arts. Conventus organized activities and prayers to seek blessings for learning and creativity. The event included cultural performances, music, and traditional observances that brought students and teachers together to celebrate knowledge and the arts.",
+      location: "NIET, Greater Noida",
+      duration: "150 minutes",
+      participants: "3 students; Faculty: NA; External: 30"
+    },
+    { 
+      image: "/images/pstevt_16.jpg", 
+      title: "NSUT MUN 2025",
+      date: "April 5-6, 2025",
+      description: "NSUT Model United Nations 2025 was a two-day simulation of global diplomatic discussions conducted at NSUT, Dwarka on April 5 and 6, 2025. With over 700 delegates from across the country, the event served as a vibrant stage for passionate debates and intellectual discourse across diverse committees. Upholding the theme \"Diplomacy, Diversity, Dissent\", the conference emphasized the importance of respectful dialogue in resolving global challenges.",
+      location: "NSUT, Dwarka, New Delhi",
+      duration: "2880 minutes (2 days)",
+      participants: "700+ (4 from NIET)"
+    },
+    { 
+      image: "/images/pstevt_17.jpg", 
+      title: "C’MUN Newsletter Release",
+      date: "April 23rd, 2025",
+      description: "Held on 23rd April 2025, the official release of the Conventus MUN 2025 Newsletter was a proud and ceremonious occasion, marking the culmination of months of planning, debate, and execution. The release was honored by the presence of dignitaries from NIET, including Dr. O. P. Agarwal (Managing Director), Dr. Neema Agrawal (Additional Managing Director), Dr. Vinod M. Kapse (Director, NIET), Dean Student Welfare Dr. Manish Kaushik, Associate DSW Ms. Kanika Jindal, and Faculty Coordinator Ms. Neeti Taneja.\n\nThe event commemorated the hard work of the International Press (IP) team who meticulously documented the event, capturing the vibrant energy, critical debates, and diplomatic exchanges that defined C’MUN 2025.",
+      location: "A Block - NIET, Greater Noida",
+      duration: "60 minutes",
+      participants: "10 students; Faculty: 7"
+    },
+    
     
   ];
 
