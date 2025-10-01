@@ -45,8 +45,9 @@ const NewsletterCard = ({ day, imageUrl, pdfUrl }) => {
         </div>
       </div>
       <div className="p-4 flex justify-between">
+        {/* If pdfUrl is external (absolute), open in new tab; otherwise encode local path */}
         <a
-          href={pdfUrl}
+          href={/^(https?:)?\/\//.test(pdfUrl) ? pdfUrl : encodeURI(pdfUrl)}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center text-red-600 hover:text-red-800 font-semibold"
@@ -153,12 +154,12 @@ export default function NewsletterPage() {
             <NewsletterCard
               day="First"
               imageUrl="/images/Newsletter.jpg"
-              pdfUrl="/pdfs/Newsletter Day1.pdf"
+              pdfUrl="/pdfs/Newsletter%20Day1.pdf"
             />
             <NewsletterCard
               day="Second"
               imageUrl="/images/Newsletter.jpg"
-              pdfUrl="/pdfs/Newsletter Day2.pdf"
+              pdfUrl="/pdfs/Newsletter%20Day2.pdf"
             />
           </div>
         </div>

@@ -60,14 +60,25 @@ const FlipbookNewsletter = ({
             )}
             
             {showDownload && (
-              <a 
-                href={pdfUrl} 
-                download
-                className="flex items-center justify-center bg-white border-2 border-red-600 text-red-600 hover:bg-red-50 px-6 py-3 rounded-full transition-colors"
-              >
-                <Download className="mr-2" size={20} />
-                Download PDF
-              </a>
+              (() => {
+                try {
+                  const isAbsolute = /^(https?:)?\/\//i.test(pdfUrl);
+                  const resolved = isAbsolute ? pdfUrl : encodeURI(pdfUrl);
+                  // If external, open in new tab instead of forcing download (CORS/host restrictions)
+                  return (
+                    <a
+                      href={resolved}
+                      {...(isAbsolute ? { target: '_blank', rel: 'noopener noreferrer' } : { download: true })}
+                      className="flex items-center justify-center bg-white border-2 border-red-600 text-red-600 hover:bg-red-50 px-6 py-3 rounded-full transition-colors"
+                    >
+                      <Download className="mr-2" size={20} />
+                      {isAbsolute ? 'Open / Download' : 'Download PDF'}
+                    </a>
+                  )
+                } catch (e) {
+                  return null;
+                }
+              })()
             )}
           </div>
         </div>
