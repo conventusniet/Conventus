@@ -123,7 +123,7 @@ const MUN2Winners = () => {
             ],
             winners: [
                 { award: "Best Delegate", name: "Sarthak Srivastava", institute: "Saudi Arabia" },
-                { award: "High Commendation", name: "", institute: "France" },
+                { award: "High Commendation", name: "Sanu Singh", institute: "France" },
                 { award: "Special Mention", name: "Ujala Khatri", institute: "USA" },
                 { award: "Verbal Mentions", names: ["Adavya Pratap Singh (Luxembourg)", "Swayam Dhar Singh (Belgium)", "Purvi Bhasin (Uganda)", "Vibha Chauhan (Panama)", "Shafaque Praveen (Japan)"] }
             ]
@@ -147,6 +147,7 @@ const MUN2Winners = () => {
             images: [
                 "/images/mun2.0/winners/IP/IP_Best-Journalist.jpg",
                 "/images/mun2.0/winners/IP/IP_Outstanding-Journalist.jpg",
+                "/images/mun2.0/winners/IP/IP_Best-Photographer.jpg",
             ],
             winners: [
                 { award: "Best Journalist", name: "Gauri Pandey", institute: "" },
