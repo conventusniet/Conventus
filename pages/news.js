@@ -75,7 +75,9 @@ const PhotoGallery = () => {
     '/images/news_4.jpg',
     '/images/news_5.webp',
     '/images/news_6.webp',
-    '/images/news_7.webp'
+    '/images/news_7.webp',
+    '/images/niet_times_1.webp',
+    '/images/niet_times_2.webp'
   ]
 
   return (
