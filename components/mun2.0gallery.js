@@ -87,7 +87,8 @@ const MUN2Gallery = () => {
         { src: "/images/mun2.0/winners/AIPPM/AIPPM_Special-Mention.jpg", badge: "AIPPM Special Mention", category: "winner", committee: "AIPPM" },
         // Winners - International Press Winners
         { src: "/images/mun2.0/winners/IP/IP_Best-Journalist.jpg", badge: "IP Best Journalist", category: "winner", committee: "IP" },
-        { src: "/images/mun2.0/winners/IP/IP_Outstanding-Journalist.jpg", badge: "IP Outstanding Journalist", category: "winner", committee: "IP" }
+        { src: "/images/mun2.0/winners/IP/IP_Outstanding-Journalist.jpg", badge: "IP Outstanding Journalist", category: "winner", committee: "IP" },
+        { src: "/images/mun2.0/winners/IP/IP_Best-Photographer.jpg", badge: "IP Best Photographer", category: "winner", committee: "IP" }
     ];
 
     const filterFunction = (images, tab) => {
