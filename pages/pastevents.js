@@ -310,8 +310,23 @@ const EventsPage = () => {
       duration: "60 minutes",
       participants: "10 students; Faculty: 7"
     },
-    
-    
+    {
+      images: "/images/niet_times_2.webp",
+      title: "NIET Times Release",
+      date: "August 15th, 2025",
+      description: "On 15th August 2025, the Conventus Club proudly launched NIET’s official bi-annual newsletter, NIET Times – Summer Edition. Released by the Board of Directors, this edition captures the vibrant spirit of the campus from January to June, highlighting key events, achievements, and student initiatives. Designed and curated by Conventus, the newsletter marks yet another milestone in celebrating and showcasing the dynamic essence of NIET through the semester.",
+      location: "NIET , Greater Noida",
+      duration: "1 Day",
+      participants: ""
+    },
+    {
+      images: "/images/pstevt_18.webp",
+      title: "UPITS MUN 2025",
+      date: "Sepyember 26th, 2025",
+      description: "On 26th September 2025, the Conventus Club proudly participated in the Model United Nations (MUN) organized at the UP International Trade Show Expo (UPITS). Showcasing exceptional diplomacy, research, and public speaking skills, the delegates delivered an outstanding performance throughout the conference. Their hard work and dedication were recognized as the club bagged a total of six awards, including Best Delegate, High Commendation, Best Journalist, and Special Mention. This remarkable achievement highlighted the team’s excellence and strengthened Conventus Club’s reputation as a leading MUN society.",
+      location: "India Expo Centre, Greater Noida",
+      duration: "1 Day",
+      participants: "100+ (8 from NIET)",
   ];
 
   // Sort events by date from latest to oldest
