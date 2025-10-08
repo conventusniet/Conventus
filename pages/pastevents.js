@@ -322,7 +322,7 @@ const EventsPage = () => {
     {
       images: "/images/pstevt_18.webp",
       title: "UPITS MUN 2025",
-      date: "Sepyember 26th, 2025",
+      date: "September 26th, 2025",
       description: "On 26th September 2025, the Conventus Club proudly participated in the Model United Nations (MUN) organized at the UP International Trade Show Expo (UPITS). Showcasing exceptional diplomacy, research, and public speaking skills, the delegates delivered an outstanding performance throughout the conference. Their hard work and dedication were recognized as the club bagged a total of six awards, including Best Delegate, High Commendation, Best Journalist, and Special Mention. This remarkable achievement highlighted the team’s excellence and strengthened Conventus Club’s reputation as a leading MUN society.",
       location: "India Expo Centre, Greater Noida",
       duration: "1 Day",
