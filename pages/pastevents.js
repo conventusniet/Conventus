@@ -327,6 +327,7 @@ const EventsPage = () => {
       location: "India Expo Centre, Greater Noida",
       duration: "1 Day",
       participants: "100+ (8 from NIET)",
+    },
   ];
 
   // Sort events by date from latest to oldest
