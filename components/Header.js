@@ -44,6 +44,7 @@ const Header = ({ theme = 'default' }) => {
                 { href: "/pastevents", label: "Past Events" },
                 { href: "/upcomingevents", label: "Upcoming Events" },
                 { href: "/founder", label: "Founder" },
+                { href: "/institutional-newsletter", label: "Institutional Newsletter" },
             ],
         },
         { href: "/media", label: "Media" },
