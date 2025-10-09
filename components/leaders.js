@@ -3,69 +3,62 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Linkedin, Github, Instagram, PhoneIcon as WhatsApp } from "lucide-react"
 
-const SocialIcon = ({ href, icon: Icon, color }) => (
-    <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`text-${color}-600 hover:text-${color}-800 transition-colors`}
-    >
-        <Icon size={24} />
-    </a>
-)
+const SocialIcon = ({ href, icon: Icon, color, size = 28 }) => {
+    const colorClasses = {
+        blue: "text-blue-600 hover:text-blue-800",
+        gray: "text-gray-700 hover:text-gray-900",
+        pink: "text-pink-600 hover:text-pink-800",
+        green: "text-green-600 hover:text-green-800",
+    }
 
-const LeadershipCard = ({ name, role, imageUrl, description, socialLinks }) => (
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${colorClasses[color]} transition-colors transform hover:scale-110 transition-transform duration-200`}
+        >
+            <Icon size={size} />
+        </a>
+    )
+}
+
+const LeadershipCard = ({ name, role, imageUrl, description, socialLinks, isMember = false }) => (
     <motion.div
-        className="w-full sm:w-64 flex flex-col items-center"
+        className={`w-full flex flex-col items-center ${isMember ? 'max-w-xs sm:max-w-sm' : 'max-w-xs sm:max-w-sm md:max-w-md'}`}
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
     >
-        {/* Image container: relative so desktop overlay can slide up */}
-        <div className="relative w-64 h-64 rounded-3xl overflow-hidden mb-6 transform transition-transform duration-300 group hover:scale-105 shadow-lg">
+        {/* Image container */}
+        <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-4 transform transition-transform duration-300 hover:scale-105 shadow-xl">
             <Image
                 src={imageUrl || "/placeholder.svg"}
                 alt={name}
-                width={256}
-                height={256}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
             />
-
-            {/* Small name bar visible on desktop (sm and up) before hover */}
-            <div className="hidden sm:flex absolute left-0 right-0 bottom-0 justify-center items-center bg-white/90 py-2 px-3">
-                <h4 className="font-semibold text-lg text-gray-800 truncate">{name}</h4>
-            </div>
-
-            {/* Sliding overlay for desktop (hidden on mobile) */}
-            <div className="hidden sm:block absolute left-0 right-0 bottom-0 bg-white/95 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <h4 className="font-semibold text-2xl text-gray-800 mb-1">{name}</h4>
-                <p className="text-xl text-red-600 font-medium mb-1">{role}</p>
-                {description && <p className="text-lg text-gray-600 mb-4">{description}</p>}
-                <div className="flex space-x-4">
-                    {socialLinks.linkedin && <SocialIcon href={socialLinks.linkedin} icon={Linkedin} color="blue" />}
-                    {socialLinks.github && <SocialIcon href={socialLinks.github} icon={Github} color="gray" />}
-                    {socialLinks.instagram && <SocialIcon href={socialLinks.instagram} icon={Instagram} color="pink" />}
-                    {socialLinks.whatsapp && <SocialIcon href={socialLinks.whatsapp} icon={WhatsApp} color="green" />}
-                </div>
-            </div>
         </div>
 
-        {/* Mobile layout: stacked content under the image (visible only on mobile) */}
-        <div className="block sm:hidden text-center px-2">
-            <h4 className="font-semibold text-2xl text-gray-800 mb-2">{name}</h4>
-            <p className="text-xl text-red-600 font-medium mb-1">{role}</p>
-            {description && <p className="text-lg text-gray-600 mb-4">{description}</p>}
-            <div className="flex justify-center space-x-4">
-                {socialLinks.linkedin && <SocialIcon href={socialLinks.linkedin} icon={Linkedin} color="blue" />}
-                {socialLinks.github && <SocialIcon href={socialLinks.github} icon={Github} color="gray" />}
-                {socialLinks.instagram && <SocialIcon href={socialLinks.instagram} icon={Instagram} color="pink" />}
-                {socialLinks.whatsapp && <SocialIcon href={socialLinks.whatsapp} icon={WhatsApp} color="green" />}
+        {/* Name, Position, and Social Icons below the image */}
+        <div className="w-full text-center px-4">
+            <h4 className={`font-bold text-gray-900 mb-2 ${isMember ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'}`}>{name}</h4>
+            <p className={`text-red-600 font-semibold mb-4 ${isMember ? 'text-base md:text-lg' : 'text-lg md:text-xl'}`}>{role}</p>
+            {description && <p className="text-base md:text-lg text-gray-600 mb-4">{description}</p>}
+            
+            {/* Social Icons */}
+            <div className={`flex justify-center items-center mb-4 ${isMember ? 'space-x-4' : 'space-x-6'}`}>
+                {socialLinks.linkedin && <SocialIcon href={socialLinks.linkedin} icon={Linkedin} color="blue" size={isMember ? 24 : 28} />}
+                {socialLinks.github && <SocialIcon href={socialLinks.github} icon={Github} color="gray" size={isMember ? 24 : 28} />}
+                {socialLinks.instagram && <SocialIcon href={socialLinks.instagram} icon={Instagram} color="pink" size={isMember ? 24 : 28} />}
+                {socialLinks.whatsapp && <SocialIcon href={socialLinks.whatsapp} icon={WhatsApp} color="green" size={isMember ? 24 : 28} />}
             </div>
         </div>
     </motion.div>
 )
 
-const leaders = [
+const leadershipTeam = [
+    
     {
         name: "Anubhav Singh",
         role: "Technical Co-Head",
@@ -90,7 +83,6 @@ const leaders = [
             whatsapp: "https://wa.me/+917289939775",
         },
     },
-
     {
         name: "Revant Khanna",
         role: "Technical Co-Head",
@@ -103,10 +95,12 @@ const leaders = [
             whatsapp: "https://wa.me/+919870525753",
         },
     },
+]
 
+const teamMembers = [
     {
         name: "Sarvesh Mishra",
-        role: "Technical Co-Head",
+        role: "Technical Member",
         imageUrl: "/images/Sarvesh_Mishra.webp",
         branch: "CSE",
         socialLinks: {
@@ -120,19 +114,19 @@ const leaders = [
 
 const LeadershipPage = () => (
     <div className="min-h-screen flex flex-col">
-        <main className="flex-grow bg-white overflow-hidden">
+        <main className="flex-grow bg-gradient-to-b from-gray-50 to-white overflow-hidden">
             <div className="container mx-auto px-4 py-12">
                 <motion.h3
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="text-4xl font-semibold text-center text-red-700 mb-6"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-red-700 mb-6"
                 >
                     O U R&nbsp;&nbsp;T E C H N I C A L&nbsp;&nbsp;T E A M
                 </motion.h3>
 
                 <motion.p
-                    className="text-center mb-12 max-w-2xl mx-auto text-gray-700"
+                    className="text-center mb-16 max-w-3xl mx-auto text-gray-700 text-base md:text-lg px-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
@@ -142,11 +136,38 @@ const LeadershipPage = () => (
                     all technical aspects of our events.
                 </motion.p>
 
-                <div className="flex flex-col sm:flex-row sm:flex-wrap items-center sm:justify-center gap-8 sm:gap-24 lg:gap-16 md:gap-24">
-                    {leaders.map((leader, index) => (
-                        <LeadershipCard key={leader.name} {...leader} />
-                    ))}
-                </div>
+                {/* Leadership Section */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="mb-16"
+                >
+                    <h4 className="text-2xl md:text-3xl font-semibold text-center text-gray-800 mb-8">
+                        Leadership
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 max-w-7xl mx-auto px-4">
+                        {leadershipTeam.map((leader, index) => (
+                            <LeadershipCard key={leader.name} {...leader} />
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* Team Members Section */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                    <h4 className="text-2xl md:text-3xl font-semibold text-center text-gray-800 mb-8">
+                        Team Members
+                    </h4>
+                    <div className="flex justify-center px-4">
+                        {teamMembers.map((member, index) => (
+                            <LeadershipCard key={member.name} {...member} isMember={true} />
+                        ))}
+                    </div>
+                </motion.div>
             </div>
         </main>
     </div>
