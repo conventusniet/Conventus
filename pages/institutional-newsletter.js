@@ -77,29 +77,48 @@ export default function InstitutionalNewsletterPage() {
             official college newsletter
           </p>
 
-          {sortedNewsletters.map((item, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ y: -4 }}
-              className="relative mb-12"
-            >
-              {item.isAnniversary && (
-                <div className="absolute -top-4 -right-4 z-10 bg-yellow-400 text-yellow-900 text-sm font-bold px-4 py-1 rounded-full shadow-md">
-                  25 Years Special
-                </div>
-              )}
+          {sortedNewsletters.map((item, index) => {
+            const isLatest = index === 0
 
-              <ExternalNewsletter
-                title={item.title}
-                description={item.description}
-                imageUrl={item.imageUrl}
-                externalUrl={item.externalUrl}
-                publisherName="NIET Official"
-                edition={item.edition}
-                publishDate={item.displayDate}
-              />
-            </motion.div>
-          ))}
+            return (
+              <motion.div
+                key={index}
+                whileHover={{ y: -4 }}
+                className={`relative mb-12 rounded-xl bg-white transition-all ${
+                  isLatest
+                    ? 'shadow-xl border border-red-700'
+                    : 'shadow-md'
+                }`}
+              >
+                {/* 25 Years Beige-Gold Badge */}
+                {item.isAnniversary && (
+                  <div className="absolute top-4 right-4 z-20 bg-gradient-to-r from-[#EAD7B7] via-[#F3E6C9] to-[#D8C39A] text-gray-800 text-xs font-semibold px-4 py-1 rounded-full shadow-sm">
+                    25 Years Special
+                  </div>
+                )}
+
+                {/* Latest Issue Label */}
+                {isLatest && (
+                  <div className="absolute top-4 left-4 z-20 bg-red-700 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Latest Issue
+                  </div>
+                )}
+
+                {/* Slightly larger visual presence for latest edition */}
+                <div className={isLatest ? 'scale-[1.02]' : 'scale-100'}>
+                  <ExternalNewsletter
+                    title={item.title}
+                    description={item.description}
+                    imageUrl={item.imageUrl}
+                    externalUrl={item.externalUrl}
+                    publisherName="NIET Official"
+                    edition={item.edition}
+                    publishDate={item.displayDate}
+                  />
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
 
         <ConventusChatbot />
