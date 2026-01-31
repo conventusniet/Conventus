@@ -16,15 +16,6 @@ export default function InstitutionalNewsletterPage() {
 
   const headerY = useTransform(scrollYProgress, [0, 0.2], ['0%', '-100%'])
 
-  /* ---------- Edition Assets ---------- */
-  const summerEditionImage = '/images/NIET_Times_2025.png'
-  const summerEditionLink =
-    'https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/EUvIhIaUZpBKtOWcUX-RdpIBNeiHLqF6sC3KZT9zB_hr-Q?e=o1hQyF'
-
-  const winterEditionImage = '/images/NIET_Times_2026W.png'
-  const winterEditionLink = 'https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/IQCs2LL_swYsS7hxU0oMoI6HATpe3fqsHVM--Nvcp7NwqtA?e=I4BpuN' // to be added
-  /* ------------------------------------ */
-
   return (
     <div ref={pageRef} className="min-h-screen flex flex-col bg-red-50">
       <Header theme="red" />
@@ -51,32 +42,36 @@ export default function InstitutionalNewsletterPage() {
           <h2 className="text-3xl font-bold text-red-800 mb-4 text-center">
             College Publications
           </h2>
-          <p className="text-center text-red-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-center text-red-600 mb-10 max-w-3xl mx-auto">
             Stay updated with the latest happenings across NIET through our
             official college newsletter
           </p>
 
-          {/* ---------- First Edition ---------- */}
-          <ExternalNewsletter
-            title="NIET Times"
-            description="The official newsletter of Noida Institute of Engineering and Technology featuring campus news, academic achievements, student activities, faculty insights, and institutional updates. This seminal Summer Edition marked the launch of NIET’s institutional publication."
-            imageUrl={summerEditionImage}
-            externalUrl={summerEditionLink}
-            publisherName="NIET Official"
-            edition="Summer Edition 2025"
-            publishDate="15th, 2025"
-          />
+          {/* ---------- Winter Edition 2026 (Newest) ---------- */}
+          <div className="mb-10">
+            <ExternalNewsletter
+              title="NIET Times"
+              description="The Winter Edition 2026 builds upon the foundation of the first publication, marking 25 years of Noida Institute of Engineering and Technology. This edition celebrates the institution’s legacy while extending the benefits and reach established by the inaugural release."
+              imageUrl="/images/NIET_Times_2026W.png"
+              externalUrl="https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/IQCs2LL_swYsS7hxU0oMoI6HATpe3fqsHVM--Nvcp7NwqtA?e=I4BpuN"
+              publisherName="NIET Official"
+              edition="Winter Edition 2026"
+              publishDate="26th January 2026"
+            />
+          </div>
 
-          {/* ---------- Second Edition ---------- */}
-          <ExternalNewsletter
-            title="NIET Times"
-            description="The Winter Edition 2026 builds upon the foundation of the first publication, marking 25 years of Noida Institute of Engineering and Technology. This edition celebrates the institution’s legacy while extending the benefits and reach established by the inaugural release."
-            imageUrl={winterEditionImage}
-            externalUrl={winterEditionLink}
-            publisherName="NIET Official"
-            edition="Winter Edition 2026"
-            publishDate="26th January 2026"
-          />
+          {/* ---------- Summer Edition 2025 ---------- */}
+          <div className="mb-10">
+            <ExternalNewsletter
+              title="NIET Times"
+              description="The official newsletter of Noida Institute of Engineering and Technology featuring campus news, academic achievements, student activities, faculty insights, and institutional updates. This seminal Summer Edition marked the launch of NIET’s institutional publication."
+              imageUrl="/images/NIET_Times_2025.png"
+              externalUrl="https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/EUvIhIaUZpBKtOWcUX-RdpIBNeiHLqF6sC3KZT9zB_hr-Q?e=o1hQyF"
+              publisherName="NIET Official"
+              edition="Summer Edition 2025"
+              publishDate="15th August 2025"
+            />
+          </div>
         </div>
 
         <ConventusChatbot />
