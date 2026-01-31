@@ -7,6 +7,32 @@ import Footer from '@/components/Footer'
 import ConventusChatbot from '@/components/ConventusChatBot'
 import ExternalNewsletter from '@/components/ExternalNewsletter'
 
+const newsletters = [
+  {
+    title: 'NIET Times',
+    description:
+      'The Winter Edition 2026 builds upon the foundation of the first publication, marking 25 years of Noida Institute of Engineering and Technology. This edition celebrates the institution’s legacy while extending the benefits and reach established by the inaugural release.',
+    imageUrl: '/images/NIET_Times_2026W.png',
+    externalUrl:
+      'https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/IQCs2LL_swYsS7hxU0oMoI6HATpe3fqsHVM--Nvcp7NwqtA?e=I4BpuN',
+    edition: 'Winter Edition 2026',
+    publishDate: '2026-01-26',
+    displayDate: '26th January 2026',
+    isAnniversary: true
+  },
+  {
+    title: 'NIET Times',
+    description:
+      'The official newsletter of Noida Institute of Engineering and Technology featuring campus news, academic achievements, student activities, faculty insights, and institutional updates. This seminal Summer Edition marked the launch of NIET’s institutional publication.',
+    imageUrl: '/images/NIET_Times_2025.png',
+    externalUrl:
+      'https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/EUvIhIaUZpBKtOWcUX-RdpIBNeiHLqF6sC3KZT9zB_hr-Q?e=o1hQyF',
+    edition: 'Summer Edition 2025',
+    publishDate: '2025-08-15',
+    displayDate: '15th August 2025'
+  }
+]
+
 export default function InstitutionalNewsletterPage() {
   const pageRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -15,6 +41,10 @@ export default function InstitutionalNewsletterPage() {
   })
 
   const headerY = useTransform(scrollYProgress, [0, 0.2], ['0%', '-100%'])
+
+  const sortedNewsletters = [...newsletters].sort(
+    (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+  )
 
   return (
     <div ref={pageRef} className="min-h-screen flex flex-col bg-red-50">
@@ -42,36 +72,34 @@ export default function InstitutionalNewsletterPage() {
           <h2 className="text-3xl font-bold text-red-800 mb-4 text-center">
             College Publications
           </h2>
-          <p className="text-center text-red-600 mb-10 max-w-3xl mx-auto">
+          <p className="text-center text-red-600 mb-12 max-w-3xl mx-auto">
             Stay updated with the latest happenings across NIET through our
             official college newsletter
           </p>
 
-          {/* ---------- Winter Edition 2026 (Newest) ---------- */}
-          <div className="mb-10">
-            <ExternalNewsletter
-              title="NIET Times"
-              description="The Winter Edition 2026 builds upon the foundation of the first publication, marking 25 years of Noida Institute of Engineering and Technology. This edition celebrates the institution’s legacy while extending the benefits and reach established by the inaugural release."
-              imageUrl="/images/NIET_Times_2026W.png"
-              externalUrl="https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/IQCs2LL_swYsS7hxU0oMoI6HATpe3fqsHVM--Nvcp7NwqtA?e=I4BpuN"
-              publisherName="NIET Official"
-              edition="Winter Edition 2026"
-              publishDate="26th January 2026"
-            />
-          </div>
+          {sortedNewsletters.map((item, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ y: -4 }}
+              className="relative mb-12"
+            >
+              {item.isAnniversary && (
+                <div className="absolute -top-4 -right-4 z-10 bg-yellow-400 text-yellow-900 text-sm font-bold px-4 py-1 rounded-full shadow-md">
+                  25 Years Special
+                </div>
+              )}
 
-          {/* ---------- Summer Edition 2025 ---------- */}
-          <div className="mb-10">
-            <ExternalNewsletter
-              title="NIET Times"
-              description="The official newsletter of Noida Institute of Engineering and Technology featuring campus news, academic achievements, student activities, faculty insights, and institutional updates. This seminal Summer Edition marked the launch of NIET’s institutional publication."
-              imageUrl="/images/NIET_Times_2025.png"
-              externalUrl="https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/EUvIhIaUZpBKtOWcUX-RdpIBNeiHLqF6sC3KZT9zB_hr-Q?e=o1hQyF"
-              publisherName="NIET Official"
-              edition="Summer Edition 2025"
-              publishDate="15th August 2025"
-            />
-          </div>
+              <ExternalNewsletter
+                title={item.title}
+                description={item.description}
+                imageUrl={item.imageUrl}
+                externalUrl={item.externalUrl}
+                publisherName="NIET Official"
+                edition={item.edition}
+                publishDate={item.displayDate}
+              />
+            </motion.div>
+          ))}
         </div>
 
         <ConventusChatbot />
