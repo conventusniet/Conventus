@@ -21,7 +21,7 @@ export default function InstitutionalNewsletterPage() {
   const summerEditionLink =
     'https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/EUvIhIaUZpBKtOWcUX-RdpIBNeiHLqF6sC3KZT9zB_hr-Q?e=o1hQyF'
 
-  const winterEditionImage = '' // to be added
+  const winterEditionImage = '/images/NIET_Times_2026W.png'
   const winterEditionLink = 'https://noidainstituteofengtech-my.sharepoint.com/:b:/g/personal/conventus_niet_co_in/IQCs2LL_swYsS7hxU0oMoI6HATpe3fqsHVM--Nvcp7NwqtA?e=I4BpuN' // to be added
   /* ------------------------------------ */
 
