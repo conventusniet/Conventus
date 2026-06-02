@@ -49,9 +49,7 @@ const AboutConventus = () => {
                             Our mission is to provide a platform for students to develop their skills, network with peers and professionals, and make a positive impact.
                         </motion.p>
                         <motion.button
-                            className="mt-8 px-8 py-3 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-full text-xl font-bold hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            className="mt-8 px-8 py-3 bg-primary text-white rounded-full text-xl font-bold transition-all duration-300 transform"
                             onClick={() => router.push('/aboutus')}
                         >
                             Read More
@@ -59,7 +57,7 @@ const AboutConventus = () => {
                     </motion.div>
 
                     <motion.div
-                        className="relative h-80 overflow-hidden rounded-lg shadow-2xl"
+ className="relative h-80 overflow-hidden"
                         initial={{ opacity: 0, rotateY: -90 }}
                         animate={{ opacity: 1, rotateY: 0 }}
                         transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
@@ -72,7 +70,7 @@ const AboutConventus = () => {
                             animate={{ scale: 1 }}
                             transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-red-800 via-transparent to-transparent opacity-60"></div>
+                        <div className="absolute inset-0 bg-paper opacity-60"></div>
                         <div className="absolute bottom-0 left-0 p-6">
                             <h3 className="text-2xl font-bold text-white mb-2">Empowering Future Leaders</h3>
                             <p className="text-red-100">Join us in shaping tomorrow's world</p>

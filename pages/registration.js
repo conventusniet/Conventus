@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Footer from '../components/Footer';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import Header from '../components/Header';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,50 +8,7 @@ import { X, Menu } from 'lucide-react';
 import ConventusChatbot from '@/components/ConventusChatBot';
 // Lazy load the RegistrationForm component
 const RegistrationForm = lazy(() => import('./RegistrationForm'));
-
-// LazyLoading component
-const LazyLoading = ({ onLoadingComplete }) => {
-    const [progress, setProgress] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setProgress((prevProgress) => {
-                if (prevProgress >= 100) {
-                    clearInterval(interval);
-                    onLoadingComplete();
-                    return 100;
-                }
-                return prevProgress + 1;
-            });
-        }, 20);
-
-        return () => clearInterval(interval);
-    }, [onLoadingComplete]);
-
-    return (
-        <div className="fixed inset-0 bg-[#AA172C] flex flex-col items-center justify-center">
-            <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-8 overflow-hidden">
-                <div className="w-24 h-24 relative">
-                    <Image
-                        src="/images/conv-logo.png"
-                        alt="CONVENTUS Logo"
-                        layout="fill"
-                        objectFit="contain"
-                        priority
-                    />
-                </div>
-            </div>
-            <div className="text-white text-4xl font-bold mb-4">{progress}%</div>
-            <div className="w-64 h-2 bg-[#8A1323] rounded-full overflow-hidden">
-                <div
-                    className="h-full bg-white rounded-full transition-all duration-300 ease-out"
-                    style={{ width: `${progress}%` }}
-                ></div>
-            </div>
-            <div className="mt-4 text-white text-xl font-light">NAGATIO | SOLUTIO | ACTIO</div>
-        </div>
-    );
-};
+import LazyLoading from '../components/LazyLoading';
 
 // Duck walking animation component
 const DuckLoader = () => (
@@ -124,7 +81,7 @@ const Registration = () => {
     return (
         <>
             <Header theme="red" />
-            <section className="py-32 bg-gradient-to-b from-gray-100 to-red-100 min-h-screen flex items-center justify-center">
+            <section className="py-32 bg-paper min-h-screen flex items-center justify-center">
                 <motion.div
                     className="container mx-auto px-4 w-full"
                     variants={containerVariants}
@@ -209,7 +166,7 @@ const Registration = () => {
                     </motion.p>
                     <Suspense fallback={<DuckLoader />}>
                         <motion.div
-                            className="bg-white shadow-2xl rounded-lg p-8 w-full max-w-4xl mx-auto"
+                            className="bg-white rounded-lg p-8 w-full max-w-4xl mx-auto"
                             variants={itemVariants}
                         >
                             <RegistrationForm />
@@ -220,9 +177,7 @@ const Registration = () => {
                         variants={itemVariants}
                     >
                         <motion.button
-                            className="inline-block px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            className="inline-block px-8 py-4 bg-red-600 text-white font-semibold rounded-full transition-all duration-300 transform"
                             onHoverStart={() => setIsHovered(true)}
                             onHoverEnd={() => setIsHovered(false)}
                         >

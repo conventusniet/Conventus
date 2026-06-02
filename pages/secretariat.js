@@ -2,14 +2,15 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ConventusChatbot from '@/components/ConventusChatBot'
+import SectionHeading from '@/components/SectionHeading'
 
 const SecretariatMember = ({ name, branch }) => (
   <motion.div 
-    className="mb-6 text-center p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+    className="mb-6 text-center p-4 bg-white rounded-lg transition-all duration-300"
     whileHover={{ y: -5, scale: 1.02 }}
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -17,7 +18,7 @@ const SecretariatMember = ({ name, branch }) => (
     transition={{ duration: 0.5 }}
   >
     <h3 className="text-lg md:text-xl font-semibold text-red-800">{name}</h3>
-    <p className="text-sm md:text-base text-gray-600">{branch}</p>
+    <p className="text-sm md:text-base text-ink-500">{branch}</p>
   </motion.div>
 )
 
@@ -68,21 +69,22 @@ export default function SecretariatPage() {
   ]
   
   return (
-    <div ref={pageRef} className="min-h-screen flex flex-col bg-gradient-to-b from-red-50 to-white">
+    <div ref={pageRef} className="min-h-screen flex flex-col bg-paper">
       <Header theme="red" />
-      
+
       <motion.div
         style={{ y: headerY }}
-        className="fixed top-20 left-0 right-0 z-10 bg-gradient-to-r from-red-50 to-red-100 py-6 md:py-8 shadow-md"
+        className="fixed top-20 left-0 right-0 z-10 bg-white/95 backdrop-blur border-b border-ink/15 py-6 md:py-8"
       >
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-red-800 mb-2"
+          <p className="eyebrow text-xs text-primary mb-2">Conventus MUN</p>
+          <motion.h1
+            className="font-serif-display text-4xl md:text-6xl font-semibold text-ink mb-2"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            SECRETARIAT
+            Secretariat
           </motion.h1>
           <motion.h2 
             className="text-2xl md:text-4xl font-semibold text-red-700 mb-1"
@@ -129,22 +131,14 @@ export default function SecretariatPage() {
             alt="Secretariat Group Photo"
             layout="fill"
             objectFit="cover"
-            className="rounded-xl shadow-2xl"
+            className="rounded-xl"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-red-900/30 to-transparent rounded-xl"></div>
+          <div className="absolute inset-0 rounded-xl"></div>
         </motion.div>
         
         <div className="max-w-6xl mx-auto mb-16 md:mb-24">
-          <motion.h2 
-            className="text-3xl font-bold text-red-800 text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Our Team
-          </motion.h2>
+          <SectionHeading eyebrow="The Team" title="Our Secretariat" />
           
           {/* Row-wise layout for large screens */}
           <div className="hidden lg:block">
@@ -157,7 +151,7 @@ export default function SecretariatPage() {
           
           {/* Column-based layout with center divider for smaller screens */}
           <div className="lg:hidden relative">
-            <div className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-red-300 to-red-500 rounded-full"></div>
+            <div className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-px bg-primary"></div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 pr-2 md:pr-4">

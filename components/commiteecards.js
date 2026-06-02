@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
 
 const committeeSections = [
@@ -81,9 +81,7 @@ const CommitteeCard = ({ committee }) => {
   return (
     <Link href={`/committee/${committee.id}`}>
       <motion.div
-        className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl h-96"
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
+ className="bg-white overflow-hidden transition-all duration-300 h-96"
       >
         <div className="h-48 relative">
           <Image

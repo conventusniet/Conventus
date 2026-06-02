@@ -4,21 +4,23 @@ import { motion } from 'framer-motion';
 
 const Contact = () => {
     return (
-        <section className="py-12 bg-gradient-to-br from-red-50 to-white overflow-hidden">
+        <section className="py-12 bg-paper overflow-hidden">
             <div className="container mx-auto px-4">
 
 
 
 
-                <h2 className="text-4xl font-bold text-center mb-12 text-red-800">
-                    C O N T A C TㅤU S
-                </h2>
+                <div className="text-center mb-12">
+                    <p className="eyebrow text-xs text-primary mb-3">Get in touch</p>
+                    <h2 className="font-serif-display text-4xl sm:text-5xl font-semibold text-ink">Contact Us</h2>
+                    <div className="flex justify-center mt-5"><span className="accent-rule" /></div>
+                </div>
 
                 <div className="flex flex-wrap -mx-4 justify-between">
                     {/* Left Column - Map and Address */}
                     <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
                         <motion.div
-                            className="bg-white rounded-lg shadow-md p-6 mb-6"
+                            className="bg-white rounded-lg p-6 mb-6"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
@@ -31,7 +33,7 @@ const Contact = () => {
                             </div>
                         </motion.div>
                         <motion.div
-                            className="rounded-lg overflow-hidden shadow-md h-64 lg:h-80"
+ className="overflow-hidden h-64 lg:h-80"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
@@ -50,7 +52,7 @@ const Contact = () => {
                     {/* Right Column - Contact Information */}
                     <div className="w-full lg:w-1/2 px-4">
                         <motion.div
-                            className="bg-white rounded-lg shadow-md p-6 h-full flex flex-col items-center"
+                            className="bg-white rounded-lg p-6 h-full flex flex-col items-center"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.4 }}
@@ -93,8 +95,7 @@ const Contact = () => {
 
 const ContactPerson = ({ name, title, phone, email }) => (
     <motion.div
-        className="bg-gray-50 rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
-        whileHover={{ scale: 1.05 }}
+        className="bg-gray-50 rounded-lg p-4 text-center shadow-sm transition-shadow duration-300"
         transition={{ duration: 0.3 }}
     >
         <h4 className="font-semibold text-lg text-gray-800 mb-2">{name}</h4>

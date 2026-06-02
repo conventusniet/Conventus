@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Share2, FileText } from 'lucide-react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ConventusChatbot from '@/components/ConventusChatBot'
@@ -27,7 +27,7 @@ const NewsletterCard = ({ day, imageUrl, pdfUrl }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+ <div className="bg-white overflow-hidden transition duration-300">
       <div className="relative">
         <div className="relative h-64 w-full">
           <Image
@@ -36,7 +36,7 @@ const NewsletterCard = ({ day, imageUrl, pdfUrl }) => {
             layout="fill"
             objectFit="cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-ink/40 opacity-60" />
         </div>
         <div className="absolute bottom-0 left-0 p-6 text-white">
           <h3 className="text-2xl font-bold">{day} Day</h3>
@@ -86,8 +86,7 @@ const PhotoGallery = () => {
         {images.map((image, index) => (
           <motion.div
             key={index}
-            className="relative rounded-lg overflow-hidden h-48 md:h-64"
-            whileHover={{ scale: 1.03 }}
+ className="relative overflow-hidden h-48 md:h-64"
             transition={{ duration: 0.3 }}
           >
             <Image
@@ -95,7 +94,7 @@ const PhotoGallery = () => {
               alt={`Gallery image ${index + 1}`}
               layout="fill"
               objectFit="cover"
-              className="transition-transform duration-300 hover:scale-105"
+              className="transition-transform duration-300"
             />
           </motion.div>
         ))}
@@ -114,20 +113,22 @@ export default function NewsletterPage() {
   const headerY = useTransform(scrollYProgress, [0, 0.2], ["0%", "-100%"])
 
   return (
-    <div ref={pageRef} className="min-h-screen flex flex-col bg-red-50">
+    <div ref={pageRef} className="min-h-screen flex flex-col bg-ink-100">
       <Header theme="red" />
       <motion.div
         style={{ y: headerY }}
-        className="fixed top-20 left-0 right-0 z-10 bg-red-50 py-8"
+        className="fixed top-20 left-0 right-0 z-10 bg-white/95 backdrop-blur border-b border-ink/15 py-8 shadow-sm"
       >
         <div className="max-w-3xl mx-auto text-center px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-red-800 mb-3">
-            NEWSLETTERS
+          <p className="eyebrow text-xs text-primary mb-2">The Press</p>
+          <h1 className="font-serif-display text-4xl md:text-6xl font-semibold text-ink mb-3">
+            Newsletters
           </h1>
-          <p className="text-2xl text-red-600 font-semibold mb-1">
+          <span className="accent-rule mb-3" />
+          <p className="text-xl text-primary font-semibold mb-1 mt-3">
             Conventus Model United Nations 2025
           </p>
-          <p className="text-xl text-gray-700 italic">
+          <p className="text-lg text-ink-500 italic">
             Noida Institute of Engineering and Technology
           </p>
 
@@ -142,7 +143,7 @@ export default function NewsletterPage() {
 
       <main className="flex-grow container mx-auto px-4 py-8 mt-[calc(100vh-40vh)]">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-red-800 mb-8 text-center">Latest Edition</h2>
+          <h2 className="font-serif-display text-3xl font-semibold text-ink mb-8 text-center">Latest Edition</h2>
           <FlipbookNewsletter
             title="CMUN 2.0 Newsletter"
             imageUrl="/images/mun2.0/newsletter-preview.jpg"
@@ -152,7 +153,7 @@ export default function NewsletterPage() {
         </div>
 
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-red-800 mb-8 text-center">Previous Editions</h2>
+          <h2 className="font-serif-display text-3xl font-semibold text-ink mb-8 text-center">Previous Editions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <NewsletterCard
               day="First"

@@ -16,7 +16,7 @@ const SocialIcon = ({ href, icon: Icon, color, size = 28 }) => {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${colorClasses[color]} transition-colors transform hover:scale-110 transition-transform duration-200`}
+            className={`${colorClasses[color]} transition-colors transform transition-transform duration-200`}
         >
             <Icon size={size} />
         </a>
@@ -31,12 +31,12 @@ const LeadershipCard = ({ name, role, imageUrl, description, socialLinks, isMemb
         transition={{ duration: 0.5 }}
     >
         {/* Image container */}
-        <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-4 transform transition-transform duration-300 hover:scale-105 shadow-xl">
+ <div className="relative w-full aspect-square overflow-hidden mb-4 transform transition-transform duration-300">
             <Image
                 src={imageUrl || "/placeholder.svg"}
                 alt={name}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
             />
         </div>
 
@@ -58,49 +58,9 @@ const LeadershipCard = ({ name, role, imageUrl, description, socialLinks, isMemb
 )
 
 const leadershipTeam = [
-    
-    {
-        name: "Anubhav Singh",
-        role: "Technical Co-Head",
-        imageUrl: "/images/tech_2.jpg",
-        branch: "CSE - DS",
-        socialLinks: {
-            linkedin: "https://linkedin.com/in/anubhav-singh99",
-            github: "https://github.com/AnubhavSingh99",
-            instagram: "https://www.instagram.com/anu.bhav_skywalker",
-            whatsapp: "https://wa.me/+917088963373",
-        },
-    },
-    {
-        name: "Sanskar Bhardwaj",
-        role: "Technical Head",
-        imageUrl: "/images/sanskar.jpg",
-        branch: "Information Technology",
-        socialLinks: {
-            linkedin: "https://linkedin.com/in/sanskar-bhardwaj-618b82244",
-            github: "https://github.com/Quantsanskar",
-            instagram: "https://instagram.com/sanskar_.bhardwaj_",
-            whatsapp: "https://wa.me/+917289939775",
-        },
-    },
-    {
-        name: "Revant Khanna",
-        role: "Technical Co-Head",
-        imageUrl: "/images/Revant.jpg",
-        branch: "CSE - AI",
-        socialLinks: {
-            linkedin: "https://linkedin.com/in/revant-khanna-0b7447216",
-            github: "https://github.com/revant7",
-            instagram: "https://www.instagram.com/revant_72",
-            whatsapp: "https://wa.me/+919870525753",
-        },
-    },
-]
-
-const teamMembers = [
     {
         name: "Sarvesh Mishra",
-        role: "Technical Member",
+        role: "Technical Head",
         imageUrl: "/images/Sarvesh_Mishra.webp",
         branch: "CSE",
         socialLinks: {
@@ -110,11 +70,25 @@ const teamMembers = [
             whatsapp: "https://wa.me/+919547282935",
         },
     },
+    {
+        name: "Yash Gadia",
+        role: "Technical Co-Head",
+        imageUrl: "/images/yash-gadia.jpg",
+        branch: "CSE",
+        socialLinks: {
+            linkedin: "https://www.linkedin.com/in/yashgadia/",
+            github: "https://github.com/yash113gadia",
+            instagram: "https://www.instagram.com/yash113gadia",
+            whatsapp: "https://wa.me/919950094483",
+        },
+    },
 ]
+
+const teamMembers = []
 
 const LeadershipPage = () => (
     <div className="min-h-screen flex flex-col">
-        <main className="flex-grow bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        <main className="flex-grow bg-paper overflow-hidden">
             <div className="container mx-auto px-4 py-12">
                 <motion.h3
                     initial={{ opacity: 0, y: 20 }}
@@ -143,10 +117,7 @@ const LeadershipPage = () => (
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="mb-16"
                 >
-                    <h4 className="text-2xl md:text-3xl font-semibold text-center text-gray-800 mb-8">
-                        Leadership
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 max-w-7xl mx-auto px-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-4xl mx-auto px-4 justify-items-center">
                         {leadershipTeam.map((leader, index) => (
                             <LeadershipCard key={leader.name} {...leader} />
                         ))}
@@ -154,20 +125,22 @@ const LeadershipPage = () => (
                 </motion.div>
 
                 {/* Team Members Section */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                >
-                    <h4 className="text-2xl md:text-3xl font-semibold text-center text-gray-800 mb-8">
-                        Team Members
-                    </h4>
-                    <div className="flex justify-center px-4">
-                        {teamMembers.map((member, index) => (
-                            <LeadershipCard key={member.name} {...member} isMember={true} />
-                        ))}
-                    </div>
-                </motion.div>
+                {teamMembers.length > 0 && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                    >
+                        <h4 className="text-2xl md:text-3xl font-semibold text-center text-gray-800 mb-8">
+                            Team Members
+                        </h4>
+                        <div className="flex justify-center px-4">
+                            {teamMembers.map((member, index) => (
+                                <LeadershipCard key={member.name} {...member} isMember={true} />
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
             </div>
         </main>
     </div>

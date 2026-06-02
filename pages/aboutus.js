@@ -1,181 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { X, Menu, ChevronDown, ChevronRight, ChevronLeft } from 'lucide-react';
-import AboutPara from '@/components/aboutpara'
-import { TestimonialOne } from '@/components/testmono'
+import React from 'react';
+import Image from 'next/legacy/image';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Header from '@/components/Header';
 import Footer from '../components/Footer';
-import RegistrationButton from '../components/RegistrationButton'
-import Image from 'next/image';
-import Link from 'next/link';
 import JoinSection from '@/components/JoinSection';
-import { motion, AnimatePresence } from 'framer-motion';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import AboutPara from '@/components/aboutpara';
 import ConventusChatbot from '@/components/ConventusChatBot';
+import SectionHeading from '@/components/SectionHeading';
 
+/* ---------------- Large banner (cinematic cross-fade carousel) ---------------- */
+const BANNER_IMAGES = [
+    '/images/pstevt_3.jpg',
+    '/images/Secretariat.jpg',
+    '/images/AB2.jpg',
+    '/images/AB3.jpg',
+    '/images/AB4.jpg',
+    '/images/AB5.jpg',
+    '/images/news_4.jpg',
+];
 
-const PersonCard = ({ name, position, image, info, imageClassName = "" }) => {
-    const [active, setActive] = React.useState(false);
-
-    // Clear active on resize to desktop so hover works normally
-    React.useEffect(() => {
-        function onResize() {
-            if (typeof window !== 'undefined' && window.innerWidth >= 768) setActive(false);
-        }
-        if (typeof window !== 'undefined') window.addEventListener('resize', onResize);
-        return () => {
-            if (typeof window !== 'undefined') window.removeEventListener('resize', onResize);
-        };
-    }, []);
-
-    function handleClick() {
-        // toggle only on small screens (mobile) to avoid interfering with desktop hover
-        if (typeof window !== 'undefined' && window.innerWidth < 768) {
-            setActive((s) => !s);
-        }
-    }
-
-    // compute classes for image blur/brightness when hovered (desktop) or active (mobile)
-    const imageEffectClasses = `md:group-hover:filter md:group-hover:blur-sm md:group-hover:brightness-75 ${active ? 'filter blur-sm brightness-75' : ''}`;
-
-    // overlay visibility: visible when hovered on md+ OR when active on mobile
-    const overlayVisibleMobile = active ? 'opacity-100 max-h-56' : 'opacity-0 max-h-0';
-
-    return (
-        <motion.div
-            className="w-64 h-96 group sm:w-full sm:max-w-sm md:w-80 lg:w-72 mx-auto"
-            whileHover={{ scale: 1.03 }}
-            onClick={handleClick}
-        >
-            <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-lg bg-red-600/90">
-                {/* Image: fill the whole card or show fallback color if image missing */}
-                {image && image.trim() ? (
-                    <div className={`absolute inset-0 ${imageClassName} overflow-hidden ${imageEffectClasses}`}>
-                        <Image
-                            src={image}
-                            alt={name}
-                            layout="fill"
-                            objectFit="cover"
-                            priority={false}
-                        />
-                    </div>
-                ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-700 to-red-500" />
-                )}
-
-                {/* Gradient overlay appears on hover (desktop) or when active (mobile) */}
-                <div className={`absolute inset-0 transition-all duration-400 pointer-events-none md:group-hover:opacity-100 ${active ? 'opacity-100' : 'opacity-0'}`}>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                </div>
-
-                {/* Panel container - moves on hover for desktop, or when active on mobile */}
-                <div className="absolute left-4 right-4 bottom-4 z-30">
-                    <div className={`transform transition-transform duration-500 ${active ? 'translate-y-0' : 'translate-y-10'} md:group-hover:translate-y-0`}>
-                        <div className="bg-black/15 backdrop-blur-sm border border-white/20 rounded-xl p-4 shadow-md h-[calc(100%-32px)] overflow-hidden flex flex-col">
-                            <div className="flex items-start justify-between">
-                                <div>
-                                    <h3 className="text-lg font-semibold text-gray-100">{name}</h3>
-                                    <p className="text-sm text-red-200">{position}</p>
-                                </div>
-                            </div>
-
-                            <div className={`person-details mt-3 overflow-y-auto px-1 py-1 text-sm text-gray-100 transition-all duration-400 ${overlayVisibleMobile} md:max-h-0 md:opacity-0 md:group-hover:opacity-100 md:group-hover:max-h-56`}>
-                                <p className="leading-relaxed text-gray-100">{info}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Scoped scrollbar styles for the details area (works across modern browsers) */}
-            <style jsx>{`
-                .person-details::-webkit-scrollbar {
-                    height: 8px;
-                    width: 8px;
-                }
-                .person-details::-webkit-scrollbar-track {
-                    background: rgba(255,255,255,0.1);
-                    border-radius: 8px;
-                }
-                .person-details::-webkit-scrollbar-thumb {
-                    background: rgba(220,38,38,0.9); /* red-700 */
-                    border-radius: 8px;
-                }
-                /* Firefox */
-                :global(.person-details) {
-                    scrollbar-width: thin;
-                    scrollbar-color: rgba(220,38,38,0.9) rgba(255,255,255,0.1);
-                }
-            `}</style>
-        </motion.div>
-    );
-};
-
-const TeamSection = ({ title, members }) => (
-    <div className="my-8 sm:my-16">
-        <h3 className="text-3xl sm:text-5xl text-gray-800 mb-10 sm:mb-10 text-center">{title}</h3>
-        <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
-            {members.map((member, index) => (
-                <PersonCard
-                    key={index}
-                    {...member}
-                    imageClassName={member.name === "Ms. Kanika Jindal" ? "object-contain" : "object-cover"}
-                />
-            ))}
-        </div>
-    </div>
-);
-
-const Carousel = () => {
-    const images = [
-        "/images/pstevt_3.jpg",
-        "/images/Secretariat.jpg",
-        "/images/AB2.jpg",
-        "/images/AB3.jpg",
-        "/images/AB4.jpg",
-        "/images/AB5.jpg",
-        "/images/news_4.jpg",
-    ];
-
-    const CustomArrow = ({ direction, onClick }) => (
-        <button
-            onClick={onClick}
-            className={`absolute z-10 top-1/2 transform -translate-y-1/2 ${direction === 'left' ? 'left-4' : 'right-4'
-                } bg-white bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 transition-all duration-300`}
-        >
-            {direction === 'left' ? (
-                <ChevronLeft size={24} className="text-gray-800" />
-            ) : (
-                <ChevronRight size={24} className="text-gray-800" />
-            )}
-        </button>
-    );
-
+const BannerCarousel = () => {
     const settings = {
-        dots: true,
+        dots: false,
+        arrows: false,
         infinite: true,
-        speed: 500,
+        fade: true,
+        speed: 1200,
+        autoplay: true,
+        autoplaySpeed: 4500,
+        pauseOnHover: false,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
-        prevArrow: <CustomArrow direction="left" />,
-        nextArrow: <CustomArrow direction="right" />,
     };
-
     return (
-        <div className="w-full h-[calc(100vh-80px)] relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
             <Slider {...settings}>
-                {images.map((img, index) => (
-                    <div key={index} className="focus:outline-none">
-                        <div className="w-full h-[calc(100vh-80px)] relative">
-                            <Image
-                                src={img}
-                                alt={`Carousel image ${index + 1}`}
-                                layout="fill"
-                                objectFit="cover"
-                                priority={index === 0}
-                            />
+                {BANNER_IMAGES.map((img, i) => (
+                    <div key={i}>
+                        <div className="relative w-full h-[88vh] min-h-[600px]">
+                            <Image src={img} alt="" layout="fill" objectFit="cover" priority={i === 0} />
                         </div>
                     </div>
                 ))}
@@ -184,25 +49,91 @@ const Carousel = () => {
     );
 };
 
+/* ---------------- Monogram fallback for missing portraits ---------------- */
+const Monogram = ({ name }) => {
+    const initials = name
+        .replace(/[^A-Za-z ]/g, '')
+        .trim()
+        .split(/\s+/)
+        .slice(-2)
+        .map((w) => w[0])
+        .join('')
+        .toUpperCase();
+    return (
+        <div className="absolute inset-0 bg-primary flex items-center justify-center">
+            <span className="font-serif-display text-white text-5xl">{initials}</span>
+        </div>
+    );
+};
+
+/* ---------------- Dignitary / mentor message — alternating editorial row ---------------- */
+const MessageRow = ({ name, position, image, info, flip, objectPosition = "center top" }) => (
+    <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start py-12 border-b border-ink/10 last:border-b-0">
+        <div className={`md:col-span-4 ${flip ? 'md:order-last' : ''}`}>
+            <div className="relative w-full max-w-[18rem] mx-auto aspect-square overflow-hidden border border-ink/15 bg-ink-100">
+                {image && image.trim() ? (
+                    <Image src={image} alt={name} layout="fill" objectFit="cover" objectPosition={objectPosition} />
+                ) : (
+                    <Monogram name={name} />
+                )}
+            </div>
+        </div>
+        <div className="md:col-span-8">
+            <p className="eyebrow text-[11px] text-primary mb-2">{position}</p>
+            <h3 className="font-serif-display text-2xl sm:text-3xl font-semibold text-ink mb-5">{name}</h3>
+            <p className="text-sm text-ink-600 leading-relaxed text-justify whitespace-pre-line">{info}</p>
+        </div>
+    </div>
+);
+
+/* ---------------- Student leader card ---------------- */
+const LeaderCard = ({ name, position, image, info, objectPosition = "center top" }) => (
+    <div className="bg-white border border-ink/15 flex flex-col">
+        <div className="relative w-full aspect-square overflow-hidden border-b border-ink/15 bg-ink-100">
+            <Image src={image} alt={name} layout="fill" objectFit="cover" objectPosition={objectPosition} />
+        </div>
+        <div className="p-7 flex flex-col flex-grow">
+            <p className="eyebrow text-[11px] text-primary mb-2">{position}</p>
+            <h3 className="font-serif-display text-2xl font-semibold text-ink mb-4">{name}</h3>
+            <p className="text-xs text-ink-600 leading-relaxed text-justify">{info}</p>
+        </div>
+    </div>
+);
+
+/* ---------------- Small labelled sub-divider ---------------- */
+const SubLabel = ({ children }) => (
+    <div className="flex items-center justify-center gap-4 my-12">
+        <span className="h-px w-10 bg-ink/20" />
+        <span className="font-serif-display text-xl text-ink uppercase tracking-[0.2em]">{children}</span>
+        <span className="h-px w-10 bg-ink/20" />
+    </div>
+);
+
 export default function AboutPageOne() {
+    const story = [
+        "The Conventus Model United Nations Club is a student-centric body that provides a forum to engage with a transforming world. We combine adaptability with NIET's vision to build bridges between delegates from various backgrounds who share a passion for debate and dialogue. We aim to help delegates understand the fundamental workings of the United Nations, where diplomacy, debate, and global engagement come to life. At Conventus, we are driven by a passion for international affairs, leadership, and collaboration.",
+        "Our mission is to cultivate a platform that nurtures critical thinking, problem-solving, and public speaking skills, empowering students to become global leaders. Whether you're a seasoned MUN enthusiast or new to diplomacy, our doors are always open. Conventus MUN offers more than just an extracurricular activity - it provides a transformative experience that prepares students for leadership roles both within and beyond academia. Looking to the future, we aim to establish ourselves as a renowned conference through active engagement in national and international MUN circuits.",
+        "Our team is committed to promoting diplomacy, leadership, and global awareness through innovative events and impactful conferences. We strive to create a legacy of diplomats and leaders who are knowledgeable, compassionate, and ethical. With endless opportunities for learning and personal growth, Conventus is the perfect place for anyone who believes in the power of dialogue and action. Step into the world of diplomacy, engage with global issues, and be part of a community that builds bridges of understanding.",
+    ];
+
     const management = [
         {
             name: "Dr. O.P Agarwal",
             position: "Managing Director",
             image: "/digni_img/MD Sir.JPG",
-            info: "'Work is Worship'  Success is not a one-shot process. It is the result of a continuous improvement after each failure. The fear of failure needs to be captured in order for a person to learn from his failure too. It is an invaluable opportunity to rectify errors and move forward. Failure in working for a good cause is better than success in working for a wrong cause. Over the years now, NIET has built quite a special position in the private higher education sector. With its distinctive culture, it provides a clear student-centered environment in which to explore existing technical knowledge, and gain new learning at the leading edges of technology development. Our unique educational system ensures that you gain not just depth and breadth in your chosen area of specialization, but also a holistic set of skills that will equip you to face the real world. At every stage, there will be opportunities to expand your boundaries, platforms for collaboration and learning, and recognitions for those who strive to excel. Thus, I would like each one of you to join NIET and aspire as global leaders and a successful human being."
+            info: "'Work is Worship' — Success is a continuous journey of learning and resilient improvement. Over the years, NIET has built a distinguished position in higher education by providing a student-centric environment where technical knowledge and holistic life skills go hand in hand. Our unique educational ecosystem equips you to face the real world with confidence. I invite each of you to join Conventus and NIET as we shape global leaders and ethical, successful individuals."
         },
         {
             name: "Dr. Neema Agarwal",
             position: "Additional Managing Director",
             image: "/digni_img/AMD Ma'am.JPG",
-            info: "'Education is the most powerful weapon which you can use to change the world' - Nelson Mandela\n\nIn the course of last 20 years, many technical & management institutes have sprung up all over the country. Graduates passing out every year are highly optimistic that technical courses ensure a rewarding career. The economic, corporate, and social environments are undergoing radical changes. To survive, manage, and excel in this dynamically changing atmosphere, it demands engagement of professionals who are well informed, competent, courageous, and versatile. Beyond the academics, the curriculum at NIET is strongly linked with several recent themes like latest technologies needed by organizations, soft skills, communication, among others. Our approach has resulted in programs of study relevant to the leadership trends and challenges of tomorrow. Classroom learning is made interesting by highly qualified and experienced faculty through interactions, presentations, role plays, case studies and out bound learning programs. This is further reinforced by practical learning through industrial visits and summer training. Students regularly undergo personality development and grooming sessions that lead to both extrinsic and intrinsic confidence boosting and prepares them for the corporate world. We appreciate your interest and want you to know that we are here to bring you a leading edge technical education."
+            info: "'Education is the most powerful weapon which you can use to change the world' — Nelson Mandela\n\nTo excel in today's dynamically changing corporate and social environments, students must become well-informed, courageous, and versatile leaders. At NIET, we bridge classroom academics with critical leadership skills, communication training, and practical corporate grooming. Our qualified faculty and robust co-curricular programs ensure that Conventus delegates and NIET students are fully prepared to tackle the global challenges of tomorrow."
         },
         {
             name: "Dr. Vinod M Kapse",
             position: "Director",
             image: "/digni_img/Director.JPG",
-            info: "Welcome to Noida Institute of Engineering & Technology, Gr. Noida. Ever since its inception in 2001, our endeavour at NIET has been to provide excellent quality of education and training to young minds aspiring to become engineers, managers, pharmacists, and technocrats. In order to achieve this goal, we have established an infrastructure that conforms to the bests in the world. Our faculty members are highly talented and qualified. Additionally, we invite the finest minds from the industry and academia as guest lecturers. With the help of a very supportive staff, we ensure a healthy learning atmosphere for our students. We motivate our students to dream big and guarantee that right spirit and necessary talent are inculcated in the students to help them realize their objectives. We also continuously strive to instil ethical values in our wards so that they become responsible citizens of tomorrow. NIET has always stood for quality and excellence and we make every effort to constantly upgrade and improve ourselves. These efforts have been recognized, appreciated, and awarded by prestigious educational bodies both in India and abroad. I wish you the very best as you choose to become a part of this exciting and vibrant learning community."
+            info: "Welcome to NIET, Greater Noida. Since 2001, our mission has been to deliver top-tier education and ethical grooming to aspiring technocrats and leaders. Supported by world-class infrastructure and highly qualified faculty, we foster a healthy, vibrant learning environment that motivates students to dream big. We continuously strive to instil values of responsibility, quality, and excellence, preparing you to become impactful citizens and visionaries. I wish you the absolute best on your journey."
         },
     ];
 
@@ -210,35 +141,37 @@ export default function AboutPageOne() {
         {
             name: "Dr. Manish Kaushik",
             position: "Dean Student Welfare",
-            image: "/digni_img/Manish Sir.png",
+            image: "/digni_img/Manish Sir.jpg",
+            objectPosition: "center top",
             info: "Welfare of student is of utmost importance to us. The office of Dean Students' Welfare is responsible for all the aspects of students' welfare. The office therefore always motivates the students towards their bright future by engaging them in different academic as well as co-curricular activities so as to fulfill their dreams. The office strives to enhance the students' overall personality and to provide better career opportunities. The office looks after the functioning of various societies and clubs under which students take active participation."
         },
         {
             name: "Ms. Kanika Jindal",
             position: "Associate Dean Student Welfare",
-            image: "/digni_img/Kanika Mam.png",
+            image: "/digni_img/Kanika Mam.jpg",
+            objectPosition: "center top",
             info: "Is working as an Associate Dean Student Welfare and Assistant Professor in the Department of Electronics and Communication Engineering with experience of 13 years. She is graduated with honors in Electronics and Communication Engineering from Uttar Pradesh Technical University in 2010. She is Gold Medalist in M.Tech (VLSI Design) from Uttar Pradesh Technical University in 2012. She is young and dynamic in organizing cultural and technical events."
         },
         {
             name: "Mr. Shiv Nayan Prakash",
             position: "Faculty Co-Ordinator",
             image: "",
-            info: "Mr. Shiv Nayan Prakash, the Faculty Coordinator of the Conventus club, plays a crucial role in guiding and mentoring students in organizing major events, including debates, Model United Nations (MUN), and awareness sessions. His leadership and expertise in communication and public speaking have significantly contributed to the growth and success of the club, helping students develop their skills in rhetoric, diplomacy, and event management. With a strong academic background—holding an M.A. in English from Hansraj College, DU, a PG Diploma in Translation, and currently pursuing his PhD—he brings valuable experience in research, linguistic studies, debate, and theater. His dedication to fostering critical thinking and effective communication enables students to excel in public discourse and collaborative learning."
+            info: "Mr. Shiv Nayan Prakash, the Faculty Coordinator of Conventus, plays a crucial role in mentoring students in debate, rhetoric, and diplomacy. Holding an M.A. from Hansraj College, DU, a PG Diploma in Translation, and currently pursuing his PhD, he brings extensive experience in research, linguistics, and public speaking. His dedication empowers students to excel in collaborative learning and international debate circuits."
         },
     ];
 
     const leaders = [
         {
-            name: "Yashraj Ranjan",
-            position: "President",
-            image: "/images/uvp2.jpeg",
-            info: "As President of Conventus MUN Club, Yashraj Ranjan leads with vision and dedication, ensuring the club thrives as a hub for diplomacy, debate, and leadership. He is committed to creating meaningful opportunities for members to explore international relations, sharpen their critical thinking, and develop as future leaders. With his inclusive leadership style, Yashraj fosters collaboration and empowers members to contribute their ideas, driving Conventus forward as a platform where dialogue inspires real impact."
-        },
-        {
             name: "Ameya Atreya",
             position: "Vice President",
             image: "/images/Ameya_Atreya.jpg",
             info: "As Vice President, Ameya Atreya plays a key role in strengthening the club’s initiatives and supporting members in their personal and professional growth. He is passionate about cultivating a space where students can engage with pressing global issues, practice diplomacy, and enhance their leadership abilities. Ameya ensures that every event aligns with Conventus’s mission to promote dialogue, inclusivity, and global awareness."
+        },
+        {
+            name: "Yashraj Ranjan",
+            position: "President",
+            image: "/images/uvp2.jpeg",
+            info: "As President of Conventus MUN Club, Yashraj Ranjan leads with vision and dedication, ensuring the club thrives as a hub for diplomacy, debate, and leadership. He is committed to creating meaningful opportunities for members to explore international relations, sharpen their critical thinking, and develop as future leaders. With his inclusive leadership style, Yashraj fosters collaboration and empowers members to contribute their ideas, driving Conventus forward as a platform where dialogue inspires real impact."
         },
         {
             name: "Deepanjali Sharma",
@@ -248,63 +181,83 @@ export default function AboutPageOne() {
         },
     ];
 
-
     return (
-        <div className="bg-[#EEEFF2]">
+        <div className="bg-paper">
             <Header />
-            <Carousel />
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col space-y-1 pb-10 pt-12 md:pt-24 sm:space-y-1">
-                    <h1 className="text-5xl font-bold text-center">About</h1>
-                    <div className="flex justify-center min-h-[200px]">
-                        <div className="max-w-3xl space-y-6">
-                            <div className="border-l-2 border-red-200 pl-6">
-                                <p className="text-base sm:text-xl text-center text-gray-700 md:text-lg leading-relaxed tracking-wide">
-                                    The Conventus Model United Nations Club is a student-centric body that provides a forum to engage with a transforming world. We combine adaptability with NIET's vision to build bridges between delegates from various backgrounds who share a passion for debate and dialogue. We aim to help delegates understand the fundamental workings of the United Nations, where diplomacy, debate, and global engagement come to life. At Conventus, we are driven by a passion for international affairs, leadership, and collaboration.
-                                </p>
-                            </div>
 
-                            <div className="border-l-2 border-red-100 pl-6">
-                                <p className="text-base sm:text-xl text-center text-gray-700 md:text-lg leading-relaxed tracking-wide">
-                                    Our mission is to cultivate a platform that nurtures critical thinking, problem-solving, and public speaking skills, empowering students to become global leaders. Whether you're a seasoned MUN enthusiast or new to diplomacy, our doors are always open. Conventus MUN offers more than just an extracurricular activity - it provides a transformative experience that prepares students for leadership roles both within and beyond academia. Looking to the future, we aim to establish ourselves as a renowned conference through active engagement in national and international MUN circuits.
-                                </p>
-                            </div>
+            {/* 1 — Large banner hero */}
+            <section className="relative h-[88vh] min-h-[600px] overflow-hidden text-white">
+                <BannerCarousel />
+                <div className="absolute inset-0 z-10 bg-ink/70" />
+                <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6">
+                    <p className="eyebrow text-xs text-white/70 mb-6">The Club</p>
+                    <h1 className="font-serif-display text-5xl sm:text-7xl lg:text-8xl font-semibold tracking-tight">
+                        About Conventus
+                    </h1>
+                    <div className="flex justify-center mt-7">
+                        <span className="double-rule" style={{ borderColor: '#ffffff' }} />
+                    </div>
+                    <p className="mt-8 text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+                        A student forum for diplomacy, debate, and global engagement at NIET, Greater Noida.
+                    </p>
+                </div>
+            </section>
 
-                            <div className="border-l-2 border-red-100 pl-6">
-                                <p className="text-base sm:text-xl text-center text-gray-700 md:text-lg leading-relaxed tracking-wide">
-                                    Our team is committed to promoting diplomacy, leadership, and global awareness through innovative events and impactful conferences. We strive to create a legacy of diplomats and leaders who are knowledgeable, compassionate, and ethical. With endless opportunities for learning and personal growth, Conventus is the perfect place for anyone who believes in the power of dialogue and action. Step into the world of diplomacy, engage with global issues, and be part of a community that builds bridges of understanding.
-                                </p>
-                            </div>
-                        </div>
+            {/* 2 — Our Story */}
+            <section className="py-24 px-6 sm:px-8 lg:px-12">
+                <div className="max-w-3xl mx-auto">
+                    <SectionHeading eyebrow="Who We Are" title="Our Story" align="left" />
+                    <div className="space-y-6">
+                        {story.map((p, i) => (
+                            <p key={i} className="border-l-2 border-primary/40 pl-6 text-lg text-ink-700 leading-relaxed text-justify">
+                                {p}
+                            </p>
+                        ))}
                     </div>
                 </div>
-                <div className="flex items-center justify-center mb-2">
-                    <div className="space-y-6 md:w-3/4">
-                        <h3 className="text-4xl sm:text-6xl font-bold text-gray-800 text-center">Meet Our Team</h3>
-                        <p className="max-w-4xl text-base sm:text-2xl text-gray-700 md:text-xl">
-                            At the heart of Conventus MUN Club is a dedicated team of passionate and driven individuals who work tirelessly to bring the club's vision to life. Together, we ensure that Conventus remains a space where students can grow, connect, and make a difference.
-                        </p>
-                    </div>
-                </div>
-                <TeamSection title="Management" members={management} />
-                <TeamSection title="Mentors" members={mentors} />
-                <div className="my-16 sm:my-32">
-                    <h3 className="text-4xl sm:text-6xl mt-20 text-gray-800 mb-10 sm:mb-20 text-center">Leaders</h3>
-                    <div className="flex flex-col items-center gap-12 sm:gap-24">
-                        <PersonCard {...leaders[0]} />
-                        <div className="flex flex-col md:flex-row justify-center gap-12 sm:gap-24 w-full">
-                            <PersonCard {...leaders[1]} />
-                            <PersonCard {...leaders[2]} />
-                        </div>
-                    </div>
-                </div>
-                <AboutPara />
-                <JoinSection />
-                <ConventusChatbot />
-            </div>
+            </section>
 
-            <hr className="mt-6 sm:mt-12" />
+            {/* 3 — Patrons, mentors & people */}
+            <section className="py-24 px-6 sm:px-8 lg:px-12 bg-white border-y border-ink/10">
+                <div className="max-w-6xl mx-auto">
+                    <SectionHeading
+                        eyebrow="Our People"
+                        title="Meet Our Team"
+                        subtitle="At the heart of Conventus MUN Club is a dedicated team of passionate, driven individuals who bring the club's vision to life — ensuring Conventus remains a space where students grow, connect, and make a difference."
+                    />
+
+                    <SubLabel>Management</SubLabel>
+                    {management.map((m, i) => (
+                        <MessageRow key={m.name} {...m} flip={i % 2 === 1} />
+                    ))}
+
+                    <SubLabel>Mentors</SubLabel>
+                    {mentors.map((m, i) => (
+                        <MessageRow key={m.name} {...m} flip={i % 2 === 1} />
+                    ))}
+                </div>
+            </section>
+
+            {/* 4 — Student leadership */}
+            <section className="py-24 px-6 sm:px-8 lg:px-12">
+                <div className="max-w-6xl mx-auto">
+                    <SectionHeading eyebrow="The Council" title="Student Leadership" />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {leaders.map((l) => (
+                            <LeaderCard key={l.name} {...l} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* 5 — Principles & values */}
+            <AboutPara />
+
+            {/* 6 — Join */}
+            <JoinSection />
+
             <Footer />
+            <ConventusChatbot />
         </div>
-    )
+    );
 }

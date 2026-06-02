@@ -38,8 +38,7 @@ const Modal = ({ isOpen, onClose, message, isError }) => {
 };
 const ContactPerson = ({ name, title, phone, email }) => (
     <motion.div
-        className="bg-gray-50 rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
-        whileHover={{ scale: 1.05 }}
+        className="bg-gray-50 rounded-lg p-4 text-center shadow-sm transition-shadow duration-300"
         transition={{ duration: 0.3 }}
     >
         <h4 className="font-semibold text-lg text-gray-800 mb-2">{name}</h4>
@@ -331,7 +330,7 @@ const DelegateRegistrationForm = () => {
     return (
 
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-            <div className="bg-white rounded-lg shadow-2xl p-8 mb-16 text-center max-w-4xl w-full">
+            <div className="bg-white rounded-lg p-8 mb-16 text-center max-w-4xl w-full">
                 <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
                     Delegate Registration
                 </h2>
@@ -502,7 +501,7 @@ const DelegateRegistrationForm = () => {
                                         </label>
                                         {formData.institute === 'NIET' ? (
                                             <div className="flex flex-col items-center space-y-4">
-                                                <div className="w-48 h-48 border rounded-lg p-2 bg-white shadow-md">
+                                                <div className="w-48 h-48 border rounded-lg p-2 bg-white">
                                                     <img
                                                         src="/QR's/NIET deleg.jpg"
                                                         alt="NIET Payment QR"
@@ -520,7 +519,7 @@ const DelegateRegistrationForm = () => {
                                             </div>
                                         ) : (
                                             <div className="flex flex-col items-center space-y-4">
-                                                <div className="w-48 h-48 border rounded-lg p-2 bg-white shadow-md">
+                                                <div className="w-48 h-48 border rounded-lg p-2 bg-white">
                                                     <img
                                                         src="/QR's/Other Deleg.jpg"
                                                         alt="Other Institute Payment QR"
@@ -555,7 +554,7 @@ const DelegateRegistrationForm = () => {
                                             {formData.branch || "Select Branch"}
                                         </div>
                                         {branchOpen && (
-                                            <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
+                                            <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md">
                                                 <div className="flex items-center p-2 border-b">
                                                     <Search className="text-gray-400 mr-2" size={18} />
                                                     <input
@@ -600,7 +599,7 @@ const DelegateRegistrationForm = () => {
                                             {formData.section || "Select Section"}
                                         </div>
                                         {sectionOpen && (
-                                            <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
+                                            <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md">
                                                 <div className="flex items-center p-2 border-b">
                                                     <Search className="text-gray-400 mr-2" size={18} />
                                                     <input
@@ -952,10 +951,7 @@ const DelegateRegistrationForm = () => {
 
                         <div className="text-center">
                             <motion.button
-                                className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
-                                    }`}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                                className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform ${loading ? 'opacity-50 cursor-not-allowed' : '' }`}
                                 type="submit"
                                 disabled={loading}
                             >

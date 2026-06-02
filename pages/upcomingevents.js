@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { X, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 import ConventusChatbot from '@/components/ConventusChatBot';
+import SectionHeading from '@/components/SectionHeading';
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
@@ -64,7 +65,7 @@ const HeroCarousel = () => {
 
 const EventCard = ({ image, title, date, description, onClick }) => (
   <motion.div
-    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer flex h-104 border-2 border-red-200"
+ className="bg-white overflow-hidden cursor-pointer flex h-104 border-2 border-red-200"
     onClick={onClick}
   >
     <div className="flex-1 p-8 flex flex-col justify-between">
@@ -90,7 +91,7 @@ const EventCard = ({ image, title, date, description, onClick }) => (
 
 const EmptyState = () => (
   <div className="max-w-3xl mx-auto">
-    <div className="bg-white rounded-xl shadow-lg border border-red-200 p-10 text-center">
+    <div className="bg-white rounded-xl border border-red-200 p-10 text-center">
       <div className="flex items-center justify-center mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" />
@@ -119,7 +120,7 @@ const EventDetails = ({ event, onClose }) => {
       exit={{ opacity: 0, scale: 0.9 }}
       className="fixed inset-0 bg-white z-50 overflow-y-auto p-4"
     >
-      <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg shadow-lg border-2 border-red-200">
+      <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg border-2 border-red-200">
         <button
           className="absolute -top-1 right-0 text-red-600 hover:text-red-800"
           onClick={onClose}
@@ -167,16 +168,15 @@ const EventsPage = () => {
 
 
   return (
-    <div className="min-h-screen flex flex-col bg-red-50">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <HeroCarousel />
-      <main className="flex-grow container mx-auto px-4 py-12">
-        <h1 className="text-5xl font-bold text-center mb-8 text-red-800">
-          Upcoming Events
-        </h1>
-        <p className="text-xl text-center mb-12 text-red-600">
-          Discover and participate in our global events addressing crucial international issues
-        </p>
+      <main className="flex-grow container mx-auto px-4 py-16">
+        <SectionHeading
+          eyebrow="What's Next"
+          title="Upcoming Events"
+          subtitle="Discover and participate in our events addressing crucial international issues."
+        />
 
         <div className="space-y-12">
           {events.length === 0 ? (

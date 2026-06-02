@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -22,7 +22,7 @@ const HeroSection = () => (
 
 const ResourceCard = ({ icon, title, description, link, onClick }) => (
   <motion.div 
-    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition transform hover:scale-105"
+ className="bg-white overflow-hidden cursor-pointer transition transform"
     onClick={onClick}
   >
     <div className="p-6">
@@ -45,7 +45,7 @@ const ResourceDetails = ({ resource, onClose }) => (
     exit={{ opacity: 0, scale: 0.9 }}
     className="fixed inset-0 bg-white z-50 overflow-y-auto p-4"
   >
-    <div className="max-w-2xl mx-auto relative bg-gray-100 p-6 rounded-lg shadow-lg">
+    <div className="max-w-2xl mx-auto relative bg-gray-100 p-6 rounded-lg">
       <button
         className="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
         onClick={onClose}

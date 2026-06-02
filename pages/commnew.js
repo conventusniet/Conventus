@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import ConventusChatbot from '@/components/ConventusChatBot'
+import SectionHeading from '@/components/SectionHeading';
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '../components/Footer'
 
 const CommitteeCard = ({ logo, title, description, objectives, onClick }) => (
   <motion.div
-    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 hover:scale-105"
+ className="bg-white overflow-hidden cursor-pointer transition-all duration-300"
     onClick={onClick}
   >
     <div className="relative h-48 w-full">
@@ -44,7 +45,7 @@ const CommitteeDetails = ({ committee, onClose }) => (
     exit={{ opacity: 0 }}
     className="fixed inset-0 bg-black/50 z-50 overflow-y-auto p-4"
   >
-    <div className="max-w-2xl mx-auto relative bg-white p-6 rounded-lg shadow-lg mt-20">
+    <div className="max-w-2xl mx-auto relative bg-white p-6 rounded-lg mt-20">
       <button
         className="absolute top-4 right-4 text-red-600 hover:text-red-800"
         onClick={onClose}
@@ -157,17 +158,16 @@ export default function CommitteesPage() {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col bg-red-50">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header theme="red" />
-      <main className="flex-grow mt-20 container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-8 text-red-800">
-          Committees
-        </h1>
-        <p className="text-lg text-center mb-8 text-red-600">
-          Explore our diverse range of committees addressing crucial global issues
-        </p>
+      <main className="flex-grow mt-20 container mx-auto px-4 py-12">
+        <SectionHeading
+          eyebrow="The Agenda"
+          title="Committees"
+          subtitle="Explore our diverse range of committees addressing crucial global issues."
+        />
 
-        <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
+        <h2 className="font-serif-display text-3xl font-semibold text-center mb-8 text-ink">
           UN Committees
         </h2>
         <div className="max-w-6xl mx-auto">
@@ -181,19 +181,8 @@ export default function CommitteesPage() {
             ))}
           </div>
         </div>
-        <div className="text-center mt-10 mb-16">
-          <Link href="/registration" passHref>
-            <motion.button
-              className="px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 hover:bg-red-700"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Register Now
-            </motion.button>
-          </Link>
-        </div>
 
-        <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
+        <h2 className="font-serif-display text-3xl font-semibold text-center mt-16 mb-8 text-ink">
           Indian Committees
         </h2>
         <div className="max-w-4xl mx-auto">
@@ -207,19 +196,8 @@ export default function CommitteesPage() {
             ))}
           </div>
         </div>
-        <div className="text-center mt-10 mb-16">
-          <Link href="/registration" passHref>
-            <motion.button
-              className="px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 hover:bg-red-700"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Register Now
-            </motion.button>
-          </Link>
-        </div>
 
-        <h2 className="text-3xl font-bold text-center mb-6 text-red-800">
+        <h2 className="font-serif-display text-3xl font-semibold text-center mt-16 mb-8 text-ink">
           International Press
         </h2>
         <div className="max-w-7xl mx-auto">
@@ -233,17 +211,38 @@ export default function CommitteesPage() {
             ))}
           </div>
         </div>
-        <div className="text-center mt-10 mb-16">
-          <Link href="/registration" passHref>
-            <motion.button
-              className="px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 hover:bg-red-700"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Register Now
-            </motion.button>
-          </Link>
-        </div>
+
+        {/* Beautiful premium consolidated CTA banner card */}
+        <section className="my-16 max-w-4xl mx-auto px-4">
+          <motion.div
+ className="relative overflow-hidden border border-red-800/20 bg-primaryr p-8 md:p-12 text-center text-white"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Background pattern */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(170,23,44,0.15),transparent)] pointer-events-none" />
+            
+            <h3 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-yellow-400 tracking-wide text-">
+              SECURE YOUR SEAT AT DIPLOMACY
+            </h3>
+            
+            <p className="text-red-100/90 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+              Join political minds, passionate debaters, and visionary storytellers at the prestigious 2nd Edition of Conventus MUN. Shape the global discourse today.
+            </p>
+            
+            <div className="flex justify-center">
+              <Link href="/cmun-connect" passHref>
+                <motion.button
+                  className="px-10 py-4 bg-yellow-400 hover:bg-yellow-500 text-red-955 font-bold text-lg rounded-full transition-all duration-300 transform"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                >
+                  Register Now
+                </motion.button>
+              </Link>
+            </div>
+          </motion.div>
+        </section>
 
         <ConventusChatbot/>
       </main>

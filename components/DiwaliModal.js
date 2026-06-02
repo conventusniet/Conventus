@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 const DiwaliModal = ({ onClose }) => {
     const [isVisible, setIsVisible] = useState(true);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
 import { FileText, Download } from 'lucide-react';
 import Link from 'next/link';
@@ -29,7 +29,7 @@ const FlipbookNewsletter = ({
   };
 
   return (
-    <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+ <div className="max-w-6xl mx-auto bg-white overflow-hidden">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-[70%] p-8 flex flex-col justify-center">
           <h3 className="text-2xl font-bold text-red-800 mb-4">Conference Highlights</h3>
@@ -39,8 +39,6 @@ const FlipbookNewsletter = ({
           <div className="flex flex-col sm:flex-row gap-4">
             <motion.button
               className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full flex items-center justify-center transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => setShowPreview(true)}
             >
               <FileText className="mr-2" size={20} />
@@ -51,8 +49,6 @@ const FlipbookNewsletter = ({
               <Link href="/news">
                 <motion.button
                   className="bg-white border-2 border-red-600 text-red-600 hover:bg-red-50 px-6 py-3 rounded-full flex items-center justify-center transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
                   View All Newsletters
                 </motion.button>
@@ -94,7 +90,7 @@ const FlipbookNewsletter = ({
                 className="object-contain h-auto max-h-[95%]"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-6">
+            <div className="absolute inset-0 bg-ink/70 flex flex-col justify-end p-6">
               <div className="text-white">
                 <p className="mb-2 text-sm font-medium bg-red-600 w-fit px-2 py-1 rounded-full">CMUN 2.0 Edition</p>
                 <h3 className="text-2xl font-bold mb-2">March 2025</h3>

@@ -386,7 +386,7 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Mobile App-like Header */}
-      <header className="bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md sticky top-0 z-10">
+      <header className="bg-primary text-white sticky top-0 z-10">
         <div className="px-4 py-3">
           <div className="flex items-center justify-between">
             {(() => {
@@ -598,8 +598,7 @@ export default function AdminDashboard() {
                           </div>
                           <div className="ml-2 flex flex-col items-end">
                             <span
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${interview.responses.length > 0
-                                ? "bg-green-100 text-green-800"
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${interview.responses.length > 0 ? "bg-green-100 text-green-800"
                                 : "bg-yellow-100 text-yellow-800"
                                 }`}
                             >
@@ -754,7 +753,7 @@ export default function AdminDashboard() {
                       selectedInterview.responses.map((response) => (
                         <div
                           key={response.id}
-                          className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow"
+                          className="bg-white border border-gray-200 rounded-lg p-4 transition-shadow"
                         >
                           <div className="flex justify-between items-start mb-3">
                             <h4 className="font-medium text-gray-800 text-sm">{getQuestionText(response.question)}</h4>

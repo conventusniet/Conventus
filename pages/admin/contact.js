@@ -151,7 +151,7 @@ const ReplyModal = ({ isOpen, onClose, submission, onSubmit }) => {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.8, opacity: 0 }}
                     >
-                        <div className="bg-white rounded-lg shadow-xl w-full max-w-md">
+                        <div className="bg-white rounded-lg w-full max-w-md">
                             <div className="flex justify-between items-center px-4 py-3 border-b">
                                 <h3 className="text-lg font-semibold text-gray-800">
                                     Reply to {submission.name}
@@ -317,7 +317,7 @@ const AdminContactPage = () => {
                     </div>
                 ) : (
                     <motion.div
-                        className="bg-white rounded-lg shadow-xl overflow-hidden"
+                        className="bg-white rounded-lg overflow-hidden"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.3 }}

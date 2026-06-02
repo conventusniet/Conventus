@@ -30,7 +30,7 @@ const CountdownTimer = () => {
     }, []);
 
     return (
-        <div className="w-full bg-gradient-to-r from-red-50 to-red-100 py-8 md:py-12">
+        <div className="w-full bg-paper py-8 md:py-12">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-6 md:mb-8">
                     <h2 className="text-2xl md:text-3xl font-bold text-red-800">CONFERENCE</h2>
@@ -43,10 +43,8 @@ const CountdownTimer = () => {
                             key={unit}
                             className="flex flex-col items-center"
                         >
-                            <div className="bg-white w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl shadow-lg 
-                                flex items-center justify-center border-2 border-red-200 relative overflow-hidden 
-                                group transform transition-transform hover:scale-105">
-                                <div className="absolute inset-0 bg-gradient-to-b from-red-50 to-transparent opacity-50" />
+                            <div className="bg-white w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl flex items-center justify-center border-2 border-red-200 relative overflow-hidden group transform transition-transform">
+                                <div className="absolute inset-0 bg-paper opacity-50" />
                                 <span className="text-2xl md:text-4xl font-bold text-red-800 relative z-10">
                                     {String(value).padStart(2, '0')}
                                 </span>

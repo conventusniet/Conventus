@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { X, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 import ConventusChatbot from '@/components/ConventusChatBot';
+import SectionHeading from '@/components/SectionHeading';
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
@@ -61,7 +62,7 @@ const HeroCarousel = () => {
 
 const EventCard = ({ image, title, date, description, onClick }) => (
   <motion.div
-    className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer flex h-104 border-2 border-red-200"
+ className="bg-white overflow-hidden cursor-pointer flex h-104 border-2 border-red-200"
     onClick={onClick}
   >
     <div className="flex-1 p-8 flex flex-col justify-between">
@@ -92,7 +93,7 @@ const EventDetails = ({ event, onClose }) => (
     exit={{ opacity: 0, scale: 0.9 }}
     className="fixed inset-0 bg-white z-50 overflow-y-auto p-4"
   >
-    <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg shadow-lg border-2 border-red-200">
+    <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg border-2 border-red-200">
     <button
           className="absolute -top-1 right-0 text-red-600 hover:text-red-800"
           onClick={onClose}
@@ -248,7 +249,7 @@ const EventsPage = () => {
       participants: "2"
     },
     { 
-      image: "/images/pstevt_11.png", 
+      image: "/images/pstevt_11.jpg", 
       title: "Sanskriti 3.0",
       date: "April 10th, 2025",
       description: "Sanskriti 3.0 brought stories, emotions, and iconic characters to life on stage — an unforgettable celebration of cinema, creativity, and culture. With a crowd of 200+ and enthusiastic student participation, the event truly lived up to its 'Retro vs Bollywood' theme, leaving behind memories wrapped in music, lights, and applause.",
@@ -338,16 +339,15 @@ const EventsPage = () => {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-red-50">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <HeroCarousel />
-      <main className="flex-grow container mx-auto px-4 py-12">
-        <h1 className="text-5xl font-bold text-center mb-8 text-red-800">
-          Past Events
-        </h1>
-        <p className="text-xl text-center mb-12 text-red-600">
-          Discover and participate in our global events addressing crucial international issues
-        </p>
+      <main className="flex-grow container mx-auto px-4 py-16">
+        <SectionHeading
+          eyebrow="Our Legacy"
+          title="Past Events"
+          subtitle="A look back at the conferences, debates, and gatherings that shaped Conventus."
+        />
 
         <div className="space-y-12">
           {sortedEvents.map((event, index) => (

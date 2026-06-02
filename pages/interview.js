@@ -414,7 +414,7 @@ export default function InterviewPage() {
   // Server loading screen
   if (serverLoading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white p-8">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-primaryr text-white p-8">
         <div className="relative w-24 h-24 mb-8">
           <div className="absolute top-0 left-0 w-full h-full border-8 border-gray-300 rounded-full opacity-25"></div>
           <div className="absolute top-0 left-0 w-full h-full border-t-8 border-red-600 rounded-full animate-spin"></div>
@@ -474,7 +474,7 @@ export default function InterviewPage() {
             <p className="mb-4 leading-relaxed text-lg">
               After the interview, you'll have the opportunity to upload your portfolio links and resume.
             </p>
-            <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-8 rounded-xl shadow-lg my-8 text-left border border-gray-200">
+            <div className="bg-paper p-8 rounded-xl my-8 text-left border border-gray-200">
               <h3 className="text-red-600 text-xl font-semibold mb-4 flex items-center">
                 <svg
                   className="w-5 h-5 mr-2"
@@ -501,7 +501,7 @@ export default function InterviewPage() {
               </ol>
             </div>
             <button
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-medium py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl min-w-[200px] mx-auto block mt-6 transform hover:-translate-y-1"
+              className="bg-primary text-white font-medium py-3 px-8 rounded-lg transition-all min-w-[200px] mx-auto block mt-6 transform"
               onClick={() => setStep("registration")}
             >
               Start Interview
@@ -511,7 +511,7 @@ export default function InterviewPage() {
 
       case "registration":
         return (
-          <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+          <div className="bg-white rounded-xl p-8 border border-gray-100">
             <div className="flex justify-center mb-6">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
                 <svg
@@ -532,7 +532,7 @@ export default function InterviewPage() {
             </div>
             <h2 className="text-red-600 text-3xl font-bold mb-6 text-center">Candidate Registration</h2>
             <form onSubmit={handleRegistrationSubmit} className="space-y-6">
-              <div className="transition-all duration-300 hover:shadow-md p-4 rounded-lg border border-gray-200 focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-100">
+              <div className="transition-all duration-300 p-4 rounded-lg border border-gray-200 focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-100">
                 <label htmlFor="name" className="block font-bold text-gray-700 mb-2">
                   Full Name *
                 </label>
@@ -546,7 +546,7 @@ export default function InterviewPage() {
                   placeholder="Enter your full name"
                 />
               </div>
-              <div className="transition-all duration-300 hover:shadow-md p-4 rounded-lg border border-gray-200 focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-100">
+              <div className="transition-all duration-300 p-4 rounded-lg border border-gray-200 focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-100">
                 <label htmlFor="email" className="block font-bold text-gray-700 mb-2">
                   Email Address *
                 </label>
@@ -562,7 +562,7 @@ export default function InterviewPage() {
               </div>
               <button
                 type="submit"
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-medium py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl w-full mt-8 disabled:from-red-300 disabled:to-red-400 disabled:cursor-not-allowed disabled:shadow-none"
+                className="bg-primary text-white font-medium py-3 px-8 rounded-lg transition-all w-full mt-8 disabled: disabled: disabled:cursor-not-allowed disabled:shadow-none"
                 disabled={loading}
               >
                 {loading ? (
@@ -580,7 +580,7 @@ export default function InterviewPage() {
 
       case "interview":
         return (
-          <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+          <div className="bg-white rounded-xl p-8 border border-gray-100">
             <div className="mb-8">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-medium text-gray-600">
@@ -592,13 +592,13 @@ export default function InterviewPage() {
               </div>
               <div className="h-2 bg-gray-100 rounded-full overflow-hidden shadow-inner">
                 <div
-                  className="h-full bg-gradient-to-r from-red-500 to-red-600 transition-all duration-500 ease-out"
+                  className="h-full bg-paper transition-all duration-500 ease-out"
                   style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
                 ></div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-6 rounded-xl mb-8 shadow-md border border-gray-200">
+            <div className="bg-paper p-6 rounded-xl mb-8 border border-gray-200">
               <div className="flex items-start">
                 <div className="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center shrink-0 mr-4 mt-1">
                   Q
@@ -693,7 +693,7 @@ export default function InterviewPage() {
                       <div className="flex items-center mb-6">
                         {!isRecording ? (
                           <button
-                            className="bg-red-600 text-white font-medium py-3 px-5 rounded-lg mr-4 hover:bg-red-700 transition-colors disabled:bg-red-300 disabled:cursor-not-allowed shadow-md flex items-center"
+                            className="bg-red-600 text-white font-medium py-3 px-5 rounded-lg mr-4 hover:bg-red-700 transition-colors disabled:bg-red-300 disabled:cursor-not-allowed flex items-center"
                             onClick={startRecording}
                             disabled={loading}
                           >
@@ -715,7 +715,7 @@ export default function InterviewPage() {
                           </button>
                         ) : (
                           <button
-                            className="bg-gray-800 text-white font-medium py-3 px-5 rounded-lg mr-4 hover:bg-gray-900 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed shadow-md flex items-center"
+                            className="bg-gray-800 text-white font-medium py-3 px-5 rounded-lg mr-4 hover:bg-gray-900 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center"
                             onClick={stopRecording}
                             disabled={loading}
                           >
@@ -783,7 +783,7 @@ export default function InterviewPage() {
                   )}
 
                   <button
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-medium py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl w-full mt-6 disabled:from-red-300 disabled:to-red-400 disabled:cursor-not-allowed disabled:shadow-none"
+                    className="bg-primary text-white font-medium py-3 px-6 rounded-lg transition-all w-full mt-6 disabled: disabled: disabled:cursor-not-allowed disabled:shadow-none"
                     onClick={handleNextQuestion}
                     disabled={
                       loading || (answerMode === "voice" ? !transcript.trim() || isRecording : !textAnswer.trim())
@@ -835,7 +835,7 @@ export default function InterviewPage() {
 
       case "upload":
         return (
-          <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+          <div className="bg-white rounded-xl p-8 border border-gray-100">
             <div className="flex justify-center mb-6">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
                 <svg
@@ -860,7 +860,7 @@ export default function InterviewPage() {
             </p>
 
             <form onSubmit={handleProfileSubmit} className="space-y-6">
-              <div className="transition-all duration-300 hover:shadow-md p-5 rounded-lg border border-gray-200 focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-100">
+              <div className="transition-all duration-300 p-5 rounded-lg border border-gray-200 focus-within:border-red-300 focus-within:ring-2 focus-within:ring-red-100">
                 <label htmlFor="projectLinks" className="block font-bold text-gray-700 mb-2">
                   Project Links
                   <span className="text-gray-500 text-sm font-normal ml-2">(separate with commas)</span>
@@ -874,7 +874,7 @@ export default function InterviewPage() {
                 />
               </div>
 
-              <div className="transition-all duration-300 hover:shadow-md p-5 rounded-lg border border-gray-200">
+              <div className="transition-all duration-300 p-5 rounded-lg border border-gray-200">
                 <label htmlFor="resume" className="block font-bold text-gray-700 mb-3">
                   Resume/CV
                   <span className="text-gray-500 text-sm font-normal ml-2">(PDF, DOC or DOCX)</span>
@@ -950,7 +950,7 @@ export default function InterviewPage() {
 
               <button
                 type="submit"
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-medium py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl w-full mt-8 disabled:from-red-300 disabled:to-red-400 disabled:cursor-not-allowed disabled:shadow-none"
+                className="bg-primary text-white font-medium py-3 px-8 rounded-lg transition-all w-full mt-8 disabled: disabled: disabled:cursor-not-allowed disabled:shadow-none"
                 disabled={loading}
               >
                 {loading ? (
@@ -979,7 +979,7 @@ export default function InterviewPage() {
 
       case "complete":
         return (
-          <div className="text-center p-10 bg-white rounded-xl shadow-lg border border-gray-100">
+          <div className="text-center p-10 bg-white rounded-xl border border-gray-100">
             <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
               <svg
                 className="w-12 h-12 text-green-600"
@@ -1052,7 +1052,7 @@ export default function InterviewPage() {
               </ul>
             </div>
             <button
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-medium py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl min-w-[200px] transform hover:-translate-y-1"
+              className="bg-primary text-white font-medium py-3 px-8 rounded-lg transition-all min-w-[200px] transform"
               onClick={() => (window.location.href = "/")}
             >
               Return to Home
@@ -1071,10 +1071,10 @@ export default function InterviewPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-paper py-12 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto font-sans text-gray-800 relative">
         {error && (
-          <div className="bg-red-50 border-l-4 border-red-600 p-4 mb-6 rounded-r-lg shadow-md flex justify-between items-center">
+          <div className="bg-red-50 border-l-4 border-red-600 p-4 mb-6 rounded-r-lg flex justify-between items-center">
             <div className="flex items-center">
               <svg
                 className="w-6 h-6 text-red-600 mr-3"

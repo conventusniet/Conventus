@@ -96,7 +96,7 @@ const AutoCurtainReveal = ({ children, onClose }) => {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative w-full max-w-3xl bg-blue-900 rounded-lg shadow-2xl overflow-hidden"
+ className="relative w-full max-w-3xl bg-blue-900 overflow-hidden"
           style={{ height: '80vh' }}
           onClick={(e) => e.stopPropagation()}
         >
@@ -124,7 +124,7 @@ const AutoCurtainReveal = ({ children, onClose }) => {
               variants={curtainVariants}
               initial="closed"
               animate={isRevealed ? "open" : "closed"}
-              className="absolute inset-0 bg-gradient-to-b from-orange-500 to-yellow-400 z-20"
+              className="absolute inset-0 bg-paper z-20"
             />
           ))}
         </motion.div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,13 +28,12 @@ const Header = ({ theme = 'default' }) => {
             label: "MUN",
             dropdown: [
                 { href: "/mun2.0", label: "MUN 2.0" },
-                { href: "/secretariat", label: "Secretariat" },
-                { href: "/Resources", label: "Diplomatic Resources" },
                 { href: "/mun1.0", label: "MUN 1.0" },
+                { href: "/Resources", label: "Diplomatic Resources" },
                 { href: "/news", label: "NewsLetter" },
             ]
         },
-        { href: "/registration", label: "Register" },
+        { href: "/cmun-connect", label: "Register" },
         { href: "/commnew", label: "Committees" },
         {
             href: "#",
@@ -115,22 +114,10 @@ const Header = ({ theme = 'default' }) => {
     };
 
     const getNavTextColor = (isMobile = false) => {
-        if (theme === 'red') {
-            return isMobile ? 'text-red-800' : 'text-red-600 hover:text-red-400';
-        }
-        return isMobile 
-            ? 'text-red-800' 
-            : scrolled 
-                ? 'text-red-800 hover:text-red-600' 
-                : 'text-white hover:text-red-200';
+        return isMobile ? 'text-ink' : 'text-ink hover:text-primary';
     };
 
-    const getMobileButtonColor = () => {
-        if (theme === 'red') {
-            return 'text-red-600';
-        }
-        return scrolled ? 'text-red-600' : 'text-white';
-    };
+    const getMobileButtonColor = () => 'text-ink';
 
     const renderNavItem = (item, isMobile = false) => {
         const active = isActive(item.href);
@@ -141,13 +128,15 @@ const Header = ({ theme = 'default' }) => {
                     className={`relative group ${isMobile ? 'w-full' : ''}`}
                     onMouseEnter={() => !isMobile && setActiveDropdown(item.label)}
                     onMouseLeave={() => !isMobile && setActiveDropdown(null)}
+                    onBlur={(e) => !isMobile && !e.currentTarget.contains(e.relatedTarget) && setActiveDropdown(null)}
                 >
                     <button
-                        className={`flex items-center justify-between w-full text-xl xl:text-1xl font-semibold nav-font ${isMobile
-                            ? 'text-red-800 py-4'
-                            : getNavTextColor()
-                            } ${active ? 'underline underline-offset-4' : ''}`}
-                        onClick={() => isMobile && setMobileEventsOpen(prev => prev === item.label ? null : item.label)}
+                        className={`flex items-center justify-between w-full text-xl font-semibold nav-font ${isMobile ? 'text-red-800 py-4' : getNavTextColor() } ${active ? 'underline underline-offset-4' : ''}`}
+                        aria-haspopup="true"
+                        aria-expanded={isMobile ? mobileEventsOpen === item.label : activeDropdown === item.label}
+                        onClick={() => isMobile
+                            ? setMobileEventsOpen(prev => prev === item.label ? null : item.label)
+                            : setActiveDropdown(prev => prev === item.label ? null : item.label)}
                     >
                         <span>{item.label}</span>
                         {isMobile ? <ChevronRight size={20} className={`transform transition-transform ${mobileEventsOpen === item.label ? 'rotate-90' : ''}`} /> : <ChevronDown size={16} />}
@@ -161,15 +150,13 @@ const Header = ({ theme = 'default' }) => {
                                 animate="visible"
                                 exit="hidden"
                             >
-                                <div className={`rounded-md ${isMobile ? 'bg-red-100' : 'bg-red-900'} shadow-xs`}>
+                                <div className={`rounded-md ${isMobile ? 'bg-red-100' : 'bg-red-900'} shadow-md`}>
                                     <div className="py-1" role="menu" aria-orientation="vertical">
                                         {item.dropdown.map((subItem) => (
                                             <Link
                                                 key={subItem.href}
                                                 href={subItem.href}
-                                                className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white'
-                                                    } hover:bg-red-800 hover:text-white transition duration-150 ease-in-out ${isActive(subItem.href) ? 'underline underline-offset-4 font-bold' : ''
-                                                    }`}
+                                                className={`block px-4 py-2 text-sm ${isMobile ? 'text-red-800' : 'text-white' } hover:bg-red-800 hover:text-white transition duration-150 ease-in-out ${isActive(subItem.href) ? 'underline underline-offset-4 font-bold' : '' }`}
                                                 role="menuitem"
                                                 onClick={() => {
                                                     setActiveDropdown(null);
@@ -193,14 +180,7 @@ const Header = ({ theme = 'default' }) => {
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={isMobile ? 'w-full' : ''}>
                 <Link
                     href={item.href}
-                    className={`
-                        block text-xl xl:text-1xl font-semibold nav-font
-                        ${isMobile
-                            ? 'text-red-800 py-4'
-                            : getNavTextColor()
-                        }
-                        ${active ? 'underline underline-offset-4' : ''}
-                    `}
+                    className={` block text-xl font-semibold nav-font ${isMobile ? 'text-red-800 py-4' : getNavTextColor() } ${active ? 'underline underline-offset-4' : ''} `}
                     onClick={() => isMobile && setIsOpen(false)}
                 >
                     {item.label}
@@ -212,30 +192,31 @@ const Header = ({ theme = 'default' }) => {
     return (
         <>
             <motion.header
-                className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}
+                className={`fixed w-full z-50 transition-all duration-300 bg-paper border-b ${scrolled ? 'border-ink/15' : 'border-ink/10'}`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
             >
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
                     <nav className={`hidden lg:flex ${theme === 'red' ? 'space-x-8 xl:space-x-12' : 'space-x-12 xl:space-x-16'} flex-1 justify-end`}>
-                        {leftNavItems.map((item) => renderNavItem(item))}
+                        {leftNavItems.map((item) => <React.Fragment key={item.label}>{renderNavItem(item)}</React.Fragment>)}
                     </nav>
 
-                    <Link href="/" className="flex items-center space-x-4 mx-4 sm:mx-8">
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 shadow-lg">
-                            <Image
-                                src="/images/Conventus Logo.jpg"
-                                alt="CONVENTUS Logo"
-                                width={80}
-                                height={80}
-                                className="object-contain hover:scale-110 transition-transform duration-300"
-                            />
+                    <Link href="/" className="flex items-center mx-4 sm:mx-8 group" aria-label="Conventus — home">
+                        <div className={`rounded-full overflow-hidden bg-white ring-1 ring-ink/15 transition-all duration-300 ${scrolled ? 'w-12 h-12 sm:w-14 sm:h-14' : 'w-14 h-14 sm:w-16 sm:h-16'}`}>
+                            <div className="relative w-full h-full p-1.5">
+                                <Image
+                                    src="/images/Conventus Logo.jpg"
+                                    alt="Conventus logo"
+                                    layout="fill"
+                                    objectFit="contain"
+                                />
+                            </div>
                         </div>
                     </Link>
 
                     <nav className={`hidden lg:flex ${theme === 'red' ? 'space-x-8 xl:space-x-12' : 'space-x-8 xl:space-x-12'} flex-1`}>
-                        {rightNavItems.map((item) => renderNavItem(item))}
+                        {rightNavItems.map((item) => <React.Fragment key={item.label}>{renderNavItem(item)}</React.Fragment>)}
                     </nav>
 
                     <motion.button

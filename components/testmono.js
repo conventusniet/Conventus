@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import React from 'react'
 
 const testimonials = [
@@ -28,9 +28,7 @@ export function TestimonialOne() {
       {testimonials.map((testimonial, index) => (
         <div
           key={index}
-          className={`w-full max-w-6xl mx-auto md:flex md:items-center md:justify-center md:space-x-14 ${
-            index % 2 === 1 ? 'md:flex-row-reverse' : ''
-          }`}
+          className={`w-full max-w-6xl mx-auto md:flex md:items-center md:justify-center md:space-x-14 ${ index % 2 === 1 ? 'md:flex-row-reverse' : '' }`}
         >
           <div className="relative h-48 w-48 flex-shrink-0 mx-auto md:mx-0">
             <Image

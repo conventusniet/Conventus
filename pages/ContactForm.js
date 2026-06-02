@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -108,7 +108,7 @@ const ContactForm = () => {
         <>
             <motion.form
                 onSubmit={handleSubmit}
-                className="bg-white shadow-2xl rounded-lg p-8 w-full max-w-4xl mx-auto"
+                className="bg-white rounded-lg p-8 w-full max-w-4xl mx-auto"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -157,8 +157,6 @@ const ContactForm = () => {
                     <motion.button
                         type="submit"
                         className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full text-xl focus:outline-none focus:shadow-outline transition-all duration-300 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                         disabled={loading}
                     >
                         {loading ? 'Sending...' : 'Send Message'}
@@ -180,9 +178,7 @@ const LinkTreeButton = () => (
         href="https://linktr.ee/conventusclub"
         target="_blank"
         rel="noopener noreferrer"
-        className="group inline-flex items-center bg-[#4EEDB1] text-white font-bold py-4 px-6 rounded-full text-lg shadow-lg transition-all duration-300 mx-auto relative overflow-hidden"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+ className="group inline-flex items-center bg-[#4EEDB1] text-white font-bold py-4 px-6 text-lg transition-all duration-300 mx-auto relative overflow-hidden"
     >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="26px" height="26px" className="mr-2">
             <linearGradient id="SVGID_1_" x1="34.914" x2="13.079" y1="9.607" y2="31.443" gradientUnits="userSpaceOnUse">
@@ -240,7 +236,7 @@ const ContactPage = () => {
     return (
         <div className="min-h-screen flex flex-col">
             <Header theme="red" />
-            <main className="flex-grow bg-gradient-to-b from-gray-100 to-red-100 flex items-center justify-center px-4">
+            <main className="flex-grow bg-paper flex items-center justify-center px-4">
                 <div className="container mx-auto py-12 md:py-20 mt-10">
                     <motion.h1
                         className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-8"

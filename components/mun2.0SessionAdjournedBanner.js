@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const SessionAdjournedBanner = () => {
   return (
     <motion.div 
-      className="bg-white py-8 px-4 rounded-lg shadow-md my-8 max-w-4xl mx-auto border-l-4 border-red-800"
+      className="bg-white py-8 px-4 rounded-lg my-8 max-w-4xl mx-auto border-l-4 border-red-800"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}

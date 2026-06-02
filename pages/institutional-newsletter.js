@@ -86,11 +86,7 @@ export default function InstitutionalNewsletterPage() {
               <motion.div
                 key={index}
                 whileHover={{ y: -4 }}
-                className={`mb-12 rounded-xl bg-white transition-all ${
-                  isLatest
-                    ? 'shadow-xl border border-red-700'
-                    : 'shadow-md'
-                }`}
+                className={`mb-12 rounded-xl bg-white transition-all ${ isLatest ? ' border border-red-700' : '' }`}
               >
                 {/* Only latest label stays */}
                 {isLatest && (
