@@ -105,7 +105,7 @@ const MUN2Gallery = () => {
     ];
 
     return (
-        <section className="py-16 bg-gradient-to-r from-red-50 to-white mb-16">
+        <section className="py-16 bg-paper mb-16">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-red-800 mb-4">Event Gallery</h2>

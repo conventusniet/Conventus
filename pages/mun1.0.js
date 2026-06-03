@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import Header from '../components/Header'
@@ -74,9 +74,7 @@ const MediaGallery = () => {
   const renderImage = (index, className) => (
     <motion.div
       key={index}
-      className={`relative overflow-hidden rounded-lg cursor-pointer ${className}`}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+ className={`relative overflow-hidden cursor-pointer ${className}`}
       onClick={() => setSelectedImage(images[index])}
     >
       <Image
@@ -143,8 +141,6 @@ const MediaGallery = () => {
               </div>
               <motion.button
                 className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2 z-10"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
                 onClick={() => setSelectedImage(null)}
               >
                 <X size={24} />
@@ -203,7 +199,7 @@ const WinnerCard = ({ images, committee, winners }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+ <div className="bg-white overflow-hidden">
       <div
         className="relative h-64 w-full"
         onMouseEnter={() => setIsHovering(true)}
@@ -379,12 +375,12 @@ export default function CommitteesPage() {
           <div className="flex flex-wrap justify-center gap-8">
             <TeamMember
               name="Mr. Manish Kaushik"
-              image="/digni_img/Manish Sir.png"
+              image="/digni_img/Manish Sir.jpg"
               bio="Dean DSW "
             />
             <TeamMember
               name="Ms. Kanika Jindal "
-              image="/digni_img/Kanika Mam.png"
+              image="/digni_img/Kanika Mam.jpg"
               bio="Associate Dean DSW"
             />
             <TeamMember

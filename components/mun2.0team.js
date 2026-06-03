@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
 
 const MUN2Team = () => {
@@ -39,7 +39,7 @@ const MUN2Team = () => {
     }, []);
 
     return (
-        <section className="py-16 bg-gradient-to-br from-red-50 to-white mb-16">
+        <section className="py-16 bg-paper mb-16">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-red-800 mb-4">Our Amazing Team</h2>
@@ -52,7 +52,7 @@ const MUN2Team = () => {
                 
                 <div className="relative max-w-5xl mx-auto">
                     {/* Carousel Container */}
-                    <div className="relative overflow-hidden rounded-xl shadow-lg" style={{ height: "600px" }}>
+ <div className="relative overflow-hidden" style={{ height: "600px" }}>
                         {/* Image Carousel */}
                         <div className="relative h-full w-full">
                             {images.map((image, index) => (
@@ -72,7 +72,7 @@ const MUN2Team = () => {
                                         layout="fill"
                                         objectFit="cover"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-8">
+                                    <div className="absolute inset-0 bg-ink/60 flex flex-col justify-end p-8">
                                         <h3 className="text-white text-2xl font-bold">CMUN 2.0 Team</h3>
                                         <p className="text-white/80">Working together for the success of CMUN 2.0</p>
                                     </div>
@@ -84,7 +84,7 @@ const MUN2Team = () => {
                     {/* Carousel Controls */}
                     <div className="absolute top-1/2 left-0 right-0 flex justify-between items-center transform -translate-y-1/2 px-4">
                         <button 
-                            className="p-2 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 focus:outline-none z-10"
+                            className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 focus:outline-none z-10"
                             onClick={prevSlide}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,7 +92,7 @@ const MUN2Team = () => {
                             </svg>
                         </button>
                         <button 
-                            className="p-2 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 focus:outline-none z-10"
+                            className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 focus:outline-none z-10"
                             onClick={nextSlide}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { X, BookOpen, Globe, GraduationCap, FileText } from 'lucide-react';
 import ConventusChatbot from '@/components/ConventusChatBot';
+import SectionHeading from '@/components/SectionHeading';
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
@@ -74,7 +75,7 @@ const ResourceCard = ({ icon, title, description, files }) => {
 
   return (
     <motion.div 
-      className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform flex flex-col border-2 border-red-150"
+ className="bg-white overflow-hidden transition transform flex flex-col border-2 border-red-150"
     >
       <div className="bg-red-600 p-4 text-white flex justify-center">
         {icon}
@@ -120,7 +121,7 @@ const ResourceCard = ({ icon, title, description, files }) => {
 //     exit={{ opacity: 0, scale: 0.9 }}
 //     className="fixed inset-0 bg-white z-50 overflow-y-auto p-4"
 //   >
-//     <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg shadow-lg border-2 border-red-200">
+//     <div className="max-w-2xl mx-auto relative bg-red-50 p-6 rounded-lg border-2 border-red-200">
 //       <button
 //         className="absolute top-4 right-4 text-red-600 hover:text-red-800"
 //         onClick={onClose}
@@ -243,16 +244,15 @@ const DiplomaticResourcesPage = () => {
 ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-red-50">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <HeroCarousel />
-      <main className="flex-grow container mx-auto px-4 py-12">
-        <h2 className="text-4xl font-bold text-center mb-8 text-red-800">
-          Explore Our Resources
-        </h2>
-        <p className="text-xl text-center mb-12 text-red-600">
-          Enhance your diplomatic skills with our comprehensive collection of resources
-        </p>
+      <main className="flex-grow container mx-auto px-4 py-16">
+        <SectionHeading
+          eyebrow="Diplomatic Toolkit"
+          title="Explore Our Resources"
+          subtitle="Enhance your diplomatic skills with our comprehensive collection of resources."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {resources.map((resource, index) => (

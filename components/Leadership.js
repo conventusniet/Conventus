@@ -1,22 +1,22 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
 
 const VIPLeadershipCard = ({ name, role, image, description }) => (
     <motion.div
-        className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 w-full max-w-md mx-auto"
+ className="bg-white overflow-hidden transform transition-all duration-300 w-full max-w-md mx-auto"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
     >
-        <div className="relative h-80 w-80 sm:h-88 sm:w-88 mx-auto mt-8 rounded-full overflow-hidden border-4 border-red-400">
+ <div className="relative h-80 w-80 sm:h-88 sm:w-88 mx-auto mt-8 overflow-hidden border-4 border-red-400">
             <Image
                 src={image}
                 alt={name}
                 layout="fill"
                 objectFit="cover"
-                objectPosition="center 30%"
-                className="transition-transform duration-300 hover:scale-110"
+                objectPosition="center top"
+                className="transition-transform duration-300"
             />
         </div>
         <div className="p-6 text-center">
@@ -29,19 +29,19 @@ const VIPLeadershipCard = ({ name, role, image, description }) => (
 
 const LeadershipCard = ({ name, role, image, description }) => (
     <motion.div
-        className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 w-full max-w-sm mx-auto"
+ className="bg-white overflow-hidden transform transition-all duration-300 w-full max-w-sm mx-auto"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
     >
-        <div className="relative h-72 w-72 mx-auto mt-8 rounded-full overflow-hidden">
+ <div className="relative h-72 w-72 mx-auto mt-8 overflow-hidden">
             <Image
                 src={image}
                 alt={name}
                 layout="fill"
                 objectFit="cover"
-                objectPosition="center 30%"
-                className="transition-transform duration-300 hover:scale-110"
+                objectPosition="center top"
+                className="transition-transform duration-300"
             />
         </div>
         <div className="p-6 text-center">
@@ -90,7 +90,7 @@ const Leadership = () => {
     ];
 
     return (
-        <section className="py-16 sm:py-24 bg-gradient-to-br from-gray-100 to-gray-200">
+        <section className="py-16 sm:py-24 bg-paper">
             <div className="container mx-auto px-4">
                 <motion.h2
                     className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-gray-800"

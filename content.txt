@@ -1,0 +1,212 @@
+================================================================================
+          CONVENTUS MODEL UNITED NATIONS SOCIETY — DESIGN & BRAND BRIEF
+================================================================================
+
+This document serves as a complete content and structural map of the Conventus 
+website, specifically curated to feed into AI design, layout, and copy tools 
+to generate high-fidelity promotional pamphlets, brochures, or booklets.
+
+--------------------------------------------------------------------------------
+1. BRAND IDENTITY & VISUAL DESIGN GUIDELINES
+--------------------------------------------------------------------------------
+* Theme & Persona: Diplomatic, prestigious, academic, and authoritative.
+* Color Palette:
+  - Primary (Brand Crimson): #AA172C (Rich, deep diplomatic red)
+  - Accent (Prestige Gold): #FACC15 (Vibrant yellow-gold for key highlights/actions)
+  - Background (Warm Cream/Soft Red): #FDF2F4 / #FBE5E8
+  - Typography Dark: #1F2937 (Deep slate gray for readability)
+* Typography Style:
+  - Headers: 'Berlingske-Serif', Elegant Serif, high contrast, tracking.
+  - Body Text: 'Open Sans', clean, readable, professional sans-serif.
+* Core Motto: 
+  - "Negatio | Solutio | Actio" (Debate/Negation | Solution | Action)
+
+--------------------------------------------------------------------------------
+2. WEBSITE STRUCTURE — PAGE-BY-PAGE CONTENT MAP
+--------------------------------------------------------------------------------
+
+================================================================================
+PAGE 1: LANDING & HOMEPAGE (/)
+================================================================================
+
+SECTION A: HERO BANNER (First Impression)
+* Main Heading: CONVENTUS
+* Subheading (Dynamic Typing Loop):
+  - "Negatio" (Debating/Contesting)
+  - "Solutio" (Problem Solving)
+  - "Actio" (Taking Action)
+* Visual Asset: Majestic, dimly lit international diplomatic hall or UN General Assembly.
+* CTA Button: "Register Now" (Prestige Gold or Crimson styled)
+
+SECTION B: WELCOME MESSAGE (The Society's Mission)
+* Heading: Welcome to CONVENTUS
+* Body Content:
+  "Dear Delegates, We extend a warm welcome to you as you embark on your journey 
+  with Conventus Model United Nations Society at NIET. This is a forum for aspiring 
+  leaders & diplomats; our society offers a unique opportunity to engage in 
+  meaningful discourse on pressing international issues.
+  
+  At Conventus, you will hone your skills in diplomacy, negotiation, and public 
+  speaking. The society also organizes engaging debates and public speaking 
+  competitions, designed to sharpen your rhetorical skills and enhance your 
+  critical thinking.
+  
+  We warmly invite you to become a part of our dynamic community of intellectuals 
+  and changemakers. Together, we will explore international relations, develop 
+  essential skills, and forge lasting friendships."
+* Key Motto Accent: "Negatio | Solutio | Actio"
+
+SECTION C: CORE PATHWAYS (Learn More Grid)
+* Card 1: About Us
+  - Description: "Know more about our vision and mission"
+  - Route: /aboutus
+* Card 2: Model United Nations (MUN 2.0)
+  - Description: "Explore the Second Edition of Conventus MUN"
+  - Route: /mun2.0
+* Card 3: Registration
+  - Description: "Registration is now open. Secure your front-row seat to diplomacy now!"
+  - Route: /registration
+
+================================================================================
+PAGE 2: ABOUT US & OUR VALUES (/aboutus)
+================================================================================
+
+SECTION A: CORE VALUES ACCORDION
+* Heading: LEARN MORE
+* Core Pillars:
+  1. Diplomatic Commitment:
+     - "At Conventus NIET, we believe in the power of dialogue to resolve conflicts 
+        and foster understanding. Our club promotes diplomacy as the cornerstone 
+        of international relations, encouraging members to approach every debate 
+        with empathy, respect, and a solution-oriented mindset."
+  2. Leadership:
+     - "At Conventus, we nurture leaders who think critically, act decisively, 
+        and inspire others. By participating in MUN conferences and club initiatives, 
+        members develop the confidence and skills needed to lead with integrity 
+        on global platforms."
+  3. Creativity & Innovation:
+     - "We boost creativity among students, advocating for overall growth through 
+        participation in various disciplines and activities. Conventus MUN creates 
+        an environment that nurtures out-of-the-box thinking, encouraging delegates 
+        to approach problems with creativity and collaborate in innovative ways 
+        to solve complex global issues."
+  4. Collaboration:
+     - "Teamwork is at the heart of everything we do. Whether it’s drafting 
+        resolutions or organizing events, we emphasize collaboration, helping our 
+        members understand the importance of diverse perspectives in crafting 
+        sustainable solutions."
+  5. Global Awareness:
+     - "We encourage our members to be informed about pressing global issues. 
+        Through research, discussions, and debates, we promote a deeper 
+        understanding of international affairs, helping students appreciate the 
+        complexities of our interconnected world."
+
+SECTION B: GUIDING PRINCIPLES
+* Heading: OUR VALUES
+* Principles:
+  - "We believe that education can empower individuals to think critically, 
+     challenge norms, and drive social change, equipping them with the skills 
+     necessary for effective global citizenship."
+  - "We are committed to creating an inclusive environment where diverse 
+     perspectives are valued and every member feels respected, encouraging a 
+     rich exchange of ideas and experiences."
+  - "We prioritize open and transparent communication, fostering trust and 
+     collaboration within our community."
+  - "We encourage a mindset of resilience, teaching members to embrace challenges 
+     and learn from failures."
+  - "We value mentorship as a vital aspect of growth, where experienced members 
+     provide guidance to newcomers."
+  - "We are dedicated to making a positive impact beyond our campus by engaging 
+     with local and global communities."
+  - "We prioritize ethical decision-making and accountability, ensuring actions 
+     align with our values."
+  - "We embrace lifelong learning, encouraging continuous improvement beyond 
+     comfort zones."
+
+================================================================================
+PAGE 3: COMMITTEES AND AGENDAS (/commnew)
+================================================================================
+
+SECTION A: UNITED NATIONS COMMITTEES
+1. United Nations Security Council (UNSC)
+   - Description: The UNSC holds primary responsibility for maintaining 
+     international peace and security, simulating critical crisis management.
+   - Objectives / Agenda:
+     * Address urgent threats to international peace.
+     * Authorize peacekeeping operations.
+     * Recommend solutions to international conflicts.
+   - Expected Outcomes: Delegates will simulate real-time crisis scenarios and 
+     collaboratively draft resolutions aimed at preserving global security.
+
+2. United Nations Human Rights Council (UNHRC)
+   - Description: Dedicated to promoting and protecting human rights globally, 
+     addressing urgent violations, and fostering international cooperation.
+   - Objectives / Agenda:
+     * Address urgent human rights violations.
+     * Promote universal respect for human rights.
+     * Enhance international cooperation in protecting human rights.
+   - Expected Outcomes: Delegates will draft resolutions and action plans aimed 
+     at rectifying human rights abuses and promoting global justice.
+
+SECTION B: INDIAN COMMITTEES
+1. All India Political Parties Meet (AIPPM)
+   - Description: Simulates India's dynamic political landscape, where political 
+     representatives debate, negotiate, and collaborate on key national issues.
+   - Objectives / Agenda:
+     * Simulate India's domestic political environment.
+     * Debate critical national socio-economic and political issues.
+     * Encourage cross-party collaboration.
+   - Expected Outcomes: Delegates form alliances, draft policy bills, and defend 
+     political stances echoing real-world national discourse.
+
+SECTION C: INTERNATIONAL PRESS (IP)
+1. Journalism: Report on committee proceedings, write analytical and hard-hitting 
+   articles, and document conference developments.
+2. Photography: Capture key conference moments, create visual documentation, and 
+   build the event's photographic portfolio.
+3. Videography: Create creative, artistic commentary, and highlight debates 
+   using satire and media production.
+
+SECTION D: PRESTIGE CONSOLIDATED CTA
+* Heading: SECURE YOUR SEAT AT DIPLOMACY
+* Content: "Join political minds, passionate debaters, and visionary storytellers 
+  at the prestigious 2nd Edition of Conventus MUN. Shape the global discourse today."
+* Action: "Register Now"
+
+================================================================================
+PAGE 4: REGISTRATION & COMMUNIQUÉ (/registration)
+================================================================================
+* Heading: CMUN — Session Adjourned Official Communiqué
+* Official Announcement:
+  "The Secretariat announces that Conventus Model United Nations has officially 
+  concluded. The Dais extends sincere appreciation to all distinguished delegates, 
+  honorable chairs, and esteemed faculty advisors for their diplomatic engagement 
+  and substantive debate.
+  
+  Resolutions passed during this session have been archived and the conference 
+  outcomes have been formally documented.
+  
+  Registration is now closed. The Secretariat looks forward to welcoming returning 
+  and new delegations at future sessions."
+
+================================================================================
+PAGE 5: MEDIA GALLERY & TIMELINE (/media)
+================================================================================
+* Heading: Experience Our Journey
+* Highlights:
+  - Live photo grid showcasing MUN 2.0 Committees in Action (UNSC, UNHRC, AIPPM).
+  - Highlights of MUN 2.0 Winners (Best Delegates, High Commendations, Special Mentions).
+  - Cultural events, delegate socials, and past Model United Nations editions.
+
+================================================================================
+PAGE 6: CONTACT INFORMATION (/index.js - footer/contact)
+================================================================================
+* Heading: CONTACT US
+* Location: Noida Institute of Engineering and Technology (NIET)
+  - Plot-19, Institutional Area, Knowledge Park II, Greater Noida, Uttar Pradesh 201306
+* Core Secretariat Contacts:
+  - Secretary General: Pragya Singh
+  - Director General / President: Yashraj Ranjan (4th Year)
+  - Vice Presidents: Ameya Atreya (3rd Year) & Deepanjali Sharma (3rd Year)
+  - Head Coordinator: Ark Pratap Singh (3rd Year)
+================================================================================

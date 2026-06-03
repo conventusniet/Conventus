@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
 import { Trophy, Award, Medal, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -57,7 +57,7 @@ const CommitteeImageCarousel = ({ images, committeeName }) => {
             ))}
             
             {/* Persistent overlay with gradient and committee name - always visible */}
-            <div className="absolute inset-0 bg-gradient-to-t from-red-900/80 to-transparent flex items-end z-[5]">
+            <div className="absolute inset-0 bg-paper flex items-end z-[5]">
                 <h3 className="text-white font-bold text-xl p-4">{committeeName}</h3>
             </div>
             
@@ -84,9 +84,7 @@ const CommitteeImageCarousel = ({ images, committeeName }) => {
                         {images.map((_, idx) => (
                             <button
                                 key={idx}
-                                className={`w-2 h-2 rounded-full transition-all ${
-                                    idx === currentIndex ? 'bg-white scale-125' : 'bg-white/50'
-                                }`}
+                                className={`w-2 h-2 rounded-full transition-all ${ idx === currentIndex ? 'bg-white scale-125' : 'bg-white/50' }`}
                                 onClick={() => setCurrentIndex(idx)}
                                 aria-label={`Go to image ${idx + 1}`}
                             />
@@ -167,7 +165,7 @@ const MUN2Winners = () => {
     };
 
     return (
-        <section className="py-12 bg-white rounded-lg shadow-md mb-16">
+        <section className="py-12 bg-white rounded-lg mb-16">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-bold text-center mb-2 text-red-800">
                     Distinguished Delegates
@@ -178,7 +176,7 @@ const MUN2Winners = () => {
                     {committees.map((committee, index) => (
                         <motion.div
                             key={index}
-                            className="bg-red-50 rounded-lg shadow-md overflow-hidden"
+ className="bg-red-50 overflow-hidden"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}

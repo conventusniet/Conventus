@@ -355,7 +355,7 @@ const OCRegistrationForm = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-2xl p-8 mb-16">
+    <div className="bg-white rounded-lg p-8 mb-16">
       {/* Registration Closed Banner - Only shown when registration is closed */}
       {isRegistrationClosed && (
         <div className="bg-red-100 border-l-4 border-red-600 text-red-800 p-4 mb-6" role="alert">
@@ -518,7 +518,7 @@ const OCRegistrationForm = () => {
                   <ChevronDown size={16} />
                 </button>
                 {branchOpen && (
-                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md max-h-60 overflow-auto">
                     <div className="sticky top-0 bg-white p-2">
                       <div className="relative">
                         <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
@@ -570,7 +570,7 @@ const OCRegistrationForm = () => {
                   <ChevronDown size={16} />
                 </button>
                 {sectionOpen && (
-                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md max-h-60 overflow-auto">
                     <div className="sticky top-0 bg-white p-2">
                       <div className="relative">
                         <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
@@ -609,7 +609,7 @@ const OCRegistrationForm = () => {
             <div className="md:col-span-2 mt-4">
               <div className="flex flex-col items-center space-y-4">
                 <div
-                  className={`w-48 h-48 border rounded-lg p-2 bg-gray-50 shadow-md ${isRegistrationClosed ? "opacity-50" : ""}`}
+                  className={`w-48 h-48 border rounded-lg p-2 bg-gray-50 ${isRegistrationClosed ? "opacity-50" : ""}`}
                 >
                   <img src="/QR's/OC.jpg" alt="NIET Payment QR" className="w-full h-full object-contain" />
                 </div>
@@ -716,9 +716,9 @@ const OCRegistrationForm = () => {
           {/* Submit Button */}
           <div className="text-center">
             <motion.button
-              className={`${isRegistrationClosed ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 hover:scale-105"
+              className={`${isRegistrationClosed ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 "
                 } 
-              text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300`}
+              text-white font-bold py-3 px-8 rounded-full  transition-all duration-300`}
               type="submit"
               disabled={isRegistrationClosed || loading}
               whileHover={!isRegistrationClosed ? { scale: 1.05 } : {}}

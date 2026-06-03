@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -80,7 +80,7 @@ const CommitteePage = () => {
             <Header />
             <main className="flex-grow mt-40 sm:mt-40 bg-gray-100 p-8">
                 <motion.div
-                    className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden"
+ className="max-w-4xl mx-auto bg-white overflow-hidden"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -88,7 +88,6 @@ const CommitteePage = () => {
                     <div className="md:flex">
                         <motion.div
                             className="md:flex-shrink-0"
-                            whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}
                         >
                             <Image

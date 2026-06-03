@@ -241,7 +241,7 @@ import OCRegistrationForm from './OCregis';
     <div>
       <DelegateRegistrationForm/>
       <OCRegistrationForm/>
-      {/* <div className="mb-16 bg-white rounded-lg shadow-2xl p-8">
+      {/* <div className="mb-16 bg-white rounded-lg p-8">
         <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
           Debate Registration Form
         </h2>
@@ -289,10 +289,7 @@ import OCRegistrationForm from './OCregis';
           </div>
           <div className="mt-8 text-center">
             <motion.button
-              className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform ${loading ? 'opacity-50 cursor-not-allowed' : '' }`}
               type="submit"
               disabled={loading}
             >
@@ -302,7 +299,7 @@ import OCRegistrationForm from './OCregis';
         </motion.form>
       </div>
 
-      <div className="mb-16 bg-white rounded-lg shadow-2xl p-8">
+      <div className="mb-16 bg-white rounded-lg p-8">
         <h2 className="text-4xl font-bold text-center mb-8 text-red-600">
           Trip Registration Form
         </h2>
@@ -369,10 +366,7 @@ import OCRegistrationForm from './OCregis';
 
           <div className="mt-8 text-center">
             <motion.button
-              className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className={`bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform ${loading ? 'opacity-50 cursor-not-allowed' : '' }`}
               type="submit"
               disabled={loading}
             >

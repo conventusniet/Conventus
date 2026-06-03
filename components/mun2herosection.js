@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
 
 const MovingStrip = () => {
   return (
-    <div className="w-full bg-red-800 py-4 overflow-hidden">
+    <div className="w-full bg-primary py-4 overflow-hidden">
       <div className="flex animate-marquee whitespace-nowrap">
         {[...Array(10)].map((_, index) => (
           <React.Fragment key={index}>
-            <span className="mx-8 text-white text-2xl font-semibold">• Negatio</span>
-            <span className="mx-8 text-white text-2xl font-semibold">• Solutio</span>
-            <span className="mx-8 text-white text-2xl font-semibold">• Actio</span>
+            <span className="mx-8 text-white text-2xl font-serif-display"><span className="text-white/70">&middot;</span> Negatio</span>
+            <span className="mx-8 text-white text-2xl font-serif-display"><span className="text-white/70">&middot;</span> Solutio</span>
+            <span className="mx-8 text-white text-2xl font-serif-display"><span className="text-white/70">&middot;</span> Actio</span>
           </React.Fragment>
         ))}
       </div>
@@ -69,7 +69,7 @@ const HeroSection = () => {
                 className="brightness-50 min-w-full min-h-full"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-red-900/50 to-red-900/70" />
+            <div className="absolute inset-0 bg-ink/75" />
           </motion.div>
         ))}
 
@@ -78,14 +78,13 @@ const HeroSection = () => {
           {/* Content Container */}
           <div className="flex-1 container mx-auto flex flex-col justify-center items-center px-4 space-y-12">
             <div className="text-center max-w-5xl">
-              <h1 className="text-1xl md:text-2xl font-bold text-white mb-6 tracking-tight">
-                2nd Edition of
-              </h1>
-              <h2 className="text-3xl md:text-6xl font-semibold text-white leading-tight">
-                CONVENTUS
+              <p className="eyebrow text-xs sm:text-sm text-white/70 mb-5">Second Edition</p>
+              <h2 className="font-serif-display text-4xl md:text-7xl font-semibold text-white leading-tight text-">
+                Conventus
                 <br className="block" />
-                MODEL UNITED NATIONS
+                Model United Nations
               </h2>
+              <div className="flex justify-center mt-7"><span className="accent-rule" /></div>
             </div>
 
             {/* Session Adjourned Notice */}
@@ -107,9 +106,7 @@ const HeroSection = () => {
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentSlide ? 'bg-white scale-125' : 'bg-white/50'
-                }`}
+                className={`w-3 h-3 rounded-full transition-all ${ index === currentSlide ? 'bg-white scale-125' : 'bg-white/50' }`}
                 onClick={() => setCurrentSlide(index)}
                 aria-label={`Go to slide ${index + 1}`}
               />

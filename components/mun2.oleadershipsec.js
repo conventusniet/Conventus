@@ -6,7 +6,7 @@ import { faLinkedin, faInstagram, faGithub } from '@fortawesome/free-brands-svg-
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const LeaderCard = ({ image, name, position, quote, linkedin, instagram, github, phone }) => (
-    <div className="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300 relative">
+    <div className="bg-white rounded-2xl p-8 transform transition-transform duration-300 relative">
         {/* Quote Mark */}
         <div className="absolute -top-4 left-8">
             <Quote className="w-8 h-8 text-red-800 bg-white rounded-full p-1" />
@@ -20,7 +20,7 @@ const LeaderCard = ({ image, name, position, quote, linkedin, instagram, github,
                 fill
                 style={{
                     objectFit: 'cover',
-                    objectPosition: 'center top'
+                    objectPosition: "center top"
                 }}
                 priority
             />
@@ -90,7 +90,7 @@ const LeadershipSection = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-red-50 to-red-100 py-20 px-4">
+        <div className="min-h-screen bg-paper py-20 px-4">
             <div className="container mx-auto">
                 {/* Section Title */}
                 <h2 className="text-4xl font-bold text-center text-red-800 mb-16">

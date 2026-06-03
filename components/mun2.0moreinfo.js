@@ -36,7 +36,7 @@ const ContactInformation = () => {
                     {contacts.map((contact, index) => (
                         <div
                             key={index}
-                            className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300 p-6"
+                            className="bg-white rounded-lg shadow transition-shadow duration-300 p-6"
                         >
                             <div className="pb-2">
                                 <h3 className="text-xl font-semibold text-red-800">

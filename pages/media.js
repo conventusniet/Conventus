@@ -1,53 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ConventusChatbot from '@/components/ConventusChatBot';
 import PinterestGallery from '@/components/PinterestGallery';
+import PageHeader from '@/components/PageHeader';
+import SectionHeading from '@/components/SectionHeading';
 
-const LazyLoading = ({ onLoadingComplete }) => {
-    const [progress, setProgress] = useState(0);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setProgress((prevProgress) => {
-                if (prevProgress >= 100) {
-                    clearInterval(interval);
-                    onLoadingComplete();
-                    return 100;
-                }
-                return prevProgress + 1;
-            });
-        }, 20);
-
-        return () => clearInterval(interval);
-    }, [onLoadingComplete]);
-
-    return (
-        <div className="fixed inset-0 bg-[#AA172C] flex flex-col items-center justify-center">
-            <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-8 overflow-hidden">
-                <div className="w-24 h-24 relative">
-                    <Image
-                        src="/images/conv-logo.png"
-                        alt="CONVENTUS Logo"
-                        layout="fill"
-                        objectFit="contain"
-                        priority
-                    />
-                </div>
-            </div>
-            <div className="text-white text-4xl font-bold mb-4">{progress}%</div>
-            <div className="w-64 h-2 bg-[#8A1323] rounded-full overflow-hidden">
-                <div
-                    className="h-full bg-white rounded-full transition-all duration-300 ease-out"
-                    style={{ width: `${progress}%` }}
-                ></div>
-            </div>
-            <div className="mt-4 text-white text-xl font-light">NAGATIO | SOLUTIO | ACTIO</div>
-        </div>
-    );
-};
 
 const sliderImages = [
     '/images/mun2.0/gallery/day1-1.webp',
@@ -138,16 +99,7 @@ const allGalleryImages = [
 
 const MediaPage = () => {
     const sliderRef = useRef(null);
-    const [isLoading, setIsLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('all');
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-        
-        return () => clearTimeout(timer);
-    }, []);
 
     useEffect(() => {
         const slider = sliderRef.current;
@@ -205,15 +157,16 @@ const MediaPage = () => {
             <Header />
 
             <main className="flex-grow">
-                <section className="bg-gradient-to-r from-red-600 to-red-800 text-white py-20">
-                    <div className="container mx-auto px-4">
-                        <h2 className="text-2xl mt-20 md:text-6xl font-bold text-center mb-8">Welcome to Our Media Gallery</h2>
-                    </div>
-                </section>
+                <PageHeader
+                    eyebrow="Gallery"
+                    title="Media Gallery"
+                    subtitle="Moments from our conferences, debates, and community — a look back at the Conventus journey."
+                    image="/images/h1.jpg"
+                />
 
-                <section className="py-12 bg-gray-100 overflow-hidden">
+                <section className="py-16 bg-ink-100 overflow-hidden">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-8">Experience Our Journey</h2>
+                        <SectionHeading eyebrow="In Motion" title="Experience Our Journey" />
                         <div ref={sliderRef} className="overflow-x-hidden whitespace-nowrap">
                             <div className="inline-flex">
                                 {[...sliderImages, ...sliderImages].map((src, index) => (
@@ -223,7 +176,7 @@ const MediaPage = () => {
                                             alt={`Slide ${index + 1}`} 
                                             layout="fill"
                                             objectFit="cover" 
-                                            className="rounded-lg shadow-lg"
+                                            className="rounded-lg"
                                         />
                                     </div>
                                 ))}
@@ -232,11 +185,10 @@ const MediaPage = () => {
                     </div>
                 </section>
 
-                <section className="py-16">
+                <section className="py-20">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-6">Our Moments at a Glance</h2>
-                        <div className="w-24 h-1 bg-red-600 mx-auto rounded-full mb-8" />
-                        
+                        <SectionHeading eyebrow="Highlights" title="Our Moments at a Glance" />
+
                         <PinterestGallery 
                             images={allGalleryImages}
                             tabs={tabs}

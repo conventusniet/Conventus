@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AlumniLeadershipSection from '../components/AlumniLeadershipSection';
+import PageHeader from '../components/PageHeader';
 
 const FounderPage = () => {
     // Founder data
@@ -19,19 +20,15 @@ const FounderPage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-red-50 to-red-100">
+        <div className="min-h-screen bg-white">
             <Header />
-            
+
             <main>
-                {/* Hero Section */}
-                <div className="bg-gradient-to-r from-red-800 to-red-600 text-white py-20 px-4">
-                    <div className="container mx-auto text-center">
-                        <h1 className="text-5xl font-bold mb-4">Founder</h1>
-                        <p className="text-xl text-red-100">
-                            The Visionary Behind Conventus
-                        </p>
-                    </div>
-                </div>
+                <PageHeader
+                    eyebrow="Our Origins"
+                    title="The Founder"
+                    subtitle="The visionary behind Conventus."
+                />
 
                 {/* Founder Section */}
                 <AlumniLeadershipSection 

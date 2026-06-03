@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Welcome from '../components/Welcome';
@@ -8,33 +7,11 @@ import LearnMoreSection from '../components/LearnMore';
 // import leaders from '@/components/leaders';
 import LeadershipPage from '@/components/leaders';
 import Footer from '../components/Footer';
-import LazyLoading from '../components/LazyLoading';
 import ConventusChatbot from '@/components/ConventusChatBot';
 
 // import DiwaliModal from '@/components/DiwaliModal';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  // const [showDiwaliModal, setShowDiwaliModal] = useState(true);
-
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 4000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <LazyLoading onLoadingComplete={() => setIsLoading(false)} />;
-  }
-
-  // const handleDiwaliModalClose = () => {
-  //   setShowDiwaliModal(false);
-  // };
-
-
   return (
     <>
       <Head>
@@ -42,7 +19,7 @@ export default function Home() {
         <title>Conventus MUN NIET | Best Model United Nations Society in Greater Noida</title>
         <meta name="description" content="Join Conventus - NIET's Premier Model United Nations Society. Experience world-class MUN conferences, develop leadership skills, and engage in global diplomacy. Official MUN club of NIET Greater Noida." />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
 
         {/* Enhanced Open Graph Tags */}

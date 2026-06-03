@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
+import { ArrowRight } from 'lucide-react';
 
 const LearnMoreSection = () => {
     const router = useRouter();
@@ -9,64 +9,52 @@ const LearnMoreSection = () => {
     const sections = [
         {
             title: "About Us",
-            description: "Know more about our vision and mission",
+            description: "Know more about our vision, mission, and the people behind Conventus.",
             image: "/images/h3.jpg",
             route: "/aboutus"
         },
         {
             title: "Model United Nations 2025",
-            description: "Explore the Second Edition of Conventus MUN",
+            description: "Explore the second edition of Conventus MUN and its committees.",
             image: "/images/h5.jpg",
             route: "/mun2.0"
         },
         {
             title: "Registration",
-            description: "Registration are now open, Secure your front-row seat to diplomacy now!",
-            image: "/images/h4.png",
+            description: "Registrations are open — secure your front-row seat to diplomacy.",
+            image: "/images/h4.jpg",
             route: "/registration"
         }
     ];
 
     return (
-        <section className="py-16 bg-gradient-to-br from-red-50 to-white">
-            <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold text-center mb-12 text-red-800">L E A R NㅤM O R E</h2>
-                <div className="grid md:grid-cols-3 gap-8">
+        <section className="py-24 bg-paper border-t border-ink/10">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                <div className="text-center mb-14">
+                    <p className="eyebrow text-xs text-primary mb-3">Discover</p>
+                    <h2 className="font-serif-display text-4xl sm:text-5xl font-semibold text-ink">Learn More</h2>
+                    <div className="flex justify-center mt-6"><span className="accent-rule" /></div>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
                     {sections.map((section, index) => (
-                        <motion.div
+                        <button
                             key={index}
-                            className="bg-white rounded-lg shadow-md overflow-hidden border border-red-800 flex flex-col h-[500px]"
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
+                            onClick={() => router.push(section.route)}
+                            className="group text-left bg-paper flex flex-col transition-colors duration-200 hover:bg-white"
                         >
-                            <motion.div
-                                className="relative h-64 w-full overflow-hidden"
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                <Image
-                                    src={section.image}
-                                    alt={section.title}
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                            </motion.div>
-                            <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-2xl font-semibold mb-4 text-center text-red-800">{section.title}</h3>
-                                <p className="text-gray-800 mb-6 text-center flex-grow">{section.description}</p>
-                                <div className="flex justify-center">
-                                    <motion.button
-                                        className="bg-red-800 text-white px-3 py-3 rounded-full hover:bg-red-900 transition duration-300 text-sm font-semibold flex items-center justify-center"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        onClick={() => router.push(section.route)}
-                                    >
-                                        <span className="text-white text-lg">ㅤ➜ㅤ</span>
-                                    </motion.button>
-                                </div>
+                            <div className="relative h-60 w-full overflow-hidden">
+                                <Image src={section.image} alt={section.title} layout="fill" objectFit="cover" />
                             </div>
-                        </motion.div>
+                            <div className="p-7 flex flex-col flex-grow border-t border-ink/10">
+                                <h3 className="font-serif-display text-2xl font-semibold text-ink mb-3">{section.title}</h3>
+                                <p className="text-ink-700 leading-relaxed flex-grow">{section.description}</p>
+                                <span className="mt-6 inline-flex items-center gap-2 text-primary font-semibold text-xs uppercase tracking-wider">
+                                    Learn more
+                                    <ArrowRight size={14} />
+                                </span>
+                            </div>
+                        </button>
                     ))}
                 </div>
             </div>

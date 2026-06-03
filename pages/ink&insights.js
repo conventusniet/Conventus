@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ChevronLeft, ChevronRight, Volume2, VolumeX, X, Play, Pause } from 'lucide-react';
 import ConventusChatbot from '@/components/ConventusChatBot';
+import SectionHeading from '@/components/SectionHeading';
 
 const HeroCarousel = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -130,9 +131,7 @@ const MediaGallery = () => {
     const renderImage = (index, className) => (
         <motion.div
             key={index}
-            className={`relative overflow-hidden rounded-lg cursor-pointer ${className}`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+ className={`relative overflow-hidden cursor-pointer ${className}`}
             onClick={() => setSelectedImage(images[index])}
         >
             <Image
@@ -199,8 +198,6 @@ const MediaGallery = () => {
                             </div>
                             <motion.button
                                 className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2 z-10"
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
                                 onClick={() => setSelectedImage(null)}
                             >
                                 <X size={24} />
@@ -241,20 +238,19 @@ const InkAndInsightsPage = () => {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col bg-red-50">
+        <div className="min-h-screen flex flex-col bg-white">
             <Header />
             <HeroCarousel />
-            <main className="flex-grow container mx-auto px-4 py-12">
+            <main className="flex-grow container mx-auto px-4 py-16">
                 <section className="mb-16">
-                    <h1 className="text-5xl font-bold text-center mb-8 text-red-800">
-                        Ink & Insights
-                    </h1>
-                    <p className="text-xl text-center mb-12 text-red-600">
-                        Welcome to Ink & Insights, where we celebrate the art of writing, showcase emerging talents, and connect readers with authors. Dive into our world of literary exploration and creativity.
-                    </p>
+                    <SectionHeading
+                        eyebrow="The Written Word"
+                        title="Ink & Insights"
+                        subtitle="Where we celebrate the art of writing, showcase emerging talents, and connect readers with authors — a world of literary exploration and creativity."
+                    />
                 </section>
                 <section className="mb-16">
-                    <h2 className="text-3xl text-center font-bold mb-8 text-red-800">Our Students on Media</h2>
+                    <h2 className="font-serif-display text-3xl text-center font-semibold mb-8 text-ink">Our Students on Media</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {youtubeShorts.map((videoId, index) => (
                             <YouTubeShort
@@ -270,7 +266,7 @@ const InkAndInsightsPage = () => {
                 </section>
 
                 <section className="mb-16">
-                    <h2 className="text-3xl text-center font-bold mb-8 text-red-800">About the Authors</h2>
+                    <h2 className="font-serif-display text-3xl text-center font-semibold mb-8 text-ink">About the Authors</h2>
                     {authors.map((author, index) => (
                         <AuthorSection
                             key={index}
@@ -283,7 +279,7 @@ const InkAndInsightsPage = () => {
                 </section>
 
                 <section>
-                    <h2 className="text-3xl text-center font-bold mb-8 text-red-800">Media Gallery</h2>
+                    <h2 className="font-serif-display text-3xl text-center font-semibold mb-8 text-ink">Media Gallery</h2>
                     <MediaGallery />
                 </section>
                 <ConventusChatbot />

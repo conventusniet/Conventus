@@ -24,7 +24,7 @@ const SponsorsSection = () => {
     ];
 
     return (
-        <section className="py-16 bg-gradient-to-b from-white to-red-50">
+        <section className="py-16 bg-paper ">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-bold text-red-800 mb-4">
@@ -43,23 +43,18 @@ const SponsorsSection = () => {
                             className="group relative flex flex-col items-center"
                         >
                             <div className="relative w-full aspect-square">
-                                <div className="absolute inset-0 bg-white rounded-xl shadow-lg transform 
-                                    group-hover:scale-105 transition-all duration-300 p-4">
-                                    <div className="w-full h-full bg-gradient-to-br from-red-50 to-white 
-                                        rounded-lg flex items-center justify-center border border-red-100
-                                        overflow-hidden">
+                                <div className="absolute inset-0 bg-white rounded-xl transform group- transition-all duration-300 p-4">
+                                    <div className="w-full h-full bg-paper rounded-lg flex items-center justify-center border border-red-100 overflow-hidden">
                                         <img
                                             src={sponsor.logo}
                                             alt={sponsor.name}
-                                            className="w-3/4 h-3/4 object-contain filter 
-                                                group-hover:brightness-110 transition-all duration-300"
+                                            className="w-3/4 h-3/4 object-contain filter group-hover:brightness-110 transition-all duration-300"
                                         />
                                     </div>
                                 </div>
                             </div>
                             <div className="mt-4 text-center">
-                                <h3 className="font-semibold text-red-800 group-hover:text-red-600 
-                                    transition-colors duration-300">
+                                <h3 className="font-semibold text-red-800 group-hover:text-red-600 transition-colors duration-300">
                                     {sponsor.name}
                                 </h3>
                                 <span className="text-sm text-red-600 opacity-75">

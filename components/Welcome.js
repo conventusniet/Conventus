@@ -1,68 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+
+const MOTTO = ['Negatio', 'Solutio', 'Actio'];
 
 const Welcome = () => {
-    const [text, setText] = useState('');
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [loopNum, setLoopNum] = useState(0);
-    const [typingSpeed, setTypingSpeed] = useState(150);
-    const toRotate = ['Negatio', 'Solutio', 'Actio'];
-    const period = 1000;
+    const [active, setActive] = useState(0);
 
     useEffect(() => {
-        let ticker = setInterval(() => {
-            tick();
-        }, typingSpeed);
-        return () => { clearInterval(ticker) };
-    }, [text])
-
-    const tick = () => {
-        let i = loopNum % toRotate.length;
-        let fullText = toRotate[i];
-        let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
-        setText(updatedText);
-        if (isDeleting) {
-            setTypingSpeed(prevSpeed => prevSpeed / 1.5);
-        }
-        if (!isDeleting && updatedText === fullText) {
-            setIsDeleting(true);
-            setTypingSpeed(period);
-        } else if (isDeleting && updatedText === '') {
-            setIsDeleting(false);
-            setLoopNum(loopNum + 1);
-            setTypingSpeed(150);
-        }
-    };
+        const id = setInterval(() => setActive((p) => (p + 1) % MOTTO.length), 2400);
+        return () => clearInterval(id);
+    }, []);
 
     return (
-        <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
-            <div 
-                className="absolute inset-0 bg-cover bg-center z-0 brightness-50"
-                style={{
-                    backgroundImage: "url('/images/h1.jpg')"
-                }}
+        <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden text-white">
+            {/* Background image with a single flat ink wash */}
+            <div
+                className="absolute inset-0 bg-cover bg-center z-0"
+                style={{ backgroundImage: "url('/images/h1.jpg')" }}
             />
-            <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
-            <div className="relative z-20 text-center px-4">
-                <h1 className="text-6xl font-bold mb-6 text-shadow-lg">Conventus</h1>
-                <div className="flex justify-center items-center">
-                    <span className="text-4xl">|</span>
-                    <p className="text-4xl w-48 inline-block text-left">
-                        <span className="font-bold text-yellow-300">ㅤ{text}</span>
-                    </p>
-                    <span className="text-4xl">|</span>
+            <div className="absolute inset-0 z-10 bg-ink/75" />
+
+            <div className="relative z-20 px-6 text-center max-w-3xl mx-auto">
+                <p className="eyebrow text-[11px] sm:text-xs text-white/65 mb-6">
+                    NIET&apos;s Model United Nations Society
+                </p>
+
+                <h1 className="font-serif-display text-6xl sm:text-7xl lg:text-8xl font-semibold tracking-tight">
+                    Conventus
+                </h1>
+
+                <div className="flex justify-center my-8">
+                    <span className="double-rule" style={{ borderColor: '#ffffff' }} />
                 </div>
-                <div className="relative">
-                    <Link href="/registration" passHref>
-                        <motion.button
-                            className="inline-block mt-20 px-8 py-4 bg-red-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:bg-red-700"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Register Now
-                        </motion.button>
-                    </Link>
+
+                {/* Motto with a quiet active-word emphasis */}
+                <div className="font-serif-display text-lg sm:text-2xl tracking-wide flex items-center justify-center gap-3 sm:gap-4">
+                    {MOTTO.map((word, i) => (
+                        <React.Fragment key={word}>
+                            {i > 0 && <span className="text-white/25">/</span>}
+                            <span className={`transition-colors duration-500 ${active === i ? 'text-white' : 'text-white/45'}`}>
+                                {word}
+                            </span>
+                        </React.Fragment>
+                    ))}
+                </div>
+
+                <p className="mt-8 text-white/70 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
+                    A forum for aspiring diplomats — debate, negotiation, and global discourse at NIET, Greater Noida.
+                </p>
+
+                <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <Link href="/cmun-connect" className="btn-primary">Register Now</Link>
+                    <Link href="/aboutus" className="btn-ghost-light">Explore the Society</Link>
                 </div>
             </div>
         </section>

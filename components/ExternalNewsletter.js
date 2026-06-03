@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
 import { ExternalLink, Download } from 'lucide-react';
 
@@ -17,7 +17,7 @@ const ExternalNewsletter = ({
   };
 
   return (
-    <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+ <div className="max-w-6xl mx-auto bg-white overflow-hidden">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-[70%] p-8 flex flex-col justify-center">
           <div className="mb-4">
@@ -32,8 +32,6 @@ const ExternalNewsletter = ({
           <div className="flex flex-col sm:flex-row gap-4">
             <motion.button
               className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full flex items-center justify-center transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={handleExternalLink}
             >
               <ExternalLink className="mr-2" size={20} />
@@ -42,8 +40,6 @@ const ExternalNewsletter = ({
             
             <motion.button
               className="bg-white border-2 border-red-600 text-red-600 hover:bg-red-50 px-6 py-3 rounded-full flex items-center justify-center transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={handleExternalLink}
             >
               <Download className="mr-2" size={20} />
@@ -66,10 +62,10 @@ const ExternalNewsletter = ({
                 alt={title}
                 width={400}
                 height={560}
-                className="object-contain h-auto max-h-[95%] hover:scale-105 transition-transform duration-300"
+                className="object-contain h-auto max-h-[95%] transition-transform duration-300"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-6">
+            <div className="absolute inset-0 bg-ink/70 flex flex-col justify-end p-6">
               <div className="text-white">
                 <p className="mb-2 text-sm font-medium bg-red-600 w-fit px-2 py-1 rounded-full">
                   {edition}

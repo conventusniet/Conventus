@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import Image from 'next/image';
 
 /**
  * A reusable Pinterest-style gallery component with image filtering capabilities
@@ -41,11 +42,7 @@ const PinterestGallery = ({
                         <button 
                             key={tab.value}
                             onClick={() => setActiveTab(tab.value)}
-                            className={`px-3 sm:px-5 py-2 rounded-full font-medium transition-all duration-300 m-1 sm:m-2 text-sm sm:text-base ${
-                                activeTab === tab.value 
-                                    ? 'bg-red-600 text-white shadow-md' 
-                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                            }`}
+                            className={`px-3 sm:px-5 py-2 rounded-full font-medium transition-all duration-300 m-1 sm:m-2 text-sm sm:text-base ${ activeTab === tab.value ? 'bg-red-600 text-white ' : 'bg-gray-100 text-gray-600 hover:bg-gray-200' }`}
                         >
                             {tab.label}
                         </button>
@@ -65,22 +62,24 @@ const PinterestGallery = ({
                         {filteredImages.map((image, index) => (
                             <motion.div
                                 key={index}
-                                className="break-inside-avoid mb-4 relative overflow-hidden rounded-lg cursor-pointer shadow-md"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.99 }}
+ className="break-inside-avoid mb-4 relative overflow-hidden cursor-pointer"
                                 onClick={() => openModal(image)}
                             >
                                 <div className="relative">
-                                    <img
+                                    <Image
                                         src={typeof image === 'string' ? image : image.src}
                                         alt={image.alt || `Gallery image ${index + 1}`}
-                                        className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
-                                        loading={index < 12 ? "eager" : "lazy"}
+                                        width={0}
+                                        height={0}
+                                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                        style={{ width: '100%', height: 'auto' }}
+                                        className="block transition-transform duration-500"
+                                        loading="lazy"
                                     />
                                     {image.badge && (
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end">
-                                            <span className="text-white text-xs sm:text-sm font-medium m-2 sm:m-3 px-2 py-1 bg-red-600 rounded-full">{image.badge}</span>
-                                        </div>
+                                        <span className="absolute bottom-2 left-2 text-white text-xs sm:text-sm font-medium px-2 py-1 bg-primary">
+                                            {image.badge}
+                                        </span>
                                     )}
                                 </div>
                             </motion.div>
@@ -114,8 +113,6 @@ const PinterestGallery = ({
                                 />
                                 <motion.button
                                     className="absolute top-2 right-2 text-white bg-red-600 rounded-full p-2 z-10"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
                                     onClick={closeModal}
                                 >
                                     <X size={24} />
