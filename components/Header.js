@@ -34,6 +34,7 @@ const Header = ({ theme = 'default' }) => {
             ]
         },
         { href: "/cmun-connect", label: "Register" },
+        // { href: "/status", label: "My Status" }, // hidden for now — delegate portal to be released later
         { href: "/commnew", label: "Committees" },
         {
             href: "#",

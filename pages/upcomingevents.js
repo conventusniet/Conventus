@@ -109,7 +109,7 @@ const EmptyState = () => (
 
 const EventDetails = ({ event, onClose }) => {
   function gotoregister() {
-    window.location.href = "https://conventusmun.com/registration";
+    window.location.href = "/cmun-connect";
   }
 
   return (

@@ -126,7 +126,7 @@ const ConventusChatbot = () => {
 
     const renderMessage = (message) => {
         const text = message.text || '';
-        const registrationLink = 'https://conventusmun.com/registration';
+        const registrationLink = 'https://conventusmun.com/cmun-connect';
         const contactLink = 'https://conventusmun.com/ContactForm';
 
         // Clean the text by removing any trailing "undefined" or similar artifacts
