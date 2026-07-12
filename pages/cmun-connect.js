@@ -56,10 +56,17 @@ const CMUNRegistration = () => {
     return () => clearTimeout(t);
   }, [resendIn]);
 
-  // Portfolio options differ per committee — clear picks when the 1st-choice committee changes.
+  // Each portfolio slot is tied to its own committee slot — clear only that slot's pick
+  // when its corresponding committee choice changes.
   useEffect(() => {
-    setForm((prev) => ({ ...prev, portfolio1: '', portfolio2: '', portfolio3: '' }));
+    setForm((prev) => ({ ...prev, portfolio1: '' }));
   }, [form.committee1]);
+  useEffect(() => {
+    setForm((prev) => ({ ...prev, portfolio2: '' }));
+  }, [form.committee2]);
+  useEffect(() => {
+    setForm((prev) => ({ ...prev, portfolio3: '' }));
+  }, [form.committee3]);
 
   const set = (name, value) => {
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -174,12 +181,12 @@ const CMUNRegistration = () => {
     setSubmitting(true);
     setErrors((prev) => ({ ...prev, submit: null }));
     try {
-      const portfolios = [form.portfolio1, form.portfolio2, form.portfolio3]
-        .map((s) => s.trim())
-        .filter(Boolean);
-      const portfolioValue = portfolios.length
-        ? `${portfolios.join(', ')}${form.committee1 ? ` (${form.committee1})` : ''}`
-        : '';
+      // Each portfolio is tied to its own committee choice, so pair them up individually
+      // rather than tagging all three with committee1.
+      const portfolioPairs = [1, 2, 3]
+        .map((n) => ({ committee: form[`committee${n}`], portfolio: form[`portfolio${n}`].trim() }))
+        .filter((p) => p.committee && p.portfolio);
+      const portfolioValue = portfolioPairs.map((p) => `${p.portfolio} (${p.committee})`).join(', ');
       const res = await fetch('/api/register/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -209,11 +216,6 @@ const CMUNRegistration = () => {
   // Committee preferences must be distinct — disable an option already taken in another slot.
   const committeeTaken = (field, code) =>
     ['committee1', 'committee2', 'committee3'].some((f) => f !== field && form[f] === code);
-  // Portfolio preferences apply to the delegate's 1st-choice committee.
-  const portfolioOptions = COMMITTEE_PORTFOLIOS[form.committee1] || [];
-  const portfolioTaken = (field, name) =>
-    ['portfolio1', 'portfolio2', 'portfolio3'].some((f) => f !== field && form[f] === name);
-
   const inputClass = (field) =>
     `w-full py-2.5 px-3 border bg-white text-ink text-sm transition-colors focus:ring-1 focus:ring-primary focus:border-primary ${
       errors[field] ? 'border-primary' : 'border-ink/15'
@@ -413,10 +415,7 @@ const CMUNRegistration = () => {
                   <div className="sm:col-span-2">
                     <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
                       <label className="block text-ink text-xs font-bold">
-                        Portfolio / Country Preferences
-                        {form.committee1
-                          ? <span className="text-ink-500 font-normal"> — for your 1st choice ({form.committee1}), most preferred first</span>
-                          : <span className="text-ink-500 font-normal"> (pick Committee Preference 1 first)</span>}
+                        Portfolio Preferences <span className="text-ink-500 font-normal">— one portfolio per committee choice above</span>
                       </label>
                       <a
                         href={IMATRIX_LINK}
@@ -430,22 +429,27 @@ const CMUNRegistration = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[1, 2, 3].map((n) => {
                         const field = `portfolio${n}`;
-                        const rank = n === 1 ? '1st' : n === 2 ? '2nd' : '3rd';
+                        const committeeCode = form[`committee${n}`];
+                        const options = COMMITTEE_PORTFOLIOS[committeeCode] || [];
                         return (
-                          <select
-                            key={n}
-                            id={field}
-                            name={field}
-                            className={inputClass(field)}
-                            value={form[field]}
-                            onChange={handleChange}
-                            disabled={!form.committee1}
-                          >
-                            <option value="">{form.committee1 ? `${rank} choice` : 'Pick a committee first'}</option>
-                            {portfolioOptions.map((p) => (
-                              <option key={p} value={p} disabled={portfolioTaken(field, p)}>{p}</option>
-                            ))}
-                          </select>
+                          <div key={n}>
+                            <p className="text-[11px] text-ink-500 mb-1 font-semibold uppercase tracking-wide">
+                              {committeeCode ? committeeCode : `Committee ${n}`}
+                            </p>
+                            <select
+                              id={field}
+                              name={field}
+                              className={inputClass(field)}
+                              value={form[field]}
+                              onChange={handleChange}
+                              disabled={!committeeCode}
+                            >
+                              <option value="">{committeeCode ? 'Choose portfolio' : 'Pick a committee first'}</option>
+                              {options.map((p) => (
+                                <option key={p} value={p}>{p}</option>
+                              ))}
+                            </select>
+                          </div>
                         );
                       })}
                     </div>
