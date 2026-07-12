@@ -20,7 +20,7 @@ const ExternalNewsletter = ({
   return (
     <div className="max-w-6xl mx-auto bg-white overflow-hidden">
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-[70%] p-8 flex flex-col justify-center">
+        <div className="md:w-[72%] p-6 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-4 flex-wrap">
             <span className="bg-red-800 text-white px-3 py-1 rounded-full text-xs font-medium tracking-wide">
               {publisherName}
@@ -70,7 +70,7 @@ const ExternalNewsletter = ({
           </p>
         </div>
 
-        <div className="md:w-[30%] relative" style={{ minHeight: '400px' }}>
+        <div className="md:w-[28%] relative" style={{ minHeight: '380px' }}>
           <div
             className="relative h-full overflow-hidden cursor-pointer"
             onClick={handleExternalLink}
