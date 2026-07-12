@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   User, Mail, Phone, GraduationCap, Globe, MapPin, MessageSquare,
   Calendar, Video, CheckCircle, AlertCircle, ArrowRight, ArrowLeft,
-  ShieldCheck, Upload, QrCode, Copy, X, BadgeCheck, Sparkles,
+  ShieldCheck, Upload, QrCode, Copy, X, BadgeCheck, Sparkles, Eye,
 } from 'lucide-react';
 import {
   CONFERENCE_NAME, CONFERENCE_TAGLINE, REGISTRATION_FEES, feeForEmail,
@@ -17,6 +17,10 @@ import { COMMITTEE_PORTFOLIOS } from '../lib/committee-portfolios';
 
 const STEPS = ['Details', 'Verify Email', 'Payment'];
 const MAX_SCREENSHOT_BYTES = 3 * 1024 * 1024; // 3MB
+
+// Live, view-only Google Sheet showing current portfolio/country allotment status.
+// TODO: move this into lib/registration-config.js alongside UPI_ID etc. once that file is handy.
+const IMATRIX_LINK = 'https://docs.google.com/spreadsheets/d/1ZkCzIetoXxm_e0zs3D5xPcj2giqanOwrsIU3gZgxw9E/edit?usp=drivesdk';
 
 const CMUNRegistration = () => {
   const [step, setStep] = useState(1); // 1 Details, 2 Verify, 3 Payment
@@ -407,12 +411,22 @@ const CMUNRegistration = () => {
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-ink text-xs font-bold mb-2">
-                      Portfolio / Country Preferences
-                      {form.committee1
-                        ? <span className="text-ink-500 font-normal"> — for your 1st choice ({form.committee1}), most preferred first</span>
-                        : <span className="text-ink-500 font-normal"> (pick Committee Preference 1 first)</span>}
-                    </label>
+                    <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
+                      <label className="block text-ink text-xs font-bold">
+                        Portfolio / Country Preferences
+                        {form.committee1
+                          ? <span className="text-ink-500 font-normal"> — for your 1st choice ({form.committee1}), most preferred first</span>
+                          : <span className="text-ink-500 font-normal"> (pick Committee Preference 1 first)</span>}
+                      </label>
+                      <a
+                        href={IMATRIX_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs font-bold text-green-700 hover:underline flex-shrink-0"
+                      >
+                        <Eye size={14} /> Public iMatrix
+                      </a>
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[1, 2, 3].map((n) => {
                         const field = `portfolio${n}`;
