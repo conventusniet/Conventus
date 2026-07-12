@@ -1,59 +1,78 @@
 import React from 'react';
 import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
-import { ExternalLink, Download } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 
-const ExternalNewsletter = ({ 
-  title, 
+const ExternalNewsletter = ({
+  title,
   description,
-  imageUrl, 
+  imageUrl,
   externalUrl,
   publisherName,
   edition,
-  publishDate
+  publishDate,
+  isAnniversary = false,
 }) => {
   const handleExternalLink = () => {
     window.open(externalUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
- <div className="max-w-6xl mx-auto bg-white overflow-hidden">
+    <div className="max-w-6xl mx-auto bg-white overflow-hidden">
       <div className="flex flex-col md:flex-row">
         <div className="md:w-[70%] p-8 flex flex-col justify-center">
-          <div className="mb-4">
-            <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+          <div className="flex items-center gap-2 mb-4 flex-wrap">
+            <span className="bg-red-800 text-white px-3 py-1 rounded-full text-xs font-medium tracking-wide">
               {publisherName}
             </span>
+            {isAnniversary && (
+              <span className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium tracking-wide">
+                25th anniversary
+              </span>
+            )}
           </div>
-          <h3 className="text-2xl font-bold text-red-800 mb-4">{title}</h3>
-          <p className="text-gray-700 mb-6">
+
+          <h3 className="font-serif-display text-2xl md:text-3xl font-bold text-red-900 mb-1">
+            {title}
+          </h3>
+          <p className="text-sm text-gray-400 mb-4">
+            {edition} · {publishDate}
+          </p>
+
+          <div className="h-px bg-red-100 mb-5" />
+
+          <p className="text-gray-600 text-sm leading-relaxed mb-7">
             {description}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+
+          <div className="flex items-center gap-6 flex-wrap">
             <motion.button
-              className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full flex items-center justify-center transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-red-700 hover:bg-red-800 text-white px-6 py-3 rounded-full flex items-center gap-2 transition-colors text-sm font-medium"
               onClick={handleExternalLink}
             >
-              <ExternalLink className="mr-2" size={20} />
-              View & Download
+              <ExternalLink size={16} />
+              View newsletter
             </motion.button>
-            
-            <motion.button
-              className="bg-white border-2 border-red-600 text-red-600 hover:bg-red-50 px-6 py-3 rounded-full flex items-center justify-center transition-colors"
+
+            <button
+              className="text-red-700 hover:text-red-800 text-sm font-medium flex items-center gap-1.5 bg-transparent border-none cursor-pointer p-0"
               onClick={handleExternalLink}
             >
-              <Download className="mr-2" size={20} />
               Download PDF
-            </motion.button>
+              <ArrowRight size={14} />
+            </button>
           </div>
-          <p className="text-sm text-gray-500 mt-4">
-            * This will redirect to the official repository to view/download the newsletter
+
+          <p className="text-xs text-gray-400 mt-5">
+            Opens the official repository to view or download the newsletter.
           </p>
         </div>
-        
+
         <div className="md:w-[30%] relative" style={{ minHeight: '400px' }}>
-          <div 
-            className="relative h-full overflow-hidden cursor-pointer" 
+          <div
+            className="relative h-full overflow-hidden cursor-pointer"
             onClick={handleExternalLink}
           >
             <div className="relative h-full w-full flex justify-center items-center">
