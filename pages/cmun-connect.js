@@ -423,7 +423,7 @@ const CMUNRegistration = () => {
                         rel="noopener noreferrer"
                         className="flex items-center gap-1 text-xs font-bold text-green-700 hover:underline flex-shrink-0"
                       >
-                        <Eye size={14} /> Public iMatrix
+                        <Eye size={14} /> Public Eye Matrix
                       </a>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
