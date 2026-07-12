@@ -86,16 +86,17 @@ export default function InstitutionalNewsletterPage() {
               <motion.div
                 key={index}
                 whileHover={{ y: -4 }}
-                className={`relative mb-12 rounded-xl bg-white transition-all ${isLatest ? ' border border-red-700' : ''}`}
+                className={`relative mb-12 rounded-2xl transition-all ${
+                  isLatest ? 'p-2 bg-red-700' : ''
+                }`}
               >
-                {/* Only latest label stays */}
                 {isLatest && (
-                  <div className="absolute top-4 left-4 z-20 bg-red-700 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <div className="absolute -top-3 left-6 z-20 bg-red-700 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
                     Latest Issue
                   </div>
                 )}
 
-                <div className={isLatest ? 'scale-[1.02]' : 'scale-100'}>
+                <div className="rounded-xl overflow-hidden bg-white">
                   <ExternalNewsletter
                     title={item.title}
                     description={item.description}
