@@ -68,7 +68,7 @@ export default function InstitutionalNewsletterPage() {
         </div>
       </motion.div>
 
-      <main className="flex-grow container mx-auto px-4 py-8 mt-[calc(100vh-40vh)]">
+      <main className="flex-grow max-w-5xl mx-auto px-4 py-8 mt-[calc(100vh-40vh)]">
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-red-800 mb-4 text-center">
             College Publications
@@ -87,7 +87,7 @@ export default function InstitutionalNewsletterPage() {
                 key={index}
                 whileHover={{ y: -4 }}
                 className={`relative mb-12 rounded-2xl transition-all ${
-                  isLatest ? 'p-2 bg-red-700' : ''
+                  isLatest ? 'p-2 bg-red-700' : 'shadow-sm'
                 }`}
               >
                 {isLatest && (
