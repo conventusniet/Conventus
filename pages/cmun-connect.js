@@ -56,6 +56,20 @@ const CMUNRegistration = () => {
     return () => clearTimeout(t);
   }, [resendIn]);
 
+  // International Press don't represent a country, so country portfolios don't apply to them.
+  const isPress = form.role === 'International Press';
+
+  // Press get no portfolios and no 2nd/3rd committee choices — drop any values carried over
+  // from a Delegate selection so hidden fields can't be submitted.
+  useEffect(() => {
+    if (!isPress) return;
+    setForm((prev) => ({
+      ...prev,
+      committee2: '', committee3: '',
+      portfolio1: '', portfolio2: '', portfolio3: '',
+    }));
+  }, [isPress]);
+
   // Each portfolio slot is tied to its own committee slot — clear only that slot's pick
   // when its corresponding committee choice changes.
   useEffect(() => {
@@ -85,7 +99,9 @@ const CMUNRegistration = () => {
     else if (digits.length < 10 || digits.length > 12) e.phone = 'Enter a valid phone number';
     if (!form.institution.trim()) e.institution = 'College / institution is required';
     if (!form.role) e.role = 'Select how you want to register';
-    if (!form.committee1) e.committee1 = 'Select your first committee preference';
+    // International Press cover the conference rather than representing a country, so a
+    // committee is an optional coverage preference for them, not a requirement.
+    if (!isPress && !form.committee1) e.committee1 = 'Select your first committee preference';
     if (!form.experience) e.experience = 'Select your MUN experience';
     if (form.committee2 && form.committee2 === form.committee1) e.committee2 = 'Choose a different committee';
     if (form.committee3 && (form.committee3 === form.committee1 || form.committee3 === form.committee2))
@@ -385,16 +401,21 @@ const CMUNRegistration = () => {
 
                   <div>
                     <label className="block text-ink text-xs font-bold mb-2" htmlFor="committee1">
-                      Committee Preference 1 <span className="text-primary">*</span>
+                      {isPress ? (
+                        <>Committee to Cover <span className="text-ink-500 font-normal">(optional)</span></>
+                      ) : (
+                        <>Committee Preference 1 <span className="text-primary">*</span></>
+                      )}
                     </label>
                     <select id="committee1" name="committee1" className={inputClass('committee1')} value={form.committee1} onChange={handleChange}>
-                      <option value="">Select</option>
+                      <option value="">{isPress ? 'Select (optional)' : 'Select'}</option>
                       {COMMITTEES.map((c) => <option key={c.code} value={c.code} disabled={committeeTaken('committee1', c.code)}>{c.name}</option>)}
                     </select>
                     <FieldError field="committee1" />
                   </div>
 
-                  <div>
+                  {/* Ranked 2nd/3rd choices only matter for delegates being allotted a country. */}
+                  <div className={isPress ? 'hidden' : ''}>
                     <label className="block text-ink text-xs font-bold mb-2" htmlFor="committee2">Committee Preference 2</label>
                     <select id="committee2" name="committee2" className={inputClass('committee2')} value={form.committee2} onChange={handleChange}>
                       <option value="">Select (optional)</option>
@@ -403,7 +424,7 @@ const CMUNRegistration = () => {
                     <FieldError field="committee2" />
                   </div>
 
-                  <div>
+                  <div className={isPress ? 'hidden' : ''}>
                     <label className="block text-ink text-xs font-bold mb-2" htmlFor="committee3">Committee Preference 3</label>
                     <select id="committee3" name="committee3" className={inputClass('committee3')} value={form.committee3} onChange={handleChange}>
                       <option value="">Select (optional)</option>
@@ -415,7 +436,12 @@ const CMUNRegistration = () => {
                   <div className="sm:col-span-2">
                     <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
                       <label className="block text-ink text-xs font-bold">
-                        Portfolio Preferences <span className="text-ink-500 font-normal">— one portfolio per committee choice above</span>
+                        Portfolio Preferences{' '}
+                        <span className="text-ink-500 font-normal">
+                          {isPress
+                            ? '— not applicable to International Press'
+                            : '— one portfolio per committee choice above'}
+                        </span>
                       </label>
                       <a
                         href={IMATRIX_LINK}
@@ -426,6 +452,13 @@ const CMUNRegistration = () => {
                         <Eye size={14} /> Public Eye Matrix
                       </a>
                     </div>
+                    {isPress ? (
+                      <p className="text-xs text-ink-600 bg-paper border border-ink/10 p-3">
+                        International Press cover the conference as journalists, photographers and
+                        caricaturists — you don&apos;t represent a country, so no portfolio is needed.
+                        Your press assignment is decided by the Secretariat after registration.
+                      </p>
+                    ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[1, 2, 3].map((n) => {
                         const field = `portfolio${n}`;
@@ -453,6 +486,7 @@ const CMUNRegistration = () => {
                         );
                       })}
                     </div>
+                    )}
                   </div>
                 </div>
 

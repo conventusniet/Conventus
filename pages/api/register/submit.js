@@ -10,7 +10,10 @@ const WEBHOOK = process.env.REGISTRATION_WEBHOOK_URL;
 // Payment screenshots are base64 in the JSON body — raise the default 1mb cap.
 export const config = { api: { bodyParser: { sizeLimit: '5mb' } } };
 
-const REQUIRED = ['name', 'email', 'phone', 'institution', 'role', 'committee1', 'experience'];
+const REQUIRED = ['name', 'email', 'phone', 'institution', 'role', 'experience'];
+// Delegates represent a country in a committee, so a committee is mandatory for them.
+// International Press cover the conference instead, so it stays optional.
+const DELEGATE_REQUIRED = ['committee1'];
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -38,7 +41,10 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Email mismatch. Please restart the registration.' });
     }
 
-    for (const field of REQUIRED) {
+    const required = String(form.role || '').trim() === 'International Press'
+        ? REQUIRED
+        : [...REQUIRED, ...DELEGATE_REQUIRED];
+    for (const field of required) {
         if (!String(form[field] || '').trim()) {
             return res.status(400).json({ error: `Please complete all required fields (${field}).` });
         }
