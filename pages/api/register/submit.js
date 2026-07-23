@@ -83,8 +83,20 @@ export default async function handler(req, res) {
             console.error('Register webhook responded', upstream.status);
             return res.status(502).json({ error: 'Could not save your registration. Please try again.' });
         }
-        const data = await upstream.json().catch(() => ({}));
-        return res.status(200).json({ ok: true, registrationId: data.registrationId || null });
+
+        // The Apps Script catches its own exceptions and answers HTTP 200 with an { error }
+        // body, so the status code alone never proves the row was written. Only a returned
+        // registrationId does — it is sent after appendRow. Anything else fails closed, so a
+        // backend outage (e.g. the Drive account being out of storage) can never show the
+        // registrant a success screen for a registration that was silently dropped.
+        const data = await upstream.json().catch(() => null);
+        if (!data || data.error || !data.registrationId) {
+            console.error('Register webhook did not confirm the save:', data ? JSON.stringify(data).slice(0, 300) : 'unparseable response');
+            return res.status(502).json({
+                error: 'We could not save your registration, so you have not been registered yet. Your payment is safe — please try again shortly or contact conventus@niet.co.in with your payment screenshot.',
+            });
+        }
+        return res.status(200).json({ ok: true, registrationId: data.registrationId });
     } catch (err) {
         console.error('Register proxy error:', err);
         return res.status(502).json({ error: 'Could not reach the registration service.' });

@@ -150,25 +150,42 @@ function register_(b) {
     Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyMMdd') +
     '-' + (sheet.getLastRow());
 
-  var link = '';
-  if (b.screenshot) {
-    var parts = b.screenshot.split(',');
-    var contentType = parts[0].substring(parts[0].indexOf(':') + 1, parts[0].indexOf(';'));
-    var blob = Utilities.newBlob(Utilities.base64Decode(parts[1]), contentType,
-      regId + '-' + (b.screenshotName || 'payment'));
-    var folder = getFolder_(DRIVE_FOLDER);
-    var file = folder.createFile(blob);
-    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-    link = file.getUrl();
-  }
-
+  // Write the registration row FIRST. Saving the screenshot to Drive is the part most
+  // likely to fail (an out-of-storage account throws here), and when it ran first a
+  // thrown error meant the row was never appended — the registration was lost outright
+  // while the site still reported success. The row is now never hostage to Drive.
   sheet.appendRow([
     b.submittedAt || new Date().toISOString(), regId, b.name, b.email, b.phone,
     b.institution, b.courseYear || '', b.city || '', b.role, b.committee1,
     b.committee2 || '', b.committee3 || '', b.portfolio || '', b.experience,
-    b.feeCategory || '', b.feeAmount || '', b.txnRef || '', link, 'Pending Verification'
+    b.feeCategory || '', b.feeAmount || '', b.txnRef || '', '', 'Pending Verification'
   ]);
-  return json_({ ok: true, registrationId: regId });
+  var rowIndex = sheet.getLastRow();
+
+  var link = '', screenshotError = '';
+  if (b.screenshot) {
+    try {
+      var parts = b.screenshot.split(',');
+      var contentType = parts[0].substring(parts[0].indexOf(':') + 1, parts[0].indexOf(';'));
+      var blob = Utilities.newBlob(Utilities.base64Decode(parts[1]), contentType,
+        regId + '-' + (b.screenshotName || 'payment'));
+      var folder = getFolder_(DRIVE_FOLDER);
+      var file = folder.createFile(blob);
+      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      link = file.getUrl();
+    } catch (err) {
+      // Keep the registration; flag the row so the screenshot can be collected manually.
+      screenshotError = 'UPLOAD FAILED — ask the registrant to resend: ' + String(err);
+    }
+  }
+
+  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  var shotCol = headers.indexOf('Payment Screenshot');
+  if (shotCol >= 0 && (link || screenshotError)) {
+    sheet.getRange(rowIndex, shotCol + 1).setValue(link || screenshotError);
+  }
+
+  return json_({ ok: true, registrationId: regId, screenshotSaved: !!link });
 }
 
 function getFolder_(name) {
