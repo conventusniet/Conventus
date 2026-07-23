@@ -161,8 +161,8 @@ const DiplomaticResourcesPage = () => {
   const resources = [
     { 
         icon: <BookOpen size={48} />,
-        title: "Background Guides",
-        description: "Comprehensive resources on key diplomatic topics and policies.",
+        title: "Background Guide - CMUN Connect 2026",
+        description: "Committee background guides for CMUN Connect 2026.",
         details: [
             "Classical texts on diplomacy",
             "Contemporary foreign policy analysis",
@@ -170,9 +170,10 @@ const DiplomaticResourcesPage = () => {
         ],
         image: "/images/Resources BG.jpg",
         files: [
-            "/BGs/BGs/UNHRC_BG.pdf",
-            "/BGs/BGs/UNSC_BG.pdf",
-            "/BGs/BGs/AIPPM_BG.pdf"
+            "/BGs/CMUN Connect 2026/UNGA-DISEC.pdf",
+            "/BGs/CMUN Connect 2026/UNHRC.pdf",
+            "/BGs/CMUN Connect 2026/UNCSW.pdf",
+            "/BGs/CMUN Connect 2026/AIPPM.pdf"
         ]
     },
     { 
